@@ -1,0 +1,205 @@
+<h1>Administration</h1>
+
+<p>Once you complete the initial setup, you can access the admin page,
+where you specify your PayPal details, general options and define your digital
+products.</p><?php include('help.html') ; ?>
+
+<blockquote>
+  <strong>Note:</strong> The screenshots below are from the Pro version of
+  <?php ezpp() ?>. In the standard version, the Pro features and options
+  will not be presented.
+</blockquote>
+
+<p>Once you have set up your <?php ezpp() ?>, you can enter the admin area
+to configure it. You will need your admin credentials (that you set up
+during installation setup), your PayPal email address (so that your
+customers can pay you), and your database details (to save your potential
+purchases -- you may need to contact your web server admin for this
+information).</p>
+
+<h2>Entering the Admin Control Panel</h2>
+
+<h3>WordPress Plugin Versions</h3>
+
+<p>To access the Admin Control Panel in your WordPress installation, log
+on to your blog admin section (<code>http://yourblog/wp-admin</code>) and
+click on "Easy PayPal Lite" or "Easy PayPal Pro" under your "Settings"
+menu.</p><?php img("05") ?>
+
+<h3>Standalone Versions</h3>
+
+<p>You can enter the admin screen by clicking Admin button right after
+installing <?php ezpp() ?>.</p><?php img("01") ?>
+
+<p>You can also find a link to the Admin page in all the pages presented
+by <?php ezpp() ?>. Look for it in the right hand side top corner as shown
+below.</p><?php img("02") ?>
+
+<p>Once you enter the admin page, the first thing you will be asked to do
+is to authenticate yourself.</p><?php img("03") ?>
+
+<blockquote>
+  <b>Warning:</b> Please enter your Admin username and password. If you
+  have forgotten either, there is no way to recover it. You will have to
+  access your database and delete the table with a name like
+  <code>ezpp_5e81f9859d223ea420aca993c647b839M</code>, where the part
+  before the underscore is the database prefix you chose during
+  installation, and the part after is a random string. After deleting this
+  file, please go to the installation script
+  (<code>http://yoursite/setup.php</code> where yoursite is the location
+  where you installed<?php ezpp() ?>.
+</blockquote>
+
+<h2>Admin Sections</h2>
+
+<p>Regardless of whether you are using the standalone or the WordPress
+plugin version of <?php ezpp() ?>, you will get an Admin Control Panel as
+the screenshots below. The Admin Control Panel has three
+sections, and we will discuss them separately below.</p>
+
+<p>The screenshots shown are from the Pro version of <?php ezpp() ?>. If you
+have installed the Lite edition, you may see fewer option entries on this
+screen. The easiest way to get information on a feature or option is to
+hover over the <img src="../help.png" alt="(?)"> icon next to it.</p>
+
+<h3>PayPal Details</h3>
+
+<?php img("04a") ?>
+
+<p>This section has the following fields.</p>
+
+<ul>
+  <li><b>PayPal username</b>: Enter your name (or your company name). This
+  is used for display purposes.</li>
+
+  <li><b>PayPal email ID</b>: Enter your PayPal email ID, which will
+  receive your payments.</li>
+
+  <li><b>PayPal SandBox email ID</b>: PayPal SandBox email ID, which you
+  can use for testing your setup. This entry is optional.</li>
+
+  <li><b>Use SandBox [test] mode</b>: If checked, PayPal SandBox will be
+  used.</li>
+
+  <li><b>Email IPN Logs</b>: If checked, the PayPal IPN details (logs of
+  the conversations between your server and PayPal) will be emailed to the
+  support email address even in live mode.</li>
+</ul>
+
+<h3>General Options</h3>
+
+<?php img("04b") ?>
+
+<p>This section has the following fields.</p>
+
+<ul>
+  <li><b>Support email ID</b>: An email ID where your buyers can contact
+  you for support.</li>
+
+  <li><b>Support Name</b>: A friendly name to go with your support email
+  ID.</li>
+
+  <li><b>Expire Time (in hours)</b>: The number of hours after which the
+  download links will expire. When a purchase is made, an auto-generated
+  email is sent to the buyer with a download link. The link expires after
+  the number of hours you specify here. (I use 72 hours).</li>
+
+  <li><b>Random Storage Location</b>: Randomize the storage location of
+  your digital goods so that potential hackers cannot easily guess it?
+  Recommended. Note that you will have to set the permission to the
+  storage directory so that files can be uploaded there.</li>
+
+  <li><b>Random File Name</b>: Randomize the file name of your digital
+  goods on the server as you upload it so that potential hackers cannot
+  easily guess it? Recommended.</li>
+
+  <li><b>Location for Lite Versions</b>: Optional. If you plan to provide
+  <b>Lite</b> versions of your products, here is where they will reside.
+  Give the full pathname on the server, or a relative pathname under the
+  <code>ezPayPal</code> folder.</li>
+
+  <li><b>Location for Pro Versions</b>: If you plan to use non-random
+  location for the <b>Pro</b> versions of your products, here is where
+  they will reside. Note that non-random location is not recommended
+  because it can be easily guessed and hacked into.<br>
+  Give the full pathname on the server, or a relative pathname under the
+  <code>ezPayPal</code> folder.</li>
+
+  <li><b>Send HTML emails</b>: If checked, the emails sent your buyers
+  with their download links will be in HTML format. You can customize the
+  default HTML template with the Template editor, which you will find
+  under Pro Tools.</li>
+</ul>
+
+<h3>Product Definition</h3>
+
+<?php img("04c") ?>
+
+<p>Here is where you define your digital products. This section has the
+following fields.</p>
+
+<ul>
+  <li><b>Product Code</b>: A short code for the digital product you want
+  to sell. e.g., ezPro. This key field needs to be unique.</li>
+
+  <li><b>Product Name</b>: A descriptive name of the digital product you
+  want to sell. e.g., Easy AdSense Pro - Premium AdSense Plugin for
+  WordPress bloggers</li>
+
+  <li><b>Activate this Product?</b>: Leave this option checked to list the
+  product in your shop. Unchecking it is equivalent to deleting the
+  product. It will not be listed, nor can it be bought.</li>
+
+  <li><b>Product Category</b>: An optional category for the product, which
+  you can use for grouping similar products together. You can have
+  categories like Apps, Plugins, eBooks, Photos, Songs etc.</li>
+
+  <li><b>Product Grouping</b>: An optional grouping for your products,
+  this field can contain higher level groupins, like Software (for Apps,
+  Plugins, for instance), Creative (e.g. for eBooks, Photos) and so on.
+  This field can help you organize or autogenerate your e-shop pages as
+  your business grows.</li>
+
+  <li><b>Product Price</b>: Enter only numbers. e.g. 4.95</li>
+
+  <li><b>Product Currency</b>: Specify the currency in which the product
+  price is give. e.g. USD.</li>
+
+  <li>
+    <b>Shipping Address Needed</b>: Specify whether PayPal will ask for a
+    shipping address for this product:
+
+    <ol start="0">
+      <li>Prompt for (but not require) an address</li>
+
+      <li>Do not prompt for an address</li>
+
+      <li>Prompt for an address, and require one</li>
+    </ol>
+  </li>
+
+  <li><b>Product File Name</b>: When your customers buy your digital
+  product, this is the file they will download.</li>
+
+  <li><b>Your Digital Product</b>: This is the actual digital product that
+  you want to put up for sale using ezPayPal. It can be a zip archive,
+  photos, PDF files etc. If you have multiple files making up the product,
+  please make a zip archive of it first. Note that the file you upload
+  does not need to have the same name you specify as <b>Product File
+  Name</b>. The real file will be saved on your server under a random file
+  name in a random location so that it will not be easily discovered by
+  potential hackers.</li>
+
+  <li><b>Product Version</b>: Your sales will keep track of the product
+  versions so that you can, for example, send upgrade notifications to
+  your buyers. You would use the Email Tools (found under Pro Tools) for
+  this purpose. Use a numeric version with two decimals (like 3.12 to
+  indicate major version 3, minor version 1 and update 2, for instance).
+  String versions (like V3.1.2) are not supported.</li>
+</ul>
+
+<p>Once you have defined at least one product, your e-shop is already up
+(in the standalone versions) at <code>http://yoursite/ez-shop.php</code>.
+In WordPress plugin editions, you will use shortcodes to generate a shop
+front or "Buy Now!" kind of links. See the chapter on Your Shop for
+details.</p>

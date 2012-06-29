@@ -1,0 +1,1 @@
+grep Tip foo | awk -F\' '{print $1, $8}' | sed 's/<tr ><td width=210>/<\/li><li><b>/g' | sed 's/<img src=/<\/b>:/g'|sed 's/&gt;/>/g' | sed 's/&lt;/</g'
