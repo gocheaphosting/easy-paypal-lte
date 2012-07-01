@@ -1,10 +1,10 @@
 === Easy PayPal ===
 Contributors: manojtd
 Donate link: http://affiliates.thulasidas.com/
-Tags: paypal, e-commerce, shopping cart, payment gateway, digital goods
+Tags: paypal, e-commerce, shopping cart, payment gateway, digital goods, ipn, pdt
 Requires at least: 2.5
 Tested up to: 3.3
-Stable tag: 3.20
+Stable tag: 3.21
 License: GPL2 or later
 
 Easy PayPal gets you started with your online business. Use PayPal IPN to sell digital goods without a shopping cart or complicated e-commerce setup.
@@ -80,13 +80,13 @@ Note that these extensions are designed to work with [Standalone Pro](http://buy
 
 = New in this version =
 
-Tests complete. Initial WP release.
+Adding more help files.
 
 == Upgrade Notice ==
 
-= 3.20 =
+= 3.21 =
 
-Tests complete. Initial WP release.
+Adding more help files.
 
 == Screenshots ==
 
@@ -163,6 +163,7 @@ Please see the "Installation" section in this readme. It will tell you how to di
 
 = History =
 
+* V3.21: Adding more help files. [July 2, 2012]
 * V3.20: Tests complete. Initial WP release. [June 30, 2012]
 * V3.13: Implemented an auto-generated page ez-shop as IPN listener and delivery. [June 28, 2013]
 * V3.12: Automated Initial installation. [June 27, 2012]

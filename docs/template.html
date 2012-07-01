@@ -1,0 +1,189 @@
+<h2>Template Editor</h2>
+
+<p><?php ezpp() ?> uses editable templates to generate emails and download
+pages. For instance, when your customer buys a product from your e-shop,
+he gets redirected to a download page after he makes the payment at
+PayPal. This download page is generated out of the "Download Page"
+template. The email your customer receives informing him of the purchase
+and giving him purchase details also is template-driven. The email uses
+three templates: "Email Subject", "Email Body" and "Email Body Html".</p>
+
+<p>A large number of templates are included with your <?php ezpp() ?> Pro
+purchase. The Template Editor tool helps you make modifications to them
+(or to add new ones for your own purpose).</p>
+
+<p>When you enter the Template Editor page by clicking on its button on
+the Pro Control Panel, you will get the screen shown below.</p><?php
+img("01") ?>.
+
+<p>The various elements of this daunting interface are shown in the
+screenshot above. To edit an existing template, load it from your database
+using the drop-down menu titled "Template Selection." Once the template is
+loaded, you can make modifications to it. You can add or remove or modify
+various fields from the list of available fields. Please study the
+annotated screenshot for instructions.</p><?php img("02") ?>
+
+<h3>List of Templates</h3>In addition to the Download page template,
+<?php ezpp() ?> has a few triplets of templates as you will see in the
+complete list of default templates below.
+
+<table>
+  <tr>
+    <td>Template Name in DB</td>
+
+    <td>Display Name</td>
+  </tr>
+
+  <tr>
+    <td><code>affiliate_body</code></td>
+
+    <td>Affiliate Body</td>
+  </tr>
+
+  <tr>
+    <td><code>affiliate_body_html</code></td>
+
+    <td>Affiliate Body Html</td>
+  </tr>
+
+  <tr>
+    <td><code>affiliate_subject</code></td>
+
+    <td>Affiliate Subject</td>
+  </tr>
+
+  <tr>
+    <td><code>dispute_body</code></td>
+
+    <td>Dispute Body</td>
+  </tr>
+
+  <tr>
+    <td><code>dispute_body_html</code></td>
+
+    <td>Dispute Body Html</td>
+  </tr>
+
+  <tr>
+    <td><code>dispute_subject</code></td>
+
+    <td>Dispute Subject</td>
+  </tr>
+
+  <tr>
+    <td><code>download_page</code></td>
+
+    <td>Download Page</td>
+  </tr>
+
+  <tr>
+    <td><code>echeck_body</code></td>
+
+    <td>Echeck Body</td>
+  </tr>
+
+  <tr>
+    <td><code>echeck_body_html</code></td>
+
+    <td>Echeck Body Html</td>
+  </tr>
+
+  <tr>
+    <td><code>echeck_subject</code></td>
+
+    <td>Echeck Subject</td>
+  </tr>
+
+  <tr>
+    <td><code>email_body</code></td>
+
+    <td>Email Body</td>
+  </tr>
+
+  <tr>
+    <td><code>email_body_html</code></td>
+
+    <td>Email Body Html</td>
+  </tr>
+
+  <tr>
+    <td><code>email_subject</code></td>
+
+    <td>Email Subject</td>
+  </tr>
+
+  <tr>
+    <td><code>refund_body</code></td>
+
+    <td>Refund Body</td>
+  </tr>
+
+  <tr>
+    <td><code>refund_body_html</code></td>
+
+    <td>Refund Body Html</td>
+  </tr>
+
+  <tr>
+    <td><code>refund_subject</code></td>
+
+    <td>Refund Subject</td>
+  </tr>
+
+  <tr>
+    <td><code>reversal_body</code></td>
+
+    <td>Reversal Body</td>
+  </tr>
+
+  <tr>
+    <td><code>reversal_body_html</code></td>
+
+    <td>Reversal Body Html</td>
+  </tr>
+
+  <tr>
+    <td><code>reversal_subject</code></td>
+
+    <td>Reversal Subject</td>
+  </tr>
+
+  <tr>
+    <td><code>update_body</code></td>
+
+    <td>Update Body</td>
+  </tr>
+
+  <tr>
+    <td><code>update_body_html</code></td>
+
+    <td>Update Body Html</td>
+  </tr>
+
+  <tr>
+    <td><code>update_subject</code></td>
+
+    <td>Update Subject</td>
+  </tr>
+</table>
+
+<h3>Using Templates</h3>
+
+<p>The triplets are used in various parts of the program. For instance,
+the <code>echeck</code> triplet is used when your buyer pays using an
+e-cheque, when PayPal recommends that you not send your product until the
+check clears. Similarly, when a dispute is raised by your buyer,
+<?php ezpp() ?> uses the <code>dispute</code> triplet to send a friendly
+mail to your buyer. The triplets can also be used to initiate mass mail to
+a selected group of your customers from <a href='emailTools.html'>E-Mail
+Tools</a> -- another Pro tool.</p>
+
+<h3>Previewing and Saving</h3>
+
+<p>During your edits, you can also preview your edits using the "Preview"
+button. Once satisfied, you can save it your database using button near
+the bottom. You can also save the edited template under a new name by
+checking the appropriate button (refer to the screenshots above for
+details). For new templates, please follow the naming conventions for
+template triplets as in the list of templates above, so that the E-Mail
+Tools can find them.</p>

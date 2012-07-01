@@ -1,6 +1,6 @@
 <?php
 if (empty($_GET)) {
-  $pages = array('introduction', 'setup', 'admin', 'shop') ;
+  $pages = array('introduction', 'setup', 'admin', 'shop', 'pro') ;
   showPage($pages) ;
 }
 else {
@@ -29,8 +29,11 @@ function mkTitle($pages) {
   return $title ;
 }
 
-function ezppHeader($title) {
+function ezppHeader($title, $showLinks=false) {
   $pwd = '..' ;
+  if ($showLinks) $linkText = "<a id='logo' href='http://buy.thulasidas.com/ezpaypal' title='ezPayPal'><img src='$pwd/ezPayPal.png' width='188' height='72' alt='Ez-PayPal'></a>" ;
+  else $linkText = "<img src='$pwd/ezPayPal.png' width='188' height='72' alt='Ez-PayPal'>" ;
+
   printf("<!DOCTYPE HTML PUBLIC '-//W3C//DTD HTML 4.01 Transitional//EN'
 'http://www.w3.org/TR/html4/loose.dtd'>
 <html>
@@ -42,11 +45,11 @@ function ezppHeader($title) {
 <link rel='stylesheet' href='$pwd/editableSelect.css' media='screen'>
 <script type='text/javascript' src='$pwd/editableSelect.js'></script>
 </head>
-<body>
+<body style='font-size:11pt'>
 <script type='text/javascript' src='$pwd/wz_tooltip.js'></script>
 <div id='ezcontainer' style='width:800px'>
   <div id='ezheader'>
-    <a id='logo' href='http://buy.thulasidas.com/ezpaypal' title='ezPayPal'><img src='$pwd/ezPayPal.png' width='188' height='72' alt='Ez-PayPal'></a>
+    $linkText
     <p id='info'>%s</p>
   </div>
   <div id='nav'>
@@ -63,18 +66,24 @@ function ezppHeader($title) {
 <!-- End of ezppHeader() -->
 ';
 }
-function ezppFooter($custom=false) {
+function ezppFooter($showLinks=false) {
   $year = date('Y') ;
-  printf('<!-- Start of ezppFooter() -->
+  if ($showLinks) $linkText = sprintf('<a href="http://affiliates.thulasidas.com/"><font color="#f37">ez</font><em><font color="#25d">Affiliates</font></em>: Join Us</a> and Earn 50%% Revenue share!<br /><small>Powered by <a href="http://buy.thulasidas.com/ezpaypal"><font color="#f37">ez</font><em><font color="#25d">Pay</font><font color="#1ad">Pal</font></em></a>. Copyright &copy;%s&nbsp;Manoj Thulasidas. &nbsp;All Rights Reserved.</small>', $year) ;
+  else $linkText = '<small><font color="#f37">ez</font><em><font color="#25d">Pay</font><font color="#1ad">Pal</font></em> Help System.</small>' ;
+  printf("<!-- Start of ezppFooter() -->
     </div>
   </div>
 </div>
-  <div id="ezfooter"><a href="http://affiliates.thulasidas.com/"><font color="#f37">ez</font><em><font color="#25d">Affiliates</font></em>: Join Us</a> and Earn 50%% Revenue share!<br /><small>Powered by <a href="http://buy.thulasidas.com/ezpaypal"><font color="#f37">ez</font><em><font color="#25d">Pay</font><font color="#1ad">Pal</font></em></a>. Copyright &copy;%s&nbsp;Manoj Thulasidas. &nbsp;All Rights Reserved.</small></div>
+  <div id='ezfooter'>$linkText</div>
 </div>
 </body>
 </html>
-', $year) ;
+") ;
   exit() ;
+}
+function page($page) {
+  $GLOBALS['page'] = $page ;
+  include("$page.html") ;
 }
 function img($img) {
   $page = $GLOBALS['page'] ;
