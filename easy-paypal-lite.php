@@ -3,7 +3,7 @@
   Plugin Name: Easy PayPal
   Plugin URI: http://www.thulasidas.com/plugins/ezpaypal
   Description: <em>Lite Version</em>: Easiest way to start selling your digital goods online. Go to <a href="options-general.php?page=easy-paypal-lite.php">Settings &rarr; Easy PayPal</a> to set it up, or use the "Settings" link on the right.
-  Version: 3.21
+  Version: 3.22
   Author: Manoj Thulasidas
   Author URI: http://www.thulasidas.com
 */
@@ -32,44 +32,30 @@ else {
     }
     function displayShop($atts, $content='') {
       $this->ezppStyles() ;
-      // Don't cache the shop or the backend listener
-      define('DONOTCACHEPAGE', true);
       chdir($this->plgDir) ;
-      $office = $delivery = false ;
-      if (isset($_GET['office']))
-        $office = true ;
-      else if (isset($_GET['delivery']))
-        $delivery = true ;
-      else if (isset($_GET['show']))
+      if (isset($_GET['show']))
         $show = $_GET['show'] ;
+      else if (isset($_GET['buy']))
+        $buy = $_GET['buy'] ;
       else
         extract(shortcode_atts(array("buy" => "",
               "show" => "",
               "link" => ""), $atts)) ;
-      if ($office) {
-        ob_start() ;
-        include("ez-office.php") ;
-        $shop = ob_get_clean() ;
-        return $shop ;
-      }
-      if ($delivery) {
-        ob_start() ;
-        include("ez-delivery.php") ;
-        $shop = ob_get_clean() ;
-        return $shop ;
-      }
       if (!empty($link) && strtolower($link) != "no") {
         if (!empty($buy)) $getParam="buy=$buy" ;
         if (!empty($show)) $getParam="show=$show" ;
         if (empty($content)) $content = "Buy Now!" ;
         $siteURL = home_url() ;
-        echo "<a href='$siteURL/ez-shop?$getParam'>$content</a>" ;
+        return "<a href='$siteURL/ez-shop?$getParam'>$content</a>" ;
       }
       else {
-        if (!empty($buy)) $_GET["buy"] = $buy ;
-        if (!empty($show)) $_GET["show"] = $show ;
+        $toInclude = 'ez-shop.php' ;
+        $handlers = array('office' => 'ez-office.php',
+                    'delivery' => 'ez-delivery.php') ;
+        foreach ($handlers as $k => $v) if (isset($_GET[$k])) $toInclude = $v ;
+        $GLOBALS['toInclude'] = $toInclude ;
         ob_start() ;
-        include("ez-shop.php") ;
+        include($toInclude) ;
         $shop = ob_get_clean() ;
         return $shop ;
       }
@@ -103,6 +89,7 @@ else {
       update_option($mOptions, $ezppOptions);
     }
     function printAdminPage() {
+      @session_start() ;
       chdir($this->plgDir) ;
       $mOptions = "ezPayPal" ;
       $ezppOptions = get_option($mOptions);

@@ -1,0 +1,186 @@
+<h2>ezAffiliate</h2>
+
+<h3>Description</h3>
+
+<p><em>ezAffiliates</em> is an affiliate marketing module for
+<em>ezPayPal</em>, which can be purchased <a href=
+"http://buy.thulasidas.com/ezpaypal-pro" title=
+"ezPayPal gets you started with your online business. Easy and simple.">online</a>.
+Using it in ocnjunction with <em>ezPayPal</em>, you can turn your
+satisfied customers into your brand ambassidors, and get one step closer
+to that internet dream of going viral.</p>
+
+<h4>Features</h4>
+
+<ol>
+  <li>Seamless integration with <em>ezPayPal</em>.</li>
+
+  <li>Email verification of affiliate registration to prevent bots.</li>
+
+  <li>Cookie-less scheme to track sales through PayPal IPN process.</li>
+</ol>
+
+<h4>Credit</h4>
+
+<p><em>ezAffiliates</em> is a modifed version of <a href=
+"&quot;&quot;">Affiliates for All</a> with the following changes and
+additions: 1. Tight integration with <em>ezPayPal</em> 2. Email
+verification and activation of affiliate registration to prevent bots. 3.
+Admin account securitization. 4. Terms of Service page. 5. Modifications
+to the overview and index pages to help the affiliates generate links 6.
+Database storage for admin customization so that <em>ezPayPal</em> can be
+installed and configured from a web interface without editing any files.
+7. <em>ezPayPal</em> look and feel modifications. 8. Cookie handling
+modifications for it to work with PayPal IPN round trip. 9. Banner serving
+can use a CDN since everybody can have a free CDN with <a href=
+"http://db.tt/qsogWB1" title=
+"Sign up for Dropbox -- free 2GB online storage on the cloud!">Dropbox</a>
+[WIP]</p>
+<hr>
+
+<h3>Installation</h3>
+
+<p>Note: <em>ezAffiliates</em> is an add-on module for <a href=
+"http://buy.thulasidas.com/ezpaypal-pro" title=
+"ezPayPal gets you started with your online business. Easy and simple.">ezPayPal
+Pro</a>. You can install and use it only if you have
+<em>ezPayPal</em>.</p>
+
+<ol>
+  <li>On <em>ezPayPal</em> screen, click on <em>Pro Features &amp;
+  Tools</em>.</li>
+
+  <li>Log in if prompted.</li>
+
+  <li>Click on <em>Affiliate Package</em> button.</li>
+
+  <li>Click on the <em>Install Affiliate Package</em> and follow the
+  friendly wizard.</li>
+</ol>
+<hr>
+
+<ul>
+  <li><b>Affiliate Programme Name</b>: Set this to the name of your
+  affiliate programme. It will be shown at the top of all the screens used
+  by affiliate.</li>
+
+  <li><b>Affiliate Base URL</b>: Set this to the URL of your affiliate
+  program. This is where your affiliates log on to. If you have a domain
+  or subdomain for it, you may want to enter it here instead of the
+  default value.</li>
+
+  <li><b>Affiliate Referrer Parameter</b>: his parameter is used in
+  affiliate links, and contains the affiliate number. For example, a link
+  might look like http://...?ref=123 for affiliate 123.</li>
+
+  <li><b>Affiliate Data Parameter</b>: This parameter is also used in
+  affiliate links, and carries the custom data from the affiliate. For
+  example, it might contain the user search keywords, to allow for
+  optimisation of a PPC campaign.</li>
+
+  <li><b>Affiliate Cookie</b>: The name of the cookie which stores the
+  referring affiliate.</li>
+
+  <li><b>Cookie Lifetime</b>: The lifetime of the cookie in days.</li>
+
+  <li><b>Cookie Domain</b>: The hostname for which the affiliate cookie
+  should be set. You should leave this unchanged unless your checkout is
+  on a different domain to your store. For example, if you have<br>
+  <code>http://www.example.com</code><br>
+  for your store and <code>https://secure.example.com</code><br>
+  for your checkout, you should set <code>cookie_domain</code> to
+  example.com. Note that <code>ezAffiliates</code> will not work at all if
+  the store and cart are on completely different domains. For example, you
+  might have<br>
+  http://www.example.com<br>
+  for your store, and<br>
+  https://example.secureserver.com<br>
+  for your checkout. This configuration will not work.</li>
+
+  <li><b>Currency Symbol</b>: The currency symbol as it will appear on
+  your affiliate reports.</li>
+
+  <li><b>Currency Code</b>: Specify the currency SWIFT code. e.g.
+  USD.</li>
+
+  <li><b>The URL to your E-Shop</b>: This should be set to the base of
+  your shop.</li>
+
+  <li><b>Commission Percent</b>: You can give a fixed amount of commission
+  per order, or you can give a percentage. If you give both, they add. Set
+  these variables to the percentage rate and the fixed amount which you
+  want to pay to your affiliates.</li>
+
+  <li><b>Commission Fixed</b>: You can give a fixed amount of commission
+  per order, or you can give a percentage. If you give both, they add. Set
+  these variables to the percentage rate and the fixed amount which you
+  want to pay to your affiliates.</li>
+
+  <li><b>Lifetime Revenue Share</b>: If you want affiliates to share
+  revenue for all the orders their customers place, set the following to
+  TRUE. If you only want them to receive revenue share when customers have
+  an affiliate cookie set on their browsers, set it to FALSE. For example,
+  suppose an affiliate introduces customer X. X places an order and the
+  affiliate receives commission. After that, X changes browser, meaning
+  that he no longer has an affiliate cookie set. He then places another
+  order. If this variable is TRUE, the affiliate receives commission on
+  this order too (provided X uses the same account of course). If this
+  variable is FALSE, he does not.</li>
+
+  <li><b>Notification Email Address</b>: If you want to be notified when
+  ezAffiliates accepts an order, or marks an order shipped, enter an email
+  address here</li>
+
+  <li><b>Administrator Email Address</b>: The following address is used as
+  the sender for these email notifications, and also for email
+  notifications sent to affiliates</li>
+
+  <li><b>Order Fields Available</b>: Affiliates can be given full or
+  restricted information about the referred customers and their orders.
+  The fields you want to reveal should be placed in this list</li>
+
+  <li><b>Order Fields Headings</b>: Affiliates can be given full or
+  restricted information about the referred customers and their orders.
+  The fields you want to reveal should be placed in this list</li>
+
+  <li><b>Random RPC Secret?</b>: RPC secret is used to secure
+  communications between the shopping cart and the affiliate system. Setup
+  can create a random string for you. Click on the <b>Show</b> button to
+  see the random string. <b>RPC Secret</b>: The following secret is used
+  to secure communications between the shopping cart and the affiliate
+  system. Just choose something that will be hard to guess.</li>
+
+  <li><b>Reuse ezPayPal DB credentials?</b>: Leave this option checked to
+  use the same database credentials as ezPayPal. You do not need to fill
+  in the next three options then.</li>
+
+  <li><b>Database DSN</b>: Fill in the settings for your database below.
+  Note that all testing has been carried out on MySQL 5.0. Specify the DSN
+  in the format: <code>mysql:dbname=blah-blah;host=blah-blah</code>. The
+  <code>host</code> part is usually <code>localhost</code>.</li>
+
+  <li><b>Database Username</b>: The username for your database. In most
+  installations, they use the username the same as (or derived from) the
+  database.</li>
+
+  <li><b>Database Password</b>: Specify your database access
+  password.</li>
+
+  <li><b>Session Cookie Name</b>: This is the name of the cookie which is
+  used for ezAffiliate sessions. (It is set for affiliates and
+  administrators, but not customers of your web shop.) If you run two
+  instances of ezAffiliates on the same domain, you should change it for
+  at least one of them, as otherwise they could interfere with each
+  other.</li>
+
+  <li><b>Time Zone</b></li>
+
+  <li><b>Terms of Business</b>: Affiliates will be asked to agree to the
+  following terms of business</li>
+
+  <li><b>Affiliate Help</b>: Help text to be shown to the affiliates on
+  the overview screen. Describe your affiliate program here, and give
+  helpful hints.<br>
+  <font color="red">The default entry given here is specific to our
+  e-shop. You <em>must</em> edit it to suit your purposes.</font></li>
+</ul>

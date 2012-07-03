@@ -4,7 +4,7 @@ Donate link: http://affiliates.thulasidas.com/
 Tags: paypal, e-commerce, shopping cart, payment gateway, digital goods, ipn, pdt
 Requires at least: 2.5
 Tested up to: 3.3
-Stable tag: 3.21
+Stable tag: 3.22
 License: GPL2 or later
 
 Easy PayPal gets you started with your online business. Use PayPal IPN to sell digital goods without a shopping cart or complicated e-commerce setup.
@@ -44,7 +44,7 @@ Since *Easy PayPal* deals with money, it takes the security and integrity of you
 
 = Pro Features =
 
-In addition to the fully functional Lite plugin version, there is a [Pro Version](http://buy.thulasidas.com/easy-paypal "Get Easy PayPal Pro for $6.95") with many more features. [The standalone version](http://buy.thulasidas.com/ezpaypal-pro "Get ezPayPal Pro for $9.95") is also available for purchase in the Pro form. If the following features are important to you, consider buying the *Pro* version.
+In addition to the fully functional Lite plugin version, there is a [Pro Version](http://buy.thulasidas.com/easy-paypal "Get Easy PayPal Pro for $6.95") with many more features. The standalone version also is available for purchase in the [Pro form](http://buy.thulasidas.com/ezpaypal-pro "Get ezPayPal Pro for $9.95"). If the following features are important to you, consider buying the *Pro* version.
 
 1. *Data Security*: The *Pro* version takes special measures to set up data verification links to ensure your sales data is safe and not susceptible to corruption. In technical terms, it checks for the existence of InnoDB in your MySQL installation, and uses it if found, setting up foreign keys to ensure referential integrity, and indices to guarantee performance. The Lite version uses the default MyISAM engine, fast and simple, but not exactly secure.
 2. *Sandbox Mode*: In the *Pro* version, you have the option to choose PayPal sandbox mode so that you can check your setup before going live.
@@ -80,13 +80,13 @@ Note that these extensions are designed to work with [Standalone Pro](http://buy
 
 = New in this version =
 
-Adding more help files.
+More documentation, coding improvements, priming the Pro version, links to online docs and manual in the readme.txt file.
 
 == Upgrade Notice ==
 
-= 3.21 =
+= 3.22 =
 
-Adding more help files.
+More documentation, coding improvements, priming the Pro version, links to online docs and manual in the readme.txt file.
 
 == Screenshots ==
 
@@ -136,6 +136,12 @@ In your plugin folder, under `docs`, there is the beginning of a full documentat
 
 == Frequently Asked Questions ==
 
+= This plugin is quite complex. Do you have more documentation? =
+
+In your plugin folder, under `docs`, there is the beginning of a full documentation. It is designed in such a way that you will be able to call up the relevant pages from the pages in a context-sensitive way. Future releases will progressively add more complete documentation.
+
+The documentation is also hosted at my site in [HTML](http://buy.thulasidas.com/docs "HTML Documentation of ezPayPal") and [PDF](http://buy.thulasidas.com/docs/ezpp.pdf "Printable PDF Manual") formats.
+
 = How do I customize the look and feel of the download page? =
 
 Please edit the included file `custom.php` and uncomment the custom header and footer functions. You can then provide your own code for these functions, following the examples of the `ezppHeader()` and `ezppFooter()` functions in `htmlHelper.php`.
@@ -154,8 +160,8 @@ Please see the "Installation" section in this readme. It will tell you how to di
 
 1. Extensible Options storage using meta tables. Right now, *Easy PayPal* stores setup and admin options in a pre-defined DB table. In a future version, it will change to a meta (name-value pair) table. The options currently defined will be migrated there.
 2. New options: Bcc on email, shop title, subtitle, copyright statement etc.
-3. The shop front will handle user-defined, flexible lists of products. That is, it will handle ez-sales.php?[show[=a,b]]
-3. Interface to delete products
+3. The shop front will handle user-defined, flexible lists of products. That is, it will handle ez-shop.php?[show[=a,b]]
+3. Interface to delete products. Right now, nothing can be deleted from your database for data integrity reasons. Products can be set inactive, which is a proxy to deletion.
 4. The Admin interface will sport Tabs.
 5. Multiple edition support with paid upgrade option for your products. For instance, a Pro Upgrades will be sold only to buyers who have purchased the corresponding Lite edition.
 6. Even more enhanced help system.
@@ -163,6 +169,7 @@ Please see the "Installation" section in this readme. It will tell you how to di
 
 = History =
 
+* V3.22: More documentation, coding improvements, priming the Pro version, links to online docs and manual in the readme.txt file. [July 4, 2012]
 * V3.21: Adding more help files. [July 2, 2012]
 * V3.20: Tests complete. Initial WP release. [June 30, 2012]
 * V3.13: Implemented an auto-generated page ez-shop as IPN listener and delivery. [June 28, 2013]

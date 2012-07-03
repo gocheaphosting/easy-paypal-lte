@@ -1,0 +1,79 @@
+<h2>Optional Modules</h2>
+
+<p><?php ezpp() ?> is designed to be extensible. Already in the pipeline
+are the following optional extensions:</p>
+
+<ol>
+  <li>ezAffiliates: Create your own affiliate network and go viral by
+  turing your satisfied customers into your advertising affiliatees. This
+  package, built on the pubicly available Affiliates-for-All, integrates
+  perfectly with to automate affiliate sales tracking and commission
+  computation and more.</li>
+
+  <li>ezReports: Maximize your sales by analyzing your sales. This
+  reporting package makes slicing and dicing your sales and affiliate data
+  a snap, so that you can spot opportunities.</li>
+
+  <li>ezTextLinks: Do you have a high page-rank site? Do you get a lot of
+  requests for text links? They can be significantly more lucrative (by a
+  factor of 100, in my case) than contextual ads such as AdSense. The
+  returns can be even greater if you can deal with your advertisers
+  directly, rather than via providers like Text Link Ads that take 50% of
+  your revenue. ezTextLinks will handle payment, activate and expire
+  links, send reminder emails and handle renewals etc.</li>
+
+  <li>ezSupport: Every complex software project, once deployed, generates
+  significant support load. Most of the support questions are frivilous,
+  where the end-user presents silly issues that are easily resolved by a
+  cursory look at the documentation. How do we ask the end-user to RTFM
+  without antagonizing them? I found that it could be done by switching to
+  a paid support model. I started charging 95 cents per support questions,
+  and my support load went down by two orders o magnitude. This ezSupport
+  package is built on the excellent osTicket program. It works hand in
+  hand with <?php ezpp() ?> and provides you with a configurable support
+  system.</li>
+
+  <li>PageSales: Another project built on <?php ezpp() ?> is a
+  WordPress plugin to sell your blog pages in nicely fromatted
+  printable PDF files. Page Sales, when priced right, can be a perfect
+  way for your appreciative readers to send you donations.</li>
+</ol>
+
+<p>Note that these extensions are designed to work with <a href=
+"http://buy.thulasidas.com/ezpaypal-pro" title=
+"Get Easy PayPal Pro for $9.95">Standalone Pro</a> version. They will be
+ported to the <a href="http://buy.thulasidas.com/easy-paypal" title=
+"Get Easy PayPal Pro for $6.95">Plugin Pro</a> version as well if
+possible.</p>
+
+<ul>
+  <li><b><a href="index.php?affiliate">Affiliate Sales</a></b>: Go viral
+  with your sales by turning your satisfied customers into affiliates who
+  make sales for you while earning commission. [Optional Module].</li>
+
+  <li><b><a href="index.php?reports">Track your sales and revenue</a></b>:
+  Get detailed reports on your sales and revenue trends using the
+  reporting package. [Optional Module -- Work in Progress].</li>
+
+  <li><b><a href="index.php?ezlinks">Sell Text Link Ads</a></b>: Text link
+  ads can be significantly more lucrative than contextual ads. This module
+  will help you automate the whole work flow of managing them. [Optional
+  Module -- Work in Progress].</li>
+
+  <li><b><a href="index.php?ezsupport">Paid Support</a></b>: If you get
+  bogged down by frivolous support requests, charging a small token amount
+  can help you reclaim your time. Use this module to do just that.
+  [Optional Module -- Work in Progress].</li>
+
+  <li><b><a href="index.php?pageSales">Sell Your Pages</a></b>: Sell your
+  blog pages in PDF format to your readers so that they can get something
+  in return for supporting you. [Optional Module -- Work in
+  Progress].</li>
+</ul>
+
+<?php page("affiliate") ;
+page("reports") ;
+page("ezlinks") ;
+page("ezsupport") ;
+page("pageSales") ;
+?>

@@ -1,0 +1,51 @@
+<h2>Migration Tools</h2>
+
+<?php include('dev.html') ; ?>
+
+<p>The migration tools are sample scripts provided developers and
+integrators working on migrating data from an existing system to <?php
+ezpp() ?>. These tools were originally developed for my own migration
+efforts. For a casual user with no existing data to migrate, they may be
+of limited use.</p>
+
+<p>When you enter the migration tools window, you get four options, which
+are described below. As usual, there is ample tooltip help to guide you
+along.</p><?php img("01") ?>
+
+<ul>
+  <li><b>Migrate/backup DB prefix</b>: Use this tool to import data from a
+  database schema with a given prefix, say, <code>ezpp_</code> to a new
+  one, say, <code>mine_</code>. Using this tool, you can back up your
+  existing data into another set of DB tables. This tool can also update
+  your DB tables during a package version upgrade.</li>
+
+  <li><b>Import sales from a DB table</b>: Use this tool to import sales
+  data from a database table, if you have sales data created by some other
+  package in a DB table. You will have to modify the file
+  <code>migrate-ipnData.php</code> to match your table schema.</li>
+
+  <li><b>Import PHP product definitions</b>: If your old products are
+  defined in PHP files, import them from the existing PHP files. You will
+  have to modify the file <code>migrate-products.php</code>. [This tool is
+  of limited use.]</li>
+
+  <li><b>Import PHP sales data</b>: Import Sales info from existing PHP
+  files. If your sales data was written to individual PHP files, this tool
+  can import them into your database. You will have to modify the file
+  <code>migrate-sales.php</code>. [This tool is of limited use.]</li>
+</ul>
+
+Since these tools are meant to be used after modification, clicking on
+the button to launch any one of them will bring up a warning and
+confirmation as shown below.
+
+<?php img("02") ?>
+
+To ensure that you do go through and modify the scripts, all but the
+first one (DB Prefix Migration) will not do anything to your data
+unless you edit the scripts and comment out the error line as shown
+below. I know, it is a lot of confirmations, but direct database
+manipulation is dangerous and has to be carried out with extreme care,
+as any experience developer will tell you.
+
+<?php img("03") ?>

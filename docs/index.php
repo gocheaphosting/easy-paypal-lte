@@ -1,6 +1,6 @@
 <?php
 if (empty($_GET)) {
-  $pages = array('introduction', 'setup', 'admin', 'shop', 'pro') ;
+  $pages = array('introduction', 'setup', 'admin', 'shop', 'pro', 'modules') ;
   showPage($pages) ;
 }
 else {
@@ -81,9 +81,11 @@ function ezppFooter($showLinks=false) {
 ") ;
   exit() ;
 }
-function page($page) {
+function page($page, $pdfOnly=true) {
   $GLOBALS['page'] = $page ;
+  if ($pdfOnly) echo "<div class='page-break'>" ;
   include("$page.html") ;
+  if ($pdfOnly) echo "</div>" ;
 }
 function img($img) {
   $page = $GLOBALS['page'] ;
