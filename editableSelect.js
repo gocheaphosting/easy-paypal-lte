@@ -25,9 +25,11 @@
 **********************************************************************************/
 
 // Path to arrow images
-var arrowImage = './select_arrow.gif';	// Regular arrow
-var arrowImageOver = './select_arrow_over.gif';	// Mouse over
-var arrowImageDown = './select_arrow_down.gif';	// Mouse down
+var plgDir = '../wp-content/plugins/easy-paypal/' ; // next version: pass this
+// from easy-paypal.php. Output this <script type="text/javascript">var plgDir = $this->plgDir</script> before this script.
+var arrowImage = plgDir + './select_arrow.gif';	// Regular arrow
+var arrowImageOver = plgDir + './select_arrow_over.gif';	// Mouse over
+var arrowImageDown = plgDir + './select_arrow_down.gif';	// Mouse down
 
 var selectBoxIds = 0;
 var currentlyOpenedOptionBox = false;

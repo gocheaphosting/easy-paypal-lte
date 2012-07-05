@@ -3,7 +3,7 @@
   Plugin Name: Easy PayPal
   Plugin URI: http://www.thulasidas.com/plugins/ezpaypal
   Description: <em>Lite Version</em>: Easiest way to start selling your digital goods online. Go to <a href="options-general.php?page=easy-paypal-lite.php">Settings &rarr; Easy PayPal</a> to set it up, or use the "Settings" link on the right.
-  Version: 3.22
+  Version: 3.30
   Author: Manoj Thulasidas
   Author URI: http://www.thulasidas.com
 */
@@ -25,10 +25,14 @@ else {
       $this->plgDir = dirname (__FILE__) ;
       wp_register_style('ezPayPalCSS1', "{$this->plgURL}/ezpp.css") ;
       wp_register_style('ezPayPalCSS2', "{$this->plgURL}/editableSelect.css") ;
+      wp_register_script('ezPayPalJS1', "{$this->plgURL}/editableSelect.js") ;
     }
     function ezppStyles() {
       wp_enqueue_style('ezPayPalCSS1') ;
       wp_enqueue_style('ezPayPalCSS2') ;
+    }
+    function ezppScripts() {
+      wp_enqueue_script('ezPayPalJS1') ;
     }
     function displayShop($atts, $content='') {
       $this->ezppStyles() ;
@@ -130,6 +134,7 @@ if (class_exists("ezPayPal")) {
       $page = add_options_page($mName, $mName, 9, basename(__FILE__),
               array(&$ezPayPal, 'printAdminPage'));
       add_action( 'admin_print_styles-' . $page, array(&$ezPayPal, 'ezppStyles') );
+      add_action( 'admin_print_scripts-' . $page, array(&$ezPayPal, 'ezppScripts') );
     }
   }
 }

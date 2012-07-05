@@ -266,12 +266,15 @@ table.setup table td {
     color:#000;
     background-color:#EAF2D3;
 }
+
 @media all
 {
   .page-break  { display:none; }
+  .toc  { display:none; }
 }
 
 @media print
 {
   .page-break  { display:block; page-break-before:always; }
+  .toc  { display:block; margin-left:50px;}
 }

@@ -1,16 +1,26 @@
 <?php
 if (empty($_GET)) {
   $pages = array('introduction', 'setup', 'admin', 'shop', 'pro', 'modules') ;
-  showPage($pages) ;
+  showPage($pages, $toc=true) ;
 }
 else {
   $pages = array_keys($_GET) ;
   showPage($pages) ;
 }
 
-function showPage($pages = array()) {
+function showTOC() {
+  include("toc.php") ;
+}
+
+function showPage($pages = array(), $toc=false) {
   $title = mkTitle($pages) ;
   ezppHeader($title) ;
+  if ($toc) {
+    $pdfOnly = true ;
+    if ($pdfOnly) echo "<div class='toc'>" ;
+    showTOC() ;
+    if ($pdfOnly) echo "</div>" ;
+  }
   $chap = 0 ;
   foreach ($pages as $page) {
     if (!file_exists("$page.html")) $page = "introduction" ;
