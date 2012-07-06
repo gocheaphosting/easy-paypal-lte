@@ -94,7 +94,7 @@ Unfortunately, your purchase details haven't been posted by PayPal yet. But fear
     else if (!empty($_GET['txn_id'])) {
       $txn_id = $_GET['txn_id'] ;
       $saleInfoDB = $ezpp->getSale($txn_id) ;
-      if (empty($saleInfoDB) && !$ezpp->validateEmail($txn_id)) {
+      if (empty($saleInfoDB) || !$ezpp->validateEmail($txn_id)) {
         $html->setErr("Your email doesn't look right. <a href='$returnPage'>Please try again</a>!") ;
         $justDoIt = false ;
       }

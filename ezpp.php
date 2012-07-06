@@ -49,7 +49,7 @@ else {
       $txn_id = $saleInfo['txn_id'] ;
       if ($this->mkDateInt($saleInfo['expire_date']) < time())
         $downloadUrl = "<font color='red'>Sorry, your purchase has expired.</font>" ;
-      else
+      else {
         if (function_exists('get_option')) {
           $ezppURL = get_option('siteurl') . '/' ;
           $shop = 'ez-shop?delivery&' ;
@@ -58,7 +58,8 @@ else {
           $ezppURL =  $this->ezppURL() ;
           $shop = 'ez-delivery.php?' ;
         }
-      $downloadUrl = sprintf("%s%sdl=%s", $ezppURL, $shop, $this->sanitizeTxnId($txn_id)) ;
+        $downloadUrl = sprintf("%s%sdl=%s", $ezppURL, $shop, $this->sanitizeTxnId($txn_id)) ;
+      }
       return $downloadUrl ;
     }
 

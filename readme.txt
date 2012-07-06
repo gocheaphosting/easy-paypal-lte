@@ -4,7 +4,7 @@ Donate link: http://affiliates.thulasidas.com/
 Tags: paypal, e-commerce, shopping cart, payment gateway, digital goods, ipn, pdt
 Requires at least: 2.5
 Tested up to: 3.3
-Stable tag: 3.30
+Stable tag: 3.31
 License: GPL2 or later
 
 Easy PayPal gets you started with your online business. Use PayPal IPN to sell digital goods without a shopping cart or complicated e-commerce setup.
@@ -80,13 +80,13 @@ Note that these extensions are designed to work with [Standalone Pro](http://buy
 
 = New in this version =
 
-Adding editable select in the product definition screen.
+Minor bug fixes.
 
 == Upgrade Notice ==
 
-= 3.30 =
+= 3.31 =
 
-Adding editable select in the product definition screen.
+Minor bug fixes.
 
 == Screenshots ==
 
@@ -169,6 +169,7 @@ Please see the "Installation" section in this readme. It will tell you how to di
 
 = History =
 
+* V3.31: Minor bug fixes. [July 6, 2012]
 * V3.30: Adding editable select in the product definition screen. [July 5, 2012]
 * V3.22: More documentation, coding improvements, priming the Pro version, links to online docs and manual in the readme.txt file. [July 4, 2012]
 * V3.21: Adding more help files. [July 2, 2012]
