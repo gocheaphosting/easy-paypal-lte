@@ -3,8 +3,8 @@ Contributors: manojtd
 Donate link: http://affiliates.thulasidas.com/
 Tags: paypal, e-commerce, shopping cart, payment gateway, digital goods, ipn, pdt
 Requires at least: 2.5
-Tested up to: 3.3
-Stable tag: 3.31
+Tested up to: 3.4
+Stable tag: 3.33
 License: GPL2 or later
 
 Easy PayPal gets you started with your online business. Use PayPal IPN to sell digital goods without a shopping cart or complicated e-commerce setup.
@@ -44,7 +44,7 @@ Since *Easy PayPal* deals with money, it takes the security and integrity of you
 
 = Pro Features =
 
-In addition to the fully functional Lite plugin version, there is a [Pro Version](http://buy.thulasidas.com/easy-paypal "Get Easy PayPal Pro for $6.95") with many more features. The standalone version also is available for purchase in the [Pro form](http://buy.thulasidas.com/ezpaypal-pro "Get ezPayPal Pro for $9.95"). If the following features are important to you, consider buying the *Pro* version.
+In addition to the fully functional Lite plugin version, there is a [Pro Version](http://buy.thulasidas.com/easy-paypal "Get Easy PayPal Pro for $6.95") with many more features. If the following features are important to you, consider buying the *Pro* version.
 
 1. *Data Security*: The *Pro* version takes special measures to set up data verification links to ensure your sales data is safe and not susceptible to corruption. In technical terms, it checks for the existence of InnoDB in your MySQL installation, and uses it if found, setting up foreign keys to ensure referential integrity, and indices to guarantee performance. The Lite version uses the default MyISAM engine, fast and simple, but not exactly secure.
 2. *Sandbox Mode*: In the *Pro* version, you have the option to choose PayPal sandbox mode so that you can check your setup before going live.
@@ -60,12 +60,11 @@ In addition to the fully functional Lite plugin version, there is a [Pro Version
 12. *Additional Tools*: The *Pro* version also gives you a bunch of tools (php example files) that can help you migrate your existing sales data or product definitions.
 13. *Data Migration*: Using this *Pro* tool, your database tables can be automatically upgraded to the later version without losing your sales info and other settings.
 14. *DB Backup*: The *Pro* version has an option to generate a backup of your sales info to download to a safe location.
-15. *DB Restore*: It also provides a means to restore (of course) a previously backed up data file, overwriting (or appending to, as you wish) the existing sales info. (WIP)
+15. *DB Restore*: It also provides a means to restore (of course) a previously backed up data file, overwriting (or appending to, as you wish) the existing sales info.
 16. *Security Audit*: The *Pro* version provides you with a tool to check your settings and installation for possible security issues.
 17. *Product Updates*: Your customers can initiate product update checks. If the version they purchased is older than the current version on your shop, they can download the latest version. Bu default, the first update is provided free of cost, and the subsequent ones are chargeable at $0.95. In later versions, this update policy will be configurable on a product-by-product basis.
-18. *Upgradeable Products*: You can define products that are upgradeable. For instance, you can sell a short eBook at an introductory price. If your buyer likes it, he has the option of buying the full book by paying the difference. (WIP)
 
-Do you have multiple web sites selling digital products? Would you like to consolidate and manage your sales in one central location? Then the Stand-Alone version of this package may be more appropriate. The [Pro Version](http://buy.thulasidas.com/ezpaypal-pro "Get Easy PayPal Pro for $9.95") of the standalone package (which can consolidate sales from multiple websites on a server) gives you all the features listed above and more.
+Do you have multiple web sites selling digital products? Would you like to consolidate and manage your sales in one central location? Then the Stand-Alone version of this package may be more appropriate. The [Pro Version](http://buy.thulasidas.com/ezpaypal-pro "Get Easy PayPal Pro for $9.95") of the standalone package (which can consolidate sales from multiple websites on a server) gives you all the features listed above and more.  The standalone version also is available for purchase in the [Lite form](http://buy.thulasidas.com/ezpaypal "Get ezPayPal for $4.95").
 
 = Optional Packages =
 
@@ -80,13 +79,13 @@ Note that these extensions are designed to work with [Standalone Pro](http://buy
 
 = New in this version =
 
-Minor bug fixes.
+Testing compatibility with WP 3.4.
 
 == Upgrade Notice ==
 
-= 3.31 =
+= 3.33 =
 
-Minor bug fixes.
+Testing compatibility with WP 3.4.
 
 == Screenshots ==
 
@@ -169,6 +168,7 @@ Please see the "Installation" section in this readme. It will tell you how to di
 
 = History =
 
+* V3.33: Testing compatibility with WP 3.4. [July 11, 2012]
 * V3.31: Minor bug fixes. [July 6, 2012]
 * V3.30: Adding editable select in the product definition screen. [July 5, 2012]
 * V3.22: More documentation, coding improvements, priming the Pro version, links to online docs and manual in the readme.txt file. [July 4, 2012]
