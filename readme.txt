@@ -4,7 +4,7 @@ Donate link: http://affiliates.thulasidas.com/
 Tags: paypal, e-commerce, shopping cart, payment gateway, digital goods, ipn, pdt
 Requires at least: 2.5
 Tested up to: 3.4
-Stable tag: 3.33
+Stable tag: 3.40
 License: GPL2 or later
 
 Easy PayPal gets you started with your online business. Use PayPal IPN to sell digital goods without a shopping cart or complicated e-commerce setup.
@@ -29,6 +29,7 @@ Do you have an application, PHP package, photograph, PDF book (or any other down
 8. In addition to the download page, an automated email with the download link is sent to your buyer as well. Just in case...
 9. Easy to add new products to your inventory.
 10. Automatic generation of an online shop. Once the first product is added, you can already see it on your online shop.
+11. *New*: Sandbox Mode has been ported from the Pro version to this freely distributed version. Now you have the option to choose PayPal sandbox mode so that you can check your setup before going live.
 
 *Easy PayPal* is available as a WordPress plugin as well as a [standalone package](http://buy.thulasidas.com/ezpaypal "Get ezPayPal for $4.95"). The standalone package is appropriate if you have multiple websites selling your products, but want to keep your sales consolidated. It also sports a context-sensitive help system, so that you get timely help as you need it.
 
@@ -47,7 +48,7 @@ Since *Easy PayPal* deals with money, it takes the security and integrity of you
 In addition to the fully functional Lite plugin version, there is a [Pro Version](http://buy.thulasidas.com/easy-paypal "Get Easy PayPal Pro for $6.95") with many more features. If the following features are important to you, consider buying the *Pro* version.
 
 1. *Data Security*: The *Pro* version takes special measures to set up data verification links to ensure your sales data is safe and not susceptible to corruption. In technical terms, it checks for the existence of InnoDB in your MySQL installation, and uses it if found, setting up foreign keys to ensure referential integrity, and indices to guarantee performance. The Lite version uses the default MyISAM engine, fast and simple, but not exactly secure.
-2. *Sandbox Mode*: In the *Pro* version, you have the option to choose PayPal sandbox mode so that you can check your setup before going live.
+2. *IPN Logs*: In the pro version, you can choose to receive the log file for each IPN transaction via email.
 3. *HTML Emails*: In the *Pro* version, you can send impressive HTML email to your customers rather than the boring plain text messages.
 4. *Template Editor*: The email body, thank you page and download display are all editable in the *Pro* version.
 5. Automatic handling of refunds and disputes. When you issue a refund on the PayPal website, the corresponding sale in your database will be set to inactive. And if a buyer registers a dispute, he (and you) will get a friendly email message stating that the dispute is being reviewed and handled.
@@ -79,13 +80,13 @@ Note that these extensions are designed to work with [Standalone Pro](http://buy
 
 = New in this version =
 
-Testing compatibility with WP 3.4.
+Adding Sandbox testing (previously a Pro version) to the lite version. Using WP table prefix, if it exists.
 
 == Upgrade Notice ==
 
-= 3.33 =
+= 3.40 =
 
-Testing compatibility with WP 3.4.
+Adding Sandbox testing (previously a Pro version) to the lite version. Using WP table prefix, if it exists.
 
 == Screenshots ==
 
@@ -168,6 +169,7 @@ Please see the "Installation" section in this readme. It will tell you how to di
 
 = History =
 
+* V3.40: Adding Sandbox testing (previously a Pro version) to the lite version. Using WP table prefix, if it exists. [July 17, 2012]
 * V3.33: Testing compatibility with WP 3.4. [July 11, 2012]
 * V3.31: Minor bug fixes. [July 6, 2012]
 * V3.30: Adding editable select in the product definition screen. [July 5, 2012]

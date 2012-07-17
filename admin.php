@@ -24,6 +24,15 @@ $paypal['paypal_email'] =
     'help' => 'Enter your PayPal email ID, which will receive your payments.',
     'value' => '',
     'validator' => 'email') ;
+$paypal['sandbox_email'] =
+  array('name' => 'PayPal SandBox email ID',
+    'value' => '',
+    'help' => 'PayPal SandBox email ID, which you can use for testing your setup. This entry is optional.') ;
+$paypal['sandbox_mode'] =
+  array('name' => 'Use SandBox [test] mode',
+    'type' => 'checkbox',
+    'value' => false,
+    'help' => 'If checked, PayPal SandBox will be used.') ;
 
 $options = array() ;
 $options['support_email'] =
