@@ -2,9 +2,9 @@
 Contributors: manojtd
 Donate link: http://affiliates.thulasidas.com/
 Tags: paypal, e-commerce, shopping cart, payment gateway, digital goods, ipn, pdt
-Requires at least: 2.5
+Requires at least: 3.3
 Tested up to: 3.4
-Stable tag: 3.41
+Stable tag: 3.42
 License: GPL2 or later
 
 Easy PayPal gets you started with your online business. Use PayPal IPN to sell digital goods without a shopping cart or complicated e-commerce setup.
@@ -80,13 +80,13 @@ Note that these extensions are designed to work with [Standalone Pro](http://buy
 
 = New in this version =
 
-Changing the length of one DB field to support older versions of MySQL.
+Documentation changes. Bug fix in HTML mail template selection.
 
 == Upgrade Notice ==
 
-= 3.41 =
+= 3.42 =
 
-Changing the length of one DB field to support older versions of MySQL.
+Documentation changes. Bug fix in HTML mail template selection.
 
 == Screenshots ==
 
@@ -154,6 +154,15 @@ Your product files are uploaded into a directory with a random name (so that a p
 
 Please see the "Installation" section in this readme. It will tell you how to display your products and e-shop on your blog.
 
+= How do I manage products? =
+= Looks like I can define only one product?! =
+
+To add a new product, type in a product code in the "Product Code" field. You can then specify the rest of the product details.
+
+To edit an existing product, select it using the drop-down menu (or type in its product code.) The product will be loaded and you can edit its details, just like defining a new product.
+
+Note that the drop-down menu is editable. To add a new product, just type in a new Product Code even when the drop-down menu looks like a menu. This is the point that confused some of my users, leading them to think that they couldn't define new products.
+
 == Change Log ==
 
 = Future Plans =
@@ -169,8 +178,9 @@ Please see the "Installation" section in this readme. It will tell you how to di
 
 = History =
 
+* V3.42: Documentation changes. Bug fix in HTML mail template selection. [July 18, 2012]
 * V3.41: Changing the length of one DB field to support older versions of MySQL. [July 17, 2012]
-* V3.40: Adding Sandbox testing (previously a Pro version) to the lite version. Using WP table prefix, if it exists. [July 17, 2012]
+* V3.40: Adding Sandbox testing (previously a Pro feature) to the lite version. Using WP table prefix, if it exists. [July 17, 2012]
 * V3.33: Testing compatibility with WP 3.4. [July 11, 2012]
 * V3.31: Minor bug fixes. [July 6, 2012]
 * V3.30: Adding editable select in the product definition screen. [July 5, 2012]
