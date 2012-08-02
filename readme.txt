@@ -1,10 +1,10 @@
 === Easy PayPal ===
 Contributors: manojtd
 Donate link: http://affiliates.thulasidas.com/
-Tags: paypal, e-commerce, shopping cart, payment gateway, digital goods, ipn, pdt
+Tags: paypal, paypal ipn, e-commerce, shopping cart, payment gateway, digital goods, ipn
 Requires at least: 3.3
 Tested up to: 3.4
-Stable tag: 3.42
+Stable tag: 3.43
 License: GPL2 or later
 
 Easy PayPal gets you started with your online business. Use PayPal IPN to sell digital goods without a shopping cart or complicated e-commerce setup.
@@ -80,13 +80,13 @@ Note that these extensions are designed to work with [Standalone Pro](http://buy
 
 = New in this version =
 
-Documentation changes. Bug fix in HTML mail template selection.
+Fixing an error in the plugins_url name. The CSS and images are located fine now.
 
 == Upgrade Notice ==
 
-= 3.42 =
+= 3.43 =
 
-Documentation changes. Bug fix in HTML mail template selection.
+Fixing an error in the plugins_url name. The CSS and images are located fine now.
 
 == Screenshots ==
 
@@ -178,6 +178,7 @@ Note that the drop-down menu is editable. To add a new product, just type in a n
 
 = History =
 
+* V3.43: Fixing an error in the plugins_url name. The CSS and images are located fine now. [July 28, 2012]
 * V3.42: Documentation changes. Bug fix in HTML mail template selection. [July 18, 2012]
 * V3.41: Changing the length of one DB field to support older versions of MySQL. [July 17, 2012]
 * V3.40: Adding Sandbox testing (previously a Pro feature) to the lite version. Using WP table prefix, if it exists. [July 17, 2012]

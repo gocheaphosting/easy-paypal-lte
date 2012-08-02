@@ -10,10 +10,8 @@ else {
     function __construct(&$db, &$html, $dieOnError=true) {
       $this->db = &$db ;
       $this->html = &$html ;
-      if (defined('PLUGINDIR'))
-        $this->cwd = get_option('siteurl') . '/' . PLUGINDIR . '/' .
-          'easy-paypal-lite' ;
-          // basename(dirname(__FILE__)) ;
+      if (function_exists('plugins_url'))
+        $this->cwd = plugins_url(basename(dirname(__FILE__))) ;
       else
         $this->cwd = $html->cwd ;
       if ($dieOnError) {
