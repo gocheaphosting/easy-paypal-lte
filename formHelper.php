@@ -352,8 +352,9 @@ else {
           else
             $randomName = $storage . '/' . $name ;
           $tmpName =  $_FILES['file']['tmp_name'] ;
-          $command = "mkdir -p $storage && chmod 777 $storage" ;
-          $tip = sprintf("In order to move the file to the storage location, log on your server, and issue commands equivalent to:<br><code>mkdir $storage<br />chmod 777 $storage.</code><br /><b>Click on [?] to copy the actual command.</b>");
+          $pwd = getcwd() ;
+          $command = "cd $pwd && mkdir -p $storage && chmod 777 $storage" ;
+          $tip = sprintf("In order to move the file to the storage location, log on your server, and issue commands equivalent to:<br><code>$command</code><br /><b>Click on [?] to copy the actual command.</b>");
           $title = "Error during file upload" ;
           if (!@move_uploaded_file($tmpName, $randomName))
             $rowSet['file']['warning'] = sprintf("<font color='red'>Error moving the file. Please ensure that the storage directory exists and is writeable. </font><span " . 'onmouseover="Tip(\'%s\', WIDTH, 310, TITLE, \'%s\', FIX, [this, -10, 5])" onmouseout="UnTip()" onclick="window.prompt(\'Copy to clipboard: Ctrl/Cmd-C:\', \'%s\')"' . ">[?]</span>", $tip, $title, $command) ;
