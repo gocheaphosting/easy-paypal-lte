@@ -3,7 +3,7 @@
   Plugin Name: Easy PayPal
   Plugin URI: http://www.thulasidas.com/plugins/ezpaypal
   Description: <em>Lite Version</em>: Easiest way to start selling your digital goods online. Go to <a href="options-general.php?page=easy-paypal-lite.php">Settings &rarr; Easy PayPal</a> to set it up, or use the "Settings" link on the right.
-  Version: 3.44
+  Version: 3.50
   Author: Manoj Thulasidas
   Author URI: http://www.thulasidas.com
 */
@@ -73,34 +73,48 @@ else {
       $page['post_status'] = 'publish';
       $page['post_title'] = 'ezPayPal Shop';
       $page['post_name'] = 'ez-shop';
-      $pageid = wp_insert_post ($page);
+      $pageid = wp_insert_post($page);
       return $pageid ;
     }
     static function install() {
       require_once('dbHelper.php');
       $ezDB = new dbHelper(); // this will check for valid config
       $GLOBALS['ezDB'] = $ezDB ;
-      // create the necessary tables
-      include_once('createTables.php') ;
-      createTables() ;
+      $ezppOptions = array() ; // not sure if I need this initialization
+      $mOptions = "ezPayPal" ;
       $ezppOptions = get_option($mOptions) ;
-      if (empty($ezppOptions['shopPage'])) // don't create duplicate shop pages
+      if (!$ezppOptions['isSetup']) {
+        // create the necessary tables
+        include_once('createTables.php') ;
+        createTables() ;
+        $ezppOptions['isSetup'] = true ;
+      }
+      $shopPage = $ezppOptions['shopPage'] ;
+      if (!empty($shopPage)) $shopObj = get_post($shopPage) ;
+      else $shopObj = false ;
+      if (empty($shopPage) || empty($shopObj) || $shopObj->post_status == 'trash') {
         $shopPage = ezPayPal::createShop() ;
+        $ezppOptions['shopPage'] = $shopPage ;
+      }
       else
         $shopPage = $ezppOptions['shopPage'] ;
-      $ezppOptions = array('isSetup' => true, 'shopPage' => $shopPage) ;
-      $mOptions = "ezPayPal" ;
       update_option($mOptions, $ezppOptions);
+    }
+    static function uninstall(){
+      $mOptions = "ezPayPal" ;
+      $ezppOptions = get_option($mOptions) ;
+      $shopPage = $ezppOptions['shopPage'] ;
+      if (!empty($shopPage)) {
+        wp_delete_post($shopPage) ;
+      }
+      delete_option($mOptions) ;
     }
     function printAdminPage() {
       @session_start() ;
       chdir($this->plgDir) ;
+      ezPayPal::install() ;
       $mOptions = "ezPayPal" ;
       $ezppOptions = get_option($mOptions);
-      if (!$ezppOptions['isSetup']) {
-        ezPayPal::install() ;
-        $ezppOptions = get_option($mOptions) ;
-      }
       if ($ezppOptions['isSetup'] == true) {
         $toInclude = "admin.php" ;
         if (!empty($_GET['action'])) $toInclude = $_GET['action'] ;
@@ -119,7 +133,6 @@ else {
 } //End Class ezPayPal
 
 if (class_exists("ezPayPal")) {
-  register_activation_hook(__FILE__, array("ezPayPal", 'install')) ;
   $ezPayPal = new ezPayPal() ;
   if (isset($ezPayPal)) {
     if (isset($_GET['delivery']) && !empty($_GET['dl'])) {
@@ -136,5 +149,8 @@ if (class_exists("ezPayPal")) {
       add_action( 'admin_print_styles-' . $page, array(&$ezPayPal, 'ezppStyles') );
       add_action( 'admin_print_scripts-' . $page, array(&$ezPayPal, 'ezppScripts') );
     }
+    $me = basename($ezPayPal->plgDir) . '/' . basename(__FILE__) ;
+    add_action("activate_$me", array("ezPayPal", 'install')) ;
+    add_action("deactivate_$me", array("ezPayPal", 'uninstall')) ;
   }
 }
