@@ -4,7 +4,7 @@ Donate link: http://affiliates.thulasidas.com/
 Tags: paypal, paypal ipn, e-commerce, shopping cart, payment gateway, digital goods, ipn
 Requires at least: 3.3
 Tested up to: 3.4
-Stable tag: 3.50
+Stable tag: 3.51
 License: GPL2 or later
 
 Easy PayPal gets you started with your online business. Use PayPal IPN to sell digital goods without a shopping cart or complicated e-commerce setup.
@@ -64,6 +64,7 @@ In addition to the fully functional Lite plugin version, there is a [Pro Version
 15. *DB Restore*: It also provides a means to restore (of course) a previously backed up data file, overwriting (or appending to, as you wish) the existing sales info.
 16. *Security Audit*: The *Pro* version provides you with a tool to check your settings and installation for possible security issues.
 17. *Product Updates*: Your customers can initiate product update checks. If the version they purchased is older than the current version on your shop, they can download the latest version. Bu default, the first update is provided free of cost, and the subsequent ones are chargeable at $0.95. In later versions, this update policy will be configurable on a product-by-product basis.
+18. *Multi-Currency Support*: You can choose you currency on a per-product basis, and your auto-generated shop page will list the product with the right currency symbol.
 
 Do you have multiple web sites selling digital products? Would you like to consolidate and manage your sales in one central location? Then the Stand-Alone version of this package may be more appropriate. The [Pro Version](http://buy.thulasidas.com/ezpaypal-pro "Get Easy PayPal Pro for $9.95") of the standalone package (which can consolidate sales from multiple websites on a server) gives you all the features listed above and more.  The standalone version also is available for purchase in the [Lite form](http://buy.thulasidas.com/ezpaypal "Get ezPayPal for $4.95").
 
@@ -80,13 +81,13 @@ Note that these extensions are designed to work with [Standalone Pro](http://buy
 
 = New in this version =
 
-Refinements: deactivation_hook, batch and template interface improvements in Pro.
+Documentation changes.
 
 == Upgrade Notice ==
 
 = 3.44 =
 
-Refinements: deactivation_hook, batch and template interface improvements in Pro.
+Documentation changes.
 
 == Screenshots ==
 
@@ -121,14 +122,6 @@ You can display your product links using `[ezshop show='prodID' link='yes']Buy t
 = Installing Extensions =
 
 Installing the extension modules is equally easy. To install [the affiliate package](http://buy.thulasidas.com/eaffiliates "Get the Affiliates module for ezPayPal Pro for $4.95"), for instance, just click on the Affiliate link on top right hand side part of your ezPayPal screen (on its WordPress Admin page) and follow the wizard-like instructions.
-
-= Pro Features =
-
-1. If you have existing products defined either in flat files or php source files, edit and use `pro/migrate-products.php` to insert them into your products table.products.
-5. Create and populate ipn_sales table (using test/arvixe.sql, or an another sql file from phpMySql.
-6. Edit and use pro/migrate-ipnData.php to copy the sales from ipn_sales to your ezpp_sales table.
-7. Edit and use test/make-meta.php to populate product_meta table from myPlugins.php
-8. Use pro/template-editor.php to create templates.
 
 = More Documentation =
 
@@ -178,6 +171,7 @@ Note that the drop-down menu is editable. To add a new product, just type in a n
 
 = History =
 
+* V3.51: Documentation changes. [Aug 18, 2012]
 * V3.50: Refinements: deactivation_hook, batch and template interface improvements in Pro. [Aug 17, 2012]
 * V3.44: Adding the folder name in a troubleshooting hint. [Aug 15, 2012]
 * V3.43: Fixing an error in the plugins_url name. The CSS and images are located fine now. [July 28, 2012]
