@@ -4,7 +4,7 @@ Donate link: http://affiliates.thulasidas.com/
 Tags: paypal, paypal ipn, e-commerce, shopping cart, payment gateway, digital goods, ipn
 Requires at least: 3.3
 Tested up to: 3.4
-Stable tag: 3.51
+Stable tag: 3.52
 License: GPL2 or later
 
 Easy PayPal gets you started with your online business. Use PayPal IPN to sell digital goods without a shopping cart or complicated e-commerce setup.
@@ -81,13 +81,13 @@ Note that these extensions are designed to work with [Standalone Pro](http://buy
 
 = New in this version =
 
-Documentation changes.
+Allowing all-digit product codes. Taking care of some debug notices from WordPress debug mode.
 
 == Upgrade Notice ==
 
-= 3.44 =
+= 3.52 =
 
-Documentation changes.
+Allowing all-digit product codes. Taking care of some debug notices from WordPress debug mode.
 
 == Screenshots ==
 
@@ -171,6 +171,7 @@ Note that the drop-down menu is editable. To add a new product, just type in a n
 
 = History =
 
+* V3.52: Allowing all-digit product codes. Taking care of some debug notices from WordPress debug mode. [Aug 27, 2012]
 * V3.51: Documentation changes. [Aug 18, 2012]
 * V3.50: Refinements: deactivation_hook, batch and template interface improvements in Pro. [Aug 17, 2012]
 * V3.44: Adding the folder name in a troubleshooting hint. [Aug 15, 2012]

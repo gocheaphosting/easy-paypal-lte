@@ -45,7 +45,7 @@ function renderProduct($product, $showDetails=false) {
   $name = $product['product_name'] ;
   $displayName = '<em><strong>'.$product['product_name'].'</strong></em>';
   $code = $product['product_code'] ;
-  $codeQty = $code. '_qty' ;
+  $codeQty = 'a' . $code. '_qty' ;
   $link = "<button onclick='document.form1.buy.value=\"$code\";document.form1.quantity.value=document.form1.$codeQty.value; document.form1.submit();'>Buy now!</button>" ;
   $price = $product['product_price'] ;
   if ($showDetails) {
