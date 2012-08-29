@@ -25,7 +25,7 @@
 **********************************************************************************/
 
 // Path to arrow images
-var plgDir = '../wp-content/plugins/easy-paypal/' ; // next version: pass this
+var plgDir = '../wp-content/plugins/easy-paypal-lte/' ; // next version: pass this
 // from easy-paypal.php. Output this <script type="text/javascript">var plgDir = $this->plgDir</script> before this script.
 var arrowImage = plgDir + './select_arrow.gif';	// Regular arrow
 var arrowImageOver = plgDir + './select_arrow_over.gif';	// Mouse over

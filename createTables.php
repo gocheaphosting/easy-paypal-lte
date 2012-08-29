@@ -226,7 +226,7 @@ function mkDefaultTemplates() {
 <p>Thank you for purchasing {product_name}. Here are your purchase details:</p>
 <blockquote>
   <p><strong>Product Name:</strong>&nbsp;&nbsp;&nbsp; {product_name}</p>
-  <p><strong>Purchased Price:</strong>&nbsp;&nbsp;&nbsp; ${purchase_amount}</p>
+  <p><strong>Purchased Price:</strong>&nbsp;&nbsp;&nbsp; {purchase_amount} {mc_currency}</p>
   <p><strong>Transaction ID:</strong>&nbsp;&nbsp;&nbsp; {txn_id}</p>
   <p><strong>Purchase Date:</strong>&nbsp;&nbsp;&nbsp; {purchase_date}</p>
   <p><strong>Download Time Limit:</strong>&nbsp;&nbsp;&nbsp; {expire_hours} hours</p>

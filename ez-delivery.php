@@ -71,7 +71,7 @@ Unfortunately, your purchase details haven't been posted by PayPal yet. But fear
     var targetURL='$targetURL'
     function getIt() {
          txnID = document.getElementById('txnID') ;
-         strTxnID = txnID.value.toLowerCase() ;
+         strTxnID = encodeURIComponent(txnID.value.toLowerCase().replace('mailto:','')) ;
          window.location=targetURL + strTxnID ;
          txnID.value = strTxnID ;
       }

@@ -12,7 +12,7 @@ if ($isPro) {
 
 $html = new htmlHelper() ;
 $ezDB = new dbHelper();
-$ezpp = new ezpp(&$ezDB) ;
+$ezpp = new ezpp($ezDB) ;
 
 function verifyTxn($saleDetails, $paypalEmail, $product) {
   $ret = array() ;

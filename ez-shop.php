@@ -12,9 +12,9 @@ if (!empty($GLOBALS['ezDebug'])) $ezDebug = $GLOBALS['ezDebug'] ;
 else $ezDebug = false ;
 
 if (!empty($GLOBALS["ezPayPal"]) && is_a($GLOBALS["ezPayPal"], "ezPayPal")) {
-  $admin = "wp-admin/options-general.php?page=easy-paypal-lite.php" ;
   $shop = "ez-shop" ;
   $ezppURL = get_option('siteurl') . '/' ;
+  $admin = $ezppURL."wp-admin/options-general.php?page=easy-paypal-lite.php" ;
   $returnPage = "$ezppURL$shop?delivery" ;
   $ipnListener = "$ezppURL$shop?office" ;
 }
@@ -52,7 +52,7 @@ function renderProduct($product, $showDetails=false) {
     echo "<center><p>Thank you for considering $displayName</p></center>" ;
   }
   else {
-    echo "<tr><td>$name</td><td align='center'>\$$price</td><td align='center'><input name='$codeQty' size='3' align='center' value='1'></td><td align='center'>$link</td></tr>\n" ;
+    echo "<tr><td>$name</td><td align='center'>$price".$product['mc_currency']."</td><td align='center'><input name='$codeQty' size='3' align='center' value='1'></td><td align='center'>$link</td></tr>\n" ;
   }
 }
 
@@ -74,7 +74,7 @@ if (empty($_POST) && empty($_GET)) { // list all items
   $products = $ezDB->getData("products") ;
   sort($products) ;
   echo '<form name="form1"><input type="hidden" name="buy"><input type="hidden" name="quantity"><table width="90%" cellpadding="5px" align="center" class="setup">' ;
-    echo "<tr class='title'><td width='60%'>Product</td><td align='center' width='10%'>Price</td><td width='10%'>Quantity</td><td align='center' width='20%'>Buy?</td></tr>" ;
+    echo "<tr class='title'><td width='55%'>Product</td><td align='center' width='15%'>Price</td><td width='10%'>Quantity</td><td align='center' width='20%'>Buy?</td></tr>" ;
   foreach ($products as $p) {
     if ($p['active']) renderProduct($p) ;
   }

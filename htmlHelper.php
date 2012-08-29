@@ -33,8 +33,8 @@ else {
       $this->cwd = $cwd ;
     }
     function ezppHeader($heading, $welcome='') {
-      $pwd = get_option('siteurl') . '/' . PLUGINDIR . '/' . basename(dirname(__FILE__)) ;
-      $_SESSION['ezppURL'] = $SERVER['REQUEST_URI'] . "options-general.php?page=easy-paypal-lite.php&action=" ;
+      $pwd = plugins_url('/') .  basename(dirname(__FILE__)) ;
+      $_SESSION['ezppURL'] = admin_url('/') . "options-general.php?page=easy-paypal-lite.php&action=" ;
       if (empty($welcome)) {
         include_once('actions.php') ;
         $welcome = showActions($actions, false) ;
@@ -51,7 +51,7 @@ else {
   </div>
   <div id='nav'>
     <ul id='sub_nav'>
-      <li>%s <a href='javascript:popUp(\"$pwd/docs/index.php?$self\")' target='_blank' style='float:right' title='Click for Help' alt='(?)'><img src='$pwd/help.png' /></a></li>
+      <li>%s <img onclick='popUp(\"$pwd/docs/index.php?$self\");return false;' target='_blank' style='float:right' title='Click for Help' alt='(?)' src='$pwd/help.png' /></li>
     </ul>
   </div>
   <div class='clear'></div>
