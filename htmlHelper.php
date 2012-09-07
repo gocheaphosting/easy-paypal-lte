@@ -51,7 +51,7 @@ else {
   </div>
   <div id='nav'>
     <ul id='sub_nav'>
-      <li>%s <img onclick='popUp(\"$pwd/docs/index.php?$self\");return false;' target='_blank' style='float:right' title='Click for Help' alt='(?)' src='$pwd/help.png' /></li>
+      <li>%s <img onclick='popUp(\"$pwd/docs/index.php?$self\");return false;' target='_blank' style='float:right;cursor:pointer;' title='Click for Help' alt='(?)' onmouseover=\"Tip('Need help?<br />Click me!', WIDTH, 70)\" onmouseout=\"UnTip()\" src='$pwd/help.png' /></li>
     </ul>
   </div>
   <div class='clear'></div>

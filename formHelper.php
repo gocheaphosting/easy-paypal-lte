@@ -405,7 +405,10 @@ else {
             $valErr = $this->getValErr($rowSet[$k], $_POST[$k]) ;
           else if (!empty($row['type']) && $row['type'] == 'checkbox')
             $valErr['val'] = false ;
-          if (isset($valErr['val'])) $dbRow[$k] = $valErr['val'] ;
+          if (isset($valErr['val'])) {
+            $rowSet[$k]['value'] = $valErr['val'] ;
+            $dbRow[$k] = $valErr['val'] ;
+          }
           if (!empty($valErr['err'])) $rowSet[$k]['error'] = $valErr['err'] ;
         }
         if ($formName == 'options') {

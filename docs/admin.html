@@ -39,13 +39,13 @@ below.</p><?php img("02") ?>
 is to authenticate yourself.</p><?php img("03") ?>
 
 <blockquote>
-  <b>Warning:</b> Please enter your Admin username and password. If you
+  <b>Warning:</b> Please note down your Admin username and password. If you
   have forgotten either, there is no way to recover it. You will have to
   access your database and delete the table with a name like
   <code>ezpp_5e81f9859d223ea420aca993c647b839M</code>, where the part
   before the underscore is the database prefix you chose during
   installation, and the part after is a random string. After deleting this
-  file, please go to the installation script
+  table, please go to the installation script
   (<code>http://yoursite/setup.php</code> where yoursite is the location
   where you installed<?php ezpp() ?>.
 </blockquote>
@@ -56,6 +56,11 @@ is to authenticate yourself.</p><?php img("03") ?>
 plugin version of <?php ezpp() ?>, you will get an Admin Control Panel as
 the screenshots below. The Admin Control Panel has three
 sections, and we will discuss them separately below.</p>
+
+<p>In the Pro versions, these three sections are arranged as tabs, with
+the Product Definition tab on top because we expect you to navigate to
+it most often after your <?php ezpp() ?> is set up. Please access the
+sections described below by clicking on the corresponding tabs.</p>
 
 <p>The screenshots shown are from the Pro version of <?php ezpp() ?>. If you
 have installed the Lite edition, you may see fewer option entries on this
@@ -131,7 +136,7 @@ hover over the <img src="../help.png" alt="(?)"> icon next to it.</p>
   under Pro Tools.</li>
 </ul>
 
-<h3>Product Definition</h3>
+<h3>Product Definitions</h3>
 
 <?php img("04c") ?>
 
@@ -209,5 +214,5 @@ following fields.</p>
 <p>Once you have defined at least one product, your e-shop is already up
 (in the standalone versions) at <code>http://yoursite/ez-shop.php</code>.
 In WordPress plugin editions, you will use shortcodes to generate a shop
-front or "Buy Now!" kind of links. See the chapter on Your Shop for
-details.</p>
+front or "Buy Now!" kind of links. See the chapter on
+<a href="index.php?shop">Your Shop</a> for details.</p>

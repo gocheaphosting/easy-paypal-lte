@@ -4,7 +4,7 @@ Donate link: http://affiliates.thulasidas.com/
 Tags: paypal, paypal ipn, e-commerce, shopping cart, payment gateway, digital goods, ipn
 Requires at least: 3.3
 Tested up to: 3.4
-Stable tag: 3.53
+Stable tag: 3.54
 License: GPL2 or later
 
 Easy PayPal gets you started with your online business. Use PayPal IPN to sell digital goods without a shopping cart or complicated e-commerce setup.
@@ -81,13 +81,13 @@ Note that these extensions are designed to work with [Standalone Pro](http://buy
 
 = New in this version =
 
-Enhancements from user feedback: Partial currency-name support, auto-creation of storage folder etc.
+Minor interface and documentation improvements.
 
 == Upgrade Notice ==
 
-= 3.53 =
+= 3.54 =
 
-Enhancements from user feedback: Partial currency-name support, auto-creation of storage folder etc.
+Minor interface and documentation improvements.
 
 == Screenshots ==
 
@@ -108,6 +108,8 @@ Enhancements from user feedback: Partial currency-name support, auto-creation of
 3. Upload your products using this interface.
 
 Before you upload products (in step 3), you may have to create a product storage directory for *ezPayPal*. Again, the interface will prompt you with the command to execute.
+
+Note that you have to use pretty permalinks for the auto-generated shop front to work. Take a look at the URL address of the shop front (in the address bar on your web browser). Does it say something like http://your.blog/?p=123? If so, go to your WordPress dashboard, Settings -> Permalinks and select any setting other than the (ugly) default one.
 
 = Shortcodes =
 
@@ -156,6 +158,9 @@ To edit an existing product, select it using the drop-down menu (or type in its 
 
 Note that the drop-down menu is editable. To add a new product, just type in a new Product Code even when the drop-down menu looks like a menu. This is the point that confused some of my users, leading them to think that they couldn't define new products.
 
+= My shop front says "Product not found." But I have defined my products. What's going on? =
+
+This happens when your permalink structure has not been prettified, in which case WordPress doesn't use the page slug for the auto-generated shop page. To confirm, look at the URL address of the shop front (in the address bar on your web browser). Does it say something like http://your.blog/?p=123? If so, go to your WordPress dashboard, Settings -> Permalinks and select any setting other than the (ugly) default one.
 == Change Log ==
 
 = Future Plans =
@@ -171,6 +176,7 @@ Note that the drop-down menu is editable. To add a new product, just type in a n
 
 = History =
 
+* V3.54: Minor interface and documentation improvements. [Sep 7, 2012]
 * V3.53: Enhancements from user feedback: Partial currency-name support, auto-creation of storage folder etc. [Aug 29, 2012]
 * V3.52: Allowing all-digit product codes. Taking care of some debug notices from WordPress debug mode. [Aug 27, 2012]
 * V3.51: Documentation changes. [Aug 18, 2012]
