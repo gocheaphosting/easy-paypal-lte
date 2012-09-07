@@ -3,7 +3,7 @@
   Plugin Name: Easy PayPal
   Plugin URI: http://www.thulasidas.com/plugins/ezpaypal
   Description: <em>Lite Version</em>: Easiest way to start selling your digital goods online. Go to <a href="options-general.php?page=easy-paypal-lite.php">Settings &rarr; Easy PayPal</a> to set it up, or use the "Settings" link on the right.
-  Version: 3.54
+  Version: 3.55
   Author: Manoj Thulasidas
   Author URI: http://www.thulasidas.com
 */
@@ -73,6 +73,7 @@ else {
       $page['post_status'] = 'publish';
       $page['post_title'] = 'ezPayPal Shop';
       $page['post_name'] = 'ez-shop';
+      $page['comment_status'] = 'closed' ;
       $pageid = wp_insert_post($page);
       return $pageid ;
     }
@@ -115,6 +116,10 @@ else {
       ezPayPal::install() ;
       $mOptions = "ezPayPal" ;
       $ezppOptions = get_option($mOptions);
+      $perma = trim(get_option('permalink_structure')) ;
+      if (empty($perma)) {
+        echo '<div class="error"><p><b><em>Permalinks Error</em></b>: You need to set your <a href="http://codex.wordpress.org/Using_Permalinks" target="_blank">permalinks</a> to something other than the default for <em>Easy PayPal</em> shop to work properly. You can set it at <a href="options-permalink.php">Settings &rarr; Permalinks</a>.</p></div><br />' ;
+      }
       if ($ezppOptions['isSetup'] == true) {
         $toInclude = "admin.php" ;
         if (!empty($_GET['action'])) $toInclude = $_GET['action'] ;
