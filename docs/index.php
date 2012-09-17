@@ -23,6 +23,7 @@ function showPage($pages = array(), $toc=false) {
   }
   $chap = 0 ;
   foreach ($pages as $page) {
+    if ($page == 'ez-manoj') $page = 'ez-shop' ;
     if (!file_exists("$page.html")) $page = "introduction" ;
     $GLOBALS['page'] = $page ;
     echo "<div class='page-break'></div>" ;
@@ -78,7 +79,7 @@ function ezppHeader($title, $showLinks=false) {
 }
 function ezppFooter($showLinks=false) {
   $year = date('Y') ;
-  if ($showLinks) $linkText = sprintf('<a href="http://affiliates.thulasidas.com/"><font color="#f37">ez</font><em><font color="#25d">Affiliates</font></em>: Join Us</a> and Earn 50%% Revenue share!<br /><small>Powered by <a href="http://buy.thulasidas.com/ezpaypal"><font color="#f37">ez</font><em><font color="#25d">Pay</font><font color="#1ad">Pal</font></em></a>. Copyright &copy;%s&nbsp;Manoj Thulasidas. &nbsp;All Rights Reserved.</small>', $year) ;
+  if ($showLinks) $linkText = sprintf('<a href="http://affiliates.thulasidas.com/"><font color="#f37">ez</font><em><font color="#25d">Affiliates</font></em>: Join Us</a> and Earn 50%% Revenue share!<br /><small>Powered by <a href="http://buy.thulasidas.com/ezpaypal-pro"><font color="#f37">ez</font><em><font color="#25d">Pay</font><font color="#1ad">Pal</font></em></a>. Copyright &copy;%s&nbsp;Manoj Thulasidas. &nbsp;All Rights Reserved.</small>', $year) ;
   else $linkText = '<small><font color="#f37">ez</font><em><font color="#25d">Pay</font><font color="#1ad">Pal</font></em> Help System.</small>' ;
   printf("<!-- Start of ezppFooter() -->
     </div>

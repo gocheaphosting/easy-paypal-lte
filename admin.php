@@ -150,6 +150,10 @@ $form->loadRowSetFromDB('options', $options) ;
 $form->loadRowSetFromDB('paypal', $paypal) ;
 $form->loadRowSetFromDB('products', $products) ;
 
+$err = checkStorage($options['storage_location']['value']) ;
+if ($err) {
+  $html->setErr($err) ;
+}
 $html->ezppHeader('Admin Control Panel') ;
 $form->renderForm('paypal', $paypal, 'PayPal Account Details',
   'Setup your PayPal Account and provide details here',
@@ -163,4 +167,49 @@ $form->renderForm('products', $products, 'Products',
   'Setup your Products. Enter your digital goods inventory one by one.',
   $products['submitText']) ;
 $html->ezppFooter() ;
-?>
+
+function checkStorage($storage){
+  $success = false ;
+  $pwd = getcwd() ;
+  if (file_exists($storage)) {
+    if (is_dir($storage)) {
+      $perm = fileperms($storage) ;
+      if ($perm == 0777) {
+        $success = true ;
+      }
+      else {
+        if (chmod($storage, 0777)) {
+          $success = true ;
+        }
+        else { // trouble setting the permission
+          $ret = "<em>The Product storage location is not writable!</em><br>Please change its permission your server using these Unix commands (or their equivalents):<br /><code>&nbsp;&nbsp;cd $pwd<br />>&nbsp;&nbsp;chmod 777 $storage</code>" ;
+        }
+      }
+    }
+    else { // it is a file. rm it and create a folder
+      if (@rename($storage, "$storage.old")) {
+        if (@mkdir($storage)) {
+          $success = true ;
+        }
+        else {
+          $ret = "<em>The Product storage location was a file. It was moved to $storage.old. But a new storage location cannot be created!</em><br>Please create a it on your server using these Unix commands (or their equivalents):<br /><code>&nbsp;&nbsp;cd $pwd<br />&nbsp;&nbsp;mkdir $storage<br />&nbsp;&nbsp;chmod 777 $storage</code>" ;
+        }
+      }
+      else {
+        $ret = "<em>The Product storage location seems to be a file that cannot be deleted!</em><br>Please remove it and create a folder on your server using these Unix commands (or their equivalents):<br /><code>&nbsp;&nbsp;cd $pwd<br />&nbsp;&nbsp;rm $storage<br />&nbsp;&nbsp;mkdir $storage<br />&nbsp;&nbsp;chmod 777 $storage</code>" ;
+      }
+    }
+  }
+  else if (@mkdir($storage)) {
+    $success = true ;
+  }
+  else {
+    $ret = "<em>The Product storage location is not found and cannot be created!</em><br>Please create it on your server using these Unix commands (or their equivalents):<br /><code>&nbsp;&nbsp;cd $pwd<br />&nbsp;&nbsp;mkdir $storage<br />&nbsp;&nbsp;chmod 777 $storage</code>" ;
+  }
+  if ($success) {
+    return false ;
+  }
+  else {
+    return $ret ;
+  }
+}

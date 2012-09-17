@@ -1,17 +1,17 @@
 === Easy PayPal ===
 Contributors: manojtd
 Donate link: http://affiliates.thulasidas.com/
-Tags: paypal, paypal ipn, e-commerce, shopping cart, payment gateway, digital goods, ipn
+Tags: paypal, paypal ipn, e-commerce, shopping cart, payment gateway, digital goods, ipn, paypal integration, wordpress paypal integration
 Requires at least: 3.3
 Tested up to: 3.4
-Stable tag: 3.55
+Stable tag: 3.56
 License: GPL2 or later
 
 Easy PayPal gets you started with your online business. Use PayPal IPN to sell digital goods without a shopping cart or complicated e-commerce setup.
 
 == Description ==
 
-*Easy PayPal* is the simplest possible way to sell your digital goods online. It helps you quickly set up an online store to sell any downloadable item, where your buyers can pay for it and get an automatic, expiring download link. The whole flow is fully automated and designed to run unattended using PayPal IPN. There is no shopping cart or complicated e-commerce setup.
+*Easy PayPal* is the simplest possible way to sell your digital goods online. It helps you quickly set up an online store to sell any downloadable item, where your buyers can pay for it and get an automatic, expiring download link. The whole flow is fully automated and designed to run unattended using PayPal IPN integration. There is no shopping cart or complicated e-commerce setup.
 
 Do you have an application, PHP package, photograph, PDF book (or any other downloadable item) to sell? Find the set up of a shopping cart system too overwhelming? *Easy PayPal* may be the right solution for you.
 
@@ -81,13 +81,13 @@ Note that these extensions are designed to work with [Standalone Pro](http://buy
 
 = New in this version =
 
-Showing a warning about Permalinks for the auto-generated shop page to work. Also closing comments on it.
+Showing an error message if the product storage location cannot be created automatically.
 
 == Upgrade Notice ==
 
-= 3.55 =
+= 3.56 =
 
-Showing a warning about Permalinks for the auto-generated shop page to work. Also closing comments on it.
+Showing an error message if the product storage location cannot be created automatically.
 
 == Screenshots ==
 
@@ -176,6 +176,7 @@ This happens when your permalink structure has not been prettified, in which cas
 
 = History =
 
+* V3.56: Showing an error message if the product storage location cannot be created automatically. [Sep 8, 2012]
 * V3.55: Showing a warning about Permalinks for the auto-generated shop page to work. Also closing comments on it. [Sep 8, 2012]
 * V3.54: Minor interface and documentation improvements. [Sep 7, 2012]
 * V3.53: Enhancements from user feedback: Partial currency-name support, auto-creation of storage folder etc. [Aug 29, 2012]
