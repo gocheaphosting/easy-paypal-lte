@@ -4,7 +4,7 @@ Donate link: http://affiliates.thulasidas.com/
 Tags: paypal, paypal ipn, e-commerce, shopping cart, payment gateway, digital goods, ipn, paypal integration, wordpress paypal integration
 Requires at least: 3.3
 Tested up to: 3.4
-Stable tag: 3.56
+Stable tag: 3.57
 License: GPL2 or later
 
 Easy PayPal gets you started with your online business. Use PayPal IPN to sell digital goods without a shopping cart or complicated e-commerce setup.
@@ -65,29 +65,33 @@ In addition to the fully functional Lite plugin version, there is a [Pro Version
 16. *Security Audit*: The *Pro* version provides you with a tool to check your settings and installation for possible security issues.
 17. *Product Updates*: Your customers can initiate product update checks. If the version they purchased is older than the current version on your shop, they can download the latest version. Bu default, the first update is provided free of cost, and the subsequent ones are chargeable at $0.95. In later versions, this update policy will be configurable on a product-by-product basis.
 18. *Multi-Currency Support*: You can choose you currency on a per-product basis, and your auto-generated shop page will list the product with the right currency symbol.
+19. *Tabbed Admin Interface*: In the Pro version, the admin page is tabbed with the Product Definition tab on top because we expect you to navigate to it most often after your ezPayPal is set up.
 
 Do you have multiple web sites selling digital products? Would you like to consolidate and manage your sales in one central location? Then the Stand-Alone version of this package may be more appropriate. The [Pro Version](http://buy.thulasidas.com/ezpaypal-pro "Get Easy PayPal Pro for $9.95") of the standalone package (which can consolidate sales from multiple websites on a server) gives you all the features listed above and more.  The standalone version also is available for purchase in the [Lite form](http://buy.thulasidas.com/ezpaypal "Get ezPayPal for $4.95").
 
 = Optional Packages =
 
-*Easy PayPal* is designed to be extensible. Already in the pipeline are the following optional extensions:
+*ezPayPal* is designed to be extensible. The following add-on extensions are ready.
 
 1. ezAffiliates: Create your own affiliate network and go viral by turing your satisfied customers into your advertising affiliatees. This package, built on the pubicly available Affiliates-for-All, integrates perfectly with to automate affiliate sales tracking and commission computation and more.
-2. ezReports: Maximize your sales by analyzing your sales. This reporting package makes slicing and dicing your sales and affiliate data a snap, so that you can spot opportunities.
-3. ezTextLinks: Do you have a high page-rank site? Do you get a lot of requests for text links? They can be significantly more lucrative (by a factor of 100, in my case) than contextual ads such as AdSense. The returns can be even greater if you can deal with your advertisers directly, rather than via providers like Text Link Ads that take 50% of your revenue. ezTextLinks will handle payment, activate and expire links, send reminder emails and handle renewals etc.
-4. ezSupport: Every complex software project, once deployed, generates significant support load. Most of the support questions are frivilous, where the end-user presents silly issues that are easily resolved by a cursory look at the documentation. How do we ask the end-user to RTFM without antagonizing them? I found that it could be done by switching to a paid support model. I started charging 95 cents per support questions, and my support load went down by two orders o magnitude. This ezSupport package is built on the excellent osTicket program. It works hand in hand with ezPayPal and provides you with a configurable support system.
+2. ezSupport: Every complex software project, once deployed, generates significant support load. Most of the support questions are frivilous, where the end-user presents silly issues that are easily resolved by a cursory look at the documentation. How do we ask the end-user to RTFM without antagonizing them? I found that it could be done by switching to a paid support model. I started charging 95 cents per support questions, and my support load went down by two orders of magnitude. This ezSupport package is built on the excellent osTicket program. It works hand in hand with ezPayPal and provides you with a configurable support system.
+
+In the pipeline are the following optional extensions:
+
+1. ezReports: Maximize your sales by analyzing your sales. This reporting package makes slicing and dicing your sales and affiliate data a snap, so that you can spot opportunities.
+2. ezTextLinks: Do you have a high page-rank site? Do you get a lot of requests for text links? They can be significantly more lucrative (by a factor of 100, in my case) than contextual ads such as AdSense. The returns can be even greater if you can deal with your advertisers directly, rather than via providers like Text Link Ads that take 50% of your revenue. ezTextLinks will handle payment, activate and expire links, send reminder emails and handle renewals etc.
 
 Note that these extensions are designed to work with [Standalone Pro](http://buy.thulasidas.com/ezpaypal-pro "Get Easy PayPal Pro for $9.95") version. They will be ported to the [Plugin Pro](http://buy.thulasidas.com/easy-paypal "Get Easy PayPal Pro for $6.95") version as well if possible.
 
 = New in this version =
 
-Showing an error message if the product storage location cannot be created automatically.
+In WP plugin version, the storage location is moved to wp_upload_dir so that a plugin update will not wipe out the inventory.
 
 == Upgrade Notice ==
 
-= 3.56 =
+= 3.57 =
 
-Showing an error message if the product storage location cannot be created automatically.
+In WP plugin version, the storage location is moved to wp_upload_dir so that a plugin update will not wipe out the inventory.
 
 == Screenshots ==
 
@@ -161,6 +165,7 @@ Note that the drop-down menu is editable. To add a new product, just type in a n
 = My shop front says "Product not found." But I have defined my products. What's going on? =
 
 This happens when your permalink structure has not been prettified, in which case WordPress doesn't use the page slug for the auto-generated shop page. To confirm, look at the URL address of the shop front (in the address bar on your web browser). Does it say something like http://your.blog/?p=123? If so, go to your WordPress dashboard, Settings -> Permalinks and select any setting other than the (ugly) default one.
+
 == Change Log ==
 
 = Future Plans =
@@ -176,6 +181,7 @@ This happens when your permalink structure has not been prettified, in which cas
 
 = History =
 
+* V3.57: The storage location is moved to wp_upload_dir so that a plugin update will not wipe out the inventory. [Sep 19, 2012]
 * V3.56: Showing an error message if the product storage location cannot be created automatically. [Sep 8, 2012]
 * V3.55: Showing a warning about Permalinks for the auto-generated shop page to work. Also closing comments on it. [Sep 8, 2012]
 * V3.54: Minor interface and documentation improvements. [Sep 7, 2012]

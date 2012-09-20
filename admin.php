@@ -6,7 +6,7 @@ require_once('formHelper.php') ;
 require_once('ezpp.php') ;
 
 $html = new htmlHelper() ;
-$ezDB = new dbHelper();
+$ezDB = new dbHelper() ;
 $form = new formHelper($ezDB, $html) ; // will die if DB connection fails
 $ezpp = new ezpp($ezDB) ;
 
@@ -168,13 +168,14 @@ $form->renderForm('products', $products, 'Products',
   $products['submitText']) ;
 $html->ezppFooter() ;
 
-function checkStorage($storage){
-  $success = false ;
+function checkStorage($storage0){
+  $storage = formHelper::mkStorageName($storage0) ;
+  $ret = $success = false ;
   $pwd = getcwd() ;
   if (file_exists($storage)) {
     if (is_dir($storage)) {
       $perm = fileperms($storage) ;
-      if ($perm == 0777) {
+      if (($perm & 0777) == 0777) {
         $success = true ;
       }
       else {
@@ -182,7 +183,7 @@ function checkStorage($storage){
           $success = true ;
         }
         else { // trouble setting the permission
-          $ret = "<em>The Product storage location is not writable!</em><br>Please change its permission your server using these Unix commands (or their equivalents):<br /><code>&nbsp;&nbsp;cd $pwd<br />>&nbsp;&nbsp;chmod 777 $storage</code>" ;
+          $ret = "<em>The Product storage location is not writable!</em><br>Please change its permission your server using these Unix commands (or their equivalents):<br /><code>&nbsp;&nbsp;cd $pwd<br />&nbsp;&nbsp;chmod 777 $storage</code>" ;
         }
       }
     }
@@ -207,9 +208,50 @@ function checkStorage($storage){
     $ret = "<em>The Product storage location is not found and cannot be created!</em><br>Please create it on your server using these Unix commands (or their equivalents):<br /><code>&nbsp;&nbsp;cd $pwd<br />&nbsp;&nbsp;mkdir $storage<br />&nbsp;&nbsp;chmod 777 $storage</code>" ;
   }
   if ($success) {
+    if ($storage0 != $storage && file_exists($storage0)) {
+      $ret = moveFiles($storage0, $storage) ;
+    }
+  }
+  return $ret ;
+}
+
+function moveFiles($storage0, $storage) {
+  $success = true ;
+  $ret = '' ;
+  $glob0 = array() ;
+  $glob = array() ;
+  if (is_dir($storage0)) {
+    $glob0 = glob("$storage0/*") ;
+    if (is_dir($storage)) {
+      $glob = glob("$storage/*") ;
+    }
+    else {
+      $success = false ;
+      $ret = "<em>The <b>NEW</b> storage directory <code>$storage</code> does not exist!</em><br />This should never happen." ;
+    }
+  }
+  else {
+    $success = false ;
+    $ret = "<em>The <b>OLD</b> storage directory <code>$storage0</code> does not exist!</em><br />This should never happen." ;
+  }
+  foreach ($glob0 as $g) {
+    $fname0 = basename($g) ;
+    $fname = "$storage/$fname0" ;
+    if (!in_array($fname, $glob)) {
+      if (!@copy($g, $fname)) {
+        $success = false ;
+        $ret .= "<br />Unable to copy <code>$g</code> to <code>$fname</code>. This should never happen either." ;
+      }
+      else {
+        @unlink($g) ;
+      }
+    }
+  }
+  if ($success) {
     return false ;
   }
   else {
     return $ret ;
   }
 }
+

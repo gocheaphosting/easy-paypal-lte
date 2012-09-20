@@ -3,7 +3,7 @@
   Plugin Name: Easy PayPal
   Plugin URI: http://www.thulasidas.com/plugins/ezpaypal
   Description: <em>Lite Version</em>: Easiest way to start selling your digital goods online. Go to <a href="options-general.php?page=easy-paypal-lite.php">Settings &rarr; Easy PayPal</a> to set it up, or use the "Settings" link on the right.
-  Version: 3.56
+  Version: 3.57
   Author: Manoj Thulasidas
   Author URI: http://www.thulasidas.com
 */
@@ -84,11 +84,13 @@ else {
       $ezppOptions = array() ; // not sure if I need this initialization
       $mOptions = "ezPayPal" ;
       $ezppOptions = get_option($mOptions) ;
-      if (!$ezppOptions['isSetup']) {
+      if (empty($ezppOptions)) {
         // create the necessary tables
         include_once('createTables.php') ;
         createTables() ;
         $ezppOptions['isSetup'] = true ;
+        $shopPage = ezPayPal::createShop() ;
+        $ezppOptions['shopPage'] = $shopPage ;
       }
       $shopPage = $ezppOptions['shopPage'] ;
       if (!empty($shopPage)) $shopObj = get_post($shopPage) ;

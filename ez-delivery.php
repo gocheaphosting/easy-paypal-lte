@@ -15,7 +15,13 @@ function deliverFile($saleInfo, $product, &$ezpp) {
   if ($ezpp->mkDateInt($saleInfo['expire_date']) < time()){
     return  "Sorry, your purchase has expired." ;
   }
-  $file = dirname(__FILE__) . '/' . $product['file'] ;
+  if (substr($product['file'], 0, 1) == '/' ||
+      substr($product['file'], 1, 2) == ':') {
+    $file = $product['file'] ;
+  }
+  else {
+    $file = dirname(__FILE__) . '/' . $product['file'] ;
+  }
   if (file_exists($file)) {
     header('Content-Description: File Transfer');
     header('Content-Type: application/octet-stream');

@@ -338,12 +338,21 @@ else {
         }
       }
     }
+    static function mkStorageName($storage){
+      if (function_exists('wp_upload_dir')) {
+        if (strpbrk($storage, "/.\\:") === false) {
+          $upload = wp_upload_dir() ;
+          $storage = "{$upload['basedir']}/$storage" ;
+        }
+      }
+      return $storage ;
+    }
     function uploadFile(&$rowSet, $fileName) {
       if (!empty($_FILES['file'])) {
         $randomName = '' ;
         $db = $this->db ;
         $optionsVals = $db->getRowData('options') ;
-        $storage = $optionsVals['storage_location'] ;
+        $storage = formHelper::mkStorageName($optionsVals['storage_location']) ;
         $name = $_FILES['file']['name'] ;
         if (!empty($name)) {
           $ext = end(explode('.', $name)) ;
@@ -435,6 +444,9 @@ else {
           else $db->putRowData($formName, $dbRow) ;
           $this->html->setWarn("$formName info updated.") ;
         }
+        else {
+          $this->html->setErr("Please correct the errors below and try again to update $formName") ;
+        }
       }
       if (!empty($_POST[$formName.'_load']) || !empty($_POST[$formName.'_autoload'])){
         $toLoad = array() ;
@@ -455,7 +467,7 @@ else {
             $this->html->setErr('<br />Unique column requires DB details. [Dev error]') ;
           else
             if (empty($toLoad['value']))
-              $this->html->setErr('<br />Need a value here to look up in the DB') ;
+              $this->html->setErr('Need a value here to look up in the DB, or a new value to create a new product.') ;
             else
               $dbRow = $db->getRowData($table, array($column => $toLoad['value'])) ;
           if (!empty($dbRow)) foreach ($rowSet as $k => $row) {
