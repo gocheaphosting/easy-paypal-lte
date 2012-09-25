@@ -1,10 +1,10 @@
 === Easy PayPal ===
 Contributors: manojtd
 Donate link: http://affiliates.thulasidas.com/
-Tags: paypal, paypal ipn, e-commerce, shopping cart, payment gateway, digital goods, ipn, paypal integration, wordpress paypal integration
+Tags: paypal, paypal ipn, e-commerce, shopping cart, payment gateway, digital goods, ipn, paypal integration
 Requires at least: 3.3
 Tested up to: 3.4
-Stable tag: 3.57
+Stable tag: 3.58
 License: GPL2 or later
 
 Easy PayPal gets you started with your online business. Use PayPal IPN to sell digital goods without a shopping cart or complicated e-commerce setup.
@@ -85,13 +85,13 @@ Note that these extensions are designed to work with [Standalone Pro](http://buy
 
 = New in this version =
 
-In WP plugin version, the storage location is moved to wp_upload_dir so that a plugin update will not wipe out the inventory.
+Updating the PDF documentation.
 
 == Upgrade Notice ==
 
-= 3.57 =
+= 3.58 =
 
-In WP plugin version, the storage location is moved to wp_upload_dir so that a plugin update will not wipe out the inventory.
+Updating the PDF documentation.
 
 == Screenshots ==
 
@@ -181,6 +181,7 @@ This happens when your permalink structure has not been prettified, in which cas
 
 = History =
 
+* V3.58: Updating the PDF documentation to be in sync with the HTML docs. [Sep 25, 2012]
 * V3.57: The storage location is moved to wp_upload_dir so that a plugin update will not wipe out the inventory. [Sep 19, 2012]
 * V3.56: Showing an error message if the product storage location cannot be created automatically. [Sep 8, 2012]
 * V3.55: Showing a warning about Permalinks for the auto-generated shop page to work. Also closing comments on it. [Sep 8, 2012]
