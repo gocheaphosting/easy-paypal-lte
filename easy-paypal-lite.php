@@ -3,7 +3,7 @@
   Plugin Name: Easy PayPal
   Plugin URI: http://www.thulasidas.com/plugins/ezpaypal
   Description: <em>Lite Version</em>: Easiest way to start selling your digital goods online. Go to <a href="options-general.php?page=easy-paypal-lite.php">Settings &rarr; Easy PayPal</a> to set it up, or use the "Settings" link on the right.
-  Version: 3.58
+  Version: 3.61
   Author: Manoj Thulasidas
   Author URI: http://www.thulasidas.com
 */
@@ -135,6 +135,10 @@ else {
       else { // the installation failed
         echo "Trouble installing ezPayPal!" ;
       }
+      $plgName = "easy-paypal" ;
+      echo "<div class='updated' style='width:800px;margin:0px auto;'>" ;
+      include "support.php" ;
+      echo "</div>" ;
     }
   }
 } //End Class ezPayPal

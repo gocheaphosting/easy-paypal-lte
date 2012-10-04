@@ -1,10 +1,10 @@
 === Easy PayPal ===
 Contributors: manojtd
-Donate link: http://affiliates.thulasidas.com/
+Donate link: http://buy.thulasidas.com/easy-paypal
 Tags: paypal, paypal ipn, e-commerce, shopping cart, payment gateway, digital goods, ipn, paypal integration
 Requires at least: 3.3
 Tested up to: 3.4
-Stable tag: 3.58
+Stable tag: 3.61
 License: GPL2 or later
 
 Easy PayPal gets you started with your online business. Use PayPal IPN to sell digital goods without a shopping cart or complicated e-commerce setup.
@@ -73,8 +73,8 @@ Do you have multiple web sites selling digital products? Would you like to conso
 
 *ezPayPal* is designed to be extensible. The following add-on extensions are ready.
 
-1. ezAffiliates: Create your own affiliate network and go viral by turing your satisfied customers into your advertising affiliatees. This package, built on the pubicly available Affiliates-for-All, integrates perfectly with to automate affiliate sales tracking and commission computation and more.
-2. ezSupport: Every complex software project, once deployed, generates significant support load. Most of the support questions are frivilous, where the end-user presents silly issues that are easily resolved by a cursory look at the documentation. How do we ask the end-user to RTFM without antagonizing them? I found that it could be done by switching to a paid support model. I started charging 95 cents per support questions, and my support load went down by two orders of magnitude. This ezSupport package is built on the excellent osTicket program. It works hand in hand with ezPayPal and provides you with a configurable support system.
+1. [ezAffiliates](http://buy.thulasidas.com/ezaffiliates-full "ezPayPal Pro bundled with ezAffiliates for only $12.95"): Create your own affiliate network and go viral by turing your satisfied customers into your advertising affiliatees. This package, built on the pubicly available Affiliates-for-All, integrates perfectly with to automate affiliate sales tracking and commission computation and more.
+2. [ezSupport](http://buy.thulasidas.com/ezsupport-full "ezPayPal Pro bundled with ezSupport for only $12.95"): Every complex software project, once deployed, generates significant support load. Most of the support questions are frivilous, where the end-user presents silly issues that are easily resolved by a cursory look at the documentation. How do we ask the end-user to RTFM without antagonizing them? I found that it could be done by switching to a paid support model. I started charging 95 cents per support questions, and my support load went down by two orders of magnitude. This ezSupport package is built on the excellent osTicket program. It works hand in hand with ezPayPal and provides you with a configurable support system.
 
 In the pipeline are the following optional extensions:
 
@@ -85,13 +85,13 @@ Note that these extensions are designed to work with [Standalone Pro](http://buy
 
 = New in this version =
 
-Updating the PDF documentation.
+Documentation changes only.
 
 == Upgrade Notice ==
 
-= 3.58 =
+= 3.61 =
 
-Updating the PDF documentation.
+Documentation changes only.
 
 == Screenshots ==
 
@@ -141,6 +141,10 @@ In your plugin folder, under `docs`, there is the beginning of a full documentat
 
 The documentation is also hosted at my site in [HTML](http://buy.thulasidas.com/docs "HTML Documentation of ezPayPal") and [PDF](http://buy.thulasidas.com/docs/ezpp.pdf "Printable PDF Manual") formats.
 
+= How can I contact the plugin author if I need help? =
+
+This plugin uses a paid support model in order to manage the support load. Each [support ticket](http://support.thulasidas.com "Ask a support question") will be charged at $0.95 for the Lite version (and for the Pro version after a short free support period). The support ticket is valid for 48 hours.
+
 = How do I customize the look and feel of the download page? =
 
 Please edit the included file `custom.php` and uncomment the custom header and footer functions. You can then provide your own code for these functions, following the examples of the `ezppHeader()` and `ezppFooter()` functions in `htmlHelper.php`.
@@ -181,6 +185,8 @@ This happens when your permalink structure has not been prettified, in which cas
 
 = History =
 
+* V3.61: Documentation changes only. [Oct 2, 2012]
+* V3.60: Admin page changes to include support option. [Sep 28, 2012]
 * V3.58: Updating the PDF documentation to be in sync with the HTML docs. [Sep 25, 2012]
 * V3.57: The storage location is moved to wp_upload_dir so that a plugin update will not wipe out the inventory. [Sep 19, 2012]
 * V3.56: Showing an error message if the product storage location cannot be created automatically. [Sep 8, 2012]
