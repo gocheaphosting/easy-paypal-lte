@@ -69,7 +69,7 @@ else {
   $getPar = '' ;
 }
 
-if (empty($_POST) && empty($_GET)) { // list all items
+if (empty($_POST) && empty($_GET['show']) && empty($_GET['buy'])) { // list all items
   $html->ezppHeader('ezPayPal Shop', "Enter Quantiy and Click Buy&nbsp|&nbsp;<a href='$admin'>Admin</a>") ;
   $products = $ezDB->getData("products") ;
   sort($products) ;
@@ -97,6 +97,11 @@ else if (!empty($_GET['buy'])) $productCode = $_GET['buy'] ;
 
 if (!empty($productCode)) { // process a buy or update request
   $product = $ezpp->getProduct($productCode) ;
+  if (empty($product)) {
+    $product = array() ;
+    $active = false ;
+    $product_name = "This product" ;
+  }
   foreach ($product as $k => $v) $$k = $v ;
   if ($active) {
     $onload = "" ;
@@ -138,8 +143,6 @@ $customLine" ;
     if (function_exists('plugins_url')) echo "<div align='center'>
     <p>If you are not transfered in ten seconds, please click the button below</p>
     <input type='submit' value='Proceed to PayPal'></div>
-    <div id='formHidden' style='display:none'><pre>$formSlashed
-    </pre>
     </div>" ;
     if ($ezDebug) {
       $formSlashed = htmlspecialchars($form) ;
