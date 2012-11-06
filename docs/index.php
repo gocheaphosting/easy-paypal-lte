@@ -42,7 +42,7 @@ function mkTitle($pages) {
 
 function ezppHeader($title, $showLinks=false) {
   $pwd = '..' ;
-  if ($showLinks) $linkText = "<a id='ezlogo' href='http://buy.thulasidas.com/ezpaypal' title='ezPayPal'><img src='$pwd/ezPayPal.png' width='188' height='72' alt='Ez-PayPal'></a>" ;
+  if ($showLinks) $linkText = "<a id='ezlogo' href='http://buy.thulasidas.com/ezpaypal-pro' title='ezPayPal'><img src='$pwd/ezPayPal.png' width='188' height='72' alt='Ez-PayPal'></a>" ;
   else $linkText = "<img src='$pwd/ezPayPal.png' width='188' height='72' alt='Ez-PayPal'>" ;
 
   printf("<!DOCTYPE HTML PUBLIC '-//W3C//DTD HTML 4.01 Transitional//EN'

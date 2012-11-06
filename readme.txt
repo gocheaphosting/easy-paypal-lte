@@ -4,7 +4,7 @@ Donate link: http://buy.thulasidas.com/easy-paypal
 Tags: paypal, paypal ipn, e-commerce, shopping cart, payment gateway, digital goods, ipn, paypal integration
 Requires at least: 3.3
 Tested up to: 3.4
-Stable tag: 3.70
+Stable tag: 3.71
 License: GPL2 or later
 
 Easy PayPal gets you started with your online business. Use PayPal IPN to sell digital goods without a shopping cart or complicated e-commerce setup.
@@ -20,18 +20,19 @@ Do you have an application, PHP package, photograph, PDF book (or any other down
 = Features =
 
 1. Minimal setup and administration load: *Easy PayPal* gets you started with your online shop within minutes, rather than hours and days.
-2. Generous help and hints during setup: Whenever you need help, the information and hint is only a click away. (In fact, only a mouseover away.)
+2. Generous help and hints during setup: Whenever you need help, the information and hint is only a click away in *Easy PayPal*. (In fact, it is only a mouseover away.)
 3. Automatic validation of admin and setup entries to minimize errors: *Easy PayPal* catches all the usual data entry errors so that you can afford to be a bit sloppy.
-4. Very little programming knowledge required: This program is written for creative people who have some digital products to sell. So it doesn't call for any deep computing knowledge. The most you will have to do is perhaps to set permission to a couple of folders.
-5. Handles all the complex PayPal instant notification and data transfer to prevent unauthorized access.
-6. Buyers are automatically redirected to a download page.
-7. Self-service download link retrieval: If the PayPal information is not yet received by your server, your buyer will see a page where he can retrieve his purchase link. (This feature reduced my support load by 90%).
-8. In addition to the download page, an automated email with the download link is sent to your buyer as well. Just in case...
-9. Easy to add new products to your inventory.
-10. Automatic generation of an online shop. Once the first product is added, you can already see it on your online shop.
-11. *New*: Sandbox Mode has been ported from the Pro version to this freely distributed version. Now you have the option to choose PayPal sandbox mode so that you can check your setup before going live.
+4. Very little programming knowledge required: *Easy PayPal* is written for creative people who have some digital products to sell. So it doesn't call for any deep computing knowledge. The most you will have to do is perhaps to set permission to a couple of folders.
+5. IPN handling: *Easy PayPal* handles all the complex PayPal instant notification and data transfer to prevent unauthorized access.
+6. Automatic download pages: Buyers are automatically redirected to a customized download page.
+7. Self-service download link retrieval: If the PayPal information is not yet received by your server, *Easy PayPal* shows your buyer a page where he can retrieve his purchase link. (This feature reduced my support load by 90%).
+8. Automated emails: In addition to the download page, *Easy PayPal* sends an automated email with the download link to your buyer as well. Just in case...
+9. Easy Inventory maintenance: Easy to add new products to your inventory.
+10. Automatic generation of an online shop: Once the first product is added, you can already see it on your *Easy PayPal* online shop.
+11. Sandbox mode: *Easy PayPal* gives you the option to choose PayPal sandbox mode so that you can check your setup before going live.
+12. Timely help: *Easy PayPal* sports a context-sensitive help system, so that you get timely help as you need it.
 
-*Easy PayPal* is available as a WordPress plugin as well as a [standalone package](http://buy.thulasidas.com/ezpaypal "Get ezPayPal for $4.95"). The standalone package is appropriate if you have multiple websites selling your products, but want to keep your sales consolidated. It also sports a context-sensitive help system, so that you get timely help as you need it.
+*Easy PayPal* is available as a [Premium WordPress plugin](http://buy.thulasidas.com/easy-paypal "Get Easy PayPal Pro for $6.95") as well as a [standalone pro package](http://buy.thulasidas.com/ezpaypal-pro "Get ezPayPal for $9.95"). The standalone package is appropriate if you have multiple websites selling your products, but want to keep your sales consolidated.
 
 = Security Features =
 
@@ -73,7 +74,7 @@ Do you have multiple web sites selling digital products? Would you like to conso
 
 *ezPayPal* is designed to be extensible. The following add-on extensions are ready.
 
-1. [ezAffiliates](http://buy.thulasidas.com/ezaffiliates-full "ezPayPal Pro bundled with ezAffiliates for only $12.95"): Create your own affiliate network and go viral by turing your satisfied customers into your advertising affiliatees. This package, built on the pubicly available Affiliates-for-All, integrates perfectly with to automate affiliate sales tracking and commission computation and more.
+1. [ezAffiliates](http://buy.thulasidas.com/ezaffiliates-full "ezPayPal Pro bundled with ezAffiliates for only $12.95"): Create your own affiliate network and go viral by turing your satisfied customers into your advertising affiliatees. This package, built on the publicly available Affiliates-for-All, integrates perfectly with to automate affiliate sales tracking and commission computation and more.
 2. [ezSupport](http://buy.thulasidas.com/ezsupport-full "ezPayPal Pro bundled with ezSupport for only $12.95"): Every complex software project, once deployed, generates significant support load. Most of the support questions are frivilous, where the end-user presents silly issues that are easily resolved by a cursory look at the documentation. How do we ask the end-user to RTFM without antagonizing them? I found that it could be done by switching to a paid support model. I started charging 95 cents per support questions, and my support load went down by two orders of magnitude. This ezSupport package is built on the excellent osTicket program. It works hand in hand with ezPayPal and provides you with a configurable support system.
 
 In the pipeline are the following optional extensions:
@@ -85,22 +86,22 @@ Note that these extensions are designed to work with [Standalone Pro](http://buy
 
 = New in this version =
 
-Bug fixes in shop display.
+Documentation changes, updating screenshots.
 
 == Upgrade Notice ==
 
-= 3.70 =
+= 3.71 =
 
-Bug fixes in shop display. 
+Documentation changes, updating screenshots.
 
 == Screenshots ==
 
-1. Friendly mission control, welcoming you the first time you visit your Easy PayPal installation.
+1. Admin page layout, giving you access to all options and product definitions, with context sensitive help.
 2. Your products automatically displayed by Easy PayPal.
-3. Admin Login panel.
-4. After login, showing the available actions.
-5. The initial setup window. See how the sensitive information is not displayed, and protected against potential hacking attempts.
-6. The Admin Control Panel. (`admin.php`)
+3. Detailed and context-sensitive page help.
+4. Tabbed Admin page for the Pro version.
+5. Additional tools available in the Pro version.
+6. The template editor to customize your emails and download pages.
 7. The download page where your buyer is automatically forwarded to.
 8. If the PayPal information is not yet received by your server, your buyer sees this screen where he can retrieve his purchase link. (This feature reduces the support load 90%).
 9. The automatic email that your buyer will receive in addition to being forwarded to the download page.
@@ -185,6 +186,7 @@ This happens when your permalink structure has not been prettified, in which cas
 
 = History =
 
+* V3.71: Documentation changes, updating screenshots. [Nov 6, 2012]
 * V3.70: Bug fixes in shop display. [Oct 29, 2012]
 * V3.61: Documentation changes only. [Oct 2, 2012]
 * V3.60: Admin page changes to include support option. [Sep 28, 2012]
