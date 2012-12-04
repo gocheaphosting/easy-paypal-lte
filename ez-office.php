@@ -17,13 +17,14 @@ $ezpp = new ezpp($ezDB) ;
 function verifyTxn($saleDetails, $paypalEmail, $product) {
   $ret = array() ;
   if (empty($saleDetails['quantity'])) $saleDetails['quantity'] = 1 ;
-  $check = ($saleDetails['receiver_email'] == $paypalEmail) &&
+  $check = ($saleDetails['receiver_email'] == $paypalEmail ||
+          $saleDetails['business'] == $paypalEmail) &&
     ($saleDetails['item_name'] == $product['product_name']) &&
     ($saleDetails['item_number'] == $product['product_code']) &&
     ($saleDetails['mc_currency'] == $product['mc_currency']) &&
     (!empty($saleDetails['txn_id'])) ;
-  $msg = sprintf("    receiver_email =? paypalEmail =>
-      {$saleDetails['receiver_email']} =? {$paypalEmail} \n
+  $msg = sprintf("    receiver_email (or business) =? paypalEmail =>
+      {$saleDetails['receiver_email']} (or {$saleDetails['business']}) =? {$paypalEmail} \n
     item_name =? product['product_name']) =>
       {$saleDetails['item_name']} =? {$product['product_name']} \n
     item_number =? product['product_code'] =>
