@@ -121,7 +121,7 @@ $products['mc_currency'] =
     'options' => array('USD', 'AUD', 'BRL', 'CAD', 'CZK', 'DKK', 'EUR', 'HKD', 'HUF', 'ILS', 'JPY', 'MYR', 'MXN', 'NOK', 'NZD', 'PHP', 'PLN', 'GBP', 'SGD', 'SEK', 'CHF', 'TWD', 'THB', 'TRY')) ;
 $products['no_shipping'] =
   array('name' => 'Shipping Address Needed',
-    'help' => 'Specify whether PayPal will ask for a shipping address for this product: <ol start=0><li> Prompt for (but not require) an address</li><li> Do not prompt for an address</li><li> Prompt for an address, and require one</li></ol>',
+    'help' => 'Specify whether PayPal will ask for a shipping address for this product: <ul><li>0 &rarr; Prompt for a shipping address</li><li>1 &rarr;  Do not prompt for an address</li><li>2 &rarr;  Require a shipping address</li></ul>',
     'type' => 'select',
     'value' => '1',
     'options' => array('0','1','2')) ;
@@ -179,7 +179,7 @@ function checkStorage($storage0){
         $success = true ;
       }
       else {
-        if (chmod($storage, 0777)) {
+        if (@chmod($storage, 0777)) {
           $success = true ;
         }
         else { // trouble setting the permission

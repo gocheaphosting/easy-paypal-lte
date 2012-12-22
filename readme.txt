@@ -3,8 +3,8 @@ Contributors: manojtd
 Donate link: http://buy.thulasidas.com/easy-paypal
 Tags: paypal, paypal ipn, e-commerce, shopping cart, payment gateway, digital goods, ipn, paypal integration
 Requires at least: 3.3
-Tested up to: 3.4
-Stable tag: 3.72
+Tested up to: 3.5
+Stable tag: 3.73
 License: GPL2 or later
 
 Easy PayPal gets you started with your online business. Use PayPal IPN to sell digital goods without a shopping cart or complicated e-commerce setup.
@@ -86,13 +86,13 @@ Note that these extensions are designed to work with [Standalone Pro](http://buy
 
 = New in this version =
 
-Using business name in validating PayPal transactions.
+Minor fixes, testing with WP3.5.
 
 == Upgrade Notice ==
 
-= 3.72 =
+= 3.73 =
 
-Using business name in validating PayPal transactions.
+Minor fixes, testing with WP3.5.
 
 == Screenshots ==
 
@@ -186,6 +186,7 @@ This happens when your permalink structure has not been prettified, in which cas
 
 = History =
 
+* V3.73: Minor fixes, testing with WP3.5. [Dec 22, 2012]
 * V3.72: Using business name in validating PayPal transactions. [Dec 5, 2012]
 * V3.71: Documentation changes, updating screenshots. [Nov 6, 2012]
 * V3.70: Bug fixes in shop display. [Oct 29, 2012]
