@@ -3,7 +3,7 @@
   Plugin Name: Easy PayPal
   Plugin URI: http://www.thulasidas.com/plugins/ezpaypal
   Description: <em>Lite Version</em>: Easiest way to start selling your digital goods online. Go to <a href="options-general.php?page=easy-paypal-lite.php">Settings &rarr; Easy PayPal</a> to set it up, or use the "Settings" link on the right.
-  Version: 3.73
+  Version: 3.74
   Author: Manoj Thulasidas
   Author URI: http://www.thulasidas.com
 */
@@ -152,14 +152,14 @@ if (class_exists("ezPayPal")) {
       exit(0) ;
     }
     add_action('admin_menu', 'ezPayPal_admin_menu') ;
-    add_shortcode('ezshop', array(&$ezPayPal, 'displayShop')) ;
+    add_shortcode('ezshop', array($ezPayPal, 'displayShop')) ;
     function ezPayPal_admin_menu() {
       global $ezPayPal ;
       $mName = 'Easy PayPal' ;
       $page = add_options_page($mName, $mName, 'activate_plugins', basename(__FILE__),
-              array(&$ezPayPal, 'printAdminPage'));
-      add_action( 'admin_print_styles-' . $page, array(&$ezPayPal, 'ezppStyles') );
-      add_action( 'admin_print_scripts-' . $page, array(&$ezPayPal, 'ezppScripts') );
+              array($ezPayPal, 'printAdminPage'));
+      add_action( 'admin_print_styles-' . $page, array($ezPayPal, 'ezppStyles') );
+      add_action( 'admin_print_scripts-' . $page, array($ezPayPal, 'ezppScripts') );
     }
     $me = basename($ezPayPal->plgDir) . '/' . basename(__FILE__) ;
     add_action("activate_$me", array("ezPayPal", 'install')) ;

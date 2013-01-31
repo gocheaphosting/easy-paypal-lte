@@ -7,8 +7,8 @@ include_once('ezpp.php') ;
 
 $html = new htmlHelper() ;
 $ezDB = new dbHelper();
-$form = new formHelper(&$ezDB, &$html) ; // will die if DB connection fails
-$ezpp = new ezpp(&$ezDB) ;
+$form = new formHelper($ezDB, &$html) ; // will die if DB connection fails
+$ezpp = new ezpp($ezDB) ;
 
 if (!$ezpp->isLoggedIn()) {
   if (file_exists("ez-manoj.php")) header("location:ez-manoj.php") ;
