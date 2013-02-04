@@ -3,7 +3,7 @@
   Plugin Name: Easy PayPal
   Plugin URI: http://www.thulasidas.com/plugins/ezpaypal
   Description: <em>Lite Version</em>: Easiest way to start selling your digital goods online. Go to <a href="options-general.php?page=easy-paypal-lite.php">Settings &rarr; Easy PayPal</a> to set it up, or use the "Settings" link on the right.
-  Version: 3.74
+  Version: 3.75
   Author: Manoj Thulasidas
   Author URI: http://www.thulasidas.com
 */
@@ -44,7 +44,7 @@ else {
       else
         extract(shortcode_atts(array("buy" => "",
               "show" => "",
-              "link" => ""), $atts)) ;
+              "link" => "yes"), $atts)) ;
       if (!empty($link) && strtolower($link) != "no") {
         if (!empty($buy)) $getParam="buy=$buy" ;
         if (!empty($show)) $getParam="show=$show" ;
@@ -136,6 +136,9 @@ else {
       else { // the installation failed
         echo "Trouble installing ezPayPal!" ;
       }
+      echo "<div class='updated' onclick='popUp(\"{$this->plgURL}/docs/index.php?wordpress\");return false;' target='_blank' style='font-weight:bold;padding:5px;color:green;cursor:pointer;width:590px;margin:0px auto;'>" ;
+      echo "Quickstart Guide: Click here for quick help on how to use this plugin.<img title='Click for Help' style='float:right;cursor:pointer;' alt='(?)' onmouseover=\"Tip('Need help?<br />Click me!', WIDTH, 70)\" onmouseout=\"UnTip()\" src='{$this->plgURL}/help.png' />" ;
+      echo "</div><br />" ;
       $plgName = "easy-paypal" ;
       echo "<div class='updated' style='width:800px;margin:0px auto;'>" ;
       include "support.php" ;

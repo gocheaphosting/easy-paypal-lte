@@ -3,7 +3,7 @@
 <p>The moment you define your first product using the Admin Control Panel,
 it is ready for sale on your shop. This chapter describes the features of
 your shop and tells you how to link to it from other web pages of yours or
-your affiliates.</p><?php include('help.html') ; ?>
+your affiliates.</p>
 
 <blockquote>
   <strong>Note:</strong> The screenshots below are from the Pro version of
@@ -19,41 +19,7 @@ standalone versions. In the WordPress plugin versions, you will use the
 so-called shortcodes to access the shop front, as described
 below.</p><?php img("01") ?>
 
-<h3>WordPress Plugin Versions</h3>
-
-<p>Once a product is added to your repository, your e-shop is ready to be
-displayed on your blog. The display is controlled using WordPress
-ShortCodes. In order to show the whole shop, create a new page or post
-with the short code <code>[ezshop]</code>. This will present your whole
-e-shop in a neat tabular form within the page or post.</p>
-
-<p>Note that by default, a page with the slug ez-shop is created for
-you. Please do not delete this page even if you create other e-shop
-pages. This page is used as the IPN listener, which will receive the
-messages from PayPal. This page also serves as your digital goods
-delivery portal. In other words, if you delete this page, your <?php
-ezpp() ?> e-shop may not work at all.</p>
-
-<p>Note also that you have to use pretty permalinks for the
-auto-generated shop front to work. Take a look at the URL address of
-the shop front (in the address bar on your web browser). Does it say
-something like http://your.blog/?p=123? If so, go to your WordPress
-dashboard, Settings -> Permalinks and select any setting other than
-the (ugly) default one.</p>
-
-<p>Each product can be displayed as a "Buy Now" kind of link with the
-short code <code>[ezshop buy='prodID' link='yes']Buy this product
-now![/ezshop]</code>. This will insert a link, which when clicked, will
-take your reader to a PayPal page to buy the product.</p>
-
-<p>If you drop the <code>link='yes'</code> part, the page will transfer
-the reader to PayPal without waiting for user click.</p>
-
-<p>You can display your product links using <code>[ezshop show='prodID'
-link='yes']Buy this product now![/ezshop]</code>. This part is not fully
-developed yet, but it will show page describing your product benefits,
-with a count-down timer which will take your reader to PayPal in fifteen
-seconds.</p>
+<?php include('wordpress.html') ; ?>
 
 <h3>Standalone Versions</h3>
 
