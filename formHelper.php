@@ -370,6 +370,7 @@ else {
           $title = "Error during file upload" ;
           if (!@move_uploaded_file($tmpName, $randomName))
             $rowSet['file']['warning'] = sprintf("<font color='red'>Error moving the file. Please ensure that the storage directory exists and is writeable. </font><span " . 'onmouseover="Tip(\'%s\', WIDTH, 335, TITLE, \'%s\', FIX, [this, -10, 5])" onmouseout="UnTip()" onclick="window.prompt(\'Copy to clipboard: Ctrl/Cmd-C:\', \'%s\')"' . ">[?]</span>", $tip, $title, $command) ;
+/* Paranoid safety measures suspended for now
           else {
             // ensure that nobody can run any php scripts in $storage
             $fpx = @fopen("$storage/.htaccess", 'w') ;
@@ -379,6 +380,7 @@ else {
             }
             if (!empty($fileName)) @unlink($fileName) ; // remove the existing file
           }
+*/
         }
         else
           $rowSet['file']['warning'] = "Empty file to be uploaded?!" ;
