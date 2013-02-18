@@ -70,7 +70,7 @@ else {
 }
 
 if (empty($_POST) && empty($_GET['show']) && empty($_GET['buy'])) { // list all items
-  $html->ezppHeader('ezPayPal Shop', "Enter Quantity and Click Buy&nbsp|&nbsp;<a href='$admin'>Admin</a>") ;
+  $html->ezppHeader('ezPayPal Shop', "Enter Quantity and Click Buy&nbsp;|&nbsp;<a href='$admin'>Admin</a>") ;
   $products = $ezDB->getData("products") ;
   sort($products) ;
   echo '<form name="form1"><input type="hidden" name="buy"><input type="hidden" name="quantity"><table width="90%" cellpadding="5px" align="center" class="setup">' ;
