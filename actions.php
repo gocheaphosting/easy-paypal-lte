@@ -54,7 +54,7 @@ function mkActionURL($k, $a) {
     $confirm = "$name is an optional feature of the Pro Standalone version of this plugin. Would you like to purchase it for \$$price? ($name can be added on later for \$4.95.)" ;
   }
   $help = sprintf( ' onmouseover="Tip(\'%s\', WIDTH, '. $width . ', TITLE, \'%s\', ' .
-          'FIX, [this, 5, 2])" onmouseout="UnTip()" ', $a['help'], $name);
+          'FIX, [this, 5, 2])" onmouseout="UnTip()" ', htmlspecialchars($a['help']), $name);
   if ($a['needPro'])
     if ($isPro) $ret = sprintf("'%spro/%s.php' %s",
                        $_SESSION['ezppURL'], $k, $help) ;

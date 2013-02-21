@@ -330,10 +330,10 @@ else {
           $help = $rowSet[$associatedKey]['help'] ;
           switch($type){
           case 'button':
-            $rowSet[$k]['inline'] = sprintf("<input type='%s' value='Show' onmouseover=\"Tip('%s', WIDTH, 370, TITLE, '%s', FIX, [this, -10, 5])\" onmouseout=\"UnTip()\" onclick=\"window.prompt('Copy to clipboard: Ctrl/Cmd-C:', '%s')\">", $type, "Hidden value associated with this option is:<br /><code>$associatedKey => $associatedVal</code><br /><b><em>Click to reveal and copy to clipboard.</em></b><br />", "Associated Value", $associatedVal) ;
+            $rowSet[$k]['inline'] = sprintf("<input type='%s' value='Show' onmouseover=\"Tip('%s', WIDTH, 370, TITLE, '%s', FIX, [this, -10, 5])\" onmouseout=\"UnTip()\" onclick=\"window.prompt('Copy to clipboard: Ctrl/Cmd-C:', '%s')\">", $type, htmlspecialchars("Hidden value associated with this option is:<br /><code>$associatedKey => $associatedVal</code><br /><b><em>Click to reveal and copy to clipboard.</em></b><br />"), "Associated Value", $associatedVal) ;
             break ;
           case 'text':
-            $rowSet[$k]['inline'] = sprintf("<input type='%s' value='%s' onmouseover=\"Tip('%s', WIDTH, 250, TITLE, '%s', FIX, [this, -10, 5])\" onmouseout=\"UnTip()\" name='%s' id='%s'>", $type, $associatedVal, $help, "Associated Value", $associatedKey, $associatedKey) ;
+            $rowSet[$k]['inline'] = sprintf("<input type='%s' value='%s' onmouseover=\"Tip('%s', WIDTH, 250, TITLE, '%s', FIX, [this, -10, 5])\" onmouseout=\"UnTip()\" name='%s' id='%s'>", $type, $associatedVal, htmlspecialchars($help), "Associated Value", $associatedKey, $associatedKey) ;
           }
         }
       }
@@ -366,10 +366,10 @@ else {
           if (!is_dir($storage) || !is_writeable($storage)) {
             @exec($command) ;
           }
-          $tip = sprintf("In order to move the file to the storage location, log on your server, and issue commands equivalent to:<br><code>$command.</code><br /><b>Click on [?] to copy the actual command.</b>");
+          $tip = htmlspecialchars("In order to move the file to the storage location, log on your server, and issue commands equivalent to:<br><code>$command.</code><br /><b>Click on [?] to copy the actual command.</b>");
           $title = "Error during file upload" ;
           if (!@move_uploaded_file($tmpName, $randomName))
-            $rowSet['file']['warning'] = sprintf("<font color='red'>Error moving the file. Please ensure that the storage directory exists and is writeable. </font><span " . 'onmouseover="Tip(\'%s\', WIDTH, 335, TITLE, \'%s\', FIX, [this, -10, 5])" onmouseout="UnTip()" onclick="window.prompt(\'Copy to clipboard: Ctrl/Cmd-C:\', \'%s\')"' . ">[?]</span>", $tip, $title, $command) ;
+            $rowSet['file']['warning'] = sprintf("<font color='red'>Error moving the file. Please ensure that the storage directory exists and is writeable. </font><span " . 'onmouseover="Tip(\'%s\', WIDTH, 335, TITLE, \'%s\', FIX, [this, -10, 5])" onmouseout="UnTip()" onclick="window.prompt(\'Copy to clipboard: Ctrl/Cmd-C:\', \'%s\')"' . ">[?]</span>", htmlspecialchars($tip), $title, $command) ;
 /* Paranoid safety measures suspended for now
           else {
             // ensure that nobody can run any php scripts in $storage

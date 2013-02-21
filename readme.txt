@@ -4,7 +4,7 @@ Donate link: http://buy.thulasidas.com/easy-paypal
 Tags: paypal, paypal ipn, e-commerce, shopping cart, payment gateway, digital goods, ipn, paypal integration
 Requires at least: 3.3
 Tested up to: 3.5
-Stable tag: 3.78
+Stable tag: 3.79
 License: GPL2 or later
 
 Easy PayPal gets you started with your online business. Use PayPal IPN to sell digital goods without a shopping cart or complicated e-commerce setup.
@@ -86,13 +86,13 @@ Note that these extensions are designed to work with [Standalone Pro](http://buy
 
 = New in this version =
 
-Proper use of SESSION variables.
+Using form submit (instead of JavaScript) in product delivery module. Sanitizing tooltips.
 
 == Upgrade Notice ==
 
-= 3.78 =
+= 3.79 =
 
-Proper use of SESSION variables.
+Using form submit (instead of JavaScript) in product delivery module. Sanitizing tooltips.
 
 == Screenshots ==
 
@@ -186,6 +186,7 @@ This happens when your permalink structure has not been prettified, in which cas
 
 = History =
 
+* V3.79: Using form submit (instead of JavaScript) in product delivery module. Sanitizing tooltips. [Feb 21, 2013]
 * V3.78: Proper use of SESSION variables. [Feb 18, 2013]
 * V3.77: Serious bug fix. [Feb 15, 2013]
 * V3.76: Bug fix in short code handling and toning down aggressive security checks. [Feb 13, 2013]

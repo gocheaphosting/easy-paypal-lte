@@ -51,12 +51,12 @@ else {
   </div>
   <div id='nav'>
     <ul id='sub_nav'>
-      <li>%s <img onclick='popUp(\"$pwd/docs/index.php?$self\");return false;' target='_blank' style='float:right;cursor:pointer;' title='Click for Help' alt='(?)' onmouseover=\"Tip('Need help?<br />Click me!', WIDTH, 70)\" onmouseout=\"UnTip()\" src='$pwd/help.png' /></li>
+      <li>%s <img onclick='popUp(\"$pwd/docs/index.php?$self\");return false;' target='_blank' style='float:right;cursor:pointer;' title='Click for Help' alt='(?)' onmouseover=\"Tip('%s', WIDTH, 70)\" onmouseout=\"UnTip()\" src='$pwd/help.png' /></li>
     </ul>
   </div>
   <div class='clear'></div>
      <div id='ezcontent'>
-       <div>", $welcome, $heading) ;
+       <div>", $welcome, $heading, htmlspecialchars("Need help?<br />Click me!")) ;
       if (!empty($this->err))
         echo "<p align='center' id='errormessage'>{$this->err}</p>" ;
       if (!empty($this->info))

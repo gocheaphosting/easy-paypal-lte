@@ -73,16 +73,7 @@ else {
   if (empty($_POST['txn_id']) && empty($_GET['txn_id'])) {
     $pageHtml = "<h4>Thank you for your purchase</h4><br />
 Unfortunately, your purchase details haven't been posted by PayPal yet. But fear not, you can retrieve the download link below.<br /><br />" ;
-    $pageHtml .= "<script> <!--
-    var targetURL='$targetURL'
-    function getIt() {
-         txnID = document.getElementById('txnID') ;
-         strTxnID = encodeURIComponent(txnID.value.toLowerCase().replace('mailto:','')) ;
-         window.location=targetURL + strTxnID ;
-         txnID.value = strTxnID ;
-      }
-//--></script>" ;
-    $pageHtml .= "<font color='red'><p>Please enter your <b>PayPal email address</b> below:<p><center><input type='text' size='20' id='txnID'>&nbsp;<input type='button' id='download' value='Retrieve Download Link' onclick='getIt()'>
+   $pageHtml .= "<font color='red'><p>Please enter your <b>PayPal email address</b> below:<p><center><form action='$returnPage' method='get'><input type='hidden' name='delivery'><input type='text' size='20' name='txn_id'>&nbsp;<input type='submit' id='download' value='Retrieve Download/Service Link'></form>
     </center></p><p>Plese be sure to use the <b>PayPal email address</b>, where you got the mail with the subject 'Receipt for Your Payment to {$options['support_name']}'.<p></font>";
     $pageHtml .= "<p>If you haven't received the PayPal message, please wait. You will soon receive it and an email from me ({$options['support_email']}) with the download link. If you don't find either in your Inbox in the next five minutes or so, please be sure to check your Junk/Spam folders as well.</p><p>You can also <a href='mailto:{$options['support_email']}'>contact me</a> for the download link.</p>" ;
   }
