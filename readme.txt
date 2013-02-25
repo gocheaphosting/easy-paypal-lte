@@ -4,7 +4,7 @@ Donate link: http://buy.thulasidas.com/easy-paypal
 Tags: paypal, paypal ipn, e-commerce, shopping cart, payment gateway, digital goods, ipn, paypal integration
 Requires at least: 3.3
 Tested up to: 3.5
-Stable tag: 3.79
+Stable tag: 3.80
 License: GPL2 or later
 
 Easy PayPal gets you started with your online business. Use PayPal IPN to sell digital goods without a shopping cart or complicated e-commerce setup.
@@ -86,13 +86,13 @@ Note that these extensions are designed to work with [Standalone Pro](http://buy
 
 = New in this version =
 
-Using form submit (instead of JavaScript) in product delivery module. Sanitizing tooltips.
+Adding support for [raw] shorttag. Improvements to session handling and delivery module.
 
 == Upgrade Notice ==
 
-= 3.79 =
+= 3.80 =
 
-Using form submit (instead of JavaScript) in product delivery module. Sanitizing tooltips.
+Adding support for [raw] shorttag. Improvements to session handling and delivery module
 
 == Screenshots ==
 
@@ -171,6 +171,14 @@ Note that the drop-down menu is editable. To add a new product, just type in a n
 
 This happens when your permalink structure has not been prettified, in which case WordPress doesn't use the page slug for the auto-generated shop page. To confirm, look at the URL address of the shop front (in the address bar on your web browser). Does it say something like http://your.blog/?p=123? If so, go to your WordPress dashboard, Settings -> Permalinks and select any setting other than the (ugly) default one.
 
+= My shop page seems messed up. Formatting and line widths are all wrong. How can I fix it? =
+
+The format may get messed up when your theme tries to smart format the page by adding `<p>` or `<br />` tags. If you can disable it for your theme (by adding a `[raw]` tag for instance, as with the themes by MySiteMyWay), please do so for the auto-generated ez-shop page. You may also have to deactivate the [`wpautop()`](http://codex.wordpress.org/Function_Reference/wpautop "Info from WordPress") filter, probably by using [this plugin](http://wordpress.org/extend/plugins/wpautop-control/ "Plugin recommended in WordPress Codex").
+
+= I see some text ([raw] and [/raw]) around my shop page. How can I get rid of it? =
+
+For themes from MySiteMyWay, this plugin adds these short tags in an attempt to prevent auto-formatting. If you switched to a new theme, you may have these tags visible. You can get rid of them by simply editing the auto-generated ez-shop page.
+
 == Change Log ==
 
 = Future Plans =
@@ -186,6 +194,7 @@ This happens when your permalink structure has not been prettified, in which cas
 
 = History =
 
+* V3.80: Adding support for [raw] shorttag. Improvements to session handling and delivery module [Feb 25, 2013]
 * V3.79: Using form submit (instead of JavaScript) in product delivery module. Sanitizing tooltips. [Feb 21, 2013]
 * V3.78: Proper use of SESSION variables. [Feb 18, 2013]
 * V3.77: Serious bug fix. [Feb 15, 2013]

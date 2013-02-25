@@ -3,7 +3,7 @@
   Plugin Name: Easy PayPal
   Plugin URI: http://www.thulasidas.com/plugins/ezpaypal
   Description: <em>Lite Version</em>: Easiest way to start selling your digital goods online. Go to <a href="options-general.php?page=easy-paypal-lite.php">Settings &rarr; Easy PayPal</a> to set it up, or use the "Settings" link on the right.
-  Version: 3.79
+  Version: 3.80
   Author: Manoj Thulasidas
   Author URI: http://www.thulasidas.com
 */
@@ -67,8 +67,13 @@ else {
     }
     static function createShop() {
       global $user_ID;
+      global $shortcode_tags;
       $page['post_type'] = 'page';
-      $page['post_content'] = '[ezshop]';
+      $useRawTag = true ; // TODO: Make this an option (in option_meta)
+      if ($useRawTag && class_exists("Mysitemyway") && array_key_exists("raw", $shortcode_tags))
+        $page['post_content'] = '[raw][ezshop][/raw]';
+      else
+        $page['post_content'] = '[ezshop]';
       $page['post_parent'] = 0;
       $page['post_author'] = $user_ID;
       $page['post_status'] = 'publish';
@@ -112,6 +117,9 @@ else {
         wp_delete_post($shopPage) ;
       }
       delete_option($mOptions) ;
+    }
+    static function session_start() {
+      if (!session_id()) @session_start() ;
     }
     function printAdminPage() {
       $_SESSION['loginMessage'] = '' ;
@@ -167,6 +175,6 @@ if (class_exists("ezPayPal")) {
     $me = basename($ezPayPal->plgDir) . '/' . basename(__FILE__) ;
     add_action("activate_$me", array("ezPayPal", 'install')) ;
     add_action("deactivate_$me", array("ezPayPal", 'uninstall')) ;
-    if (!session_id()) add_action( 'init', 'session_start' ) ;
+    add_action('init', array("EzPayPal", 'session_start')) ;
   }
 }
