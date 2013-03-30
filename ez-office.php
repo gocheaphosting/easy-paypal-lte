@@ -146,8 +146,10 @@ else {
         $ezppLog .= "$dbStatus\n";
         if ($verifyTxn['purchaseCheck']) {
           $ezppLog .= "\nIPN INFO [Sales Table Entry]\n";
+          if (!empty($product['expire_hours'])) $expire_hours = $product['expire_hours'] ;
+          else $expire_hours = $options['expire_hours'] ;
           $saleInfo = $ezpp->mkSaleInfo($saleDetails, $sandboxMode,
-                      $product['version'], $options['expire_hours']) ;
+                      $product['version'], $expire_hours) ;
           if (function_exists('mkStatus'))
             $saleInfo['purchase_status'] = mkStatus($saleDetails) ;
           $ezppLog .= $ezpp->putSale($saleInfo) . "\n" ;
