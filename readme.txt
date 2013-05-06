@@ -4,7 +4,7 @@ Donate link: http://buy.thulasidas.com/easy-paypal
 Tags: paypal, paypal ipn, e-commerce, shopping cart, payment gateway, digital goods, ipn, paypal integration
 Requires at least: 3.3
 Tested up to: 3.5
-Stable tag: 3.81
+Stable tag: 3.82
 License: GPL2 or later
 
 Easy PayPal gets you started with your online business. Use PayPal IPN to sell digital goods without a shopping cart or complicated e-commerce setup.
@@ -15,7 +15,7 @@ Easy PayPal gets you started with your online business. Use PayPal IPN to sell d
 
 Do you have an application, PHP package, photograph, PDF book (or any other downloadable item) to sell? Find the set up of a shopping cart system too overwhelming? *Easy PayPal* may be the right solution for you.
 
-*Easy PayPal* is a PHP package that requires PHP and MySQL on your web server. Most web servers have them.
+Aiming at ease of use, *Easy PayPal* makes its admin page as simple as possible, helping the user concentrate on improving their products rather than maintaining them in the plugin.
 
 = Features =
 
@@ -86,13 +86,13 @@ Note that these extensions are designed to work with [Standalone Pro](http://buy
 
 = New in this version =
 
-Handling product-specific link expiry.
+Minor fix in checking for the existence of the Pro version.
 
 == Upgrade Notice ==
 
-= 3.81 =
+= 3.82 =
 
-Handling product-specific link expiry. 
+Minor fix in checking for the existence of the Pro version.
 
 == Screenshots ==
 
@@ -194,6 +194,7 @@ For themes from MySiteMyWay, this plugin adds these short tags in an attempt to 
 
 = History =
 
+* V3.82: Minor fix in checking for the existence of the Pro version. [May 6, 2013]
 * V3.81: Handling product-specific link expiry. [Mar 29, 2013]
 * V3.80: Adding support for [raw] shorttag. Improvements to session handling and delivery module [Feb 25, 2013]
 * V3.79: Using form submit (instead of JavaScript) in product delivery module. Sanitizing tooltips. [Feb 21, 2013]
