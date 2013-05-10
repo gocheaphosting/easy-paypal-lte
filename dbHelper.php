@@ -1,4 +1,5 @@
 <?php
+if (class_exists("dbHelper")) return;
 class dbHelper {
   var $valid ;
   function __construct($setupIfNeeded = true, $prefix = ''){

@@ -1,7 +1,6 @@
 <?php
 if (class_exists("ezpp")) {
-  echo "Problem, class ezpp exists! \nCannot safely continue.\n" ;
-  exit ;
+  return ;
 }
 else {
   class ezpp {
