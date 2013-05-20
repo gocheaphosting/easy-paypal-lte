@@ -45,6 +45,12 @@ function ezppHeader($title, $showLinks=false) {
   if ($showLinks) $linkText = "<a id='ezlogo' href='http://buy.thulasidas.com/ezpaypal-pro' title='ezPayPal'><img src='$pwd/ezPayPal.png' width='188' height='72' alt='Ez-PayPal'></a>" ;
   else $linkText = "<img src='$pwd/ezPayPal.png' width='188' height='72' alt='Ez-PayPal'>" ;
 
+  $googleTranslator = "<span id='GoogleTranslatorWidget' style='float:right;text-align:center;padding:-1px;'><span id='google_translate_element'></span><script type='text/javascript'>
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+}
+</script><script type='text/javascript' src='//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit'></script></span>";
+
   printf("<!DOCTYPE HTML PUBLIC '-//W3C//DTD HTML 4.01 Transitional//EN'
 'http://www.w3.org/TR/html4/loose.dtd'>
 <html>
@@ -53,8 +59,6 @@ function ezppHeader($title, $showLinks=false) {
 <title>%s</title>
 <link rel='stylesheet' href='$pwd/ezpp.css' media='screen'>
 <link rel='stylesheet' href='$pwd/ezpp.css' media='print'>
-<link rel='stylesheet' href='$pwd/editableSelect.css' media='screen'>
-<script type='text/javascript' src='$pwd/editableSelect.js'></script>
 </head>
 <body style='font-size:11pt'>
 <script type='text/javascript' src='$pwd/wz_tooltip.js'></script>
@@ -66,6 +70,7 @@ function ezppHeader($title, $showLinks=false) {
   <div id='nav'>
     <ul id='sub_nav'>
       <li>%s</li>
+      <li>$googleTranslator</li>
     </ul>
   </div>
   <div class='clear'></div>
