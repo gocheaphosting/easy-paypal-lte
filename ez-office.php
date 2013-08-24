@@ -113,9 +113,10 @@ $ezppLog .= "\nPOST DATA [Sale Details Table Entry]\n" ;
 $ezppLog .= $ezpp->putSaleDetails($saleDetails) ;
 $options = $ezDB->getRowData("options") ;
 
-$header = "POST /cgi-bin/webscr HTTP/1.0\r\n";
+$header  = "POST /cgi-bin/webscr HTTP/1.1\r\n";
 $header .= "Content-Type: application/x-www-form-urlencoded\r\n";
-$header .= "Content-Length: " . strlen($req) . "\r\n\r\n";
+$header .= "Host: $paypalIPN\r\n";
+$header .= "Connection: close\r\n\r\n";
 
 $fp = fsockopen ('ssl://'.$paypalIPN, 443, $errno, $errstr, 30);
 if (!$fp) {

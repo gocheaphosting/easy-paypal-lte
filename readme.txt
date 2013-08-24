@@ -3,8 +3,8 @@ Contributors: manojtd
 Donate link: http://buy.thulasidas.com/easy-paypal
 Tags: paypal, paypal ipn, e-commerce, shopping cart, payment gateway, digital goods, ipn, paypal integration
 Requires at least: 3.3
-Tested up to: 3.5
-Stable tag: 3.90
+Tested up to: 3.6
+Stable tag: 4.00
 License: GPL2 or later
 
 Easy PayPal gets you started with your online business. Use PayPal IPN to sell digital goods without a shopping cart or complicated e-commerce setup.
@@ -31,6 +31,7 @@ Aiming at ease of use, *Easy PayPal* makes its admin page as simple as possible,
 10. Automatic generation of an online shop: Once the first product is added, you can already see it on your *Easy PayPal* online shop.
 11. Sandbox mode: *Easy PayPal* gives you the option to choose PayPal sandbox mode so that you can check your setup before going live.
 12. Timely help: *Easy PayPal* sports a context-sensitive help system, so that you get timely help as you need it.
+13. Now available in your own language using machine translation curtsey of Google and Microsoft.
 
 *Easy PayPal* is available as a [Premium WordPress plugin](http://buy.thulasidas.com/easy-paypal "Get Easy PayPal Pro for $6.95") as well as a [standalone pro package](http://buy.thulasidas.com/ezpaypal-pro "Get ezPayPal for $9.95"). The standalone package is appropriate if you have multiple websites selling your products, but want to keep your sales consolidated.
 
@@ -86,13 +87,13 @@ Note that these extensions are designed to work with [Standalone Pro](http://buy
 
 = New in this version =
 
-Introducing internationalization using Google/Microsoft Translate Widgets.
+Compatibility checks with WordPress V3.6. Including HTTP1.1 headers as specified by PayPal.
 
 == Upgrade Notice ==
 
-= 3.90 =
+= 4.00 =
 
-Introducing internationalization using Google/Microsoft Translate Widgets.
+Compatibility checks with WordPress V3.6. Including HTTP1.1 headers as specified by PayPal.
 
 == Screenshots ==
 
@@ -194,6 +195,7 @@ For themes from MySiteMyWay, this plugin adds these short tags in an attempt to 
 
 = History =
 
+* V4.00: Compatibility checks with WordPress V3.6. Including HTTP1.1 headers as specified by PayPal. [Aug 23, 2013]
 * V3.90: Introducing internationalization using Google/Microsoft Translate Widgets. [May 20, 2013]
 * V3.83: Fixes for compatibility with Easy Text Links Pro. [May 10, 2013]
 * V3.82: Minor fix in checking for the existence of the Pro version. [May 6, 2013]
