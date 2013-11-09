@@ -3,8 +3,8 @@ Contributors: manojtd
 Donate link: http://buy.thulasidas.com/easy-paypal
 Tags: paypal, paypal ipn, e-commerce, shopping cart, payment gateway, digital goods, ipn, paypal integration
 Requires at least: 3.3
-Tested up to: 3.6
-Stable tag: 4.00
+Tested up to: 3.7
+Stable tag: 4.10
 License: GPL2 or later
 
 Easy PayPal gets you started with your online business. Use PayPal IPN to sell digital goods without a shopping cart or complicated e-commerce setup.
@@ -87,13 +87,13 @@ Note that these extensions are designed to work with [Standalone Pro](http://buy
 
 = New in this version =
 
-Compatibility checks with WordPress V3.6. Including HTTP1.1 headers as specified by PayPal.
+Compatibility checks with WordPress V3.7.
 
 == Upgrade Notice ==
 
-= 4.00 =
+= 4.10 =
 
-Compatibility checks with WordPress V3.6. Including HTTP1.1 headers as specified by PayPal.
+Compatibility checks with WordPress V3.7.
 
 == Screenshots ==
 
@@ -195,6 +195,7 @@ For themes from MySiteMyWay, this plugin adds these short tags in an attempt to 
 
 = History =
 
+* V4.10: Compatibility with WordPress V3.7. [Nov 9, 2013]
 * V4.00: Compatibility checks with WordPress V3.6. Including HTTP1.1 headers as specified by PayPal. [Aug 23, 2013]
 * V3.90: Introducing internationalization using Google/Microsoft Translate Widgets. [May 20, 2013]
 * V3.83: Fixes for compatibility with Easy Text Links Pro. [May 10, 2013]
