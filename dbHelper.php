@@ -49,7 +49,7 @@ class dbHelper {
     else return $str . "<br />" . $this->error() ;
   }
   function link($dieOnError=true, $createDB=false) {
-    if (!mysql_connect($this->host, $this->usr, $this->pwd))
+    if (!@mysql_connect($this->host, $this->usr, $this->pwd))
       return $this->edie("Unable to connect to the DB server.\nPlease check your user name and password", $dieOnError);
     if ($createDB) {
       $sql = "CREATE DATABASE IF NOT EXISTS `" . $this->name . "`";

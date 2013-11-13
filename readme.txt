@@ -4,7 +4,7 @@ Donate link: http://buy.thulasidas.com/easy-paypal
 Tags: paypal, paypal ipn, e-commerce, shopping cart, payment gateway, digital goods, ipn, paypal integration
 Requires at least: 3.3
 Tested up to: 3.7
-Stable tag: 4.10
+Stable tag: 4.11
 License: GPL2 or later
 
 Easy PayPal gets you started with your online business. Use PayPal IPN to sell digital goods without a shopping cart or complicated e-commerce setup.
@@ -87,13 +87,13 @@ Note that these extensions are designed to work with [Standalone Pro](http://buy
 
 = New in this version =
 
-Compatibility checks with WordPress V3.7.
+Bug fixes to suppress notices.
 
 == Upgrade Notice ==
 
-= 4.10 =
+= 4.11 =
 
-Compatibility checks with WordPress V3.7.
+Bug fixes to suppress notices.
 
 == Screenshots ==
 
@@ -180,6 +180,16 @@ The format may get messed up when your theme tries to smart format the page by a
 
 For themes from MySiteMyWay, this plugin adds these short tags in an attempt to prevent auto-formatting. If you switched to a new theme, you may have these tags visible. You can get rid of them by simply editing the auto-generated ez-shop page.
 
+= I change the currency in the product definition, but my sale page shows Dollar sign. Why? =
+
+Full multi-currency support is available only in the [Pro Version](http://buy.thulasidas.com/easy-paypal "Get Easy PayPal Pro for $6.95"). I tried porting it to the lite version, but it turned out to be too complicated.
+
+= I don't like the auto-generated shop page. Can you modify it? =
+
+The ez-shop page is not meant to be a public page. It is a page needed for the plugin to receive messages from PayPal and handle them. It is also a quick page to show you that the plugin is working. Please create a pretty page with links using short codes as described below.
+
+Each product can be displayed as a "Buy Now" kind of link with the short code `[ezshop buy='product_code']Buy this product now![/ezshop]`. This will insert a link, which when clicked, will take your reader to a PayPal page to buy the product.
+
 == Change Log ==
 
 = Future Plans =
@@ -195,6 +205,7 @@ For themes from MySiteMyWay, this plugin adds these short tags in an attempt to 
 
 = History =
 
+* V4.11: Bug fixes to suppress notices. [Nov 13, 2013]
 * V4.10: Compatibility with WordPress V3.7. [Nov 9, 2013]
 * V4.00: Compatibility checks with WordPress V3.6. Including HTTP1.1 headers as specified by PayPal. [Aug 23, 2013]
 * V3.90: Introducing internationalization using Google/Microsoft Translate Widgets. [May 20, 2013]

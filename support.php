@@ -8,17 +8,16 @@ function ezPluginInfo(){
     $baseDir = dirname($k) ;
     if ($baseDir == $me) {
       $version = $p['Version'] ;
-      $info = "$break{$p['Title']} V{$p['Version']} (Referer: {$_SERVER['HTTP_REFERER']})" ;
+      $info = "$break{$p['Title']} V{$p['Version']}" ;
       $ret[] = array('Version' => $version, 'Info' => $info) ;
     }
   }
   return $ret ;
 }
-function renderSupport($name, $plg) {
+function renderSupport($name) {
   $plugindir = get_option('siteurl') . '/' . PLUGINDIR . '/' .  basename(dirname(__FILE__)) ;
-  $value = $plg['value'];
-  $desc = $plg['desc'] ;
-  $url = 'http://www.thulasidas.com/plugins/' . $name . '#FAQ' ;
+  $value = "Easy PayPal Lite";
+  $url = 'http://www.thulasidas.com/plugins/' . $name . '#faq' ;
   $link = '<a href="' . $url . '" target="_blank">' . $value . '</a>' ;
   echo "&nbsp;<a href='http://support.thulasidas.com' onclick=\"popupwindow('http://support.thulasidas.com','ezSupport for $value', 1024, 768);return false;\" title='" ;
   _e('Ask a support question (in English or French only) via ezSupport @ $0.95', 'easy-adsenser') ;
@@ -110,6 +109,6 @@ function googleTranslateElementInit() {
 
 renderTranslator($plgName);
 
-renderSupport($plgName, $myPlugins[$plgName]) ;
+renderSupport($plgName) ;
 
 ?>

@@ -39,8 +39,10 @@ else {
         include_once('actions.php') ;
         $welcome = showActions($actions, false) ;
       }
-      if (!empty($GLOBALS['toInclude']))
-        $self = array_shift(explode('.', $GLOBALS['toInclude'])) ;
+      if (!empty($GLOBALS['toInclude'])) {
+        $toInclude = explode('.', $GLOBALS['toInclude']);
+        $self = array_shift($toInclude);
+      }
       printf("
 <script type='text/javascript' src='$pwd/wz_tooltip.js'></script>
 <script type='text/javascript' src='$pwd/ezpp.js'></script>
