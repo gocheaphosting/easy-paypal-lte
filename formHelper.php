@@ -355,7 +355,8 @@ else {
         $storage = formHelper::mkStorageName($optionsVals['storage_location']) ;
         $name = $_FILES['file']['name'] ;
         if (!empty($name)) {
-          $ext = end(explode('.', $name)) ;
+          $parts = explode('.', $name);
+          $ext = end($parts) ;
           if ($optionsVals['random_file'])
             $randomName = $storage . '/' . formHelper::randString(24) . '.' . $ext ;
           else
