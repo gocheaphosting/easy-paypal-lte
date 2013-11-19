@@ -4,7 +4,7 @@ Donate link: http://buy.thulasidas.com/easy-paypal
 Tags: paypal, paypal ipn, e-commerce, shopping cart, payment gateway, digital goods, ipn, paypal integration
 Requires at least: 3.3
 Tested up to: 3.7
-Stable tag: 4.12
+Stable tag: 4.20
 License: GPL2 or later
 
 Easy PayPal gets you started with your online business. Use PayPal IPN to sell digital goods without a shopping cart or complicated e-commerce setup.
@@ -88,13 +88,13 @@ Note that these extensions are designed to work with [Standalone Pro](http://buy
 
 = New in this version =
 
-Minor fix to suppress a warning.
+Bug fixes to persist storage location and product under modification. Major changes to the shop page to help the user. Buy Now button now takes only one click to go to PayPal.
 
 == Upgrade Notice ==
 
-= 4.12 =
+= 4.20 =
 
-Minor fix to suppress a warning.
+Bug fixes to persist storage location and product under modification. Major changes to the shop page to help the user. Buy Now button now takes only one click to go to PayPal.
 
 == Screenshots ==
 
@@ -206,6 +206,7 @@ Each product can be displayed as a "Buy Now" kind of link with the short code `[
 
 = History =
 
+* V4.20: Bug fixes to persist storage location and product under modification. Major changes to the shop page to help the user. Buy Now button now takes only one click to go to PayPal. [Nov 19, 2013]
 * V4.12: Minor fix to suppress a warning. [Nov 18, 2013]
 * V4.11: Bug fixes to suppress notices. [Nov 13, 2013]
 * V4.10: Compatibility with WordPress V3.7. [Nov 9, 2013]

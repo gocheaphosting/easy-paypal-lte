@@ -140,6 +140,8 @@ if (file_exists('pro/proControls.php')) include('pro/proControls.php') ;
 
 $products['submitText'] = "Insert Product" ;
 
+$form->loadRowSetFromDB('products', $products) ;
+
 if (!empty($_POST)) {
   $form->handleSubmit('paypal', $paypal) ;
   $form->handleSubmit('options', $options) ;
@@ -148,7 +150,6 @@ if (!empty($_POST)) {
 
 $form->loadRowSetFromDB('options', $options) ;
 $form->loadRowSetFromDB('paypal', $paypal) ;
-$form->loadRowSetFromDB('products', $products) ;
 
 $err = checkStorage($options['storage_location']['value']) ;
 if ($err) {

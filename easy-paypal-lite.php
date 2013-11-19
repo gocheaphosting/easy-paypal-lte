@@ -3,7 +3,7 @@
   Plugin Name: Easy PayPal
   Plugin URI: http://www.thulasidas.com/plugins/ezpaypal
   Description: <em>Lite Version</em>: Easiest way to start selling your digital goods online. Go to <a href="options-general.php?page=easy-paypal-lite.php">Settings &rarr; Easy PayPal</a> to set it up, or use the "Settings" link on the right.
-  Version: 4.12
+  Version: 4.20
   Author: Manoj Thulasidas
   Author URI: http://www.thulasidas.com
 */
@@ -68,12 +68,19 @@ else {
     static function createShop() {
       global $user_ID;
       global $shortcode_tags;
+      $shop = get_option('siteurl') . '/ez-shop';
+      $permalink = admin_url('options-permalink.php');
+      $content = "<p>This is an auto-generated page by Easy PayPal Plugin. It displays the products you have defined in a neat table format, which allows your potential buyers to purchase them.</p>
+<p>Whether you display this page or not, you should not delete it. This page is the target to which PayPal will send the information about your purchases. It is the <em>PayPal Listener</em> and the plugin will not work if it is not reachabe at <a href='$shop'>$shop</a>. Please click to verify.</p>
+<p>If the shop page ($shop) is not reachable, please <a href='$permalink'>enable a permalink structure</a> for your blog. <em>Any structure (other than the ugly default structure using <code>?p=</code>) will do.</p>
+<p>Note that you can create your own shop pages using the shortcodes. For example, each product can be displayed as a <strong>Buy Now</strong> using the shortcode format <code>[[ezshop buy='product_code']Buy Now[/ezshop]]</code>. This will insert a link, which when clicked, will take your reader to a PayPal page to buy the product.</p>
+<p>The ez-shop page is not meant to be a public page. It is a page needed for the plugin to receive messages from PayPal and handle them. It is also a quick page to show you that the plugin is working. Please create a pretty page with links using short codes.</p><p color='red'>If you decide to edit this page, please do not delete the <code>[[ezshop]]</code> line below this line.</p>\n";
       $page['post_type'] = 'page';
       $useRawTag = true ; // TODO: Make this an option (in option_meta)
       if ($useRawTag && class_exists("Mysitemyway") && array_key_exists("raw", $shortcode_tags))
-        $page['post_content'] = '[raw][ezshop][/raw]';
+        $page['post_content'] = $content . '[raw][ezshop][/raw]';
       else
-        $page['post_content'] = '[ezshop]';
+        $page['post_content'] = $content . '[ezshop]';
       $page['post_parent'] = 0;
       $page['post_author'] = $user_ID;
       $page['post_status'] = 'publish';

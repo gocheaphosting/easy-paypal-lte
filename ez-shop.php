@@ -57,7 +57,6 @@ function renderProduct($product, $showDetails=false) {
 }
 
 $browser = $_SERVER["HTTP_USER_AGENT"];
-$notFF = stripos($browser, 'firefox') === false ;
 
 if (!empty($_GET['ref'])) {
   $affiliate_id = $_GET['ref'] ;
@@ -106,10 +105,7 @@ if (!empty($productCode)) { // process a buy or update request
   if ($active) {
     $onload = "" ;
     if (!$ezDebug) $onload = " onload='ezppBuyForm.submit();'" ;
-    if ($notFF)
-      $html->ezppHeader('ezPayPal Shop', 'Processing your request', '.', true, $onload) ;
-    else
-      echo "<body$onload>\n" ;
+    echo "<body$onload>\n" ;
     if (!empty($_POST['quantity'])) $quantity = $_POST['quantity'] ;
     else if (!empty($_GET['quantity'])) $quantity = $_GET['quantity'] ;
     else $quantity = 1 ;
@@ -156,14 +152,8 @@ $customLine" ;
     </div>" ;
     }
     echo "</form>" ;
-    if ($notFF) {
-      $html->ezppFooter() ;
-      return ;
-    }
-    else {
-      echo "</body>\n" ;
-      exit() ;
-    }
+    echo "</body>\n" ;
+    exit() ;
   }
   else {
     $html->setErr("Product not found.") ;
