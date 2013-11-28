@@ -2,4 +2,382 @@
 
 <p>Sell text links on your website powered by <?php ezpp() ?>.</p>
 
-<p>This module is not ready for sale yet.</p>
+<p>This module is not ready as an EzPayPal module yet. However, we have a
+WordPress plugin version that works in conjunction with Easy PayPal. It is
+described below.</p>
+
+<h2>Easy Text Links</h2>
+
+<p><em>A robust and modern plugin to help you sell and manage text links
+on your blog.</em></p>
+<hr>
+
+<p><strong>Contributors:</strong> manojtd<br>
+<strong>Donate link:</strong>
+http://buy.thulasidas.com/easy-text-links<br>
+<strong>Tags:</strong> text links, advertising, revenue, ezlinks, easy
+text links<br>
+<strong>Requires at least:</strong> 3.5<br>
+<strong>Tested up to:</strong> 3.7<br>
+<strong>Stable tag:</strong> 1.61<br>
+<strong>License:</strong> GPLv2 or later</p>
+<hr>
+
+<h3>Description</h3>
+
+<p><em>Easy Text Links</em> is a modern plugin to help you make extra
+revenue from your blog by selling text links. Text link advertising can be
+significantly more lucrative than contextual ads. This plugin automates
+the insertion and expiration of the links, and helps you with quick
+reminder emails to your advertisers.</p>
+
+<p>Other plugins that do similar text link advertising do exist in the
+repository, but they are typically front ends to services that provide
+such links (such as Text Link Ads, for instance.) They take a significant
+cut of your advertising revenue (50% in the case of Text Link Ads) acting
+as the middlemen between you and your advertisers. <em>Easy Text
+Links</em>, on the other hand, is for those who want to interact directly
+with their advertisers, and keep the whole revenue for themselves, cutting
+the middlemen.</p>
+
+<p><em>Easy Text Links</em> keeps track of the expiry dates of the text
+links on your page, and removes them when expired. It also gives you easy
+means of sending a reminder email to the advertiser, block or delete the
+links all from your blog page itself, without having to go to the admin
+page. Of course, it is smart and secure so that only the blog admin with
+the right privileges will ever see the options to modify the links. It
+does all this magic using a modern AJAX/jQuery framework with an
+attractive lightbox effect.</p>
+
+<p>If you have a popular blog, text links can potentially bring in much
+more revenue than any contextual advertising. In my case, the difference
+was easily a factor of 100. Keep in mind, however, that most contextual ad
+providers (such as AdSense) do not like paid link placement, for obvious
+reasons. Your blog may get penalized in terms page rank or search listing
+placement. Please weigh the pros and cons carefully before embarking on
+text link advertising. If you do decide to go for it, this plugin will be
+able to help.</p>
+
+<h4>Features</h4>
+
+<ol>
+  <li>Automatic removal of your text links upon expiry.</li>
+
+  <li>Ability to send a reminder email to your advertiser with one
+  click.</li>
+
+  <li>Ability to delete and block your links and modify their
+  expiries.</li>
+
+  <li>Convenience of managing your links (delete, block, set expiry, email
+  advertiser etc.) right from your blog post where the link appears,
+  without going to the plugin admin page.</li>
+
+  <li>Attractive and modern interface with lightbox effect.</li>
+
+  <li>Highly secure and robust against potential hacker attacks and
+  attempts to manipulate links.</li>
+
+  <li>Now available in your own language using machine translation curtsey
+  of Google and Microsoft.</li>
+</ol>
+
+<h4>Pro Version</h4>
+
+<p>A <a href="http://buy.thulasidas.com/easy-text-links" title=
+"Pro Version of Eazy Text Links for $7.95">pro version</a> of this plugin
+is available with the following added features:</p>
+
+<ol>
+  <li>Fully automated link sales and expiry (with the help of the <a href=
+  "http://wordpress.org/extend/plugins/easy-paypal-lte/" title=
+  "Easy PayPal Plugin">Easy PayPal</a> plugin available at WordPress.</li>
+
+  <li>Your advertisers will see &quot;Buy Now&quot; buttons to purchase
+  links.</li>
+
+  <li>Basic widget support.</li>
+
+  <li>Automatic email reminders to you and your advertiser when the links
+  are about to expire. (WIP)</li>
+
+  <li>Choice of several attractive &quot;Advertise Here&quot; images.
+  (WIP)</li>
+
+  <li>Advanced widget support with a dedicated widget. (WIP)</li>
+</ol>
+<hr>
+
+<h3>Installation</h3>
+
+<p>You can install it using the WordPress Plugins -&gt; Add New
+interface.</p>
+
+<p>Or,</p>
+
+<ol>
+  <li>Upload the Easy Text Links plugin (the whole
+  <code>easy-text-link</code> folder) to the
+  &#39;/wp-content/plugins/&#39; directory.</li>
+
+  <li>Activate the plugin through the &#39;Plugins&#39; menu in your
+  blog.</li>
+</ol>
+
+<p>To use the plugin, insert the shortcode <code>[ezlink]</code> in a
+post. See the FAQ for more information.</p>
+<hr>
+
+<h3>Frequently Asked Questions</h3>
+
+<h4>What are &quot;Link Packages&quot; and &quot;Sold Links&quot;?</h4>
+
+<p>Link Packages describe what you offer to your advertisers. They specify
+your rates and other relevant information to entice advertisers to divert
+some of the marketing budget in the direction of your blog. For instance,
+you may have these packages: (1) &quot;AboveFold&quot; with Price=$100,
+Expiry=720 (which is a month in hours) (2) &quot;AboveFold (3mo)&quot;
+with Price=$250, Expiry=2160 (three months in hours) (3)
+&quot;Footer&quot; with Price=$50, Expiry=720 and so on. You can list them
+wherever you want by giving the shortcode <code>[ezlink packages]</code>.
+You will also see all your packages listed on the <em>Easy Text Links</em>
+admin page in a neat table, where you can inspect, modify or delete
+them.</p>
+
+<p>Sold Links are, naturally, the links you have sold to your advertisers.
+You can display them on your posts or pages by the shortcode <code>[ezlink
+links]</code>. If you want to display only a particular link (whose ID is,
+say, link1), you would give the shortcode <code>[ezlink
+links=link1]</code>. For multiple links, you give the shortcode as
+<code>[ezlink links=link1,link2]</code>. Again, the sold links will appear
+on the plugin admin page where you can manipulate them.</p>
+
+<p>The links and products, when listed using the shortcode
+<code>[ezlink]</code>, will be formatted as an unordered list
+(<code>&lt;ul&gt;...&lt;/ul&gt;</code>).</p>
+
+<h4>I don&#39;t want the links to be an unordered list. What can I
+do?</h4>
+
+<p>You can specify an option in the shortcode as <code>[ezlink
+option=nolist]</code>. This option can be given with any combination of
+<code>[ezlink packages]</code>, <code>[ezlink packages]</code> or
+<code>[ezlink links=link1,link2,link3...]</code>.</p>
+
+<h4>How do I specify a &quot;Advertise Here&quot; link pointing to a blog
+page?</h4>
+
+<p>You insert the shortcode <code>[ezlink invite]</code> (or <code>[ezlink
+advertise]</code> or <code>[ezlink here]</code>) to display such an
+invitation.</p>
+
+<p>Note that you have to create the target page/post with a title like
+&quot;Advertise Here&quot; or something similar and point to it on the
+plugin admin page (under the <em>&quot;Advertise Here&quot; Target:</em>
+option). Once that is done, your <code>[ezlink invite]</code> shortcode
+will point to that page/post. In that page, you can use <code>[ezlink
+packages]</code> shortcode to list your link packages, and give any
+contact details so that your advertisers can get in touch with you.</p>
+
+<h4>Can I have a full list of shortcode keywords and syntax?</h4>
+
+<ol>
+  <li>List packages (within <code>&lt;ul&gt;...&lt;/ul&gt;</code>) :
+  <code>[ezlink packages]</code>.</li>
+
+  <li>List all links (within <code>&lt;ul&gt;...&lt;/ul&gt;</code>) :
+  <code>[ezlink links]</code></li>
+
+  <li>List specific links (within <code>&lt;ul&gt;...&lt;/ul&gt;</code>) :
+  <code>[ezlink links=link1,link2,link3...]</code>.</li>
+
+  <li>Suppress <code>&lt;ul&gt;&lt;li&gt;...&lt;/li&gt;&lt;/ul&gt;</code>
+  around any of the lists above : <code>[ezlink option=nolist
+  ...]</code></li>
+
+  <li>Advertise Here display : <code>[ezlink invite]</code> or
+  <code>[ezlink advertise]</code> or <code>[ezlink here]</code></li>
+</ol>
+
+<h4>How can I get the links or packages in a widget?</h4>
+
+<p>The <a href="http://buy.thulasidas.com/easy-text-links" title=
+"Pro Version of Eazy Text Links for $7.95">Pro version</a> version of
+<em>Easy Text Links</em> gives you basic support for widgets. You can use
+the WordPress default Text widget to insert the shortcode and it will be
+rendered as expected. A dedicated and multi-insertable widget with fully
+configurable text links will be released later.</p>
+
+<p>The lite version does not offer a widget. The work around is to install
+the <a href="http://wordpress.org/extend/plugins/shortcode-widget/" title=
+"Shortcode Widget plugin from WordPress directory">Shortcode Widget</a>.
+You can then place the <code>[ezlink]</code> shortcodes in the widgets
+provided by Shortcode Widget.</p>
+
+<h4>I deleted/blocked a link by mistake. Now it has disappeared. How do I
+get it back?</h4>
+
+<p>Go to the admin page of the plugin, and edit the Sold Link by clicking
+on the edit icon (green pencil) on the floating toolbar. You can then set
+the status to anything other than Deleted or Hidden.</p>
+
+<h4>I added a link. But it doesn&#39;t show up. What&#39;s wrong?</h4>
+
+<p>Note that in the Pro version, you have to <em>Approve</em> the links
+before they will be displayed. This is in preparation to letting your
+advertisers specify link details after purchasing. You probably don&#39;t
+want to allow such user specified content to appear on your blog without
+checking. If you do, you will find an option (WIP) to allow it.</p>
+<hr>
+
+<h3>Screenshots</h3>
+
+<ol>
+  <li>
+    <p>Links inserted by Easy Links Pro. Note the floating tool bar that
+    appears when you hover over the link (if you are logged in as the
+    admin to your blog) giving you easy access to the actions you can
+    take.</p><?php img("01") ?>
+  </li>
+
+  <li>
+    <p>The Admin Page. The tool bar appears as you hover over a row in the
+    Links Packages or Sold Links table.</p><?php img("02") ?>
+  </li>
+</ol>
+<hr>
+
+<h3>Change Log</h3>
+
+<ul>
+  <li>V1.61: Bug fix related to hidden admin page. [Nov 12, 2013]</li>
+
+  <li>V1.60: Compatibility with WP3.7. [Nov 7, 2013]</li>
+
+  <li>V1.51: Adding integration with stand-alone EzPayPal. [Nov 6,
+  2013]</li>
+
+  <li>V1.50: Compatibility with WP3.6. [Aug 8, 2013]</li>
+
+  <li>V1.42: Preparing automated link sales. Links need to be approved now
+  before they appear on your blog. [Jul 9, 2013]</li>
+
+  <li>V1.41: Bug fix in Easy PayPal integration. [May 20, 2013]</li>
+
+  <li>V1.40: Introducing internationalization using Google/Microsoft
+  Translate Widgets. [May 17, 2013]</li>
+
+  <li>V1.34: Bug fix on displaying the link toolbar. Documentation and
+  help changes. [May 15, 2013]</li>
+
+  <li>V1.33: Adding basic text widget support. [May 14, 2013]</li>
+
+  <li>V1.32: Fixing the plugin updater module. [May 13, 2013]</li>
+
+  <li>V1.31: Link package expiry defaults to the Easy PayPal expiry, and
+  the edited value is sticky. [May 12, 2013]</li>
+
+  <li>V1.30: Initial release of the Pro version. [May 8, 2013]</li>
+
+  <li>V1.20: Handling empty attributes in shortcode, and hidden and
+  deleted packages. [May 3, 2013]</li>
+
+  <li>V1.11: Minor bug fix. [May 2, 2013]</li>
+
+  <li>V1.10: Correcting W3C markup validation errors on the admin page.
+  [May 1, 2013]</li>
+
+  <li>V1.01: Handling blocked and deleted links. [Apr 23, 2013]</li>
+
+  <li>V1.00: Initial release. [Apr 20, 2012]</li>
+</ul>
+
+<h4>Future Plans</h4>
+
+<ol>
+  <li>Templating package listing and &quot;Advertise Here&quot; page and
+  link.</li>
+
+  <li>More fields in templates (BUYER, PACKAGENAME etc.)</li>
+
+  <li>Making package and link expiry specification flexible (today,
+  tomorrow, +-nd/w/m/y)</li>
+
+  <li>Widget support (Pro version).</li>
+
+  <li>Integration with Easy PayPal (Pro version).</li>
+
+  <li>Use JSON in AJAX-jQuery communication for standard compliance.</li>
+
+  <li>Style the admin tables to match WordPress admin themes.</li>
+
+  <li>Internationalization.</li>
+</ol>
+<hr>
+
+<h3>Changelog</h3>
+
+<ul>
+  <li>V1.61: Bug fix related to hidden admin page. [Nov 12, 2013]</li>
+
+  <li>V1.60: Compatibility with WP3.7. [Nov 7, 2013]</li>
+
+  <li>V1.51: Adding integration with stand-alone EzPayPal. [Nov 6,
+  2013]</li>
+
+  <li>V1.50: Compatibility with WP3.6. [Aug 8, 2013]</li>
+
+  <li>V1.42: Preparing automated link sales. Links need to be approved now
+  before they appear on your blog. [Jul 9, 2013]</li>
+
+  <li>V1.41: Bug fix in Easy PayPal integration. [May 20, 2013]</li>
+
+  <li>V1.40: Introducing internationalization using Google/Microsoft
+  Translate Widgets. [May 17, 2013]</li>
+
+  <li>V1.34: Bug fix on displaying the link toolbar. Documentation and
+  help changes. [May 15, 2013]</li>
+
+  <li>V1.33: Adding basic text widget support. [May 14, 2013]</li>
+
+  <li>V1.32: Fixing the plugin updater module. [May 13, 2013]</li>
+
+  <li>V1.31: Link package expiry defaults to the Easy PayPal expiry, and
+  the edited value is sticky. [May 12, 2013]</li>
+
+  <li>V1.30: Initial release of the Pro version. [May 8, 2013]</li>
+
+  <li>V1.20: Handling empty attributes in shortcode, and hidden and
+  deleted packages. [May 3, 2013]</li>
+
+  <li>V1.11: Minor bug fix. [May 2, 2013]</li>
+
+  <li>V1.10: Correcting W3C markup validation errors on the admin page.
+  [May 1, 2013]</li>
+
+  <li>V1.01: Handling blocked and deleted links. [Apr 23, 2013]</li>
+
+  <li>V1.00: Initial release. [Apr 20, 2012]</li>
+</ul>
+
+<h4>Future Plans</h4>
+
+<ol>
+  <li>Templating package listing and &quot;Advertise Here&quot; page and
+  link.</li>
+
+  <li>More fields in templates (BUYER, PACKAGENAME etc.)</li>
+
+  <li>Making package and link expiry specification flexible (today,
+  tomorrow, +-nd/w/m/y)</li>
+
+  <li>Widget support (Pro version).</li>
+
+  <li>Integration with Easy PayPal (Pro version).</li>
+
+  <li>Use JSON in AJAX-jQuery communication for standard compliance.</li>
+
+  <li>Style the admin tables to match WordPress admin themes.</li>
+
+  <li>Internationalization.</li>
+</ol>
