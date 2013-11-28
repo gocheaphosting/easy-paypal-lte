@@ -1,5 +1,140 @@
 <h2>EZ Reports</h2>
 
-<p>Reporting Engine for <?php ezpp() ?>.</p>
+<p>ezReports is a reporting engine for ezPayPal.</p>
 
-<p>This module is not ready for sale yet.</p>
+<h3>Description</h3>
+
+<p><em>ezReports</em> is an add-on module for <em>ezPayPal</em>, which
+provides a reporting and charting engine. It can be installed on the
+standalone version of <a href="http://buy.thulasidas.com/ezpaypal-pro"
+title=
+"ezPayPal gets you started with your online business. Easy and simple.">ezPayPal
+Pro</a>. Used it in conjunction with <em>ezPayPal</em>, this modules
+enables you to analyze your sales and revenue data with the help of charts
+so that you can pinpoint revenue-generation opportunities.</p>
+
+<p>If you would like to start your e-commerce website, you can <a href=
+"http://buy.thulasidas.com/ezreports-full" title=
+"Buy ezPayPal and ezReports ready to deploy for only $12.95">purchase the
+full package</a> of ezReports ready-to-use online for only $12.95.</p>
+
+<h4>Features</h4>
+
+<ol>
+  <li>Seamless integration with <em>ezPayPal</em>.</li>
+
+  <li>Multiple reports provided.</li>
+
+  <li>Easy to add new reports with the help and sample report
+  provided.</li>
+</ol>
+
+<h4>Credits</h4>
+
+<p><em>ezReports</em> uses <a href=
+"http://teethgrinder.co.uk/open-flash-chart-2/" title=
+"An excellent and easy-to-use charting library in PHP">Open Flash
+Chart</a> to render beautiful charts.</p>
+<hr>
+
+<h3>Installation</h3>
+
+<p>Note: <a href="http://buy.thulasidas.com/ezreports" title=
+"ezReports add-on module for only $4.95"><em>ezReports</em></a> is an
+add-on module for <a href="http://buy.thulasidas.com/ezpaypal-pro" title=
+"ezPayPal gets you started with your online business. Easy and simple.">ezPayPal
+Pro</a>. You can install and use it only if you have <em>ezPayPal</em>. Or
+you can <a href="http://buy.thulasidas.com/ezreports-full" title=
+"Buy ezPayPal and ezReports ready to deploy for only $12.95">purchase the
+bundled package</a> of ezReports and ezPayPal ready-to-deploy for a
+discounted price of only $12.95.</p>
+
+<ol>
+  <li>On <em>ezPayPal</em> screen, click on <em>Pro Functions</em>.</li>
+
+  <li>Log in if prompted.</li>
+
+  <li>Click on the <em>Reporting Engine</em> button against the <em>Track
+  your sales and revenue</em> entry.</li>
+
+  <li>Click on the <em>Install Package</em> and follow the friendly
+  wizard.</li>
+</ol>
+<hr>
+
+<h3>Frequently Asked Questions</h3>
+
+<h4>Can I use this package without *ezPayPal*?</h4>
+
+<p>Not in the current form. A future version that can work independently
+of <em>ezPayPal</em> will be released soon.</p>
+
+<h4>How do I create a new report?</h4>
+
+<p>The ezReports module is written with extensibility in mind. With a bit
+of PHP knowledge, it is child&#39;s play to add another report. Follow
+these steps to make your own report.</p>
+
+<ol>
+  <li>Make a copy of a look at the sample report
+  <code>chart-product.php</code> in the module folder
+  (<code>ezPayPal/pro/ezreports</code>).</li>
+
+  <li>Rename it to <code>chart-&lt;something&gt;.php</code>. Let&#39;s say
+  you call it <code>chart-myreport.php</code>.</li>
+
+  <li>Edit <code>chart-myreport.php</code> and change the report name near
+  the top of the file (line 9 in the current version.)</li>
+
+  <li>In the data section (after <code>if
+  (isset($_GET[&#39;data&#39;]))</code>), define your own data.</li>
+
+  <li>Save and upload the modified <code>chart-myreport.php</code> to your
+  server, to the same location as <code>chart-product.php</code>.</li>
+
+  <li>Your report is ready and deployed, and will appear in the drop down
+  menu when you start the reporting engine.</li>
+</ol>
+
+<p>Visit <a href="http://teethgrinder.co.uk/open-flash-chart-2/" title=
+"An excellent and easy-to-use charting library in PHP">Open Flash
+Chart</a> to see available chart formats and code samples.</p>
+<hr>
+
+<h3>Screenshots</h3>
+
+<ol>
+  <li>Sample report - sales per product pie-chart. <?php img("01") ?></li>
+
+  <li>Sample report - revenue per month. <?php img("02") ?><</li>
+</ol>
+<hr>
+
+<h3>Change Log</h3>
+
+<h4>History</h4>
+
+<ul>
+  <li>V1.00: Initial release. [Nov 25, 2013]</li>
+</ul>
+
+<h4>Future Plans</h4>
+
+<ol>
+  <li>Provide more reports.</li>
+</ol>
+<hr>
+
+<h3>Changelog</h3>
+
+<h4>History</h4>
+
+<ul>
+  <li>V1.00: Initial release. [Nov 25, 2013]</li>
+</ul>
+
+<h4>Future Plans</h4>
+
+<ol>
+  <li>Provide more reports.</li>
+</ol>
