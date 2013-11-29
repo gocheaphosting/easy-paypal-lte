@@ -36,7 +36,7 @@ function showPage($pages = array(), $toc=false) {
 
 function mkTitle($pages) {
   $title = array("ezPayPal Help") ;
-  $title[] = "<a href='index.php'>Show All</a> | <a href='ezpp.pdf'>PDF</a>" ;
+  $title[] = "<a href='index.php'>Show All</a> | <a href='index.php?pdf'>PDF</a>" ;
   return $title ;
 }
 

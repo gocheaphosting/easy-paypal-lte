@@ -7,7 +7,7 @@ foreach ($pages as $page) {
 }
 
 function toc($page, $chap) {
-  $remote_site_data = file_get_contents("http://localhost/dev/ezpp/docs/index.php?$page");
+  $remote_site_data = file_get_contents("http://localhost/ezpaypal/docs/index.php?$page");
   $dom_document = new DOMDocument();
   @$dom_document->loadHTML($remote_site_data);
   $h1 = $dom_document->getElementsByTagName('h1');

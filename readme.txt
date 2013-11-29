@@ -4,7 +4,7 @@ Donate link: http://buy.thulasidas.com/easy-paypal
 Tags: paypal, paypal ipn, e-commerce, shopping cart, payment gateway, digital goods, ipn, paypal integration
 Requires at least: 3.3
 Tested up to: 3.7
-Stable tag: 4.20
+Stable tag: 4.21
 License: GPL2 or later
 
 Easy PayPal gets you started with your online business. Use PayPal IPN to sell digital goods without a shopping cart or complicated e-commerce setup.
@@ -92,9 +92,9 @@ Bug fixes to persist storage location and product under modification. Major chan
 
 == Upgrade Notice ==
 
-= 4.20 =
+= 4.21 =
 
-Bug fixes to persist storage location and product under modification. Major changes to the shop page to help the user. Buy Now button now takes only one click to go to PayPal.
+Help documentation changes, removing the large PDF file from the repository.
 
 == Screenshots ==
 
@@ -142,7 +142,7 @@ In your plugin folder, under `docs`, there is the beginning of a full documentat
 
 In your plugin folder, under `docs`, there is the beginning of a full documentation. It is designed in such a way that you will be able to call up the relevant pages from the pages in a context-sensitive way. Future releases will progressively add more complete documentation.
 
-The documentation is also hosted at my site in [HTML](http://buy.thulasidas.com/docs "HTML Documentation of ezPayPal") and [PDF](http://buy.thulasidas.com/docs/ezpp.pdf "Printable PDF Manual") formats.
+The documentation is also hosted at my site in [HTML](http://buy.thulasidas.com/docs "HTML Documentation of ezPayPal") and [PDF](http://www.thulasidas.com/col/ezpp.pdf "Printable PDF Manual") formats.
 
 = How can I contact the plugin author if I need help? =
 
@@ -206,6 +206,7 @@ Each product can be displayed as a "Buy Now" kind of link with the short code `[
 
 = History =
 
+* V4.21: Help documentation changes, removing the large PDF file from the repository. [Nov 29, 2013]
 * V4.20: Bug fixes to persist storage location and product under modification. Major changes to the shop page to help the user. Buy Now button now takes only one click to go to PayPal. [Nov 19, 2013]
 * V4.12: Minor fix to suppress a warning. [Nov 18, 2013]
 * V4.11: Bug fixes to suppress notices. [Nov 13, 2013]
