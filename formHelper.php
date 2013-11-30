@@ -84,13 +84,20 @@ else {
     function validate_notNull($s) {
       $s = trim($s);
       if (empty($s)) {
-        return "Null value not allowed.";
+        return "Null value not allowed";
       }
     }
 
     function validate_number($s) {
       if (!is_numeric($s)) {
         return "Need a number here";
+      }
+    }
+
+    function validate_alnum($s) {
+      $aValid = array('_','-');
+      if (!ctype_alnum(str_replace($aValid, '', $s))) {
+        return "Please use only letters, numbers, - and _";
       }
     }
 
