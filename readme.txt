@@ -191,6 +191,8 @@ The ez-shop page is not meant to be a public page. It is a page needed for the p
 
 Each product can be displayed as a "Buy Now" kind of link with the short code `[ezshop buy='product_code']Buy this product now![/ezshop]`. This will insert a link, which when clicked, will take your reader to a PayPal page to buy the product.
 
+Please do not delete the ez-shop page though; it is needed as the IPN listener to receive messages from PayPal and process them.
+
 == Change Log ==
 
 = Future Plans =
