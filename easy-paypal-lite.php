@@ -3,7 +3,7 @@
   Plugin Name: Easy PayPal
   Plugin URI: http://www.thulasidas.com/plugins/ezpaypal
   Description: <em>Lite Version</em>: Easiest way to start selling your digital goods online. Go to <a href="options-general.php?page=easy-paypal-lite.php">Settings &rarr; Easy PayPal</a> to set it up, or use the "Settings" link on the right.
-  Version: 4.22
+  Version: 4.30
   Author: Manoj Thulasidas
   Author URI: http://www.thulasidas.com
 */
@@ -13,7 +13,7 @@
   Copyright (C) 2008 www.thulasidas.com
 */
 
-if (class_exists("ezPayPalPro")) {
+if (class_exists("EzPayPalPro")) {
   // Another version is probably installed. Ask the user to deactivate it.
   die (__("<strong><em>Easy PayPal:</em></strong> Another version of this plugin is active.<br />Please deactivate it before activating <strong><em>Easy PayPal</em></strong>.", "easy-adsenser"));
 }
@@ -60,7 +60,7 @@ else {
         foreach ($handlers as $k => $v) if (isset($_GET[$k])) $toInclude = $v ;
         $GLOBALS['toInclude'] = $toInclude ;
         ob_start() ;
-        include($toInclude) ;
+        include_once($toInclude) ;
         $shop = ob_get_clean() ;
         return $shop ;
       }
@@ -155,6 +155,7 @@ else {
       echo "Quickstart Guide: Click here for quick help on how to use this plugin.<img title='Click for Help' style='float:right;cursor:pointer;' alt='(?)' onmouseover=\"Tip('Need help?<br />Click me!', WIDTH, 70)\" onmouseout=\"UnTip()\" src='{$this->plgURL}/help.png' />" ;
       echo "</div><br />" ;
       $plgName = "easy-paypal" ;
+      $myPlugins = array($plgName => array('value' => 'Easy PayPal'));
       echo "<div class='updated' style='width:800px;margin:0px auto;'>" ;
       include "support.php" ;
       echo "</div>" ;
