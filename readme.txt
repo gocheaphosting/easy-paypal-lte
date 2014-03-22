@@ -4,7 +4,7 @@ Donate link: http://buy.thulasidas.com/easy-paypal
 Tags: paypal, paypal ipn, e-commerce, shopping cart, payment gateway, digital goods, ipn, paypal integration
 Requires at least: 3.3
 Tested up to: 3.8
-Stable tag: 4.30
+Stable tag: 5.00
 License: GPL2 or later
 
 Easy PayPal gets you started with your online business. Use PayPal IPN to sell digital goods without a shopping cart or complicated e-commerce setup.
@@ -86,15 +86,9 @@ In the pipeline are the following optional extensions:
 
 Note that these extensions are designed to work with [Standalone Pro](http://buy.thulasidas.com/ezpaypal-pro "Get Easy PayPal Pro for $9.95") version. They will be ported to the [Plugin Pro](http://buy.thulasidas.com/easy-paypal-pro "Get Easy PayPal Pro for $6.95") version as well if possible.
 
-= New in this version =
-
-Compatibility with WordPress 3.8.
-
 == Upgrade Notice ==
 
-= 4.30 =
-
-Compatibility with WordPress 3.8.
+Adding a translation interface.
 
 == Screenshots ==
 
@@ -146,7 +140,7 @@ The documentation is also hosted at my site in [HTML](http://buy.thulasidas.com/
 
 = How can I contact the plugin author if I need help? =
 
-This plugin uses a paid support model in order to manage the support load. Each [support ticket](http://support.thulasidas.com "Ask a support question") will be charged at $0.95 for the Lite version (and for the Pro version after a short free support period). The support ticket is valid for 48 hours.
+This plugin uses a paid support model in order to manage the support load. Each [support ticket](http://support.thulasidas.com "Ask a support question") will be charged at $0.95 for the Lite version (and for the Pro version after a short free support period). The support ticket is valid for 72 hours.
 
 = How do I customize the look and feel of the download page? =
 
@@ -208,6 +202,7 @@ Please do not delete the ez-shop page though; it is needed as the IPN listener t
 
 = History =
 
+* V5.00: Adding a translation interface. [Mar 21, 2014]
 * V4.30: Compatibility with WordPress 3.8. [Dec 18, 2013]
 * V4.22: Setting up a validator for product_code to allow only alphanumeric and -/_ characters. [Nov 30, 2013]
 * V4.21: Help documentation changes, removing the large PDF file from the repository. [Nov 29, 2013]

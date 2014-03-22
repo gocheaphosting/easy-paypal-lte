@@ -7,7 +7,7 @@ include_once('ezpp.php') ;
 
 $html = new htmlHelper() ;
 $ezDB = new dbHelper();
-$form = new formHelper($ezDB, &$html) ; // will die if DB connection fails
+$form = new formHelper($ezDB, $html) ; // will die if DB connection fails
 $ezpp = new ezpp($ezDB) ;
 
 if (!$ezpp->isLoggedIn()) {
@@ -50,4 +50,3 @@ if (!empty($_POST['shop'])) $html->redirect("ez-shop.php") ;
 $html->ezppHeader('Mission Control', 'Welcome to ezPayPal!<br />Please choose and action') ;
 $form->renderForm('setup', $actions, 'Choose an Action', '', '') ;
 $html->ezppFooter() ;
-?>

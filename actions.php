@@ -76,4 +76,3 @@ function showActions($actions, $button=false) {
   }
   return $ret ;
 }
-?>

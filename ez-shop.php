@@ -249,4 +249,3 @@ else {
   $html->ezppFooter() ;
   return ;
 }
-?>

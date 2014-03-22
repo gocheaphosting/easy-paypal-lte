@@ -274,4 +274,3 @@ function insertTemplate($name, $value) {
 }
 
 if (file_exists('pro/extraTemplates.php')) include_once('pro/extraTemplates.php') ;
-?>

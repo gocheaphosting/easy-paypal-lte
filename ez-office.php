@@ -228,4 +228,3 @@ if ($ezTest) {
   echo "</pre>\n";
   $html->ezppFooter() ;
 }
-?>

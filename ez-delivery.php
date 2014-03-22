@@ -109,4 +109,3 @@ else {
 $html->ezppHeader('Thank you for your purchase', 'Please download your purchase', '.', true) ;
 printf("<p>%s</p>", $pageHtml) ;
 $html->ezppFooter(true) ;
-?>

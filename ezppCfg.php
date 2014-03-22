@@ -7,4 +7,3 @@ $dbPrefix = $table_prefix . "ezpp_" ;
 $dbUsr = DB_USER ;
 $dbPwd = DB_PASSWORD ;
 $dbEmail = "" ;
-?>
