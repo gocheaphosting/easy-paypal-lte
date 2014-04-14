@@ -4,14 +4,26 @@
   Plugin Name: Easy PayPal
   Plugin URI: http://www.thulasidas.com/plugins/ezpaypal
   Description: <em>Lite Version</em>: Easiest way to start selling your digital goods online. Go to <a href="options-general.php?page=easy-paypal-lite.php">Settings &rarr; Easy PayPal</a> to set it up, or use the "Settings" link on the right.
-  Version: 5.00
+  Version: 5.01
   Author: Manoj Thulasidas
   Author URI: http://www.thulasidas.com
  */
 
 /*
-  License: GPL2 or later
-  Copyright (C) 2008 www.thulasidas.com
+  Copyright (C) 2008 www.ads-ez.com
+
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 3 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 if (class_exists("EzPayPalPro")) {
@@ -212,7 +224,7 @@ else {
       echo "<form method='post' style='width:800px;margin-left:auto;margin-right:auto'>";
       $this->ezTran->renderTranslator();
       echo "</form><br />";
-      echo "<div class='updated' style='width:770px;margin:0px auto;'>";
+      echo "<div style='width:800px;margin:0px auto;'>";
       $ez->renderSupport();
       echo "</div>";
     }

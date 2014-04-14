@@ -115,6 +115,7 @@ $options = $ezDB->getRowData("options") ;
 
 $header  = "POST /cgi-bin/webscr HTTP/1.1\r\n";
 $header .= "Content-Type: application/x-www-form-urlencoded\r\n";
+$header .= "Content-Length: " . strlen($req) . "\r\n";
 $header .= "Host: $paypalIPN\r\n";
 $header .= "Connection: close\r\n\r\n";
 
