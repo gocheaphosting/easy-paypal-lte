@@ -1,12 +1,12 @@
 <?php
 
-if (class_exists("formHelper")) {
-  echo "Problem, class formHelper exists! \nCannot safely continue.\n";
+if (class_exists("FormHelper")) {
+  echo sprintf(__("Problem, class %s exists! Cannot safely continue.", 'easy-paypal'), "FormHelper");
   exit;
 }
 else {
 
-  class formHelper {
+  class FormHelper {
 
     var $html, $db, $cwd;
     var $rowSetName, $rowSet;
@@ -30,7 +30,7 @@ else {
 
     }
 
-    function formHelper(&$db, &$html, $dieOnError = true) {
+    function FormHelper(&$db, &$html, $dieOnError = true) {
       if (version_compare(PHP_VERSION, "5.0.0", "<")) {
         $this->__construct($db, $html, $dieOnError);
         register_shutdown_function(array($this, "__destruct"));
@@ -57,7 +57,7 @@ else {
       if ($db->valid && $type == 'text') {
         $escaped = $db->escape($s);
         if ($escaped != $s) {
-          $err = "Looks like SQL injection. Rejected.<br />";
+          $err = __("Looks like SQL injection. Rejected.", 'easy-paypal') . "<br />";
         }
       }
       $validator = 'validate_';
@@ -77,27 +77,27 @@ else {
 
     function validate_email($s) {
       if (!filter_var($s, FILTER_VALIDATE_EMAIL)) {
-        return "Bad email address";
+        return __("Bad email address", 'easy-paypal');
       }
     }
 
     function validate_notNull($s) {
       $s = trim($s);
       if (empty($s)) {
-        return "Null value not allowed";
+        return __("Null value not allowed", 'easy-paypal');
       }
     }
 
     function validate_number($s) {
       if (!is_numeric($s)) {
-        return "Need a number here";
+        return __("Need a number here", 'easy-paypal');
       }
     }
 
     function validate_alnum($s) {
       $aValid = array('_','-');
       if (!ctype_alnum(str_replace($aValid, '', $s))) {
-        return "Please use only letters, numbers, - and _";
+        return __("Please use only letters, numbers, - and _", 'easy-paypal');
       }
     }
 
@@ -118,7 +118,7 @@ else {
           $return['val'] = isset($posted);
           break;
         case 'file' :
-          $return['val'] = 'File Accepted';
+          $return['val'] = __('File Accepted', 'easy-paypal');
           break;
         case 'button' :
           $return['val'] = $control['value'];
@@ -144,7 +144,7 @@ else {
               $column = $control['column'];
             }
             if (empty($db) || empty($table) || empty($column)) {
-              $err .= '<br />Unique column requires DB details. [Dev error]';
+              $err .= '<br />' . __('Unique column requires DB details. [Dev error]', 'easy-paypal');
             }
             else {
               $return['update'] = $db->rowExists($table, $column, $posted);
@@ -155,7 +155,12 @@ else {
     }
 
     function validate_password($password) {
-      $strength = array("blank", "very weak", "weak", "not very strong", "strong", "very strong");
+      $strength = array(__("blank", 'easy-paypal'),
+          __("very weak", 'easy-paypal'),
+          __("weak", 'easy-paypal'),
+          __("not very strong", 'easy-paypal'),
+          __("strong", 'easy-paypal'),
+          __("very strong", 'easy-paypal'));
       $score = 1;
       if (strlen($password) < 1) {
         $score = 0;
@@ -185,7 +190,7 @@ else {
         $score = 5;
       }
       if ($score < 3) {
-        return "Your password [strength: $score] is " . $strength[$score];
+        return sprintf(__("Your password [strength: %s] is %s", 'easy-paypal'),$score, $strength[$score]);
       }
     }
 
@@ -244,6 +249,13 @@ else {
             $state .= ' onchange="';
             foreach ($v['ifFalseShow'] as $toDisable) {
               $state .= 'document.getElementsByName(\'' . $toDisable . '\').item(0).disabled=this.checked;';
+            }
+            $state .= '"';
+          }
+          if (!empty($v['ifTrueShow']) && is_array($v['ifTrueShow'])) {
+            $state .= ' onchange="';
+            foreach ($v['ifTrueShow'] as $toDisable) {
+              $state .= 'document.getElementsByName(\'' . $toDisable . '\').item(0).disabled=!this.checked;';
             }
             $state .= '"';
           }
@@ -375,7 +387,7 @@ else {
     }
 
     function renderForm($formName, $rowSet, $title, $subtitle, $buttonText, $errMsg = '', $renderFormStart = true) {
-      $script = $_SERVER['REQUEST_URI'];
+      $script = HtmlHelper::esc_url($_SERVER['REQUEST_URI']);
       echo "<!-- Start of renderForm($formName) -->\n";
       $enc = '';
       if ($formName == 'products') {
@@ -459,10 +471,10 @@ else {
           $help = $rowSet[$associatedKey]['help'];
           switch ($type) {
             case 'button':
-              $rowSet[$k]['inline'] = sprintf("<input type='%s' value='Show' onmouseover=\"Tip('%s', WIDTH, 370, TITLE, '%s', FIX, [this, -10, 5])\" onmouseout=\"UnTip()\" onclick=\"window.prompt('Copy to clipboard: Ctrl/Cmd-C:', '%s')\">", $type, htmlspecialchars("Hidden value associated with this option is:<br /><code>$associatedKey => $associatedVal</code><br /><b><em>Click to reveal and copy to clipboard.</em></b><br />"), "Associated Value", $associatedVal);
+              $rowSet[$k]['inline'] = sprintf("<input type='%s' value='Show' onmouseover=\"Tip('%s', WIDTH, 370, TITLE, '%s', FIX, [this, -10, 5])\" onmouseout=\"UnTip()\" onclick=\"window.prompt('" . __("Copy to clipboard: Ctrl/Cmd-C:", 'easy-paypal') . "', '%s')\">", $type, htmlspecialchars(__("Hidden value associated with this option is:", 'easy-paypal') . "<br /><code>$associatedKey => $associatedVal</code><br /><b><em>" . __("Click to reveal and copy to clipboard.", 'easy-paypal') . "</em></b><br />"), "Associated Value", $associatedVal);
               break;
             case 'text':
-              $rowSet[$k]['inline'] = sprintf("<input type='%s' value='%s' onmouseover=\"Tip('%s', WIDTH, 250, TITLE, '%s', FIX, [this, -10, 5])\" onmouseout=\"UnTip()\" name='%s' id='%s'>", $type, $associatedVal, htmlspecialchars($help), "Associated Value", $associatedKey, $associatedKey);
+              $rowSet[$k]['inline'] = sprintf("<input type='%s' value='%s' onmouseover=\"Tip('%s', WIDTH, 250, TITLE, '%s', FIX, [this, -10, 5])\" onmouseout=\"UnTip()\" name='%s' id='%s'>", $type, $associatedVal, htmlspecialchars($help), __("Associated Value", 'easy-paypal'), $associatedKey, $associatedKey);
           }
           // kill the associated row because it is already rendered??
           // to be tested
@@ -486,13 +498,13 @@ else {
         $randomName = '';
         $db = $this->db;
         $optionsVals = $db->getRowData('options');
-        $storage = formHelper::mkStorageName($optionsVals['storage_location']);
+        $storage = FormHelper::mkStorageName($optionsVals['storage_location']);
         $name = $_FILES['file']['name'];
         if (!empty($name)) {
           $parts = explode('.', $name);
           $ext = end($parts);
           if ($optionsVals['random_file']) {
-            $randomName = $storage . '/' . formHelper::randString(24) . '.' . $ext;
+            $randomName = $storage . '/' . FormHelper::randString(24) . '.' . $ext;
           }
           else {
             $randomName = $storage . '/' . $name;
@@ -503,10 +515,10 @@ else {
           if (!is_dir($storage) || !is_writeable($storage)) {
             @exec($command);
           }
-          $tip = htmlspecialchars("In order to move the file to the storage location, log on your server, and issue commands equivalent to:<br><code>$command.</code><br /><b>Click on [?] to copy the actual command.</b>");
+          $tip = htmlspecialchars(__("In order to move the file to the storage location, log on your server, and issue commands equivalent to:", 'easy-paypal') . "<br><code>$command.</code><br /><b>" . __("Click on [?] to copy the actual command.", 'easy-paypal') . "</b>");
           $title = "Error during file upload";
           if (!@move_uploaded_file($tmpName, $randomName)) {
-            $rowSet['file']['warning'] = sprintf("<font color='red'>Error moving the file. Please ensure that the storage directory exists and is writeable. </font><span " . 'onmouseover="Tip(\'%s\', WIDTH, 335, TITLE, \'%s\', FIX, [this, -10, 5])" onmouseout="UnTip()" onclick="window.prompt(\'Copy to clipboard: Ctrl/Cmd-C:\', \'%s\')"' . ">[?]</span>", htmlspecialchars($tip), $title, $command);
+            $rowSet['file']['warning'] = sprintf("<font color='red'>" . __("Error moving the file. Please ensure that the storage directory exists and is writeable.", 'easy-paypal') . " </font><span " . 'onmouseover="Tip(\'%s\', WIDTH, 335, TITLE, \'%s\', FIX, [this, -10, 5])" onmouseout="UnTip()" onclick="window.prompt(\'' . __('Copy to clipboard: Ctrl/Cmd-C:', 'easy-paypal') . '\', \'%s\')"' . ">[?]</span>", $tip, $title, $command);
           }
           /* Paranoid safety measures suspended for now
             else {
@@ -521,7 +533,7 @@ else {
            */
         }
         else {
-          $rowSet['file']['warning'] = "Empty file to be uploaded?!";
+          $rowSet['file']['warning'] = __("Empty file to be uploaded?!", 'easy-paypal');
         }
         return $randomName;
       }
@@ -538,9 +550,10 @@ else {
 
     function isRowSetValid($rowSet) {
       $goodRows = true;
-      foreach ($rowSet as $k => $row) {
-        if (is_array($row))
+      foreach ($rowSet as $row) {
+        if (is_array($row)) {
           $goodRows = $goodRows && empty($row['error']);
+        }
       }
       return $goodRows;
     }
@@ -572,7 +585,7 @@ else {
         }
         if ($formName == 'options') {
           if ($dbRow['random_storage']) {
-            $dbRow['storage_location'] = formHelper::randString(32);
+            $dbRow['storage_location'] = FormHelper::randString(32);
           }
           else {
             if (empty($_POST['storage_location'])) {
@@ -607,7 +620,7 @@ else {
           $this->html->setWarn("$formName info updated.");
         }
         else {
-          $this->html->setErr("Please correct the errors below and try again to update $formName");
+          $this->html->setErr(sprintf(__("Please correct the errors below and try again to update %s", 'easy-paypal'),$formName));
         }
       }
       if (!empty($_POST[$formName . '_load']) || !empty($_POST[$formName . '_autoload'])) {
@@ -620,7 +633,7 @@ else {
             }
             $toLoad = $row;
             $toLoad['value'] = $valErr['val'];
-            $rowSet[$k]['warning'] = 'This product will be modified in your DB if you hit "Update Products" below';
+            $rowSet[$k]['warning'] = __('This product will be modified in your DB if you hit "Update Products" below', 'easy-paypal');
             break;
           }
         }
@@ -628,18 +641,18 @@ else {
           $table = $toLoad['table'];
           $column = $toLoad['column'];
           if (empty($db) || empty($table) || empty($column)) {
-            $this->html->setErr('<br />Unique column requires DB details. [Dev error]');
+            $this->html->setErr('<br />' . __('Unique column requires DB details. [Dev error]', 'easy-paypal'));
           }
           else
           if (empty($toLoad['value'])) {
-            $this->html->setErr('Need a value here to look up in the DB, or a new value to create a new product.');
+            $this->html->setErr(__('Need a value here to look up in the DB, or a new value to create a new product.', 'easy-paypal'));
           }
           else {
             $dbRow = $db->getRowData($table, array($column => $toLoad['value']));
           }
           if (!empty($dbRow)) {
             foreach ($rowSet as $k => $row) {
-              if (is_array($row)) {
+              if (is_array($row) && isset($dbRow[$k])) {
                 $rowSet[$k]['value'] = $dbRow[$k];
               }
             }

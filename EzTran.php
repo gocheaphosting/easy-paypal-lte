@@ -634,6 +634,7 @@ EOF;
         $b64 = base64_encode(gzdeflate(serialize($potArray)));
         echo '<input type="hidden" name="potArray" value="' . $b64 . '" />';
         echo '<input type="hidden" name="locale" value="' . $this->locale . '" />';
+        echo '<input type="hidden" name="ezt-target" value="' . $this->target . '" />';
         if (!$this->isEmbedded) {
           $mail = "<br /><span style='width:15%;float:left;'>Plugin Author:</span><input type='text' style='width: 30%' name='ezt-author' value='' /><br />\n";
           $mail .= "<span style='width:15%;float:left'>Author's Email:</span><input type='text' style='width: 30%' name='ezt-authormail' value='' />\n<br />";
@@ -669,87 +670,94 @@ EOF1;
       }
       else if ($this->state == "English") {
         $tip = htmlentities("If you would like to translate this plugin into a language you know or speak, please use the translation interface. It picks up the translatable strings in <b>$plgName</b> and presents them and their existing translations in your chosen language in an easy-to-edit form. You can then generate a translation file and email it to the author all from the same form. $patience");
-        $invite = "If you speak another language, please help translate this plugin. Select a language: <select name='ezt-createpo'>
-<option value=af_AF>Afrikaans</option>
-<option value=sq_SQ>Albanian</option>
-<option value=ar_AR>Arabic</option>
-<option value=hy_HY>Armenian</option>
-<option value=az_AZ>Azerbaijani</option>
-<option value=eu_EU>Basque</option>
-<option value=be_BE>Belarusian</option>
-<option value=bn_BN>Bengali</option>
-<option value=bs_BS>Bosnian</option>
-<option value=bg_BG>Bulgarian</option>
-<option value=ca_CA>Catalan</option>
-<option value=ceb>Cebuano</option>
-<option value=zh-CN>Chinese</option>
-<option value=hr_HR>Croatian</option>
-<option value=cs_CS>Czech</option>
-<option value=da_DA>Danish</option>
-<option value=nl_NL>Dutch</option>
-<option value=eo_EO>Esperanto</option>
-<option value=et_ET>Estonian</option>
-<option value=tl_TL>Filipino</option>
-<option value=fi_FI>Finnish</option>
-<option value=fr_FR>French</option>
-<option value=gl_GL>Galician</option>
-<option value=ka_KA>Georgian</option>
-<option value=de_DE>German</option>
-<option value=el_EL>Greek</option>
-<option value=gu_GU>Gujarati</option>
-<option value=ht_HT>Haitian Creole</option>
-<option value=ha_HA>Hausa</option>
-<option value=iw_IW>Hebrew</option>
-<option value=hi_HI>Hindi</option>
-<option value=hmn_HMN>Hmong</option>
-<option value=hu_HU>Hungarian</option>
-<option value=is_IS>Icelandic</option>
-<option value=ig_IG>Igbo</option>
-<option value=id_ID>Indonesian</option>
-<option value=ga_GA>Irish</option>
-<option value=it_IT>Italian</option>
-<option value=ja_JA>Japanese</option>
-<option value=jw_JW>Javanese</option>
-<option value=kn_KN>Kannada</option>
-<option value=km_KM>Khmer</option>
-<option value=ko_KO>Korean</option>
-<option value=lo_LO>Lao</option>
-<option value=la_LA>Latin</option>
-<option value=lv_LV>Latvian</option>
-<option value=lt_LT>Lithuanian</option>
-<option value=mk_MK>Macedonian</option>
-<option value=ms_MS>Malay</option>
-<option value=mt_MT>Maltese</option>
-<option value=mi_MI>Maori</option>
-<option value=mr_MR>Marathi</option>
-<option value=mn_MN>Mongolian</option>
-<option value=ne_NE>Nepali</option>
-<option value=no_NO>Norwegian</option>
-<option value=fa_FA>Persian</option>
-<option value=pl_PL>Polish</option>
-<option value=pt_PT>Portuguese</option>
-<option value=pa_PA>Punjabi</option>
-<option value=ro_RO>Romanian</option>
-<option value=ru_RU>Russian</option>
-<option value=sr_SR>Serbian</option>
-<option value=sk_SK>Slovak</option>
-<option value=sl_SL>Slovenian</option>
-<option value=so_SO>Somali</option>
-<option value=es_ES>Spanish</option>
-<option value=sw_SW>Swahili</option>
-<option value=sv_SV>Swedish</option>
-<option value=ta_TA>Tamil</option>
-<option value=te_TE>Telugu</option>
-<option value=th_TH>Thai</option>
-<option value=tr_TR>Turkish</option>
-<option value=uk_UK>Ukrainian</option>
-<option value=ur_UR>Urdu</option>
-<option value=vi_VI>Vietnamese</option>
-<option value=cy_CY>Welsh</option>
-<option value=yi_YI>Yiddish</option>
-<option value=yo_YO>Yoruba</option>
-<option value=zu_ZU>Zulu</option>
-</select>&nbsp; <input type='submit' name='ezt-translate' onmouseover=\"Tip('$tip', WIDTH, 350, TITLE, 'How to Translate?', STICKY, 1, CLOSEBTN, true, CLICKCLOSE, true, FIX, [this, 0, 5])\" onmouseout=\"UnTip()\" value ='Please help translate ' /></span>";
+        $langs = array('af_AF' => 'Afrikaans',
+            'sq_SQ' => 'Albanian',
+            'ar_AR' => 'Arabic',
+            'hy_HY' => 'Armenian',
+            'az_AZ' => 'Azerbaijani',
+            'eu_EU' => 'Basque',
+            'be_BE' => 'Belarusian',
+            'bn_BN' => 'Bengali',
+            'bs_BS' => 'Bosnian',
+            'bg_BG' => 'Bulgarian',
+            'ca_CA' => 'Catalan',
+            'zh-CN' => 'Chinese',
+            'hr_HR' => 'Croatian',
+            'cs_CS' => 'Czech',
+            'da_DA' => 'Danish',
+            'nl_NL' => 'Dutch',
+            'eo_EO' => 'Esperanto',
+            'et_ET' => 'Estonian',
+            'tl_TL' => 'Filipino',
+            'fi_FI' => 'Finnish',
+            'fr_FR' => 'French',
+            'gl_GL' => 'Galician',
+            'ka_KA' => 'Georgian',
+            'de_DE' => 'German',
+            'el_EL' => 'Greek',
+            'gu_GU' => 'Gujarati',
+            'ht_HT' => 'Haitian Creole',
+            'ha_HA' => 'Hausa',
+            'iw_IW' => 'Hebrew',
+            'hi_HI' => 'Hindi',
+            'hu_HU' => 'Hungarian',
+            'is_IS' => 'Icelandic',
+            'ig_IG' => 'Igbo',
+            'id_ID' => 'Indonesian',
+            'ga_GA' => 'Irish',
+            'it_IT' => 'Italian',
+            'ja_JA' => 'Japanese',
+            'jw_JW' => 'Javanese',
+            'kn_KN' => 'Kannada',
+            'km_KM' => 'Khmer',
+            'ko_KO' => 'Korean',
+            'lo_LO' => 'Lao',
+            'la_LA' => 'Latin',
+            'lv_LV' => 'Latvian',
+            'lt_LT' => 'Lithuanian',
+            'mk_MK' => 'Macedonian',
+            'ms_MS' => 'Malay',
+            'mt_MT' => 'Maltese',
+            'mi_MI' => 'Maori',
+            'mr_MR' => 'Marathi',
+            'mn_MN' => 'Mongolian',
+            'ne_NE' => 'Nepali',
+            'no_NO' => 'Norwegian',
+            'fa_FA' => 'Persian',
+            'pl_PL' => 'Polish',
+            'pt_PT' => 'Portuguese',
+            'pa_PA' => 'Punjabi',
+            'ro_RO' => 'Romanian',
+            'ru_RU' => 'Russian',
+            'sr_SR' => 'Serbian',
+            'sk_SK' => 'Slovak',
+            'sl_SL' => 'Slovenian',
+            'so_SO' => 'Somali',
+            'es_ES' => 'Spanish',
+            'sw_SW' => 'Swahili',
+            'sv_SV' => 'Swedish',
+            'ta_TA' => 'Tamil',
+            'te_TE' => 'Telugu',
+            'th_TH' => 'Thai',
+            'tr_TR' => 'Turkish',
+            'uk_UK' => 'Ukrainian',
+            'ur_UR' => 'Urdu',
+            'vi_VI' => 'Vietnamese',
+            'cy_CY' => 'Welsh',
+            'yi_YI' => 'Yiddish',
+            'yo_YO' => 'Yoruba',
+            'zu_ZU' => 'Zulu');
+        $langOptions = '';
+        foreach ($langs as $k => $v) {
+          if ($this->target == $k) {
+            $selected = "selected='selected'";
+          }
+          else {
+            $selected = '';
+          }
+          $langOptions .= "<option value='$k' $selected>$v</option>\n";
+        }
+        $invite = "If you speak another language, please help translate this plugin. Select a language: <select name='ezt-createpo'>$langOptions</select>&nbsp; <input type='submit' name='ezt-translate' onmouseover=\"Tip('$tip', WIDTH, 350, TITLE, 'How to Translate?', STICKY, 1, CLOSEBTN, true, CLICKCLOSE, true, FIX, [this, 0, 5])\" onmouseout=\"UnTip()\" value ='Please help translate ' />";
       }
       else {
         $tip = htmlentities("If you would like to improve this translation, please use the translation interface. It picks up the translatable strings in <b>$plgName</b> and presents them and their existing translations in <b>$locale</b> in an easy-to-edit form. You can then generate a translation file and email it to the author all from the same form. Slick, isn\'t it? $patience");
@@ -832,10 +840,7 @@ EOF1;
     }
 
     function renderTranslator() {
-      if ($this->state == "English") {
-        // TODO: Translation interface requires more testing.
-        // return;
-      }
+      $this->getSessionVars();
       echo "<br />\n";
       echo "<br />\n";
       echo '<div style="background-color:#ddd;padding:5px;border: solid 1px;margin:5px;">';

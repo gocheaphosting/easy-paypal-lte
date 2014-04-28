@@ -1,13 +1,18 @@
 <?php
+
 function createTables() {
-  $db = $GLOBALS['ezDB'] ;
-  if (empty($GLOBALS['innoDB'])) $innoDB = '' ;
-  else $innoDB = $GLOBALS['innoDB'] ;
+  $db = $GLOBALS['ezDB'];
+  if (empty($GLOBALS['innoDB'])) {
+    $innoDB = '';
+  }
+  else {
+    $innoDB = $GLOBALS['innoDB'];
+  }
   if (file_exists('pro/useInnoDB.php')) {
-    include ('pro/useInnoDB.php') ;
+    include ('pro/useInnoDB.php');
   }
 
-  $t_products = $db->prefix("products") ;
+  $t_products = $db->prefix("products");
   $sql = "CREATE TABLE IF NOT EXISTS $t_products (
 id INT UNSIGNED NOT NULL AUTO_INCREMENT,
 created TIMESTAMP DEFAULT NOW(),
@@ -28,7 +33,7 @@ PRIMARY KEY (id))
 $innoDB";
   $db->query($sql);
 
-  $t_productmeta = $db->prefix("product_meta") ;
+  $t_productmeta = $db->prefix("product_meta");
   $sql = "CREATE TABLE IF NOT EXISTS $t_productmeta (
 id INT UNSIGNED NOT NULL AUTO_INCREMENT,
 created TIMESTAMP DEFAULT NOW(),
@@ -40,7 +45,7 @@ PRIMARY KEY (id))
 $innoDB";
   $db->query($sql);
 
-  $t_sales = $db->prefix("sales") ;
+  $t_sales = $db->prefix("sales");
   $sql = "CREATE TABLE IF NOT EXISTS $t_sales (
 id INT UNSIGNED NOT NULL AUTO_INCREMENT,
 created TIMESTAMP DEFAULT NOW(),
@@ -61,12 +66,12 @@ sold_version VARCHAR(32),
 updated_version VARCHAR(32),
 lite_version BOOL DEFAULT TRUE,
 affiliate_id VARCHAR(32),
-UNIQUE KEY (txn_id),
+UNIQUE KEY (txn_id, purchase_status),
 PRIMARY KEY (id))
 $innoDB";
   $db->query($sql);
 
-  $t_salesdetails = $db->prefix("sale_details") ;
+  $t_salesdetails = $db->prefix("sale_details");
   $sql = "CREATE TABLE IF NOT EXISTS $t_salesdetails (
 id INT UNSIGNED NOT NULL AUTO_INCREMENT,
 created TIMESTAMP DEFAULT NOW(),
@@ -105,12 +110,12 @@ txn_id VARCHAR(20) NOT NULL,
 txn_type VARCHAR(48),
 verify_sign VARCHAR(128),
 dbStatus VARCHAR(128),
-UNIQUE KEY (txn_id),
+UNIQUE KEY (txn_id, txn_type, payment_status),
 PRIMARY KEY (id))
 $innoDB";
   $db->query($sql);
 
-  $t_paypal = $db->prefix("paypal") ;
+  $t_paypal = $db->prefix("paypal");
   $sql = "CREATE TABLE IF NOT EXISTS $t_paypal (
 id INT UNSIGNED NOT NULL auto_increment,
 created TIMESTAMP DEFAULT NOW(),
@@ -125,7 +130,7 @@ PRIMARY KEY (id))
 $innoDB";
   $db->query($sql);
 
-  $t_options = $db->prefix("options") ;
+  $t_options = $db->prefix("options");
   $sql = "CREATE TABLE IF NOT EXISTS $t_options (
 id INT UNSIGNED NOT NULL auto_increment,
 created TIMESTAMP DEFAULT NOW(),
@@ -141,7 +146,7 @@ PRIMARY KEY (id))
 $innoDB";
   $db->query($sql);
 
-  $t_optionmeta = $db->prefix("option_meta") ;
+  $t_optionmeta = $db->prefix("option_meta");
   $sql = "CREATE TABLE IF NOT EXISTS $t_optionmeta (
 id INT UNSIGNED NOT NULL auto_increment,
 created TIMESTAMP DEFAULT NOW(),
@@ -159,7 +164,7 @@ PRIMARY KEY (id))
 $innoDB";
   $db->query($sql);
 
-  $t_templates = $db->prefix("templates") ;
+  $t_templates = $db->prefix("templates");
   $sql = "CREATE TABLE IF NOT EXISTS $t_templates (
 id INT UNSIGNED NOT NULL AUTO_INCREMENT,
 created TIMESTAMP DEFAULT NOW(),
@@ -173,7 +178,7 @@ PRIMARY KEY (id))
 $innoDB";
   $db->query($sql);
 
-  $t_ezaffiliates = $db->prefix("ezaffiliates") ;
+  $t_ezaffiliates = $db->prefix("ezaffiliates");
   $sql = "CREATE TABLE IF NOT EXISTS $t_ezaffiliates (
 id INT UNSIGNED NOT NULL AUTO_INCREMENT,
 created TIMESTAMP DEFAULT NOW(),
@@ -185,59 +190,65 @@ PRIMARY KEY (id))
 $innoDB";
   $db->query($sql);
 
-  if (function_exists('addFK')) addFK() ;
-  mkDefaultTemplates() ;
-  if (function_exists('mkProTemplates')) mkProTemplates() ;
+  if (function_exists('addFK')) {
+    addFK();
+  }
+  mkDefaultTemplates();
+  if (function_exists('mkProTemplates')) {
+    mkProTemplates();
+  }
 }
 
 function createLoginTable($username, $password) {
-  $db = $GLOBALS['ezDB'] ;
-  $return = array() ;
-  $table = $db->prefix(md5($username)) ;
+  $db = $GLOBALS['ezDB'];
+  $return = array();
+  $table = $db->prefix(md5($username));
   if ($db->tableExists($table)) {
-    include_once("ezpp.php") ;
-    $ezpp = new ezpp($db) ;
-    $msg =  "Admin user ($username) already exists. " ;
-    if ($ezpp->login($username, $password))
-      $return['warning'] = $msg . "Temporarily logged in." ;
+    include_once("ezpp.php");
+    $ezpp = new EzPP($db);
+    $msg = sprintf(__("Admin user (%s) already exists.", 'easy-paypal'), $username);
+    if ($ezpp->login($username, $password)) {
+      $return['warning'] = $msg . " " . __("Temporarily logged in.", 'easy-paypal');
+    }
     else {
-      $return['error'] = $msg . "Enter your password (twice)." ;
-      return $return ;
+      $return['error'] = $msg . " " . __("Enter your password (twice).", 'easy-paypal');
+      return $return;
     }
   }
-  $key = md5($password) ;
+  $key = md5($password);
   $sql = "CREATE TABLE IF NOT EXISTS $table (
 id INT UNSIGNED NOT NULL AUTO_INCREMENT,
 created TIMESTAMP DEFAULT NOW(),
 keyval VARCHAR(32),
 value VARCHAR(32),
-PRIMARY KEY (id));" ;
-  $db->query($sql) ;
-  $row = array('keyval' => $key, 'value' => $key) ;
-  $db->putRowData($table, $row) ;
-  return $return ;
+PRIMARY KEY (id));";
+  $db->query($sql);
+  $row = array('keyval' => $key, 'value' => $key);
+  $db->putRowData($table, $row);
+  return $return;
 }
 
 function mkDefaultTemplates() {
-  $name = "download_page" ;
-  $value = '<h4>Download Page for {product_name}</h4>
+  $name = "download_page";
+  $value = '<h4>' . __('Download Page for {product_name}', 'easy-paypal') . '</h4>
 <br /><br />
-<p>Dear {customer_name},</p>
-<p>Thank you for purchasing {product_name}. Here are your purchase details:</p>
-<blockquote>
-  <p><strong>Product Name:</strong>&nbsp;&nbsp;&nbsp; {product_name}</p>
-  <p><strong>Purchased Price:</strong>&nbsp;&nbsp;&nbsp; {purchase_amount} {mc_currency}</p>
-  <p><strong>Transaction ID:</strong>&nbsp;&nbsp;&nbsp; {txn_id}</p>
-  <p><strong>Purchase Date:</strong>&nbsp;&nbsp;&nbsp; {purchase_date}</p>
-  <p><strong>Download Time Limit:</strong>&nbsp;&nbsp;&nbsp; {expire_hours} hours</p>
-  <p><strong>Download Expiry:</strong>&nbsp;&nbsp;&nbsp; {expire_date}</p>
-</blockquote>
-<p>Please find the download link to the product below.</p>
-{download_button}' ;
-  insertTemplate($name, $value) ;
+<p>' . __('Dear {customer_name},', 'easy-paypal') . '</p>
+<p>' . __('Thank you for purchasing {product_name}. Here are your purchase details:', 'easy-paypal') . '</p>
+    <table align="center">
+        <tr><td><strong>' . __('Product Name', 'easy-paypal') . ':</strong> </td><td> {product_name}</td></tr>
+        <tr><td><strong>' . __('Purchased Price', 'easy-paypal') . ':</strong> </td><td> ${purchase_amount}</td></tr>
+        <tr><td><strong>' . __('Transaction ID', 'easy-paypal') . ':</strong> </td><td> {txn_id}</td></tr>
+        <tr><td><strong>' . __('Your email', 'easy-paypal') . ':</strong> </td><td> {customer_email}</td></tr>
+        <tr><td><strong>' . __('Purchase Date', 'easy-paypal') . ':</strong> </td><td> {purchase_date}</td></tr>
+        <tr><td><strong>' . __('Download Time Limit', 'easy-paypal') . ':</strong> </td><td> {expire_hours} hours</td></tr>
+        <tr><td><strong>' . __('Download Expiry', 'easy-paypal') . ':</strong> </td><td> {expire_date}</td></tr>
+      </table><br />
+<p>' . __('Please find the download link to the product below.', 'easy-paypal') . '</p>
+{download_button}';
+  insertTemplate($name, $value);
 
-  $name = "email_body" ;
-  $value = "Dear {customer_name},
+  $name = "email_body";
+  $value = __("Dear {customer_name},
 
 Thank you for purchasing {product_name}.
 
@@ -257,20 +268,22 @@ to this email.
 (Ref: This email is sent to {customer_email}).
 
 Sincerely,
-{support_name}" ;
-  insertTemplate($name, $value) ;
+{support_name}", 'easy-paypal');
+  insertTemplate($name, $value);
 
-  $name = "email_subject" ;
-  $value = "Your Purchase: {product_name} ({product_code})" ;
-  insertTemplate($name, $value) ;
+  $name = "email_subject";
+  $value = __("Your Purchase: {product_name} ({product_code})", 'easy-paypal');
+  insertTemplate($name, $value);
 }
 
 function insertTemplate($name, $value) {
-  $db = $GLOBALS['ezDB'] ;
-  $table = $db->prefix("templates") ;
+  $db = $GLOBALS['ezDB'];
+  $table = $db->prefix("templates");
   $sql = "INSERT INTO $table SET name='$name', value='$value', active=true
-  ON DUPLICATE KEY UPDATE name='$name', value='$value', active=true" ;
-  $db->query($sql) ;
+  ON DUPLICATE KEY UPDATE name='$name', value='$value', active=true";
+  $db->query($sql);
 }
 
-if (file_exists('pro/extraTemplates.php')) include_once('pro/extraTemplates.php') ;
+if (file_exists('pro/extraTemplates.php')) {
+  include_once('pro/extraTemplates.php');
+}

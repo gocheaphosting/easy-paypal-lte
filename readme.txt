@@ -3,8 +3,8 @@ Contributors: manojtd
 Donate link: http://buy.thulasidas.com/easy-paypal
 Tags: paypal, paypal ipn, e-commerce, shopping cart, payment gateway, digital goods, ipn, paypal integration
 Requires at least: 3.3
-Tested up to: 3.8
-Stable tag: 5.01
+Tested up to: 3.9
+Stable tag: 5.10
 License: GPL2 or later
 
 Easy PayPal gets you started with your online business. Use PayPal IPN to sell digital goods without a shopping cart or complicated e-commerce setup.
@@ -88,7 +88,7 @@ Note that these extensions are designed to work with [Standalone Pro](http://buy
 
 == Upgrade Notice ==
 
-Adding content length to transaction verification request.
+Internationalizing strings. Compatibility with WordPress V3.90.
 
 == Screenshots ==
 
@@ -202,6 +202,7 @@ Please do not delete the ez-shop page though; it is needed as the IPN listener t
 
 = History =
 
+* V5.10: Internationalizing strings. Compatibility with WordPress V3.90. [Apr 25, 2014]
 * V5.01: Adding content length to transaction verification request. [Apr 14, 2014]
 * V5.00: Adding a translation interface. [Mar 21, 2014]
 * V4.30: Compatibility with WordPress 3.8. [Dec 18, 2013]
