@@ -4,7 +4,7 @@ Donate link: http://buy.thulasidas.com/easy-paypal
 Tags: paypal, paypal ipn, e-commerce, shopping cart, payment gateway, digital goods, ipn, paypal integration
 Requires at least: 3.3
 Tested up to: 3.9
-Stable tag: 5.10
+Stable tag: 5.20
 License: GPL2 or later
 
 Easy PayPal gets you started with your online business. Use PayPal IPN to sell digital goods without a shopping cart or complicated e-commerce setup.
@@ -69,26 +69,26 @@ In addition to the fully functional Lite plugin version, there is a [Pro Version
 18. *Multi-Currency Support*: You can choose you currency on a per-product basis, and your auto-generated shop page will list the product with the right currency symbol.
 19. *Tabbed Admin Interface*: In the Pro version, the admin page is tabbed with the Product Definition tab on top because we expect you to navigate to it most often after your ezPayPal is set up.
 
-Do you have multiple web sites selling digital products? Would you like to consolidate and manage your sales in one central location? Then the Stand-Alone version of this package may be more appropriate. The [Pro Version](http://buy.thulasidas.com/ezpaypal-pro "Get Easy PayPal Pro for $9.95") of the standalone package (which can consolidate sales from multiple websites on a server) gives you all the features listed above and more.  The standalone version also is available for purchase in the [Lite form](http://buy.thulasidas.com/ezpaypal "Get ezPayPal for $4.95").
+Do you have multiple web sites selling digital products? Would you like to consolidate and manage your sales in one central location? Then the Stand-Alone version of this package may be more appropriate. The [Pro Version](http://buy.thulasidas.com/ezpaypal-pro "Get Easy PayPal Pro for $9.95") of the standalone package (which can consolidate sales from multiple websites on a server) gives you all the features listed above and more.
 
 = Optional Packages =
 
-*ezPayPal* is designed to be extensible. The following add-on extensions are ready. (Note that work only with the [Standalone Pro](http://buy.thulasidas.com/ezpaypal-pro "Get Easy PayPal Pro for $9.95") version of ezPayPal.)
+*Easy PayPal* is designed to be extensible. The following add-on extensions are ready.
 
-1. [ezReports](http://buy.thulasidas.com/ezreports-full "ezPayPal Pro bundled with ezReports for only $12.95"): Maximize your sales by analyzing your sales. This reporting package makes slicing and dicing your sales and affiliate data a snap, so that you can spot opportunities. If you already have the [Standalone Pro](http://buy.thulasidas.com/ezpaypal-pro "Get Easy PayPal Pro for $9.95") version of ezPayPal, you can easily add [ezReports](http://buy.thulasidas.com/ezreports "ezReports module for only $4.95"). [*[More Information](http://www.thulasidas.com/packages/ezreports "Read more about ezReports")*]
-2. [ezSubscribe](http://buy.thulasidas.com/ezsubscribe-full "ezPayPal Pro bundled with ezSubscribe for only $12.95"): If you want to add subscription products (support contract, text links, newsletters etc), this module will make it a snap. If you already have the [Standalone Pro](http://buy.thulasidas.com/ezpaypal-pro "Get Easy PayPal Pro for $9.95") version of ezPayPal, you can easily add [ezSubscribe](http://buy.thulasidas.com/ezsubscribe "ezSubscribe module for only $4.95"). [*[More Information](http://www.thulasidas.com/packages/ezsubscribe "Read more about ezSubscribe")*]
-4. [ezAffiliates](http://buy.thulasidas.com/ezaffiliates-full "ezPayPal Pro bundled with ezAffiliates for only $12.95"): Create your own affiliate network and go viral by turing your satisfied customers into your advertising affiliatees. This package, built on the publicly available Affiliates-for-All, integrates perfectly with to automate affiliate sales tracking and commission computation and more. If you already have the [Standalone Pro](http://buy.thulasidas.com/ezpaypal-pro "Get Easy PayPal Pro for $9.95") version of ezPayPal, you can easily add [ezAffiliates](http://buy.thulasidas.com/ezaffiliates "ezAffiliates module for only $4.95"). [*[More Information](http://www.thulasidas.com/packages/ezaffiliates "Read more about ezAffiliates")*]
-4. [ezSupport](http://buy.thulasidas.com/ezsupport-full "ezPayPal Pro bundled with ezSupport for only $12.95"): Every complex software project, once deployed, generates significant support load. Most of the support questions are frivilous, where the end-user presents silly issues that are easily resolved by a cursory look at the documentation. How do we ask the end-user to RTFM without antagonizing them? I found that it could be done by switching to a paid support model. I started charging 95 cents per support questions, and my support load went down by two orders of magnitude. This ezSupport package is built on the excellent osTicket program. It works hand in hand with ezPayPal and provides you with a configurable support system. If you already have the [Standalone Pro](http://buy.thulasidas.com/ezpaypal-pro "Get Easy PayPal Pro for $9.95") version of ezPayPal, you can easily add [ezSupport](http://buy.thulasidas.com/ezsupport-pro "ezSupport module for only $4.95"). [*[More Information](http://www.thulasidas.com/packages/ezsupport "Read more about ezSupport")*]
+1. [Reporting Engine](http://buy.thulasidas.com/ezreports-full-wp "Easy PayPal Pro bundled with ezReports for only $9.95"): Maximize your sales by analyzing your sales. This reporting package makes slicing and dicing your sales data as easy as pie, so that you can spot opportunities. If you already have the [Standalone Pro](http://buy.thulasidas.com/easy-paypal-pro "Get Easy PayPal Pro for $6.95") version of ezPayPal, you can easily add [ezReports](http://buy.thulasidas.com/ezreports "ezReports module for only $4.95"). [*[More Information](http://www.thulasidas.com/packages/ezreports "Read more about ezReports")*]
+2. [Subscription Module](http://buy.thulasidas.com/ezsubscribe-full-wp "Easy PayPal Pro bundled with ezSubscribe for only $9.95"): If you want to add subscription products (support contract, text links, newsletters etc), this module will make it a snap. If you already have the [Standalone Pro](http://buy.thulasidas.com/easy-paypal-pro "Get Easy PayPal Pro for $6.95") version of ezPayPal, you can easily add [ezSubscribe](http://buy.thulasidas.com/ezsubscribe "ezSubscribe module for only $4.95"). [*[More Information](http://www.thulasidas.com/packages/ezsubscribe "Read more about ezSubscribe")*]
+
+If you have the [Standalone Pro](http://buy.thulasidas.com/ezpaypal-pro "Get Easy PayPal Pro for $9.95") version of ezPayPal, you can have even fancier add-on modules.
+1. [ezAffiliates](http://buy.thulasidas.com/ezaffiliates-full "ezPayPal Pro bundled with ezAffiliates for only $12.95"): Create your own affiliate network and go viral by turing your satisfied customers into your advertising affiliatees. This package, built on the publicly available Affiliates-for-All, integrates perfectly with to automate affiliate sales tracking and commission computation and more. If you already have the [Standalone Pro](http://buy.thulasidas.com/ezpaypal-pro "Get Easy PayPal Pro for $9.95") version of ezPayPal, you can easily add [ezAffiliates](http://buy.thulasidas.com/ezaffiliates "ezAffiliates module for only $4.95"). [*[More Information](http://www.thulasidas.com/packages/ezaffiliates "Read more about ezAffiliates")*]
+2. [ezSupport](http://buy.thulasidas.com/ezsupport-full "ezPayPal Pro bundled with ezSupport for only $12.95"): Every complex software project, once deployed, generates significant support load. Most of the support questions are frivilous, where the end-user presents silly issues that are easily resolved by a cursory look at the documentation. How do we ask the end-user to RTFM without antagonizing them? I found that it could be done by switching to a paid support model. I started charging 95 cents per support questions, and my support load went down by two orders of magnitude. This ezSupport package is built on the excellent osTicket program. It works hand in hand with ezPayPal and provides you with a configurable support system. If you already have the [Standalone Pro](http://buy.thulasidas.com/ezpaypal-pro "Get Easy PayPal Pro for $9.95") version of ezPayPal, you can easily add [ezSupport](http://buy.thulasidas.com/ezsupport-pro "ezSupport module for only $4.95"). [*[More Information](http://www.thulasidas.com/packages/ezsupport "Read more about ezSupport")*]
 
 In the pipeline are the following optional extensions:
 
 1. ezTextLinks: Do you have a high page-rank site? Do you get a lot of requests for text links? They can be significantly more lucrative (by a factor of 100, in my case) than contextual ads such as AdSense. The returns can be even greater if you can deal with your advertisers directly, rather than via providers like Text Link Ads that take 50% of your revenue. ezTextLinks will handle payment, activate and expire links, send reminder emails and handle renewals etc. The plugin version is available as Easy Text Links in [Lite](http://wordpress.org/plugins/easy-text-links "Lite version of Easy Text Links") and [Pro](http://buy.thulasidas.com/easy-text-links "Manage your text links like a pro for $7.95") variants.
 
-Note that these extensions are designed to work with [Standalone Pro](http://buy.thulasidas.com/ezpaypal-pro "Get Easy PayPal Pro for $9.95") version. They will be ported to the [Plugin Pro](http://buy.thulasidas.com/easy-paypal-pro "Get Easy PayPal Pro for $6.95") version as well if possible.
-
 == Upgrade Notice ==
 
-Internationalizing strings. Compatibility with WordPress V3.90.
+Some bug fixes. Documentation and admin interface changes.
 
 == Screenshots ==
 
@@ -101,6 +101,8 @@ Internationalizing strings. Compatibility with WordPress V3.90.
 7. The download page where your buyer is automatically forwarded to.
 8. If the PayPal information is not yet received by your server, your buyer sees this screen where he can retrieve his purchase link. (This feature reduces the support load 90%).
 9. The automatic email that your buyer will receive in addition to being forwarded to the download page.
+10. A sample report chart.
+11. A subscription product definition.
 
 == Installation ==
 
@@ -124,11 +126,11 @@ You can display your product links using `[ezshop show='prodID' link='yes']Buy t
 
 = Installing Extensions =
 
-Installing the extension modules is equally easy. To install [the affiliate package](http://buy.thulasidas.com/eaffiliates "Get the Affiliates module for ezPayPal Pro for $4.95"), for instance, just click on the Affiliate link on top right hand side part of your ezPayPal screen (on its WordPress Admin page) and follow the wizard-like instructions.
+Installing the extension modules is equally easy. To install [the reporting engine](http://buy.thulasidas.com/ezreports "Get the reporting engine for Easy PayPal Pro for $4.95"), for instance, just click on the Reports link on top right hand side part of your ezPayPal screen (on its WordPress Admin page) and follow the wizard-like instructions.
 
 = More Documentation =
 
-In your plugin folder, under `docs`, there is the beginning of a full documentation. It is designed in such a way that you will be able to call up the relevant pages from the pages in a context-sensitive way. Future releases will progressively add more complete documentation.
+In your plugin folder, under `docs`, you will comprehensive documentation of the plugin. It is designed in such a way that you will be able to call up the relevant pages from the pages in a context-sensitive way.
 
 == Frequently Asked Questions ==
 
@@ -202,6 +204,7 @@ Please do not delete the ez-shop page though; it is needed as the IPN listener t
 
 = History =
 
+* V5.20: Some bug fixes. Documentation and admin interface changes. [Jun 2, 2014]
 * V5.10: Internationalizing strings. Compatibility with WordPress V3.90. [Apr 25, 2014]
 * V5.01: Adding content length to transaction verification request. [Apr 14, 2014]
 * V5.00: Adding a translation interface. [Mar 21, 2014]

@@ -4,9 +4,9 @@ $actions = array();
 $actions['admin'] = array('name' => 'Admin',
     'help' => __('Go to the Admin Control Panel where you can change your PayPal credentials, set options and define new products/items to sell.', 'easy-paypal'),
     'needPro' => false);
-$actions['setup'] = array('name' => 'Setup',
-    'help' => __('Go to the initial set up screen to specify your credentials and set up your database connections.', 'easy-paypal'),
-    'needPro' => false);
+//$actions['setup'] = array('name' => 'Setup',
+//    'help' => __('Go to the initial set up screen to specify your credentials and set up your database connections.', 'easy-paypal'),
+//    'needPro' => false);
 if (file_exists('pro/batch.php')) {
   $actions['batch'] = array('name' => __('Batch Upload', 'easy-paypal'),
       'help' => __('Copy your product files from a server storage location to ezPayPal storage area.', 'easy-paypal'),
@@ -33,19 +33,27 @@ $helpText = '';
 foreach ($helpStrings as $k => $v) {
   $helpText .= "<b>$k</b>: $v<br/>";
 }
+$ezppURL = plugins_url('',__FILE__);
+$actions['reports'] = array('name' => 'Reports',
+    'help' => "<b>Optional Package: Reporting</b> Get detailed reports about your sales and visualize trends using beautiful charts.",
+    'image' => "$ezppURL/screenshot-10.png",
+    'needPro' => true);
+$actions['subscribe'] = array('name' => 'Subscription',
+    'image' => "$ezppURL/screenshot-11.png",
+    'help' => '<b>Optional Package: Subscription</b> Easily set up and sell subscription products, such time-limited access to your sites, news letters etc.',
+    'needPro' => true);
+$actions['ultra'] = array('name' => __('Ultra Edition', 'easy-paypal'),
+    'help' => "The Ultra Edition of the plugin is the Pro version with both the Reporting Engine and the Subscription Module pre-installed.",
+    'needPro' => true);
 $actions['pro'] = array('name' => __('Pro Functions', 'easy-paypal'),
     'help' => $helpText,
     'needPro' => true);
-$actions['affiliate'] = array('name' => 'Affiliates',
-    'help' => __('<b>Optional Package: Affiliate Marketing</b> Turn your satisfied customers into your viral sales force!', 'easy-paypal'),
-    'needPro' => true);
-/* $actions['reports'] = */
-/*   array('name' => 'Reports', */
-/*     'help' => '<b>Optional Package: Reporting</b> Get detailed reports about your sales and trends.', */
-/*     'needPro' => true); */
+
+//$actions['affiliate'] = array('name' => 'Affiliates',
+//    'help' => __('<b>Optional Package: Affiliate Marketing</b> Turn your satisfied customers into your viral sales force!', 'easy-paypal'),
+//    'needPro' => true);
 
 function mkActionURL($k, $a) {
-  $isPro = strpos(getcwd(), "pro") || file_exists("pro/pro.php");
   $name = addslashes(htmlspecialchars($a['name']));
   if ($k == 'pro') {
     $width = 400;
@@ -58,21 +66,33 @@ function mkActionURL($k, $a) {
       $confirm = __("EZ PayPal Pro is a paid upgrade. Would you like to purchase it for \$9.95?", 'easy-paypal');
     }
   }
-  else {
-    $ezname = 'ezpaypal-pro';
-    $price = 9.95;
-    $width = 300;
-    $confirm = "$name is an optional feature of the Pro Standalone version of this plugin. Would you like to purchase it for \$$price? ($name can be added on later for \$4.95.)";
-  }
-  $help = sprintf(' onmouseover="Tip(\'%s\', WIDTH, ' . $width . ', TITLE, \'%s\', ' .
-          'FIX, [this, 5, 2])" onmouseout="UnTip()" ', htmlspecialchars($a['help']), $name);
-  if ($a['needPro']) {
-    if ($isPro) {
-      $ret = sprintf("'%spro/%s.php' %s", $_SESSION['ezppURL'], $k, $help);
+  else if ($k == 'ultra') {
+    $width = 400;
+    if (function_exists('plugin_dir_url')) {
+      $ezname = 'easy-paypal-ultra';
+      $confirm = __("Easy PayPal Ultra does everything that Easy PayPal Pro does, plus it includes the reporting engine as well as the subscription module. Would you like to purchase it for \$13.95?", 'easy-paypal');
     }
     else {
-      $ret = "'http://buy.thulasidas.com/$ezname' onclick='return confirm(\"$confirm\");' target='_blank' $help";
+      $ezname = 'ezpaypal-pro';
+      $confirm = __("EZ PayPal Pro is a paid upgrade. Would you like to purchase it for \$9.95?", 'easy-paypal');
     }
+  }
+  else {
+    $ezname = "easy-paypal-$k";
+    $price = 9.95;
+    $width = 300;
+    $confirm = "$name is an optional module to the Pro version of this plugin. Would you like to purchase the Pro version and the module together for \$$price? (Limited time offer)";
+  }
+  if (!empty($a['image'])) {
+    $image = "&nbsp;Example:<br /><img src=\"{$a['image']}\" width=\"100%\" \>";
+  }
+  else {
+    $image = '';
+  }
+  $help = sprintf(' onmouseover="Tip(\'%s\', WIDTH, ' . $width . ', TITLE, \'%s\', ' .
+          'FIX, [this, 5, 2])" onmouseout="UnTip()" ', htmlspecialchars($a['help'].$image), $name);
+  if ($a['needPro']) {
+    $ret = "'http://buy.thulasidas.com/$ezname' onclick='return confirm(\"$confirm\");' target='_blank' $help";
   }
   else {
     $ret = sprintf("'%s%s.php' %s", $_SESSION['ezppURL'], $k, $help);

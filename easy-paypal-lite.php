@@ -4,7 +4,7 @@
   Plugin Name: Easy PayPal
   Plugin URI: http://www.thulasidas.com/plugins/ezpaypal
   Description: <em>Lite Version</em>: Easiest way to start selling your digital goods online. Go to <a href="options-general.php?page=easy-paypal-lite.php">Settings &rarr; Easy PayPal</a> to set it up, or use the "Settings" link on the right.
-  Version: 5.10
+  Version: 5.20
   Author: Manoj Thulasidas
   Author URI: http://www.thulasidas.com
  */
@@ -222,8 +222,15 @@ else {
         echo "Trouble installing ezPayPal!";
       }
       $help = __("Need help?<br />Click me!", 'easy-paypal');
-      echo "<div class='updated' onclick='popUp(\"{$this->plgURL}/docs/index.php?wordpress\");return false;' onmouseover=\"Tip('$help', WIDTH, 70, ABOVE, true)\" onmouseout=\"UnTip()\" style='font-weight:bold;padding:5px;color:green;cursor:pointer;width:686px;margin:0px auto;'>";
-      echo __("Quickstart Guide: Click here for quick help on how to use this plugin.", 'easy-paypal') . "<img title='$help' style='float:right;cursor:pointer;' alt='(?)' src='{$this->plgURL}/help.png' />";
+      echo "<div class='updated' style='font-weight:bold;padding:5px;width:686px;margin:0px auto;'><span onclick='popUp(\"{$this->plgURL}/docs/index.php?wordpress\");return false;' onmouseover=\"Tip('$help', WIDTH, 70, ABOVE, true)\" onmouseout=\"UnTip()\" style='color:green;cursor:pointer;'>";
+      echo __("Quickstart Guide: Click here for quick help on how to use this plugin.", 'easy-paypal');
+      echo "&nbsp;&nbsp;&nbsp;<img title='$help' style='cursor:pointer;vertical-align:bottom' alt='(?)' src='{$this->plgURL}/help.png' />";
+      echo "</span>";
+      $plgKey = 'easy-paypal-lte';
+      $promoClick0 = "onclick=\"popupwindow('http://www.thulasidas.com/promo.php?key=$plgKey','Get Pro', 1024, 768);return false;\"";
+      $promoClick = addslashes($promoClick0);
+      $promoTip = htmlspecialchars("<a style=\"color:red;font-weight:bold\" href=\"http://www.thulasidas.com/promo.php?key=$plgKey\" target=_blank $promoClick>" . __("Limited Time Offer. Get the Pro version for less than a dollar!", 'easy-common') . "</a>");
+      echo "<a href='http://www.thulasidas.com/promo.php?key=$plgKey' $promoClick0 onmouseover=\"Tip('$promoTip', WIDTH, 200, CLOSEBTN, true, CLICKCLOSE, true, FIX, [this, 5, 5], TITLE, 'Limited Time Offer')\" style='float:right'>Limited Time Offer!</a>";
       echo "</div>";
       echo "<form method='post' style='width:800px;margin-left:auto;margin-right:auto'>";
       $this->ezTran->renderTranslator();
