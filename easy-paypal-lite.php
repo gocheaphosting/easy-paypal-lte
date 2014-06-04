@@ -4,7 +4,7 @@
   Plugin Name: Easy PayPal
   Plugin URI: http://www.thulasidas.com/plugins/ezpaypal
   Description: <em>Lite Version</em>: Easiest way to start selling your digital goods online. Go to <a href="options-general.php?page=easy-paypal-lite.php">Settings &rarr; Easy PayPal</a> to set it up, or use the "Settings" link on the right.
-  Version: 5.20
+  Version: 5.21
   Author: Manoj Thulasidas
   Author URI: http://www.thulasidas.com
  */
@@ -227,10 +227,9 @@ else {
       echo "&nbsp;&nbsp;&nbsp;<img title='$help' style='cursor:pointer;vertical-align:bottom' alt='(?)' src='{$this->plgURL}/help.png' />";
       echo "</span>";
       $plgKey = 'easy-paypal-lte';
-      $promoClick0 = "onclick=\"popupwindow('http://www.thulasidas.com/promo.php?key=$plgKey','Get Pro', 1024, 768);return false;\"";
-      $promoClick = addslashes($promoClick0);
-      $promoTip = htmlspecialchars("<a style=\"color:red;font-weight:bold\" href=\"http://www.thulasidas.com/promo.php?key=$plgKey\" target=_blank $promoClick>" . __("Limited Time Offer. Get the Pro version for less than a dollar!", 'easy-common') . "</a>");
-      echo "<a href='http://www.thulasidas.com/promo.php?key=$plgKey' $promoClick0 onmouseover=\"Tip('$promoTip', WIDTH, 200, CLOSEBTN, true, CLICKCLOSE, true, FIX, [this, 5, 5], TITLE, 'Limited Time Offer')\" style='float:right'>Limited Time Offer!</a>";
+      $promoClick = "onclick=\"popupwindow('http://www.thulasidas.com/promo.php?key=$plgKey','Get Pro', 1024, 768);return false;\"";
+      $promoTip = htmlspecialchars("<a style=\"color:#009;font-weight:bold\" href=\"http://www.thulasidas.com/promo.php?key=$plgKey\" target=_blank >" . __("Limited Time Offer. Get the Pro version for less than a dollar!", 'easy-common') . "</a>");
+      echo "<a href='http://www.thulasidas.com/promo.php?key=$plgKey' $promoClick onmouseover=\"Tip('$promoTip', WIDTH, 200, FIX, [this, 5, 5])\" style='float:right' onmouseout=\"UnTip()\">Go <strong>Pro</strong> for a dollar!</a>";
       echo "</div>";
       echo "<form method='post' style='width:800px;margin-left:auto;margin-right:auto'>";
       $this->ezTran->renderTranslator();
