@@ -63,6 +63,7 @@ else {
         include_once('actions.php');
         $welcome = showActions($actions, false);
       }
+      $self = '';
       if (!empty($GLOBALS['toInclude'])) {
         $exploded = explode('.', $GLOBALS['toInclude']);
         $self = array_shift($exploded);
