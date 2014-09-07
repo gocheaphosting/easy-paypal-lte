@@ -3,8 +3,8 @@ Contributors: manojtd
 Donate link: http://buy.thulasidas.com/easy-paypal
 Tags: paypal, paypal ipn, e-commerce, shopping cart, payment gateway, digital goods, ipn, paypal integration
 Requires at least: 3.3
-Tested up to: 3.9
-Stable tag: 5.24
+Tested up to: 4.0
+Stable tag: 5.30
 License: GPL2 or later
 
 Easy PayPal gets you started with your online business. Use PayPal IPN to sell digital goods without a shopping cart or complicated e-commerce setup.
@@ -88,7 +88,7 @@ In the pipeline are the following optional extensions:
 
 == Upgrade Notice ==
 
-Updating a few language files, minor documentation changes.
+Compatibility with WP4.0, documentation changes.
 
 == Screenshots ==
 
@@ -138,7 +138,7 @@ In your plugin folder, under `docs`, you will comprehensive documentation of the
 
 In your plugin folder, under `docs`, there is the beginning of a full documentation. It is designed in such a way that you will be able to call up the relevant pages from the pages in a context-sensitive way. Future releases will progressively add more complete documentation.
 
-The documentation is also hosted at my site in [HTML](http://buy.thulasidas.com/docs "HTML Documentation of ezPayPal") and [PDF](http://www.thulasidas.com/col/ezpp.pdf "Printable PDF Manual") formats.
+The documentation is also hosted at my site in [HTML](http://buy.thulasidas.com/docs "HTML Documentation of ezPayPal") and [PDF](http://buy.thulasidas.com/docs/ezpp.pdf "Printable PDF Manual") formats.
 
 = How can I contact the plugin author if I need help? =
 
@@ -204,6 +204,7 @@ Please do not delete the ez-shop page though; it is needed as the IPN listener t
 
 = History =
 
+* V5.30: Compatibility with WP4.0, documentation changes. [Sep 7, 2014]
 * V5.24: Updating a few language files, minor documentation changes. [Jun 18, 2014]
 * V5.23: Making the storage location relative to fix an issue on Windows systems. [Jun 16, 2014]
 * V5.21: Minor documentation and admin interface changes. [Jun 3, 2014]
