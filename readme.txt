@@ -3,8 +3,8 @@ Contributors: manojtd
 Donate link: http://buy.thulasidas.com/easy-paypal
 Tags: paypal, paypal ipn, e-commerce, shopping cart, payment gateway, digital goods, ipn, paypal integration
 Requires at least: 3.3
-Tested up to: 4.0
-Stable tag: 5.30
+Tested up to: 4.1
+Stable tag: 5.31
 License: GPL2 or later
 
 Easy PayPal gets you started with your online business. Use PayPal IPN to sell digital goods without a shopping cart or complicated e-commerce setup.
@@ -88,7 +88,7 @@ In the pipeline are the following optional extensions:
 
 == Upgrade Notice ==
 
-Compatibility with WP4.0, documentation changes.
+Improvements in the graphics.
 
 == Screenshots ==
 
@@ -193,17 +193,11 @@ Please do not delete the ez-shop page though; it is needed as the IPN listener t
 
 = Future Plans =
 
-1. Extensible Options storage using meta tables. Right now, *Easy PayPal* stores setup and admin options in a pre-defined DB table. In a future version, it will change to a meta (name-value pair) table. The options currently defined will be migrated there.
-2. New options: Bcc on email, shop title, subtitle, copyright statement etc.
-3. The shop front will handle user-defined, flexible lists of products. That is, it will handle ez-shop.php?[show[=a,b]]
-3. Interface to delete products. Right now, nothing can be deleted from your database for data integrity reasons. Products can be set inactive, which is a proxy to deletion.
-4. The Admin interface will sport Tabs.
-5. Multiple edition support with paid upgrade option for your products. For instance, a Pro Upgrades will be sold only to buyers who have purchased the corresponding Lite edition.
-6. Even more enhanced help system.
-7. Option to link to a Lite version of the products.
+A major release (V6.00) is planned in early 2015. It is a complete rewrite of the whole ezPayPal package, sporting a modern, responsive admin interface based on the twitter bootstrap framework, and in-place editing of options and entities using AJAX.
 
 = History =
 
+* V5.31: Improvements in the graphics. [Jan 2, 2015]
 * V5.30: Compatibility with WP4.0, documentation changes. [Sep 7, 2014]
 * V5.24: Updating a few language files, minor documentation changes. [Jun 18, 2014]
 * V5.23: Making the storage location relative to fix an issue on Windows systems. [Jun 16, 2014]

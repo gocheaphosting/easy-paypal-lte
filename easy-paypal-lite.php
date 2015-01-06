@@ -4,7 +4,7 @@
   Plugin Name: Easy PayPal
   Plugin URI: http://www.thulasidas.com/plugins/ezpaypal
   Description: <em>Lite Version</em>: Easiest way to start selling your digital goods online. Go to <a href="options-general.php?page=easy-paypal-lite.php">Settings &rarr; Easy PayPal</a> to set it up, or use the "Settings" link on the right.
-  Version: 5.30
+  Version: 5.31
   Author: Manoj Thulasidas
   Author URI: http://www.thulasidas.com
  */
@@ -114,7 +114,7 @@ else {
       $permalink = admin_url('options-permalink.php');
       $content = "<p>" . __("This is an auto-generated page by Easy PayPal Plugin. It displays the products you have defined in a neat table format, which allows your potential buyers to purchase them.", 'easy-paypal') . "</p>
 <p>" . sprintf(__("Whether you display this page or not, you should not delete it. This page is the target to which PayPal will send the information about your purchases. It is the <em>PayPal Listener</em> and the plugin will not work if it is not reachabe at %s. Please click to verify.", 'easy-paypal'), "<a href='$shop'>$shop</a>") . "</p>
-<p>" . sprintf(__("If the shop page (%s) is not reachable, please %senable a permalink structure%s for your blog. <em>Any structure (other than the ugly default structure using %s) will do.", 'easy-paypal'), $shop, "<a href='$permalink'>", "</a>", "<code>?p=</code>") . "</p>
+<p>" . sprintf(__("If the shop page (%s) is not reachable, please %senable a permalink structure%s for your blog. Any structure (other than the ugly default structure using %s) will do.", 'easy-paypal'), $shop, "<a href='$permalink'>", "</a>", "<code>?p=</code>") . "</p>
 <p>" . __("Note that you can create your own shop pages using the shortcodes. For example, each product can be displayed as a <strong>Buy Now</strong> using the shortcode format <code>[[ezshop buy='product_code']Buy Now[/ezshop]]</code>. This will insert a link, which when clicked, will take your reader to a PayPal page to buy the product.", 'easy-paypal') . "</p>
 <p>" . __("The ez-shop page is not meant to be a public page. It is a page needed for the plugin to receive messages from PayPal and handle them. It is also a quick page to show you that the plugin is working. Please create a pretty page with links using short codes.</p><p color='red'>If you decide to edit this page, please do not delete the <code>[[ezshop]]</code> line below this line.", 'easy-paypal') . "</p>\n";
       $page['post_type'] = 'page';
