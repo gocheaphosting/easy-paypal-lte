@@ -186,7 +186,7 @@ ENDRATING;
       $value = '<em><strong>' . $plg['value'] . '</strong></em>';
       $toolTip = $plg['title'];
       $price = $plg['price'];
-      $onclick = "onclick=\"popupwindow('http://buy.thulasidas.com/$slug','Get Pro}', 1024, 768);return false;\"";
+      $onclick = "onclick=\"popupwindow('http://buy.thulasidas.com/$slug','Get Pro', 1024, 768);return false;\"";
 
       $s2 = __('Lite Version', 'easy-common');
       $s3 = sprintf(__('Buy the Pro version of %s for $%.2f', 'easy-common'), $plg['value'], $price);
@@ -255,7 +255,7 @@ $moreInfo
       $promoClick = addslashes("onclick=\"popupwindow('http://www.thulasidas.com/promo.php?key=$plgKey','Get Pro', 1024, 768);return false;\"");
       $promoTip = htmlspecialchars("$s3. $s9<br /><a style=\"color:red;font-weight:bold\" href=\"http://www.thulasidas.com/promo.php?key=$plgKey\" target=_blank $promoClick>" . __("Limited Time Offer. Get the Pro version for less than a dollar!", 'easy-common') . "</a>");
 
-      echo "$s10 $filter $s11 <br /><a href='http://buy.thulasidas.com/$slug' title='$s3. $s9' onmouseover=\"Tip('$promoTip', WIDTH, 200, CLOSEBTN, true, CLICKCLOSE, true, FIX, [this, 5, 5], TITLE, 'Limited Time Offer')\">$s8</a>";
+      echo "$s10 $filter $s11 <br /><a href='http://buy.thulasidas.com/$slug' title='$s3. $s9' onmouseover=\"Tip('$promoTip', WIDTH, 200, CLOSEBTN, true, CLICKCLOSE, true, FIX, [this, 5, 5], TITLE, 'Limited Time Offer')\" $onclick>$s8</a>";
       echo "</div>";
     }
 
