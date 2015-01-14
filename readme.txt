@@ -12,7 +12,7 @@ EZ PayPal gets you started with your online business. Use PayPal IPN to sell dig
 
 *EZ PayPal* is the simplest possible way to sell your digital goods online. It helps you quickly set up an online store to sell any downloadable item, where your buyers can pay for it and get an automatic, expiring download link. The whole flow is fully automated and designed to run unattended. Do you have an application, PHP package, photograph, PDF book (or any other downloadable item) to sell? Find the set up of a shopping cart system too overwhelming? *EZ PayPal* may be the right solution for you.
 
-This release (V6.00) is a complete rewrite of the previous version. It now features a thoroughly modern slick interface built on the twitter bootstrap framework, re-designed data model, and much more robust workflow.
+This release (V6.00) is a complete rewrite of the previous version. It now features a thoroughly modern slick interface built on the twitter bootstrap framework, re-designed data model, and much more robust workflow. *Please note that V6+ database schema is not backward compatible with V5.xx. Consider backing up your database before updating.*
 
 Take a look at the features listed below to appreciate the vast array of tools this little PayPal/IPN implementation offers.
 
@@ -50,7 +50,7 @@ In addition to the fully functional Lite version, there is a Pro Version with ma
 
 If the following features are important to you, consider buying the Pro version.
 
-1. *HTML Emails*: In the *Pro* version, you can send impressive HTML email to your customers rather than the boring plain text messages.
+1. *HTML Emails*: In the *Pro* version, you can send impressive HTML email to your customers based on your own design rather than the boring plain text messages.
 2. *PDT Handling*: Payment Data Transfer posts the data to your return page, which the *Pro* version makes use of, in preparing the return page. This can be critical when there is a delay in PayPal posting the IPN messages to the listener.
 3. *Address Handling*: The *Pro* version can optionally store the customer address details in a database table, if you need it.
 4. *IPN Relay*: If you have other IPN listeners, the *Pro* version of *EZ PayPal* can relay the IPN messages to them, so that they receive the same IPN messages, enabling integration with multiple systems.
