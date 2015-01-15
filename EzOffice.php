@@ -137,6 +137,7 @@ class EzOffice {
 
   function txnIdExists() {
     global $log;
+    $check = true;
     $saleDetails = $this->getSaleDetails();
     if (empty($saleDetails['txn_id'])) {
       $log->error("Empty transaction ID from PayPal.");
