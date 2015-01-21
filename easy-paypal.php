@@ -3,8 +3,8 @@
 /*
   Plugin Name: EZ PayPal
   Plugin URI: http://www.thulasidas.com/plugins/ezpaypal
-  Description: Easiest way to start selling your digital goods online. Go to <a href="options-general.php?page=wp-ezpaypal.php">Settings &rarr; EZ PayPal</a> to set it up, or use the "Settings" link on the right.
-  Version: 6.11
+  Description: Easiest way to start selling your digital goods online. Go to <a href="options-general.php?page=wp-ezpaypal.php">Settings &rarr; EZ PayPal Lite</a> to set it up, or use the "Settings" link on the right.
+  Version: 6.13
   Author: Manoj Thulasidas
   Author URI: http://www.thulasidas.com
  */

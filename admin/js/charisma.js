@@ -245,6 +245,15 @@ function docReady() {
     return ezPopUp(url, title, w, h);
   });
 
+  $('.popup').click(function (e) {
+    e.preventDefault();
+    var url = $(this).attr('href');
+    var title = "Support Ticket";
+    var w = 1024;
+    var h = 728;
+    return ezPopUp(url, title, w, h);
+  });
+
   $('[data-toggle="popover"]').popover({
     container: 'body'
   });

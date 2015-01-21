@@ -53,7 +53,7 @@ switch ($action) {
     if (empty($sale['updated_version'])) {
       $sale['updated_version'] = $sale['sold_version'];
     }
-    $isMinor = floor($prodVersion) == floor($sale['updated_version']);
+    $isMinor = floor($product['version']) == floor($sale['updated_version']);
     if ($isMinor) {
       $updatePrice = EZ::getUpdatePrice($product);
     }

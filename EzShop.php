@@ -71,7 +71,7 @@ class EzShop {
     <?php
   }
 
-  function renderScript() {
+  static function renderScript() {
     ?>
     <script>
       $('.buyNow').click(function (e) {
@@ -179,7 +179,6 @@ class EzShop {
     $autoSubmit = empty($inputs['debug']);
     $product = $this->product;
     extract($product);
-    $product_price = number_format($product_price, 2, ".", "");
     $returnPage = $this->mkReturnPage();
     $amountLine = $this->mkAmountLine();
     $xclickLine = $this->mkXClickLine();
@@ -210,18 +209,22 @@ $shippingLine";
     return $form;
   }
 
-  function mkUpdateText() {
-    return '';
+  function mkPrice() {
+    $product_price = number_format($this->product['product_price'], 2, ".", "");
+    return $product_price;
+  }
+
+  function mkPriceHeading() {
+    $price = $this->mkPrice();
+    return "<h4 align='center'> \$$price each</h4>\n";
   }
 
   function makeHeader($inputs) {
     $qty = $inputs['qty'];
     $product = $this->product;
     extract($product);
-    $updateText = $this->mkUpdateText();
-    $product_price = number_format($product_price, 2, ".", "");
     $html = "<h3 align='center'>$product_name, Quantity: $qty</h3>\n";
-    $html .= "<h4 align='center'> $updateText \$$product_price each</h4>\n";
+    $html .= $this->mkPriceHeading();
     return $html;
   }
 

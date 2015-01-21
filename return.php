@@ -14,6 +14,8 @@ if (!empty($_REQUEST['email'])) {
   $result = EZ::getSaleHistory($email);
   if (!empty($result['pageHtml'])) {
     $pageHtml = $result['pageHtml'];
+    $pageHtml = "<div id='updateDiv'>$pageHtml</div>"
+            . "<input style='display:none' data-email='$email' class='update' type='button'>";
   }
   else if (empty($result['error'])) {
     $result['error'] = "No sale history found!";
@@ -35,6 +37,11 @@ openBox("Delivery Portal", "download-alt", 10);
 echo $html;
 done:
 closeBox();
+
+if (file_exists('EzShopPro.php')) {
+  require_once 'EzShopPro.php';
+  EzShopPro::renderScript();
+}
 
 if (!empty($result['error'])) {
   EZ::flashError(strip_tags($result['error']), true);

@@ -3,6 +3,10 @@
 require_once('../EZ.php');
 
 if (EZ::isLoggedInWP()) { // DB setup will be done in the plugin activation hook
+  if (!EZ::isActive()) {
+    $pluginsPage = admin_url('plugins.php');
+    wp_die("<h3>Plugin Not Active</h3><strong>EZ PayPal</strong> is not active.<br/ >Please activate it from your <a href='$pluginsPage'>plugin admin page</a> before accessing this page.");
+  }
   return;
 }
 else if (EZ::$isInWP) { // If in plugin mode, use WP login

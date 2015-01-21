@@ -1,6 +1,20 @@
 <?php
+/*
+ * This is the landing page of the EZ PayPal installation.
+ * It redirects HTTP requests to product purchase pages, if possible.
+ * These are permalink urls of the kind host://root/[dir/]<product id><code><key>
+ * Also, forwards the targets in the old version (<V6.00) to the new targerts.
+ * In order for this to work, you need an .htaccess file with the following content:
+# BEGIN EZ PayPal
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . index.php?id=1 [L]
+</IfModule>
+# END EZ PayPal
+ */
 
-// allow urls of the kind host://root/[dir/]<product id><code><key>
 $uri = explode('/', $_SERVER['REQUEST_URI']);
 $code = strtolower(end($uri));
 if (empty($code)) {

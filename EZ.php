@@ -19,7 +19,6 @@ if (!class_exists("EZ")) {
   class EZ extends EZPro {
 
     static $options = array();
-    static $openx = array();
     static $salt = "";
     static $cacheTimeout = 1;
     static $isInstallingWP = false;
@@ -126,14 +125,22 @@ if (!class_exists("EZ")) {
       exit();
     }
 
+    static function isActive() {
+      if (!function_exists('is_plugin_active')) {
+        include_once ABSPATH . 'wp-admin/includes/plugin.php';
+      }
+      $plgSlug = basename(dirname(__FILE__)) . "/easy-paypal.php";
+      return is_plugin_active($plgSlug);
+    }
+
     static function isLoggedInWP() {
       $wpHeader = '../../../../wp-blog-header.php';
-      if (@file_exists($wpHeader)) { // admin?
+      if (file_exists($wpHeader)) { // admin?
         require($wpHeader);
       }
       else {
         $wpHeader = '../../../../../wp-blog-header.php';
-        if (@file_exists($wpHeader)) { // AJAX?
+        if (file_exists($wpHeader)) { // AJAX?
           require($wpHeader);
         }
       }
@@ -223,23 +230,23 @@ if (!class_exists("EZ")) {
       return $url;
     }
 
-  static function handleImageTagsHtml($html) {
-    $matches = array();
-    $pattern = '/{img:([^ ]*?)}/';
-    preg_match_all($pattern, $html, $matches);
-    $tags = $matches[0];
-    $images = $matches[1];
-    $img = array();
-    $imgSrc =  "assets/";
-    if (!empty($images) && is_array($images)) {
-      foreach ($images as $i) {
-        $img[] = "<img src='$imgSrc/$i' alt='$i' />";
+    static function handleImageTagsHtml($html) {
+      $matches = array();
+      $pattern = '/{img:([^ ]*?)}/';
+      preg_match_all($pattern, $html, $matches);
+      $tags = $matches[0];
+      $images = $matches[1];
+      $img = array();
+      $imgSrc = "assets/";
+      if (!empty($images) && is_array($images)) {
+        foreach ($images as $i) {
+          $img[] = "<img src='$imgSrc/$i' alt='$i' />";
+        }
       }
-    }
-    $html = str_replace($tags, $img, $html);
+      $html = str_replace($tags, $img, $html);
 
-    return $html;
-  }
+      return $html;
+    }
 
     static function sendMail($subject, $message, $to) {
       $options = self::getOptions();
@@ -840,7 +847,7 @@ if (!class_exists("EZ")) {
         $menuPlacement = 'Auto';
       }
       if (self::$isInWP) { // standalone?
-        $standAlone = (strpos($_SERVER["HTTP_REFERER"], 'wp-admin/options-general.php') === false) && !isset($_REQUEST['inframe']);
+        $standAlone = !isset($_REQUEST['inframe']) && (@strpos($_SERVER["HTTP_REFERER"], 'wp-admin/options-general.php') === false);
       }
       else {
         $standAlone = true;
@@ -887,8 +894,8 @@ if (!class_exists("EZ")) {
       }
       if (empty($product)) { // Try meta key
         $prodMeta = $db->getData("product_meta", "*", array('name' => 'key', 'value' => $id));
-        $prodMeta = $prodMeta[0];
         if (!empty($prodMeta)) {
+          $prodMeta = $prodMeta[0];
           $filter = array('id' => $prodMeta['product_id']);
           $product = $db->getData('products', '*', $filter);
           $product = $product[0];
