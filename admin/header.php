@@ -101,6 +101,7 @@ function showScreenshot($id) {
 }
 
 function getHeader() {
+  header('HTTP 200 all good', true, 200);
   global $no_visible_elements;
   if (class_exists('EZ') && property_exists('EZ', 'isPro')) {
     $isPro = EZ::$isPro;

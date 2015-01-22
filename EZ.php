@@ -10,6 +10,9 @@ $log = new Logger();
 if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) &&
         strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
   error_reporting(E_ERROR | E_PARSE);
+// CORS headers
+  header("access-control-allow-origin: *", true);
+  header("access-control-allow-methods: GET, POST, PUT, DELETE, OPTIONS", true);
 }
 
 if (!class_exists("EZ")) {
