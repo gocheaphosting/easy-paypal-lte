@@ -24,7 +24,7 @@ openBox("Sales", "th-list", 12, "<p>The table below listing your sales is search
 <table class="table table-striped table-bordered responsive data-table">
   <thead>
     <tr>
-      <th class="center-text"style='width:15%;min-width:150px;'>Date</th>
+      <th class="center-text" style='width:15%;min-width:150px;'>Date</th>
       <th style='width:20%'>Buyer Name</th>
       <th style='width:15%'>Buyer E-Mail</th>
       <th style='width:30%'>Product</th>

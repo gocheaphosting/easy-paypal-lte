@@ -20,6 +20,9 @@ if (!class_exists("DbHelper")) {
       if (EZ::$isInstallingWP || EZ::$isInWP || EZ::isLoggedInWP()) {
         $cfgFile = "$pwd/dbCfg-WP.php";
       }
+      else if (EZ::isInWP()) { // in WP but not logged in
+        wp_die("<h3>Not Authorized!</h3>You are not logged on to your WordPress admin.<br/ >Please <a href='" . wp_login_url() . "'>login</a> before accessing this page.");
+      }
       else {
         $cfgFile = "$pwd/dbCfg.php";
       }

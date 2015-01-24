@@ -136,14 +136,37 @@ if (!class_exists("EZ")) {
       return is_plugin_active($plgSlug);
     }
 
+    static function isInWP() {
+      self::$isInWP = false;
+      if (isset($_REQUEST['wp'])) {
+        self::$isInWP = true;
+        return true;
+      }
+      if (function_exists('is_user_logged_in')) {
+        self::$isInWP = true;
+        return true;
+      }
+      $wpHeader = '../../../../wp-blog-header.php';
+      if (@file_exists($wpHeader)) {
+        self::$isInWP = true;
+        return true;
+      }
+      $wpHeader = '../../../../../wp-blog-header.php';
+      if (@file_exists($wpHeader)) {
+        self::$isInWP = true;
+        return true;
+      }
+      return self::$isInWP;
+    }
+
     static function isLoggedInWP() {
       $wpHeader = '../../../../wp-blog-header.php';
-      if (file_exists($wpHeader)) { // admin?
+      if (@file_exists($wpHeader)) { // admin?
         require($wpHeader);
       }
       else {
         $wpHeader = '../../../../../wp-blog-header.php';
-        if (file_exists($wpHeader)) { // AJAX?
+        if (@file_exists($wpHeader)) { // AJAX?
           require($wpHeader);
         }
       }

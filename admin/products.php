@@ -23,8 +23,8 @@ openBox("Products", "th-list", 12, "<p>The table below listing your products is 
 <table class="table table-striped table-bordered responsive data-table">
   <thead>
     <tr>
-      <th class="center-text"style='width:3%'>ID</th>
-      <th class="center-text"style='width:14%'>Code</th>
+      <th class="center-text" style='width:3%'>ID</th>
+      <th class="center-text" style='width:14%'>Code</th>
       <th style='width:24%'>Name</th>
       <th style='width:24%'>Category</th>
       <th style='width:15%'>File Name</th>

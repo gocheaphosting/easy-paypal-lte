@@ -260,7 +260,7 @@ function docReady() {
 
   if (inIframe()) {
     $("#standAloneMode").show();
-    $('body').find('a').not("#standAloneMode").each(function () {
+    $('body').find('a').not("#standAloneMode, .popup").each(function () {
       var href = $(this).attr('href');
       if (href) {
         href += (href.match(/\?/) ? '&' : '?') + 'inframe';

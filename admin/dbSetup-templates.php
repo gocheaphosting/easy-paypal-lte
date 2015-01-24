@@ -62,11 +62,11 @@ function mkBasicTemplates($db, $header, $footer) {
 {download_button}';
   insertTemplate($db, $name, $value);
   $name = "download_page_query";
-  $value = "<h4>" . __("Thank you for your purchase", 'easy-paypal') . "</h4><p>" . __("Unfortunately, there is a technical problem with your purchase. Most likely, your purchase details have not been posted by PayPal yet. Or our automated email with the download link ended up in your Junk/Spam folder. But fear not, you can retrieve the download/service link below.", 'easy-paypal') . "</p>"
-          . __("Please enter your <b>PayPal email address</b> below:", 'easy-paypal') . '<p><form method="post">'
+  $value = "<h4>" . __("Thank you for your purchase", 'easy-paypal') . "</h4><p>" . __("Unfortunately, there is a technical problem with your purchase. Most likely, your purchase details have not been posted by PayPal yet. Or our automated email with the download link ended up in your Junk/Spam folder. But fear not, you can retrieve the download/service link below.", 'easy-paypal') . "</p><p>"
+          . __("Please enter your <b>PayPal email address</b> below:", 'easy-paypal') . '</p><form method="post">'
           . '<div class="input-group col-lg-8 col-md-12 col-sm-12" style="max-width:450px;padding:10px;"><span class="input-group-addon"><i class="glyphicon glyphicon-envelope blue"></i></span>'
           . '<input class="form-control" placeholder="Your PayPal Email" name="email">'
-          . '<span class="input-group-btn"><input class="btn btn-primary" type="submit" id="download" value="' . __("Retrieve Product", "easy-paypal") . '"></span> </div></form></p>'
+          . '<span class="input-group-btn"><input class="btn btn-primary" type="submit" id="download" value="' . __("Retrieve Product", "easy-paypal") . '"></span> </div></form>'
           . '<p><span style="color:red">' . sprintf(__("Plese be sure to use the <b>PayPal email address</b>, where you got the mail with the subject <strong>Receipt for Your Payment</strong> to us.", 'easy-paypal')) . "</span></p><p>" . __("If you are yet to receive the PayPal message, please wait.", 'easy-paypal') . " "
           . sprintf(__("You will soon receive it and an email from us with the download/service/support link.", 'easy-paypal')) . " " . __("If you do not find either in your Inbox in the next five minutes or so, please be sure to check your Junk/Spam folders as well.", 'easy-paypal') . "</p>";
   insertTemplate($db, $name, $value);
