@@ -16,6 +16,7 @@ if (!class_exists("DbHelper")) {
     function __construct() {
       $pwd = dirname(__FILE__);
       $this->valid = false;
+      $dbHost = $dbName = $dbUsr = $dbPwd = $dbPrefix = $dbEmail = "";
       // Check if the config file exists. If not, set up the parent app first
       if (EZ::$isInstallingWP || EZ::$isInWP || EZ::isLoggedInWP()) {
         $cfgFile = "$pwd/dbCfg-WP.php";
@@ -45,7 +46,7 @@ if (!class_exists("DbHelper")) {
         }
         die("Application not set up yet!");
       }
-      $configured = !empty($dbHost) && !empty($dbName) && !empty($dbUsr) && !empty($dbPwd);
+      $configured = !empty($dbHost) && !empty($dbName) && !empty($dbUsr) && isset($dbPwd);
       if (!$configured) {
         header('location: dbSetup.php?error=1');
         exit();

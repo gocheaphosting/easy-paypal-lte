@@ -6,13 +6,13 @@ require_once('../../EZ.php');
 require_once('../../lib/Ftp.php');
 
 if (!EZ::isLoggedIn()) {
-  header('HTTP 400 Bad Request', true, 400);
+  http_response_code(400);
   die("Please login before uploading files!");
 }
 
 if (!class_exists('ZipArchive')) {
   $error = "Seems like zip is not fully enabled in the PHP installation on your server. (<code>class ZipArchive</code> not found.) This updater cannot proceed without it.<br />You might be able to add zip support via your cPanel/WHM interface. Look for Module Installers, and try installing zip via PHP Pecl installer.";
-  header('HTTP 400 Bad Request', true, 400);
+  http_response_code(400);
   die($error);
 }
 
@@ -24,7 +24,7 @@ if (isset($_REQUEST['backup'])) {
 }
 
 if (empty($_FILES)) {
-  header('HTTP 400 Bad Request', true, 400);
+  http_response_code(400);
   die("File upload error. No files reached the server!");
 }
 
@@ -37,7 +37,7 @@ if (Ftp::isNeeded($target)) {
             . "<ol><li>Enter or edit the FTP credentials below, if available. Contact your server admin for details.</li>"
             . "<li>Unpack the downloaded archive, remove the file <code>dbCfg.php</code>, and upload the rest to your server, overwriting the existing files.</li>"
             . "<li>Make your installation updatable by using this Unix command or equivalent:<pre><code>chmod -R 777 $target</code></pre></li></ol>";
-    header('HTTP 400 Bad Request', true, 400);
+    http_response_code(400);
     die($error);
   }
 }
@@ -48,7 +48,7 @@ $zip = new ZipArchive;
 $tmpName = $_FILES['file']['tmp_name'];
 if ($zip->open($tmpName) !== TRUE) {
   $error = "Cannot open the uploaded zip file.";
-  header('HTTP 400 Bad Request', true, 400);
+  http_response_code(400);
   die($error);
 }
 
@@ -61,7 +61,7 @@ foreach ($toVerify as $d) {
   }
   if ($idx === false) {
     $error = "Cannot locate a critical file (<code>$d</code>) in the uploaded zip file.";
-    header('HTTP 400 Bad Request', true, 400);
+    http_response_code(400);
     die($error);
   }
 }
@@ -76,12 +76,12 @@ foreach ($toDelete as $d) {
   }
   if ($idx === false) {
     $error = "Cannot locate a critical file (<code>$d</code>) in the uploaded zip file.";
-    header('HTTP 400 Bad Request', true, 400);
+    http_response_code(400);
     die($error);
   }
   if (!$zip->deleteIndex($idx)) {
     $error = "Cannot delete the empty file (<code>$d</code>) from the archive.";
-    header('HTTP 400 Bad Request', true, 400);
+    http_response_code(400);
     die($error);
   }
 }
@@ -89,7 +89,7 @@ $zip->close();
 
 if ($zip->open($tmpName) !== TRUE) {
   $error = "Cannot reopen the uploaded zip file (after removing config).";
-  header('HTTP 400 Bad Request', true, 400);
+  http_response_code(400);
   die($error);
 }
 
@@ -105,7 +105,7 @@ for ($i = 1; $i < $zip->numFiles; $i++) {
   if (substr($sourceFile, -1) == $ds) {
     if (!$ftp->mkdir($targetFile)) {
       $error = "Error creating the directory $targetFile";
-      header('HTTP 400 Bad Request', true, 400);
+      http_response_code(400);
       die($error);
     }
     continue;
@@ -113,12 +113,12 @@ for ($i = 1; $i < $zip->numFiles; $i++) {
   $targetDir = dirname($targetFile);
   if (!is_dir($targetDir) && !@$ftp->mkdir($targetDir)) {
     $error = "Error creating the new folder $targetDir";
-    header('HTTP 400 Bad Request', true, 400);
+    http_response_code(400);
     die($error);
   }
   if (!$ftp->copy($sourceFile, $targetFile)) {
     $error = "Error copying $filename to $targetFile";
-    header('HTTP 400 Bad Request', true, 400);
+    http_response_code(400);
     die($error);
   }
 }
@@ -129,7 +129,7 @@ $zip->close();
 $success = "Congratulations, you have successfully updated EZ PayPal.";
 
 ob_end_clean();
-header('HTTP 200 All good', true, 200);
+http_response_code(200);
 header('Content-Type: application/json');
 echo json_encode(array('success' => $success, 'warning' => $warning));
 exit();

@@ -39,8 +39,24 @@ switch ($code) {
     $parts = explode(".", $code);
     $ext = end($parts);
     if (in_array($ext, array("js", "php", "css", "jpg", "png", "gif"))) {
-      header('HTTP 404 File not found', true, 404);
+      http_response_code(404);
       die("File $code not found!");
     }
     header("location: buy.php?id=$code");
+}
+
+// For 4.3.0 <= PHP <= 5.4.0
+if (!function_exists('http_response_code')) {
+
+  function http_response_code($newcode = NULL) {
+    static $code = 200;
+    if ($newcode !== NULL) {
+      header('X-PHP-Response-Code: ' . $newcode, true, $newcode);
+      if (!headers_sent()) {
+        $code = $newcode;
+      }
+    }
+    return $code;
+  }
+
 }

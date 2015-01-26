@@ -2,13 +2,13 @@
 require_once('../../EZ.php');
 
 if (!EZ::isLoggedIn()) {
-  header('HTTP 400 Bad Request', true, 400);
+  http_response_code(400);
   die("Please login before accessing sales info!");
 }
 
 $row = $_REQUEST;
 if (empty($row['pk'])) {
-  header('HTTP 400 Bad Request', true, 400);
+  http_response_code(400);
   die("No primary key supplied for sales record");
 }
 $pk = $row['pk'];
@@ -16,7 +16,7 @@ if (!empty($row['table'])) {
   $table = $row['table'];
 }
 if (!$db->tableExists($table)) {
-  header('HTTP 400 Bad Request', true, 400);
+  http_response_code(400);
   die("Wrong table name: $table!");
 }
 $sales = $db->getData($table, '*', array('id' => "$pk"));

@@ -393,7 +393,7 @@ if (!class_exists("EZ")) {
           $status = $db->putMetaData($table, $row);
           break;
         default:
-          header('HTTP 400 Bad Request', true, 400);
+          http_response_code(400);
           die("Unknown table accessed: $table");
       }
       return $status;
@@ -402,22 +402,22 @@ if (!class_exists("EZ")) {
     // AJAX CRUD implementation. Create.
     static function create($table) { // creates a new DB record
       if (!EZ::isLoggedIn()) {
-        header('HTTP 400 Bad Request', true, 400);
+        http_response_code(400);
         die("Please login before modifying $table!");
       }
       global $db;
       if (!$db->tableExists($table) && $table != 'subscribe_meta') {
-        header('HTTP 400 Bad Request', true, 400);
+        http_response_code(400);
         die("Wrong table name: $table!");
       }
       $row = $_REQUEST;
       if (!empty($row['pk'])) {
-        header('HTTP 400 Bad Request', true, 400);
+        http_response_code(400);
         die("Primary key supplied for new record");
       }
       unset($row['id']);
       if (empty($row)) {
-        header('HTTP 400 Bad Request', true, 400);
+        http_response_code(400);
         die("Empty data");
       }
       switch ($table) {
@@ -432,14 +432,14 @@ if (!class_exists("EZ")) {
           break;
         case 'categories':
           if ($row['name'] == 'Empty' || empty($row['name'])) {
-            header('HTTP 400 Bad Request', true, 400);
+            http_response_code(400);
             die("Empty name!");
           }
           break;
         case 'product_meta':
           break;
         default:
-          header('HTTP 400 Bad Request', true, 400);
+          http_response_code(400);
           die("Unknown table accessed: $table");
       }
       if (isset($row['active']) && trim($row['active']) == 'Active') {
@@ -450,15 +450,15 @@ if (!class_exists("EZ")) {
       }
       $lastInsertId = $db->getInsertId();
       if (!$db->putRowData($table, $row)) {
-        header('HTTP 400 Bad Request', true, 400);
+        http_response_code(400);
         die("Database Insert Error in $table!");
       }
       $newInserId = $db->getInsertId();
       if ($lastInsertId == $newInserId) {
-        header('HTTP 400 Bad Request', true, 400);
+        http_response_code(400);
         die("Database Insert Error in $table, duplicate unique key!");
       }
-      header('HTTP 200 Done', true, 200);
+      http_response_code(200);
       return $newInserId;
     }
 
@@ -470,22 +470,22 @@ if (!class_exists("EZ")) {
     // AJAX CRUD implementation. Update.
     static function update($table, $meta = false) { // updates an existing DB record
       if (!EZ::isLoggedIn()) {
-        header('HTTP 400 Bad Request', true, 400);
+        http_response_code(400);
         die("Please login before modifying $table!");
       }
       global $db;
       if (!$db->tableExists($table) && $table != 'subscribe_meta') {
-        header('HTTP 400 Bad Request', true, 400);
+        http_response_code(400);
         die("Wrong table name: $table!");
       }
       $row = array();
       extract($_POST, EXTR_PREFIX_ALL, 'posted');
       if (empty($posted_pk)) {
-        header('HTTP 400 Bad Request', true, 400);
+        http_response_code(400);
         die("Empty primary key");
       }
       if (empty($posted_name)) {
-        header('HTTP 400 Bad Request', true, 400);
+        http_response_code(400);
         die("Empty name ($posted_name) in data");
       }
       if (!isset($posted_value)) { // Checkbox, unchecked
@@ -500,11 +500,11 @@ if (!class_exists("EZ")) {
           $valid = self::$fun($posted_value);
         }
         else {
-          header('HTTP 400 Bad Request', true, 400);
+          http_response_code(400);
           die("Unknown validator ($posted_validator) specified");
         }
         if ($valid !== true) {
-          header('HTTP 400 Bad Request', true, 400);
+          http_response_code(400);
           die("$valid");
         }
       }
@@ -517,33 +517,33 @@ if (!class_exists("EZ")) {
         $status = $db->putRowData($table, $row);
       }
       if (!$status) {
-        header('HTTP 400 Bad Request', true, 400);
+        http_response_code(400);
         die("Database Insert Error in $table!");
       }
-      header('HTTP 200 Done', true, 200);
+      http_response_code(200);
       exit();
     }
 
     // AJAX CRUD implementation. Delete.
     static function delete($table) {
       if (!EZ::isLoggedIn()) {
-        header('HTTP 400 Bad Request', true, 400);
+        http_response_code(400);
         die("Please login before deleting anything from $table!");
       }
       global $db;
       if (!$db->tableExists($table)) {
-        header('HTTP 400 Bad Request', true, 400);
+        http_response_code(400);
         die("Wrong table name: $table!");
       }
       extract($_POST, EXTR_PREFIX_ALL, 'posted');
       if (empty($posted_pk)) {
-        header('HTTP 400 Bad Request', true, 400);
+        http_response_code(400);
         die("Empty primary key to delete!");
       }
       $table = $db->prefix($table);
       $sql = "DELETE FROM $table WHERE `id` = $posted_pk";
       $db->query($sql);
-      header('HTTP 200 Done', true, 200);
+      http_response_code(200);
     }
 
     static function mkCatNames($showInactive = false) {
@@ -1074,4 +1074,20 @@ if (!empty(EZ::$options['salt'])) {
 }
 if (!empty(EZ::$options['cache_timeout'])) {
   EZ::$cacheTimeout = EZ::$options['cache_timeout'];
+}
+
+// For 4.3.0 <= PHP <= 5.4.0
+if (!function_exists('http_response_code')) {
+
+  function http_response_code($newcode = NULL) {
+    static $code = 200;
+    if ($newcode !== NULL) {
+      header('X-PHP-Response-Code: ' . $newcode, true, $newcode);
+      if (!headers_sent()) {
+        $code = $newcode;
+      }
+    }
+    return $code;
+  }
+
 }

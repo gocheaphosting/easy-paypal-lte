@@ -3,7 +3,7 @@
 $kintSearchDepth = 3;
 $kintLocation = '../kint';
 for ($i = 0; $i < $kintSearchDepth; ++$i) {
-  if (file_exists("$kintLocation/Kint.class.php")) {
+  if (@file_exists("$kintLocation/Kint.class.php")) {
     $kintFile = "$kintLocation/Kint.class.php";
     break;
   }

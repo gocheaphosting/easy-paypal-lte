@@ -11,13 +11,13 @@ if ($posted_validator) { // a server-side validator is specified
     $valid = EZ::$fun($posted_value);
   }
   else {
-    header('HTTP 400 Bad Request', true, 400);
+    http_response_code(400);
     die("Unknown validator ($posted_validator) specified");
   }
   if ($valid !== true) {
-    header('HTTP 400 Bad Request', true, 400);
+    http_response_code(400);
     die("$valid");
   }
 }
 
-header('HTTP 200 Done', true, 200);
+http_response_code(200);
