@@ -26,16 +26,16 @@ openBox("Update or Upgrade Your Product", "plus", 11, "<p>It is easy to update y
 ?>
 <div class="clearfix">&nbsp;</div>
 <?php
+$localVersion = $updater->getLocalVersion();
+$remoteVersion = $updater->getRemoteVersion();
+$toolTip = $updater->getUpdateText();
 if ($updater->isOld()) {
-  $remoteVersion = $updater->getRemoteVersion();
-  $localVersion = $updater->getLocalVersion();
-  $toolTip = $updater->getUpdateText();
   ?>
   <div class="col-md-3 col-sm-3 col-xs-6 update">
     <a data-toggle="tooltip" title="<?php echo $toolTip; ?>" class="well top-block update" href="#">
       <i class="glyphicon glyphicon-hand-up red"></i>
-      <div>Updates Available</div>
-      <div>Update from V<?php echo $localVersion; ?></div>
+      <div>EZ PayPal V<?php echo $localVersion; ?></div>
+      <div>Update to V<?php echo $remoteVersion; ?></div>
       <span class="notification red"><?php echo "V$remoteVersion"; ?></span>
     </a>
   </div>
@@ -44,9 +44,9 @@ if ($updater->isOld()) {
 else {
   ?>
   <div class="col-md-3 col-sm-3 col-xs-6">
-    <a data-toggle="tooltip" title="Your version is up-to-date. Please keep checking by visiting this page. Updates are critical in keeping the application safe for you and your buyers." class="well top-block update" href="#">
+    <a data-toggle="tooltip" title="<?php echo $toolTip; ?>" class="well top-block update" href="#">
       <i class="glyphicon glyphicon-thumbs-up red"></i>
-      <div>Up-to-Date</div>
+      <div>EZ PayPal V<?php echo $localVersion; ?></div>
       <div>Your version is up-to-date</div>
     </a>
   </div>

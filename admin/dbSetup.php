@@ -1,18 +1,12 @@
 <?php
-if (isset($_REQUEST['update'])) {
-  $updating = true;
-}
-else {
-  $updating = false;
-}
-$GLOBALS['updating'] = $updating;
-
 if (!session_id()) {
   session_start();
 }
 require_once('../DbHelper.php');
 require_once 'mock-EZ.php';
 require_once 'dbSetup-functions.php';
+
+EZ::$isUpdating = isset($_REQUEST['update']);
 
 if (!empty($isInstallingWP)) {
   EZ::$isInstallingWP = true;

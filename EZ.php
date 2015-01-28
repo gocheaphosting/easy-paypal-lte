@@ -27,6 +27,7 @@ if (!class_exists("EZ")) {
     static $isInstallingWP = false;
     static $isInWP = false;
     static $isPro = false;
+    static $isUpdating = false;
 
     static function getCatId($name) { // Frontend version of getId with caching
       $key = "active-categories";
@@ -1035,15 +1036,12 @@ if (!class_exists("EZ")) {
 
 }
 
-// construct DB object after defining EZ
-if (isset($_REQUEST['wp'])) {
-  EZ::$isInWP = true;
-}
-
+EZ::$isInWP = isset($_REQUEST['wp']);
+EZ::$isUpdating = isset($_REQUEST['update']);
 EZ::$isPro = file_exists('options-advanced.php');
 
+// construct DB object after defining EZ
 $db = new DbHelper();
-$GLOBALS['db'] = $db;
 
 if (!EZ::isLoggedInWP()) {
   require_once 'admin/lang.php';

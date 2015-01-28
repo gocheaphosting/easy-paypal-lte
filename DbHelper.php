@@ -34,7 +34,8 @@ if (!class_exists("DbHelper")) {
         $_SESSION['posted'] = $_POST;
         self::mkCfg();
       }
-      if (file_exists($cfgFile) && filesize($cfgFile) > 10) {
+      $updating = EZ::$isUpdating;
+      if ($updating || (file_exists($cfgFile) && filesize($cfgFile) > 10)) {
         include ($cfgFile);
       }
       else {
@@ -46,7 +47,8 @@ if (!class_exists("DbHelper")) {
         }
         die("Application not set up yet!");
       }
-      $configured = !empty($dbHost) && !empty($dbName) && !empty($dbUsr) && isset($dbPwd);
+      $configured = $updating ||
+              (!empty($dbHost) && !empty($dbName) && !empty($dbUsr) && isset($dbPwd));
       if (!$configured) {
         header('location: dbSetup.php?error=1');
         exit();

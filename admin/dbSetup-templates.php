@@ -3,9 +3,14 @@
 if (!function_exists('insertTemplate')) {
 
   function insertTemplate($db, $name, $value) {
-    $updating = $GLOBALS['updating'];
+    if (isset($_REQUEST['update'])) {
+      $updating = true;
+    }
+    else {
+      $updating = false;
+    }
     $table = $db->prefix("templates");
-    if ($updating) {
+    if ($updating) { // do not overwrite template values
       $onDuplicate = "UPDATE name='$name'";
     }
     else {

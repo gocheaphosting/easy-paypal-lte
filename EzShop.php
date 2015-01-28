@@ -279,10 +279,12 @@ EOF;
     if (empty($inputs['id'])) {
       $error = urlencode("The product you are looking for is not ready for sale yet. Please select another product from the table below. You can search and sort the table to find the right product.");
       header("location: shop.php?error=$error$wpQs");
+      exit();
     }
     else if ($inputs['id'] == -1) {
       $error = urlencode("No Product specified. Please select a product from the table below. You can  search and sort the table to find the right product.");
       header("location: shop.php?error=$error$wpQs");
+      exit();
     }
   }
 
@@ -306,6 +308,11 @@ EOF;
       return $inputs;
     }
     $this->product = EZ::getProduct($request['id'], true);
+    if (empty($this->product)) {
+      $error = urlencode("The product you are looking for is not ready for sale yet. Please select another product from the table below. You can search and sort the table to find the right product.");
+      header("location: shop.php?error=$error$wpQs");
+      exit();
+    }
     $inputs['id'] = $this->product['id'];
     return $inputs;
   }

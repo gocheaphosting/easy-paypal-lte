@@ -14,7 +14,7 @@ else {
 
     function __construct($slug) {
       $this->slug = $slug;
-      $this->localVersion = $this->remoteVersion = '';
+      $this->localVersion = $this->remoteVersion = -1;
     }
 
     function __destruct() {
@@ -29,7 +29,7 @@ else {
     }
 
     function getLocalVersion() {
-      if (empty($this->localVersion)) {
+      if ($this->localVersion < 0) {
         $readme_file = "../readme.txt";
         $readme_text = file_get_contents($readme_file);
         $lines = explode("\n", $readme_text);
@@ -45,12 +45,14 @@ else {
     }
 
     function getRemoteVersion() {
-      if (empty($this->data)) {
-        $slug = $this->slug;
-        $this->data = unserialize(gzinflate(file_get_contents(self::CDN . "/packages/$slug.dat")));
-      }
-      if (!empty($this->data)) {
-        $this->remoteVersion = $this->data->version;
+      if ($this->remoteVersion < 0) {
+        if (empty($this->data)) {
+          $slug = $this->slug;
+          $this->data = unserialize(gzinflate(file_get_contents(self::CDN . "/packages/$slug.dat")));
+        }
+        if (!empty($this->data)) {
+          $this->remoteVersion = $this->data->version;
+        }
       }
       return $this->remoteVersion;
     }
@@ -66,7 +68,12 @@ else {
       $localVersion = $this->getLocalVersion();
       $remoteVersion = $this->getRemoteVersion();
       $name = $data->name;
-      $text = "You are using $name {$localVersion}. The current version is {$remoteVersion}. Click here to download the update.";
+      if ($this->isOld()) {
+        $text = "You are using $name {$localVersion}. The current version is {$remoteVersion}. Click here to download the update.";
+      }
+      else {
+        $text = "You are using $name {$localVersion}, which is the latest version available. Please visit this page periodically to check for updates.";
+      }
       return $text;
     }
 

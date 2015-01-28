@@ -102,7 +102,8 @@ for ($i = 1; $i < $zip->numFiles; $i++) {
     ++$dirCount;
     continue;
   }
-  if (substr($sourceFile, -1) == $ds) {
+  $lastChar = substr($sourceFile, -1);
+  if ($lastChar == $ds || $lastChar == '/') {
     if (!$ftp->mkdir($targetFile)) {
       $error = "Error creating the directory $targetFile";
       http_response_code(400);
