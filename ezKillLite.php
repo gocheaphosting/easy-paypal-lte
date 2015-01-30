@@ -53,9 +53,9 @@ if (class_exists("EzPayPalPro")) {
   ezKillLiteEZPP($pro, $liteEZPP);
 }
 // This works only because of the happy accident that p(ro) comes after l(ite)
-// So the
+// So EZ PayPal appears before EZ PayPal Pro in the listing (if installed under wp-content/pluginsezpaypal).
 if (class_exists("EzPayPal6")) {
-  $liteEZPP = "ezpaypal-lite/easy-paypal.php";
+  $liteEZPP = "ezpaypal/easy-paypal.php";
   ezKillLiteEZPP($pro, $liteEZPP);
 }
 

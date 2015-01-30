@@ -3,7 +3,7 @@ require 'header.php';
 require_once '../lib/Ftp.php';
 $ftp = new Ftp();
 require_once 'Updater.php';
-$updater = new Updater('ezpaypal');
+$updater = new Updater('ez-paypal');
 ?>
 <div>
   <ul class="breadcrumb">

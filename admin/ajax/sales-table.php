@@ -29,6 +29,7 @@ function mkAttr($s) {
 }
 
 $saleAttr = array_map("mkAttr", array_keys($sale));
+http_response_code(200);
 ?>
 <table class="table table-striped table-bordered responsive">
   <tbody>

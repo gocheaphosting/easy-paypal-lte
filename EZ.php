@@ -31,14 +31,14 @@ if (!class_exists("EZ")) {
 
     static function getCatId($name) { // Frontend version of getId with caching
       $key = "active-categories";
-      $activeCategories = get_transient($key);
+      $activeCategories = self::getTransient($key);
       if (!$activeCategories) {
         global $db;
         $rows = $db->getData('categories', array('id', 'name'), array('active' => 1));
         foreach ($rows as $r) {
           $activeCategories[$r['id']] = $r['name'];
         }
-        set_transient($key, $activeCategories, self::$cacheTimeout);
+        self::setTransient($key, $activeCategories, self::$cacheTimeout);
       }
       $id = array_keys($activeCategories, $name);
       return $id[0];
@@ -46,14 +46,14 @@ if (!class_exists("EZ")) {
 
     static function getCatName($id) { // Frontend version of getId with caching
       $key = "active-categories";
-      $activeCategories = get_transient($key);
+      $activeCategories = self::getTransient($key);
       if (!$activeCategories) {
         global $db;
         $rows = $db->getData('categories', array('id', 'name'), array('active' => 1));
         foreach ($rows as $r) {
           $activeCategories[$r['id']] = $r['name'];
         }
-        set_transient($key, $activeCategories, self::$cacheTimeout);
+        self::setTransient($key, $activeCategories, self::$cacheTimeout);
       }
       $name = '';
       if (!empty($activeCategories[$id])) {
@@ -147,28 +147,23 @@ if (!class_exists("EZ")) {
         self::$isInWP = true;
         return true;
       }
-      $wpHeader = '../../../../wp-blog-header.php';
-      if (@file_exists($wpHeader)) {
-        self::$isInWP = true;
-        return true;
-      }
-      $wpHeader = '../../../../../wp-blog-header.php';
-      if (@file_exists($wpHeader)) {
-        self::$isInWP = true;
-        return true;
+      foreach (array("../../..", "../../../..", "../../../../..") as $dir) {
+        $wpHeader = "$dir/wp-blog-header.php";
+        if (@file_exists($wpHeader)) {
+          self::$isInWP = true;
+          return true;
+        }
       }
       return self::$isInWP;
     }
 
     static function isLoggedInWP() {
-      $wpHeader = '../../../../wp-blog-header.php';
-      if (@file_exists($wpHeader)) { // admin?
-        require($wpHeader);
-      }
-      else {
-        $wpHeader = '../../../../../wp-blog-header.php';
-        if (@file_exists($wpHeader)) { // AJAX?
-          require($wpHeader);
+      // check from front-end, admin and ajax
+      foreach (array("../../..", "../../../..", "../../../../..") as $dir) {
+        $wpHeader = "$dir/wp-blog-header.php";
+        if (file_exists($wpHeader)) {
+          require_once $wpHeader;
+          break;
         }
       }
       if (function_exists('is_user_logged_in')) {
@@ -615,7 +610,7 @@ if (!class_exists("EZ")) {
     }
 
     static function renderOption($pk, $option) {
-      rm_transient('options');
+      self::rmTransient('options');
       $optionsDB = EZ::getOptions();
       if (isset($optionsDB[$pk])) {
         $value = $optionsDB[$pk];
@@ -1032,6 +1027,37 @@ if (!class_exists("EZ")) {
       return $ret;
     }
 
+    static function setTransient($key, $val, $timeout = 0) {
+      $key = 'ezpaypal-' . $key;
+      if (empty($timeout)) {
+        $timeout = self::$cacheTimeout;
+      }
+      if (function_exists('set_transient')) {
+        return set_transient($key, $val, $timeout);
+      }
+      else {
+        global $cache;
+        return $cache->set($key, $val, $timeout);
+      }
+    }
+
+    static function getTransient($key) {
+      $key = 'ezpaypal-' . $key;
+      if (function_exists('get_transient')) {
+        return get_transient($key);
+      }
+      else {
+        global $cache;
+        return $cache->get($key);
+      }
+    }
+
+    static function rmTransient($key) {
+      $key = 'ezpaypal-' . $key;
+      global $cache;
+      return $cache->delete($key);
+    }
+
   }
 
 }
@@ -1043,27 +1069,8 @@ EZ::$isPro = file_exists('options-advanced.php');
 // construct DB object after defining EZ
 $db = new DbHelper();
 
-if (!EZ::isLoggedInWP()) {
+if (!EZ::$isInWP) {
   require_once 'admin/lang.php';
-
-  function set_transient($key, $val, $timeout) {
-    $key = 'ezpaypal-' . $key;
-    global $cache;
-    return $cache->set($key, $val, $timeout);
-  }
-
-  function get_transient($key) {
-    $key = 'ezpaypal-' . $key;
-    global $cache;
-    return $cache->get($key);
-  }
-
-}
-
-function rm_transient($key) {
-  $key = 'ezpaypal-' . $key;
-  global $cache;
-  return $cache->delete($key);
 }
 
 EZ::$options = EZ::getOptions(); // to prime the static variable and the cache

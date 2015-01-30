@@ -1,7 +1,14 @@
 <?php
 
 if (!defined('DB_HOST')) {
-  $wpConfig = file_get_contents('../../../wp-config.php');
+  $wpConfigFile = '../../../wp-config.php';
+  if (!file_exists($wpConfigFile)) {
+    $wpConfigFile = '../../../../wp-config.php';
+  }
+  if (!file_exists($wpConfigFile)) {
+    die("Cannot locate the config file $wpConfigFile");
+  }
+  $wpConfig = file_get_contents($wpConfigFile);
   $lines = explode("\n", $wpConfig);
   $dbDefines = '';
   foreach ($lines as $l) {

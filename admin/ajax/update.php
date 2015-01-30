@@ -18,7 +18,7 @@ if (!class_exists('ZipArchive')) {
 
 if (isset($_REQUEST['backup'])) {
   require_once '../Updater.php';
-  $updater = new Updater('ezpaypal');
+  $updater = new Updater('ez-paypal');
   $updater->backup();
   exit();
 }
@@ -53,7 +53,7 @@ if ($zip->open($tmpName) !== TRUE) {
 }
 
 // ensure that it is an ezpaypal archive
-$toVerify = array('easy-paypal.php', 'wp-ezpaypal.php');
+$toVerify = array('easy-paypal.php', 'wp-ezpaypal.php', 'shop.php', 'EzShop.php', 'office.php', 'EzOffice.php');
 foreach ($toVerify as $d) {
   $idx = $zip->locateName($d, ZipArchive::FL_NODIR);
   if ($idx === false) {

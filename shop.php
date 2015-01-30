@@ -1,13 +1,12 @@
 <?php
 
-if (file_exists('EzShopPro.php')) {
-  require_once 'EzShopPro.php';
-  $shop = new EzShopPro();
+if (!session_id()) {
+  session_start();
 }
-else {
-  require_once 'EzShop.php';
-  $shop = new EzShop();
-}
+
+require_once 'EzShopPro.php';
+$shop = new EzShopPro();
+
 if (!empty($_REQUEST['error'])) {
   $shop->error = urldecode($_REQUEST['error']);
 }

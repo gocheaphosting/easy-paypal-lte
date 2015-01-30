@@ -50,12 +50,18 @@ class EzShop {
     <table class="table table-striped table-bordered responsive data-table">
       <thead>
         <tr>
-          <th style='width:4%'> <?php _e("Id", 'easy-paypal'); ?> </th>
+          <?php
+          if (EZ::isLoggedIn()) {
+            ?>
+            <th style='width:4%'> <?php _e("Id", 'easy-paypal'); ?> </th>
+            <?php
+          }
+          ?>
           <th style='width:40%'> <?php _e("Product", 'easy-paypal'); ?> </th>
           <th style='width:30%'><?php _e("Category", 'easy-paypal'); ?> </th>
           <th class='center-text' style='width:8%'><?php _e("Price", 'easy-paypal'); ?> </th>
           <th class='center-text' style='width:7%'><?php _e("Quantity", 'easy-paypal'); ?> </th>
-          <th class='center-text' style='width:11%'><?php _e("Buy?", 'easy-paypal'); ?> </th>
+          <th class='center-text' style='width:11%;min-width:80px'><?php _e("Buy?", 'easy-paypal'); ?> </th>
         </tr>
       </thead>
       <tbody>
@@ -115,11 +121,14 @@ class EzShop {
     extract($product);
     $renderedPrice = $this->renderPrice($product_price, $mc_currency);
     $category = EZ::getCatName($category_id);
-    if (empty(EZ::$options['hide_shortcode'])) {
-      $idColumn = "<td class='center-text'><a href='#' class='shortCode' title='Click to view shortcodes and links for $product_name' data-toggle='tooltip'>$id</a></td>";
-    }
-    else {
-      $idColumn = "<td class='center-text'>$id</td>";
+    $idColumn = "";
+    if (EZ::isLoggedIn()) {
+      if (empty(EZ::$options['hide_shortcode'])) {
+        $idColumn = "<td class='center-text'><a href='#' class='shortCode' title='Click to view shortcodes and links for $product_name' data-toggle='tooltip'>$id</a></td>";
+      }
+      else {
+        $idColumn = "<td class='center-text'>$id</td>";
+      }
     }
     echo "<tr>"
     . $idColumn

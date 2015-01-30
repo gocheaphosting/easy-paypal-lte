@@ -12,10 +12,10 @@
 <h3>All Your Sales</h3>
 <?php
 $key = 'sales';
-$sales = get_transient($key);
+$sales = EZ::getTransient($key);
 if (!$sales) {
   $sales = $db->getData('sales');
-  set_transient($key, $sales, EZ::$cacheTimeout);
+  EZ::setTransient($key, $sales, EZ::$cacheTimeout);
 }
 
 openBox("Sales", "th-list", 12, "<p>The table below listing your sales is searchable and sortable.</p>"

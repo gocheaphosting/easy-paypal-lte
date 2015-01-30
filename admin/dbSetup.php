@@ -8,9 +8,13 @@ require_once 'dbSetup-functions.php';
 
 EZ::$isUpdating = isset($_REQUEST['update']);
 
-if (!empty($isInstallingWP)) {
+if (!empty($isInstallingWP) || EZ::$isUpdating) {
   EZ::$isInstallingWP = true;
   doInstall();
+  if (EZ::$isUpdating) {
+    header('Location: index.php');
+    exit();
+  }
   return;
 }
 
