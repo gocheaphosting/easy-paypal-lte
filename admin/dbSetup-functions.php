@@ -1,6 +1,6 @@
 <?php
 
-function import($db, $dbBak, $tableSet) {
+function ezImport($db, $dbBak, $tableSet) {
   $tables = $dbBak->getTableNames(true);
   foreach ($tables as $table) {
     $tableStub = str_replace($dbBak->dbPrefix, '', $table);
@@ -13,7 +13,7 @@ function import($db, $dbBak, $tableSet) {
   }
 }
 
-function migrate($db, $dbBak, $tables) {
+function ezMigrate($db, $dbBak, $tables) {
   // See if migration is needed
   $colNames = $dbBak->getColNames('products');
   if (!in_array('product_category', $colNames)) {

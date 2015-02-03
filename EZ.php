@@ -161,7 +161,7 @@ if (!class_exists("EZ")) {
       // check from front-end, admin and ajax
       foreach (array("../../..", "../../../..", "../../../../..") as $dir) {
         $wpHeader = "$dir/wp-blog-header.php";
-        if (file_exists($wpHeader)) {
+        if (@file_exists($wpHeader)) {
           require_once $wpHeader;
           break;
         }
@@ -639,6 +639,7 @@ if (!class_exists("EZ")) {
       $dataTpl = "";
       $dataMode = "data-mode='inline'";
       $dataSource = "";
+      $class = "";
       extract($option);
       if ($type == 'hidden') {
         $tr = '';
@@ -688,11 +689,11 @@ if (!class_exists("EZ")) {
           $type = '';
           $dataTpl = '';
           $class = 'red';
-          $value = "<input data-pk='$pk' id='fileinput' type='file' class='file' multiple=true data-show-preview='false' data-show-upload='false'>";
+          $value = "<input data-pk='$pk' id='fileinput' type='file' class='file' data-show-preview='false' data-show-upload='false'>";
           break;
         case 'submit':
         case 'button':
-          $class = "btn btn-primary btn-ez";
+          $class = "btn btn-primary btn-ez btn-$class";
           break;
         case 'dbselect':
         case 'dbeditableselect':
@@ -733,7 +734,7 @@ if (!class_exists("EZ")) {
         else {
           $dataReveal = "data-value='$revealOption' class='btn-sm btn-success reveal'";
         }
-        $reveal = "<a href='#' style='float:right' $dataReveal>$button</a>";
+        $reveal = "</a><a href='#' style='float:right' $dataReveal>$button";
       }
       else {
         $reveal = '';

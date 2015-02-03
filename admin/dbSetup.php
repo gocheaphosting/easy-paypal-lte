@@ -7,12 +7,19 @@ require_once 'mock-EZ.php';
 require_once 'dbSetup-functions.php';
 
 EZ::$isUpdating = isset($_REQUEST['update']);
+EZ::$isInWP = isset($_REQUEST['wp']);
+EZ::$isInstallingWP = !empty($isInstallingWP);
 
-if (!empty($isInstallingWP) || EZ::$isUpdating) {
-  EZ::$isInstallingWP = true;
+if (EZ::$isInstallingWP || EZ::$isUpdating) {
   doInstall();
   if (EZ::$isUpdating) {
-    header('Location: index.php');
+    if (EZ::$isInWP) {
+      $wp = '?wp';
+    }
+    else {
+      $wp = '';
+    }
+    header("Location: index.php$wp");
     exit();
   }
   return;
@@ -22,13 +29,18 @@ function doInstall() {
   $db = new DbHelper();
   $tables = array('categories', 'paypal', 'options', 'option_meta', 'templates',
       'products', 'product_meta', 'sales', 'sale_details', 'ipn', 'addresses');
-  $needMigration = $db->saveTables($tables);
+  if (EZ::$isUpdating) {
+    $needMigration = false;
+  }
+  else {
+    $needMigration = $db->saveTables($tables);
+  }
   $db->importSQL('setup.sql');
   $db->importSQL('setup-pro.sql');
   if ($needMigration) {
     $dbBak = new DbHelper();
     $dbBak->dbPrefix = "bak_" . $db->dbPrefix;
-    migrate($db, $dbBak, $tables);
+    ezMigrate($db, $dbBak, $tables);
   }
   require_once('options-default.php');
   putDefaultOptions($db, $options);

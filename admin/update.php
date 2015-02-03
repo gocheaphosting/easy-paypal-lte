@@ -110,6 +110,12 @@ else {
 <?php
 echo $ftp->printForm();
 closeBox();
+if (EZ::$isInWP) {
+  $dbSetup = "dbSetup.php?wp&update";
+}
+else {
+  $dbSetup = "dbSetup.php?update";
+}
 ?>
 <script>
   $(document).ready(function () {
@@ -129,12 +135,12 @@ closeBox();
           showSuccess(response.success);
           flashWarning(response.warning);
           setTimeout(function () {
-            bootbox.confirm("<p>The database needs to be <a href='dbSetup.php?update'>setup again</a> to complete this update/upgrade, in order to create any new tables needed or to alter existing ones. If you are only reinstalling the app, you can skip this step.</p>", function (result) {
+            bootbox.confirm("<p>The database needs to be <a href='<?php echo $dbSetup; ?>'>setup again</a> to complete this update/upgrade, in order to create any new tables needed or to alter existing ones. If you are only reinstalling the app, you can skip this step.</p>", function (result) {
               if (result) {
-                window.location.href = 'dbSetup.php?update';
+                window.location.href = '<?php echo $dbSetup; ?>';
               }
               else {
-                flashWarning("Database not updated. Please run the <a href='dbSetup.php?update'>setup again</a> now or your installation may be in an unpredictable state.");
+                flashWarning("Database not updated. Please run the <a href='<?php echo $dbSetup; ?>'>setup again</a> now or your installation may be in an unpredictable state.");
               }
             });
           }, 5000);

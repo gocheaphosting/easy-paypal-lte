@@ -2,10 +2,10 @@
 
 if (!defined('DB_HOST')) {
   $wpConfigFile = '../../../wp-config.php';
-  if (!file_exists($wpConfigFile)) {
+  if (!@file_exists($wpConfigFile)) {
     $wpConfigFile = '../../../../wp-config.php';
   }
-  if (!file_exists($wpConfigFile)) {
+  if (!@file_exists($wpConfigFile)) {
     die("Cannot locate the config file $wpConfigFile");
   }
   $wpConfig = file_get_contents($wpConfigFile);
