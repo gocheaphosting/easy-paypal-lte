@@ -245,11 +245,21 @@ if (!class_exists("EZ")) {
     }
 
     static function ezppURL() {
-      $docRoot = realpath($_SERVER['DOCUMENT_ROOT']);
-      $ezppRoot = dirname(__FILE__);
-      $self = str_replace($docRoot, '', $ezppRoot);
-      $url = self::getBaseUrl() . $self . '/';
-      return $url;
+      if (function_exists('plugins_url')) {
+        $ezppURL = plugins_url("", __FILE__) . "/";
+        self::updateMetaData("options_meta", "ezppURL", "ezppURL", $ezppURL);
+        return $ezppURL;
+      }
+      else if (!empty(self::$options['ezppURL'])) {
+        return self::$options['ezppURL'];
+      }
+      else {
+        $docRoot = realpath($_SERVER['DOCUMENT_ROOT']);
+        $ezppRoot = dirname(__FILE__);
+        $self = str_replace($docRoot, '', $ezppRoot);
+        $url = self::getBaseUrl() . $self . '/';
+        return $url;
+      }
     }
 
     static function handleImageTagsHtml($html) {
