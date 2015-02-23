@@ -33,7 +33,7 @@ switch ($code) {
     header('location: return.php');
     break;
   case 'ez-update.php':
-    header('location: update.php');
+    header('location: ../update.php');
     break;
   default:
     $parts = explode(".", $code);

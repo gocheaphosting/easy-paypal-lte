@@ -1079,6 +1079,7 @@ EZ::$isPro = file_exists('options-advanced.php');
 
 // construct DB object after defining EZ
 $db = new DbHelper();
+$GLOBALS['db'] = $db; // needed for ezSupport module
 
 if (!EZ::$isInWP) {
   require_once 'admin/lang.php';

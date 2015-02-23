@@ -19,7 +19,17 @@ if (!$db->tableExists($table)) {
   http_response_code(400);
   die("Wrong table name: $table!");
 }
-$sales = $db->getData($table, '*', array('id' => "$pk"));
+if ($table == 'sales') {
+  $id = 'id';
+}
+else if ($table == 'sale_details') {
+  $id = 'sale_id';
+}
+else {
+  http_response_code(400);
+  die("Wrong table name: $table!");
+}
+$sales = $db->getData($table, '*', array($id => "$pk"));
 if (!empty($sales)) {
   $sale = $sales[0];
 }
