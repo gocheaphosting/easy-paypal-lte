@@ -31,7 +31,7 @@
     <p class="col-md-4 col-sm-4 col-xs-12 powered-by pull-right"><a
         href="http://www.thulasidas.com/ezpaypal">EZ PayPal</a> by <a href="http://ads-ez.com/" target="_blank">Ads EZ Classifieds</a></p>
   </footer>
-<?php
+  <?php
 }
 else {
   ?>

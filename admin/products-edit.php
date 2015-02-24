@@ -20,11 +20,6 @@ $catNames = EZ::mkCatNames();
 $product = array();
 if (!empty($_REQUEST['pk'])) {
   $pk = $_REQUEST['pk'];
-// $product = $db->getData('products', '*', "id = $pk");
-//  if (!empty($product)) {
-//    $product = $product[0];
-//    $product['pk'] = $pk;
-//  }
   $product = EZ::getProduct($pk);
   if (!empty($product)) {
     $pk = $product['pk'] = $product['id'];
@@ -75,9 +70,9 @@ require_once 'product-attributes.php';
       <a class='btn btn-success' title='Edit Meta Data' data-trigger='hover' data-placement='top' data-toggle="popover" data-content='Edit Product Meta Data. Meta data is extra, free-form data you can attach to a product description. You can display it on your product description and download pages.' href="products-meta.php?pk=<?php echo $pk; ?>"><i class="glyphicon glyphicon-pencil icon-white"></i> Edit Meta Data</a>&nbsp;
       <?php
     }
-    if (file_exists('subscriptions-edit.php') && !empty($product['recurring'])) {
+    if (file_exists('subscriptions-edit.php')) {
       ?>
-      <a class='btn btn-success' title='Edit Subscription Data' data-trigger='hover' data-placement='top' data-toggle="popover" data-content='Since this is a subscription product, you can modify the subscripiton details by clicking here.' href="subscriptions-edit.php?pk=<?php echo $pk; ?>"><i class="glyphicon glyphicon-retweet icon-white"></i> Edit Subscription Details</a>&nbsp;
+      <a id='subscriptionEdit' class='btn btn-success' style='display:none' title='Edit Subscription Data' data-trigger='hover' data-placement='top' data-toggle="popover" data-content='Since this is a subscription product, you can modify the subscripiton details by clicking here.' href="subscriptions-edit.php?pk=<?php echo $pk; ?>"><i class="glyphicon glyphicon-retweet icon-white"></i> Edit Subscription Details</a>&nbsp;
       <?php
     }
     $ajaxHandler = 'ajax/products.php';
@@ -93,7 +88,20 @@ closeBox();
 ?>
 <script>
   var xeditHanlder = '<?php echo $ajaxHandler; ?>';
+  function showSubscriptionEdit() {
+    if (xeditHanlder === 'ajax/products.php') {
+      var id = $("#recurring");
+      if (id.hasClass('btn-danger')) {
+        $("#subscriptionEdit").hide();
+      }
+      if (id.hasClass('btn-success')) {
+        $("#subscriptionEdit").show();
+      }
+    }
+  }
+
   $(document).ready(function () {
+    showSubscriptionEdit();
     var pk;
     var file;
     $('#createProd').click(function () {
@@ -126,18 +134,15 @@ closeBox();
             $("#createProd").attr('disabled', 'disabled').
                     text('Already Saved').fadeOut(2000);
             xeditHanlder = 'ajax/products.php';
-            $('.xedit').editable('option', 'url', xeditHanlder)
+            $('.xedit, .xedit-checkbox').editable('option', 'url', xeditHanlder)
                     .editable('option', 'pk', pk)
                     .editable('option', 'params', function (params) {
                       params.action = 'update';
                       return params;
                     });
-            $('.xedit-checkbox').editable('option', 'url', xeditHanlder)
-                    .editable('option', 'pk', pk)
-                    .editable('option', 'params', function (params) {
-                      params.action = 'update';
-                      return params;
-                    });
+            setTimeout(function () {
+              showSubscriptionEdit();
+            }, 25);
             flashSuccess("Product details updated. Checking for file uploads...");
             ajaxUpload(pk, file);
           },
@@ -147,6 +152,13 @@ closeBox();
         });
       }
     });
+    if (xeditHanlder === 'ajax/products.php') {
+      setTimeout(function () {
+        $("#recurring").editable('option', 'success', function (response, value) {
+          window.location.reload(true);
+        });
+      }, 25);
+    }
     function ajaxUpload(_pk, _file) {
       if (!_file) {
         flashWarning("No file uploaded.");

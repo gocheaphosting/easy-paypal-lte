@@ -120,6 +120,19 @@ if (!class_exists("DbHelper")) {
       }
     }
 
+    function validatePrefix() {
+      // If EZ PayPal or Ads EZ is installed with wp_ prefix on a blog
+      // with prefix != 'wp_', patch it up.
+      if ($this->tableExists('administrator')) {
+        return true;
+      }
+      $prefix = str_replace(array("ezpp_", "ads_"), "", $this->dbPrefix);
+      if ($prefix != 'wp_') {
+        $this->dbPrefix = str_replace($prefix, "wp_", $this->dbPrefix);
+      }
+      return $this->tableExists('administrator');
+    }
+
     function mailTo() {
       return $this->mailTo;
     }

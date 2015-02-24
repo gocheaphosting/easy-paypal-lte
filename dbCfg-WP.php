@@ -21,6 +21,11 @@ if (!defined('DB_HOST')) {
   }
   eval($dbDefines);
 }
+global $wpdb;
+if (!empty($wpdb)) {
+  $table_prefix = $wpdb->prefix;
+}
+
 $dbHost = DB_HOST;
 $dbName = DB_NAME;
 if (empty($table_prefix)) {

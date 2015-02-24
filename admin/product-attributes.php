@@ -1,4 +1,5 @@
 <?php
+
 $prodAttr = array();
 $prodAttr['pk'] = array(
     'name' => 'ID',
@@ -55,8 +56,10 @@ $prodAttr['version'] = array('name' => 'Product Version',
     'value' => '0.00',
     'help' => 'Your sales will keep track of the product versions so that you can, for example, send upgrade notifications to your buyers. You would use the Email Tools (found under Pro Tools) for this purpose. Use a numeric version with two decimals (like 3.12 to indicate major version 3, minor version 1 and update 2, for instance). String versions (like V3.1.2) are not supported.',
     'validator' => 'number');
-$prodAttr['recurring'] = array('name' => 'Subscription Product?',
-    'needsPro' => true,
-    'type' => 'checkbox',
-    'value' => false,
-    'help' => 'If you want to make this product a subscription-based one, please tick here.');
+if (EZ::$isPro) {
+  $prodAttr['recurring'] = array('name' => 'Subscription Product?',
+      'needsPro' => true,
+      'type' => 'checkbox',
+      'value' => false,
+      'help' => 'If you want to make this product a subscription-based one, please tick here. Be sure to enter the subscription details. You may have to edit the product again to see the button to enter subscription details.');
+}
