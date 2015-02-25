@@ -94,17 +94,22 @@ class EzShop {
       $('.shortCode').click(function () {
         var id = $(this).text();
         var qty = $("#qty_" + id).text();
+        var name = $(this).attr('data-name');
         var wp = '';
+        var shortCode = '';
+        var link = '';
         if (isInWP()) {
           wp = 'wp&';
+          shortCode = "Shortcode: <code>[ezshop id=" + id + " qty=" + qty +
+                  "]Buy " + name + " Now![/ezshop]</code><br>";
         }
-        var shortCode = "Shortcode: <code>[ezshop buy=" + id + " qty=" + qty +
-                "]</code><br>" +
-                "Link: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; " +
-                "<code>&lt;a href='shop.php?" + wp + "buy=" + id + "&qty=" + qty +
-                "'>Buy Now!&lt;/a&gt;</code><br><br><b>Cut and paste as needed.<b>";
+        link = "Link: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; " +
+                "<code>&lt;a href='<?php echo EZ::ezppURL(); ?>buy.php?" + wp
+                + "id=" + id + "&qty=" + qty +
+                "'>Buy " + name + " Now!&lt;/a&gt;</code><br><br>" +
+                "<b>Cut and paste as needed.<b>";
         bootbox.dialog({
-          message: shortCode,
+          message: shortCode + link,
           title: "Shortcode and Link",
           buttons: {
             success: {
@@ -124,7 +129,7 @@ class EzShop {
     $idColumn = "";
     if (EZ::isLoggedIn()) {
       if (empty(EZ::$options['hide_shortcode'])) {
-        $idColumn = "<td class='center-text'><a href='#' class='shortCode' title='Click to view shortcodes and links for $product_name' data-toggle='tooltip'>$id</a></td>";
+        $idColumn = "<td class='center-text'><a href='#' class='shortCode' title='Click to view shortcodes and links for $product_name' data-toggle='tooltip' data-name='$product_name'>$id</a></td>";
       }
       else {
         $idColumn = "<td class='center-text'>$id</td>";

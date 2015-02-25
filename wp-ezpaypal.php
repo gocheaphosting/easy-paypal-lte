@@ -1,8 +1,5 @@
 <?php
 
-$plgSlug = basename(dirname(__FILE__));
-include_once('ezKillLite.php');
-
 if (!class_exists("EzPayPal6")) {
 
   class EzPayPal6 {
@@ -42,7 +39,7 @@ function calcHeight() {
 }
 </script>' .
                 "<p>" . __("This is an auto-generated page by EZ PayPal Plugin. It displays the products you have defined in a neat table format, which allows your potential buyers to purchase them.", 'easy-paypal') . "</p>
-<p>" . __("Note that you can create your own shop pages using the shortcodes. For example, each product can be displayed as a <strong>Buy Now</strong> using the shortcode format <code>[[ezshop buy=3 qty=2]Buy Now[/ezshop]]</code>. This will insert a link, which when clicked, will take your reader to a PayPal page to buy two licences of the product with id 3.", 'easy-paypal') . "</p>
+<p>" . __("Note that you can create your own shop pages using the shortcodes. For example, each product can be displayed as a <strong>Buy Now</strong> using the shortcode format <code>[[ezshop id=3 qty=2]Buy Now[/ezshop]]</code>. This will insert a link, which when clicked, will take your reader to a PayPal page to buy two licences of the product with id 3.", 'easy-paypal') . "</p>
 <p>" . __("This E-Shop page shows you the product listing with the ids and names to help you select products and generate shortcodes or links. Click on the Id to view short code or link for the product with the quantity as specified. You can use the shortcode [[ezshop]] or [[ezshop]]Link Text[[/ezshop]] to display a link to your e-shop.", 'easy-paypal') . "</p>";
 
         $page['post_type'] = 'page';
@@ -61,34 +58,28 @@ function calcHeight() {
       return $pageid;
     }
 
-    function getQuery($atts) {
+    function displayShop($atts, $content = '') {
       $query = "";
-      $vars = array("id" => "", "code" => "", "key" => "");
+      $vars = array("id" => "", "qty" => "");
       $vars = shortcode_atts($vars, $atts);
       foreach ($vars as $k => $v) {
         if (!empty($v)) {
-          $query = "&$k=$v";
-          return $query;
+          $query .= "&$k=$v";
         }
       }
-    }
-
-    function displayShop($atts, $content = '') {
-      extract(shortcode_atts(array("qty" => "1"), $atts));
       $getParam = "?wp";
-      $query = $this->getQuery($atts);
-      if (!empty($query)) {
-        $getParam .= "$query&qty=$qty";
+      if (!empty($vars['qty'])) {
+        $getParam .= "$query";
         if (empty($content)) {
           $content = "Buy Now!";
         }
-        $buyLink = "<a href='$this->plgURL/buy.php$getParam'>$content</a>";
+        $buyLink = "<a class='ezpaypal-buy' href='{$this->plgURL}buy.php$getParam'>$content</a>";
       }
       else {
         if (empty($content)) {
           $content = "Visit Shop";
         }
-        $buyLink = "<a href='$this->plgURL/shop.php$getParam'>$content</a>";
+        $buyLink = "<a class='ezpaypal-shop' href='{$this->plgURL}shop.php$getParam'>$content</a>";
       }
       return $buyLink;
     }
