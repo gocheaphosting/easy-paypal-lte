@@ -50,8 +50,8 @@ class EzOffice {
   function getSaleDetails() {
     global $log;
     if (empty($this->saleDetails)) { // run it only once
-      if (!empty($_REQUEST)) {
-        $saleDetails = $_REQUEST;
+      if (!empty($_POST)) {
+        $saleDetails = $_POST;
         if (!empty($saleDetails['payment_date'])) {
           $saleDetails['payment_date'] = EZ::mkDateString($saleDetails['payment_date']);
         }
@@ -70,7 +70,7 @@ class EzOffice {
 
   function verifyIPN() {
     global $log;
-    $saleDetails = $_REQUEST;
+    $saleDetails = $_POST;
     if (empty($saleDetails)) {
       $log->debug("VerifyIPN: Empty sale details.");
       return;
@@ -494,7 +494,12 @@ class EzOffice {
     else {
       throw new Exception((__("Error sending email: No customer/payer email in sale info", 'easy-paypal')));
     }
-    return EZ::sendMail($subject, $message, $to);
+    if (EZ::sendMail($subject, $message, $to)) {
+      return true;
+    }
+    else {
+      throw new Exception((__("Error sending email: error return from sendMail", 'easy-paypal')));
+    }
   }
 
   function getReturnPage() {

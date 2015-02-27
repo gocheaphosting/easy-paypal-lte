@@ -11,12 +11,7 @@
 </div>
 <h3>All Your Sales</h3>
 <?php
-$key = 'sales';
-$sales = EZ::getTransient($key);
-if (!$sales) {
-  $sales = $db->getData('sales');
-  EZ::setTransient($key, $sales, EZ::$cacheTimeout);
-}
+$sales = $db->getData('sales');
 
 openBox("Sales", "th-list", 12, "<p>The table below listing your sales is searchable and sortable.</p>"
         . "<p>If you want to view the details of a sale, please click on the <a href='#' class='btn-sm btn-info'><i class='glyphicon glyphicon-zoom-in icon-white'></i></a> button.<p>");

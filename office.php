@@ -3,7 +3,7 @@
 require_once 'EzOfficePro.php';
 require_once 'debug.php';
 $office = new EzOfficePro();
-$office->setDebug(true);
+$office->setDebug(false);
 
 require_once 'header.php';
 printLogo("Welcome to EZ PayPal Back Office");
