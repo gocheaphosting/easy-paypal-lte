@@ -1,13 +1,8 @@
 <?php
 
-if (file_exists('EzOfficePro.php')) {
-  require_once 'EzOfficePro.php';
-  $office = new EzOfficePro();
-}
-else {
-  require_once 'EzOffice.php';
-  $office = new EzOffice();
-}
+require_once 'EzOfficePro.php';
+$office = new EzOfficePro();
+
 $office->debug = false;
 if (!empty($_REQUEST['email'])) {
   $email = $_REQUEST['email'];

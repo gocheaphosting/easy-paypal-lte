@@ -1,12 +1,7 @@
 <?php
-if (file_exists('EzShopPro.php')) {
-  require_once 'EzShopPro.php';
-  $shop = new EzShopPro();
-}
-else {
-  require_once 'EzShop.php';
-  $shop = new EzShop();
-}
+
+require_once 'EzShopPro.php';
+$shop = new EzShopPro();
 
 $shop->verifyRequest();
 

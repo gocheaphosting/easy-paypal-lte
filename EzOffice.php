@@ -373,7 +373,12 @@ class EzOffice {
       }
       else {
         $ezppURL = EZ::ezppURL();
-        $shop = 'return.php?';
+        if (EZ::isInWP()) {
+          $shop = 'return.php?wp&';
+        }
+        else {
+          $shop = 'return.php?';
+        }
         $downloadUrl = sprintf("%s%sdl=%s", $ezppURL, $shop, self::_sanitizeTxnId($txn_id));
       }
     }

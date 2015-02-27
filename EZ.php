@@ -289,7 +289,13 @@ if (!class_exists("EZ")) {
               "X-Sender-IP: %s\r\n" .
               "Bcc: %s\r\n", $options['support_name'], $from, $from, self::ezppURL(), $_SERVER['REMOTE_ADDR'], $from);
       $params = "-$from";
-      $result = mail($to, $subject, $message, $headers, $params);
+      $result = false;
+      if (function_exists('wp_mail')) {
+        $result = wp_mail($to, $subject, $message, $headers);
+      }
+      if (!$result) { // fall back to php mail
+        $result = mail($to, $subject, $message, $headers, $params);
+      }
       if (!$result) {
         throw new Exception(__("Error sending PHP email", 'easy-paypal'));
       }

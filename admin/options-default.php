@@ -36,7 +36,7 @@ $paypal = array();
 $paypal['paypal_name'] = array('name' => __('PayPal username', 'easy-paypal'),
     'help' => __('Enter your name (or your company name). This is used for display purposes.', 'easy-paypal'),
     'validator' => 'notNull',
-    'value' => '',
+    'value' => 'EZ PayPal',
     'unique' => true);
 $paypal['paypal_email'] = array('name' => __('PayPal email ID', 'easy-paypal'),
     'help' => __('Enter your PayPal email ID, which will receive your payments.', 'easy-paypal'),

@@ -54,3 +54,5 @@ if (!@move_uploaded_file($tempFile, $installRoot . $target)) {
   http_response_code(400);
   die("File move error: {$_FILES['file']['name']} to {$prod['product_name']} target <code>{$prod['file']}</code>");
 }
+http_response_code(200);
+die('All good');
