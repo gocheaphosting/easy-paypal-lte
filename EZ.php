@@ -933,7 +933,10 @@ if (!class_exists("EZ")) {
       }
       if (empty($product)) { // Try meta key
         $prodMeta = $db->getData("product_meta", "*", array('name' => 'key', 'value' => $id));
-        if (!empty($prodMeta)) {
+        if (empty($prodMeta) && strlen($id) > 5) { // Meta key, fuzzy match
+          $prodMeta = $db->getData("product_meta", "*", "name = 'key' AND value LIKE '%$id%'");
+        }
+        if (count($prodMeta) == 1) {
           $prodMeta = $prodMeta[0];
           $filter = array('id' => $prodMeta['product_id']);
           $product = $db->getData('products', '*', $filter);

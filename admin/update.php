@@ -3,7 +3,7 @@ require 'header.php';
 require_once '../lib/Ftp.php';
 $ftp = new Ftp();
 require_once 'Updater.php';
-$updater = new Updater('ez-paypal');
+$updater = new Updater('ezpaypal');
 ?>
 <div>
   <ul class="breadcrumb">
@@ -23,31 +23,61 @@ insertAlerts(11);
 openBox("Update or Upgrade Your Product", "plus", 11, "<p>It is easy to update your application. Once you have downloaded an update package, please use the Browse button in the <b>Upload Your Zip File</b> section. When you have selected the zip file to upload, the updater will take care of the rest.</p>"
         . "<p>If you have purchased a <a href='#' class='goPro'>Pro upgrade</a>, the process is identical. Just browse and upload the zip file."
         . "<p>In some installations, you may need to provide FTP details for the updater to work. If needed, you will be prompted for the credentials. Contact your hosting provider or system admin for details.</p>");
+$updateBox = '';
 ?>
 <div class="clearfix">&nbsp;</div>
 <?php
-$localVersion = $updater->getLocalVersion();
-$remoteVersion = $updater->getRemoteVersion();
-$toolTip = $updater->getUpdateText();
-if ($updater->isOld()) {
-  ?>
-  <div class="col-md-3 col-sm-3 col-xs-6 update">
-    <a data-toggle="tooltip" title="<?php echo $toolTip; ?>" class="well top-block update" href="#">
-      <i class="glyphicon glyphicon-hand-up red"></i>
-      <div>EZ PayPal V<?php echo $localVersion; ?></div>
-      <div>Update to V<?php echo $remoteVersion; ?></div>
-      <span class="notification red"><?php echo "V$remoteVersion"; ?></span>
-    </a>
-  </div>
-  <?php
+if (EZ::$isPro || !empty(EZ::$options['allow_updates'])) {
+  $localVersion = $updater->getLocalVersion();
+  $remoteVersion = $updater->getRemoteVersion();
+  $toolTip = $updater->getUpdateText();
+  if ($updater->isOld()) {
+    ?>
+    <div class="col-md-3 col-sm-3 col-xs-6 update">
+      <a data-toggle="tooltip" title="<?php echo $toolTip; ?>" class="well top-block update" href="#">
+        <i class="glyphicon glyphicon-hand-up red"></i>
+        <div>EZ PayPal V<?php echo $localVersion; ?></div>
+        <div>Update to V<?php echo $remoteVersion; ?></div>
+        <span class="notification red"><?php echo "V$remoteVersion"; ?></span>
+      </a>
+    </div>
+    <?php
+  }
+  else {
+    ?>
+    <div class="col-md-3 col-sm-3 col-xs-6">
+      <a data-toggle="tooltip" title="<?php echo $toolTip; ?>" class="well top-block" href="#">
+        <i class="glyphicon glyphicon-thumbs-up red"></i>
+        <div>EZ PayPal V<?php echo $localVersion; ?></div>
+        <div>Your version is up-to-date</div>
+      </a>
+    </div>
+    <?php
+  }
 }
 else {
+  $allow_updates = array('name' => 'Allow Update Check',
+      'value' => 0,
+      'help' => __("Enable this option to enable automatic update checks. Note that checking for updates requires your server to connect to that of the author. No data is collected from your server during update check; it is a read-only process. If you are okay with connecting to an extenral server, please enable this option to opt in.<b>Click on the Updates button again to reload the page</b>", 'easy-common'),
+      'type' => 'checkbox');
+  $updateBox = '<div id="updateBox" class="col-md-3 col-sm-3 col-xs-6" style="display:none"><table class="table table-striped table-bordered responsive">
+      <thead>
+        <tr>
+          <th style="width:50%;min-width:180px">Option</th>
+          <th style="width:25">Value</th>
+          <th class="center-text" style="width:25%;min-width:50px">Help</th>
+        </tr>
+      </thead>' .
+          EZ::renderOption('allow_updates', $allow_updates) .
+          '</tbody>
+    </table>
+  </div>';
   ?>
   <div class="col-md-3 col-sm-3 col-xs-6">
-    <a data-toggle="tooltip" title="<?php echo $toolTip; ?>" class="well top-block update" href="#">
-      <i class="glyphicon glyphicon-thumbs-up red"></i>
-      <div>EZ PayPal V<?php echo $localVersion; ?></div>
-      <div>Your version is up-to-date</div>
+    <a data-toggle="tooltip" title="Click to enable update check so that you can connect to the author server to get the current version." class="well top-block" href="#" id='allowUpdates'>
+      <i class="glyphicon glyphicon-exclamation-sign red"></i>
+      <div>Update Check is Disabled</div>
+      <div>Enable it</div>
     </a>
   </div>
   <?php
@@ -91,6 +121,10 @@ else {
   </a>
 </div>
 <div class="clearfix"></div>
+<?php
+echo $updateBox;
+?>
+<div class="clearfix"></div>
 <hr>
 <div id="updateDiv">
   <h4>Upload Your Upgrade/Update</h4>
@@ -118,6 +152,7 @@ else {
 }
 ?>
 <script>
+  var xeditHanlder = 'ajax/options.php';
   $(document).ready(function () {
     var file;
     function ajaxUpload(_file) {
@@ -177,7 +212,10 @@ else {
       var h = 728;
       return ezPopUp(url, title, w, h);
     });
-
+    $('#allowUpdates').click(function (e) {
+      e.preventDefault();
+      $("#updateBox").show();
+    });
   });
 </script>
 
