@@ -329,16 +329,20 @@ class EzOffice {
     $this->handlePurchase();
   }
 
-  function saveSaleInfo() {
+  function saveSaleInfo($saleInfo = false) {
     global $db;
-    $saleInfo = $this->getSaleInfo();
+    if (!$saleInfo) {
+      $saleInfo = $this->getSaleInfo();
+    }
     $db->putRowData("sales", $saleInfo);
     $this->saleInfo['id'] = $db->getInsertId();
   }
 
-  function saveSaleDetails() {
+  function saveSaleDetails($saleDetails = false) {
     global $db;
-    $saleDetails = $this->getSaleDetails();
+    if (!$saleDetails) {
+      $saleDetails = $this->getSaleDetails();
+    }
     $db->putRowData("sale_details", $saleDetails);
     $this->saleDetails['id'] = $db->getInsertId();
   }

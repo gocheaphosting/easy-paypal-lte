@@ -18,7 +18,7 @@ if (!class_exists('ZipArchive')) {
 
 if (isset($_REQUEST['backup'])) {
   require_once '../Updater.php';
-  $updater = new Updater('ez-paypal');
+  $updater = new Updater('ezpaypal');
   $updater->backup();
   exit();
 }
@@ -52,7 +52,15 @@ if ($zip->open($tmpName) !== TRUE) {
   die($error);
 }
 
-// ensure that it is an ezpaypal archive
+// ensure that it is an EZ PayPal archive
+$stat = $zip->statIndex(0);
+$root = $stat['name'];
+$isEZPP = strpos($root, 'ezpaypal/') === 0;
+if (!$isEZPP) {
+  http_response_code(400);
+  $error .= "The uploaded archive does not look like an EZ PayPal update. Root folder is <code>$root</code>.";
+  die($error);
+}
 $toVerify = array('easy-paypal.php', 'wp-ezpaypal.php', 'shop.php', 'EzShop.php', 'office.php', 'EzOffice.php');
 foreach ($toVerify as $d) {
   $idx = $zip->locateName($d, ZipArchive::FL_NODIR);
@@ -65,10 +73,8 @@ foreach ($toVerify as $d) {
     die($error);
   }
 }
-
-// files to remove from the archive -- not to overwrite on the user's server
+// files to remove from the archive -- not to overwrite on the user's DB server details
 $toDelete = array('dbCfg.php');
-
 foreach ($toDelete as $d) {
   $idx = $zip->locateName($d, ZipArchive::FL_NODIR);
   if ($idx === false) {

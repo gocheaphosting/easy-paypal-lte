@@ -58,7 +58,7 @@ if (EZ::$isPro || !empty(EZ::$options['allow_updates'])) {
 else {
   $allow_updates = array('name' => 'Allow Update Check',
       'value' => 0,
-      'help' => __("Enable this option to enable automatic update checks. Note that checking for updates requires your server to connect to that of the author. No data is collected from your server during update check; it is a read-only process. If you are okay with connecting to an extenral server, please enable this option to opt in.<b>Click on the Updates button again to reload the page</b>", 'easy-common'),
+      'help' => __("Enable this option to allow automatic update checks. Note that checking for updates requires your server to connect to that of the author. No data is collected from your server during update check; it is a read-only process. If you are okay with connecting to an extenral server, please enable this option to opt in.<b>Click on the Updates button again to reload the page</b>", 'easy-common'),
       'type' => 'checkbox');
   $updateBox = '<div id="updateBox" class="col-md-3 col-sm-3 col-xs-6" style="display:none"><table class="table table-striped table-bordered responsive">
       <thead>

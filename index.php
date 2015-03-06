@@ -15,7 +15,14 @@ RewriteRule . index.php?id=1 [L]
 # END EZ PayPal
  */
 
-$uri = explode('/', $_SERVER['REQUEST_URI']);
+$request = rtrim($_SERVER['REQUEST_URI'], '/');
+if ($request != $_SERVER['REQUEST_URI']) { // ending slash stripped
+  $pwd = "../";
+}
+else {
+  $pwd = "";
+}
+$uri = explode('/', $request);
 $code = strtolower(end($uri));
 if (empty($code)) {
   $code = '';
@@ -42,7 +49,7 @@ switch ($code) {
       http_response_code(404);
       die("File $code not found!");
     }
-    header("location: buy.php?id=$code");
+    header("location: {$pwd}buy.php?id=$code");
 }
 
 // For 4.3.0 <= PHP <= 5.4.0
