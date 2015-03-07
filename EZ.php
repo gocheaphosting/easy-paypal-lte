@@ -158,6 +158,7 @@ if (!class_exists("EZ")) {
     }
 
     static function isLoggedInWP() {
+      global $wpdb;
       // check from front-end, admin and ajax
       foreach (array("../../..", "../../../..", "../../../../..") as $dir) {
         $wpHeader = "$dir/wp-blog-header.php";

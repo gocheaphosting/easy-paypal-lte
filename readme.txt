@@ -4,7 +4,7 @@ Donate link: http://buy.thulasidas.com/ezpaypal
 Tags: paypal, paypal ipn, e-commerce, shopping cart, payment gateway, digital goods, ipn, paypal integration, wordpress paypal integration
 Requires at least: 3.3
 Tested up to: 4.1
-Stable tag: 6.30
+Stable tag: 6.31
 
 EZ PayPal gets you started with your online business. Use PayPal IPN, sell digital goods with instant download, and no carts. Official PayPal Partner.
 
@@ -91,7 +91,7 @@ The reporting module and the subscription module that were sold separately have 
 
 == Upgrade Notice ==
 
-Fixes in the sales update module.
+Code cleanup.
 
 == Screenshots ==
 
@@ -169,6 +169,7 @@ In order to add a new product, click on the green "Add New Product" button and t
 
 = History =
 
+* V6.31: Code cleanup. [Mar 7, 2015]
 * V6.30: Fixes in the sales update module. [Mar 6, 2015]
 * V6.29: Changes in the update module [Mar 5, 2015]
 * V6.28: Adding better email error handling. [Feb 27, 2015]

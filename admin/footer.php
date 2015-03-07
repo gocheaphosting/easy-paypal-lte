@@ -45,7 +45,6 @@ else {
 
 <script src="js/bootstrap.min.js"></script>
 <script src="js/bootstrap-editable.min.js"></script>
-<script src="js/bootstrap.lightbox.js"></script>
 <script src="js/bootstrap-tour.min.js"></script>
 <script src="js/bootstrapValidator.min.js"></script>
 <script src="js/jquery.dataTables.min.js"></script>

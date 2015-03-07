@@ -1,5 +1,6 @@
 <?php
 
+global $wpdb;
 if (!defined('DB_HOST')) {
   $wpConfigFile = '../../../wp-config.php';
   if (!@file_exists($wpConfigFile)) {
@@ -21,7 +22,6 @@ if (!defined('DB_HOST')) {
   }
   eval($dbDefines);
 }
-global $wpdb;
 if (!empty($wpdb)) {
   $table_prefix = $wpdb->prefix;
 }

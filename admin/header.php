@@ -128,7 +128,6 @@ function getHeader() {
       <!-- The styles -->
       <link id="bs-css" href="<?php echo $themeCSS; ?>" rel="stylesheet">
       <link href="css/bootstrap-editable.css" rel="stylesheet">
-      <link href="css/bootstrap.lightbox.css" rel="stylesheet" media="screen">
       <link href="css/charisma-app.css" rel="stylesheet">
       <link href='css/bootstrap-tour.min.css' rel='stylesheet'>
       <link href='css/bootstrapValidator.css' rel='stylesheet'>
