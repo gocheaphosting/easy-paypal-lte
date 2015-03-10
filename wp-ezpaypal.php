@@ -1,11 +1,13 @@
 <?php
 
+include('ezKillLite.php');
+
 if (!class_exists("EzPayPal6")) {
 
   class EzPayPal6 {
 
     var $isPro, $strPro, $plgDir, $plgURL;
-    var $ezTran, $ezAdmin, $slug, $domain, $myPlugins;
+    var $ezTran, $domain;
 
     function EzPayPal6() { //constructor
       $this->plgDir = dirname(__FILE__);
@@ -19,7 +21,7 @@ if (!class_exists("EzPayPal6")) {
       }
       if (is_admin()) {
         require_once($this->plgDir . '/EzTran.php');
-        $this->domain = $this->slug = 'easy-paypal';
+        $this->domain = 'easy-paypal';
         $this->ezTran = new EzTran(__FILE__, "EZ PayPal{$this->strPro}", $this->domain);
         $this->ezTran->setLang();
       }

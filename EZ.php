@@ -158,7 +158,10 @@ if (!class_exists("EZ")) {
     }
 
     static function isLoggedInWP() {
+      define('WP_USE_THEMES', false);
+      define('WP_INSTALLING', true);
       global $wpdb;
+      $isLoggedIn = false;
       // check from front-end, admin and ajax
       foreach (array("../../..", "../../../..", "../../../../..") as $dir) {
         $wpHeader = "$dir/wp-blog-header.php";
@@ -167,15 +170,13 @@ if (!class_exists("EZ")) {
           break;
         }
       }
-      if (function_exists('is_user_logged_in')) {
+      if (function_exists('current_user_can')) {
         self::$isInWP = true;
-        if (is_user_logged_in()) {
-          return true;
-        }
-        else {
-          return false;
+        if (current_user_can('manage_options')) {
+          $isLoggedIn = true;
         }
       }
+      return $isLoggedIn;
     }
 
     static function isLoggedIn() {

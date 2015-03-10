@@ -88,7 +88,16 @@ class EzShop {
         if (isInWP()) {
           wp = 'wp&';
         }
-        window.location.href = 'buy.php?' + wp + 'id=' + id + '&qty=' + qty;
+        var href = 'buy.php?' + wp + 'id=' + id + '&qty=' + qty;
+        if ($(this).hasClass('popup_paypal')) {
+          var title = "Go to PayPal";
+          var w = 1024;
+          var h = 728;
+          return ezPopUp(href, title, w, h);
+        }
+        else {
+          top.location.href = 'buy.php?' + wp + 'id=' + id + '&qty=' + qty;
+        }
         return false;
       });
       $('.shortCode').click(function () {
@@ -135,13 +144,19 @@ class EzShop {
         $idColumn = "<td class='center-text'>$id</td>";
       }
     }
+    if (!empty(EZ::$options['popup_paypal'])) {
+      $popup = 'popup_paypal';
+    }
+    else {
+      $popup = '';
+    }
     echo "<tr>"
     . $idColumn
     . "<td>$product_name</td>"
     . "<td>$category</td>"
     . "<td class='center-text'>$renderedPrice</td>"
     . "<td class='center-text'><a id='qty_$id' href='#' class='xedit-new' data-validator='number'>1</a></td>"
-    . "<td class='center-text'><a data-id='$id' class='btn-sm btn-success buyNow' href='#'><i class='glyphicon glyphicon-shopping icon-white action'></i>&nbsp;Buy Now</a></td></tr>\n";
+    . "<td class='center-text'><a data-id='$id' class='btn-sm btn-success buyNow $popup' href='#'><i class='glyphicon glyphicon-shopping icon-white action'></i>&nbsp;Buy Now</a></td></tr>\n";
   }
 
   function renderPrice($price, $currency) {

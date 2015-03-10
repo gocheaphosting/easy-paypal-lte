@@ -4,7 +4,7 @@ Donate link: http://buy.thulasidas.com/ezpaypal
 Tags: paypal, paypal ipn, e-commerce, shopping cart, payment gateway, digital goods, ipn, paypal integration, wordpress paypal integration
 Requires at least: 3.3
 Tested up to: 4.1
-Stable tag: 6.31
+Stable tag: 6.32
 
 EZ PayPal gets you started with your online business. Use PayPal IPN, sell digital goods with instant download, and no carts. Official PayPal Partner.
 
@@ -71,6 +71,7 @@ If the following features are important to you, consider buying the Pro version.
 19. *Subscription Module*: If you want to add subscription products (support contract, text links, newsletters etc), this module will make it a snap.
 20. *Server Side Sales Processing*: Your sales are rendered in a searchable, sortable table (using bootstrap Datatables). In the *Pro* version, the table processing is done at your database server rather than the web browser, tremendously improving the performance once you have thousands of sales.
 21. *Images Upload*: In the *Pro* version, you can upload your image assets to your server using a simple drag and drop interface and use them in your email and download templates, or as logos.
+22: *Popup PayPal Window*: In the *Pro* version, you have an option to open the PayPal transaction page in a nice, compact window so that your buyers do not leave your shop to complete a purchase.
 
 If you buy the *Pro* version, you will get an upgrade notice (using the last item listed above) when the features that are Work-in-Progress are completed. You will be able to update free of charge.
 
@@ -91,7 +92,7 @@ The reporting module and the subscription module that were sold separately have 
 
 == Upgrade Notice ==
 
-Code cleanup.
+Improvements in the login check functions. Adding a Pro feature to popup the PayPal transaction window.
 
 == Screenshots ==
 
@@ -169,6 +170,7 @@ In order to add a new product, click on the green "Add New Product" button and t
 
 = History =
 
+* V6.32: Improvements in the login check functions. Adding a Pro feature to popup the PayPal transaction window. [Mar 9, 2015]
 * V6.31: Code cleanup. [Mar 7, 2015]
 * V6.30: Fixes in the sales update module. [Mar 6, 2015]
 * V6.29: Changes in the update module [Mar 5, 2015]

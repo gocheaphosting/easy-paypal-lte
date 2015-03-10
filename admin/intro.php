@@ -17,6 +17,8 @@ $features2 = "<p>Since the Pro version has more features than could be listed on
 <li><em>Subscription Module</em>: If you want to add subscription products (support contract, text links, newsletters etc), this module will make it a snap.</li>
 <li><em>Server Side Sales Processing</em>: Your sales are rendered in a searchable, sortable table (using bootstrap datatable). In the <em>Pro</em> version, the table processing is done at your database server rather than the web browser, tremendously improving the performance once you have thousands of sales.
 <li><em>Image Assets Manager</em>: In the <em>Pro</em> version, you can upload your image assets to your server using a simple drag and drop interface and use them in your email and download templates, or as logos. While editing the templates, the images can be included using an intuitive gallery-like interface.</li>
+<li><em>Popup PayPal Window</em>: In the <em>Pro</em> version, you have an option to open the PayPal transaction page in a nice, compact window so that your buyers do not leave your shop to complete a purchase.</li>
+
 </ol>";
 ?>
 <h1>EZ PayPal<br>

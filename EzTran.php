@@ -181,7 +181,7 @@ if (!class_exists("EzTran")) {
         return;
       }
       if (!session_id()) {
-        session_start();
+        @session_start();
       }
       if (!empty($_POST['ezt-savePot']) || !empty($_POST['ezt-download'])) {
         // saving cannot be done from handleSubmits
