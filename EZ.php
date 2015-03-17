@@ -158,8 +158,12 @@ if (!class_exists("EZ")) {
     }
 
     static function isLoggedInWP() {
-      define('WP_USE_THEMES', false);
-      define('WP_INSTALLING', true);
+      if (!defined('WP_USE_THEMES')) {
+        define('WP_USE_THEMES', false);
+      }
+      if (!defined('WP_INSTALLING')) {
+        define('WP_INSTALLING', true);
+      }
       global $wpdb;
       $isLoggedIn = false;
       // check from front-end, admin and ajax

@@ -517,7 +517,8 @@ class EzOffice {
     else if (!empty($_REQUEST['dl'])) { // Download request
       $txn_id = self::_sanitizeTxnId($_REQUEST['dl']);
       $this->saleDetails = EZ::getSaleRow("sale_details", $txn_id);
-      $this->deliverFile();
+      $alt = isset($_REQUEST['alt']);
+      $this->deliverFile($alt);
       $html = $log->get();
     }
     else { // No PDT. Query the customer for txn_id/email
@@ -526,12 +527,20 @@ class EzOffice {
     return $html;
   }
 
-  function deliverFile() {
+  function deliverFile($alt = false) {
     global $log;
     $product = $this->getProduct();
     if (empty($product)) {
       $log->error("DeliverFile: No product defined!");
       return false;
+    }
+    if ($alt) {
+      if (!empty($product['alt_product'])) {
+        $product = EZ::getProduct($product['alt_product']);
+      }
+      else {
+        $log->error("DeliverFile: Alternate product requested, but none is defined!");
+      }
     }
     $saleInfo = $this->getSaleInfo();
     if (empty($saleInfo)) {
