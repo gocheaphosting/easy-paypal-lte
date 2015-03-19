@@ -1096,9 +1096,7 @@ EZ::$isPro = file_exists('options-advanced.php');
 $db = new DbHelper();
 $GLOBALS['db'] = $db; // needed for ezSupport module
 
-if (!EZ::$isInWP) {
-  require_once 'admin/lang.php';
-}
+require_once 'admin/lang.php';
 
 EZ::$options = EZ::getOptions(); // to prime the static variable and the cache
 if (!empty(EZ::$options['salt'])) {
