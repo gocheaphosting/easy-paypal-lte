@@ -127,6 +127,15 @@ function calcHeight() {
     }
 
     function printAdminPage() {
+      $testFile = plugins_url("admin/promo.php", __FILE__);
+      if (!@file_get_contents($testFile)) { // index cannot be used for testing
+        ?>
+        <div class='error' style='padding:10px;margin:10px;font-size:1.3em;color:red;font-weight:500'>
+          This plugin needs direct access to its files so that they can be loaded in an iFrame. Looks like you have some security setting denying the required access. If you have an <code>.htaccess</code> file in your <code>wp-content</code> folder, please remove it or modify it to allow access to the php files in <code><?php echo $this->plgDir; ?>/</code>.
+        </div>
+        <?php
+        return;
+      }
       $src = plugins_url("admin/index.php", __FILE__);
       ?>
       <script type="text/javascript">
