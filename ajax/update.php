@@ -2,7 +2,7 @@
 
 require_once('../EZ.php');
 
-$posted_validator = '';
+$posted_email = $posted_action = $posted_validator = '';
 
 extract($_REQUEST, EXTR_PREFIX_ALL, 'posted');
 

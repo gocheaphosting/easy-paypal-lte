@@ -23,7 +23,7 @@ if (EZ::$isInWP) {
 <h4>Quick Start</h4>
 <ul>
   <li>Create a <strong><a href='products-edit.php'>new product</a></strong>. You can <a href="products.php"><strong>edit</strong></a> your products and <a href="products-batch.php"><strong>upload</strong></a> new files for them whenever you like.</li>
-  <li>Visit your <strong><a href="<?php echo $shopPage; ?>">e-shop</a></strong> to see it. In the <a href="#" class="goPro">Pro Version</a>, you can <a href="template-shop.php"><strong>customize</strong></a> this shop.</li>
+  <li>Visit your <strong><a href="<?php echo $shopPage; ?>">e-shop</a></strong> to see it. In the <a href="#" class="goPro">Pro Version</a>, you can <a href="advanced.php">customize</a> your shop and other public pages with your own logo, branding and color scheme in the <strong>Advanced Shop Options</strong> section.</li>
   <li>Take this <strong><a class="restart" href="#">tour</a></strong> any time you would like to go through the application features again.</li>
 </ul>
 <h4>WordPress and Shortcodes</h4>

@@ -108,8 +108,8 @@ function printLogo($h2 = '') {
   ?>
 
   <div class="row">
-    <div class="col-md5 center">
-      <h2 class="col-md5"><img alt="EZ PayPal Logo" src="<?php echo $shopLogo; ?>" style="max-width: 250px;"/>
+    <div class="col-lg-12 center">
+      <h2 class="col-lg-12"><img alt="EZ PayPal Logo" src="<?php echo $shopLogo; ?>" style="max-width:90%;"/>
         <?php
         if (!empty($h2)) {
           echo "<small><br />$h2<br /></small>";
@@ -120,6 +120,13 @@ function printLogo($h2 = '') {
   </div>
 
   <?php
+}
+
+if (!empty(EZ::$options['shop_theme'])) {
+  $themeCSS = "admin/css/bootstrap-" . strtolower(EZ::$options['shop_theme']) . ".min.css";
+}
+else {
+  $themeCSS = "admin/css/bootstrap-cerulean.min.css";
 }
 ?>
 <!DOCTYPE html>
@@ -132,7 +139,7 @@ function printLogo($h2 = '') {
     <meta name="author" content="Manoj Thulasidas">
 
     <!-- The styles -->
-    <link id="bs-css" href="admin/css/bootstrap-cerulean.min.css" rel="stylesheet">
+    <link id="bs-css" href="<?php echo $themeCSS; ?>" rel="stylesheet">
     <link href="admin/css/bootstrap-editable.css" rel="stylesheet">
     <link href="admin/css/charisma-app.css" rel="stylesheet">
     <link href="admin/css/font-awesome.min.css" rel="stylesheet">

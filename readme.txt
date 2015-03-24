@@ -4,7 +4,7 @@ Donate link: http://buy.thulasidas.com/ezpaypal
 Tags: paypal, paypal ipn, e-commerce, shopping cart, payment gateway, digital goods, ipn, paypal integration, wordpress paypal integration
 Requires at least: 3.3
 Tested up to: 4.1
-Stable tag: 6.35
+Stable tag: 6.36
 
 EZ PayPal gets you started with your online business. Use PayPal IPN, sell digital goods with instant download, and no carts. Official PayPal Partner.
 
@@ -55,7 +55,7 @@ If the following features are important to you, consider buying the Pro version.
 3. *Address Handling*: The *Pro* version can optionally store the customer address details in a database table, if you need it.
 4. *IPN Relay*: If you have other IPN listeners, the *Pro* version of *EZ PayPal* can relay the IPN messages to them, so that they receive the same IPN messages, enabling integration with multiple systems.
 5. *Template Editor*: The email body, thank you page and download display are all editable in the *Pro* version.
-6. *Logo and Branding*: The *Pro* version gives you options to set your own logo on your shop/return pages and even on PayPal checkout page.
+6. *Logo and Branding*: The *Pro* version gives you options to set your own logo on your shop/return pages and even on PayPal checkout page. You can also change the color scheme of these pages.
 7. *Automatic handling of refunds and disputes*: When you issue a refund on the PayPal website, the corresponding sale in your database will be set to inactive. And if a buyer registers a dispute, he (and you) will get a friendly email message stating that the dispute is being reviewed and handled.
 8. *E-Check handling*: The *Pro* version recognizes e-check payments and sends a mail to the buyer regarding the delay for the check clearance.
 9. *Sales Editor*: You can load a single sale or a bunch of sales on to a friendly interface and change their data. For instance, it will let you change the download expiry date and resend a download notification message -- one of the frequent support requests from the buyers.
@@ -92,7 +92,7 @@ The reporting module and the subscription module that were sold separately have 
 
 == Upgrade Notice ==
 
-Compatibility check on the plugin admin page.
+Making the shop and return pages skinnable, fixing an error in assets upload (Pro features).
 
 == Screenshots ==
 
@@ -170,6 +170,7 @@ In order to add a new product, click on the green "Add New Product" button and t
 
 = History =
 
+* V6.36: Making the shop and return pages skinnable, fixing an error in assets upload (Pro features). [Mar 23, 2015]
 * V6.35: Compatibility check on the plugin admin page. [Mar 20, 2015]
 * V6.34: Fixing a bug that prevented the proper display of the return page. [Mar 18, 2014]
 * V6.33: Code to suppress some notices. New feature in the Pro version -- alternate product. [Mar 16, 2015]

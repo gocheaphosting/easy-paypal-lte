@@ -15,6 +15,23 @@ else {
     function __construct($slug) {
       $this->slug = $slug;
       $this->localVersion = $this->remoteVersion = -1;
+      if (!class_exists('ZipArchive')) {
+        $msg = "This application cannot update itself because your PHP does not have ZIP support. Please update your application using the following steps.";
+        if (EZ::$isInWP) {
+          $pluginLink = "<a href='" . admin_url('plugins.php') . "' class='popup'>Plugins Page</a>";
+          $uploadLink = "<a href='" . admin_url('plugin-install.php?tab=upload') . "' class='popup'>Upload Page</a>";
+          $workAround = "<ol><li>Deactivate and delete your on the $pluginLink. If you do not delete the plugin first, hte next step will fail because WordPress will refuse to overwrite the existing plugin folder.</li><li>Install the plugin by uploading the zip file on the $uploadLink.</li><li>Activate the plugin and you are all set.</li></ol>";
+        }
+        else {
+          $realPath = realpath('..');
+          $workAround = "<ol><li>Save your <code>dbCfg.php</code> file (in <code>$realPath</code> on your server).</li><li>Unzip the downloaded zip file.</li><li>Use FTP or other means to manually upload the contents of your zip file (to <code>$realPath</code>) overwriting the existing files.</li><li>Restore your <code>dbCfg.php</code> file (in <code>$realPath</code>).</li></ol>";
+        }
+        $msg .= $workAround;
+        echo '<script>$(document).ready(function() {' .
+        "showError(\"$msg\");
+        });
+        </script>";
+      }
     }
 
     function __destruct() {

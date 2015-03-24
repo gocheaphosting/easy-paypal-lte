@@ -743,6 +743,9 @@ if (!class_exists("EZ")) {
       }
       if (!empty($button)) {
         $fun = "proc_$reveal";
+        if (empty($url)) {
+          $url = '#';
+        }
         $options = self::$options;
         if (!empty($options[$reveal])) {
           $revealOption = $options[$reveal];
@@ -756,7 +759,7 @@ if (!class_exists("EZ")) {
         else {
           $dataReveal = "data-value='$revealOption' class='btn-sm btn-success reveal'";
         }
-        $reveal = "</a><a href='#' style='float:right' $dataReveal>$button";
+        $reveal = "</a><a href='$url' style='float:right' $dataReveal>$button";
       }
       else {
         $reveal = '';
