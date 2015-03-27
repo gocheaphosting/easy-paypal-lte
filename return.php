@@ -30,7 +30,6 @@ printLogo("EZ PayPal Delivery Portal");
 insertAlerts(10);
 openBox("Delivery Portal", "download-alt", 10);
 echo $html;
-done:
 closeBox();
 
 if (file_exists('EzShopPro.php')) {

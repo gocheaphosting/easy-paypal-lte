@@ -109,7 +109,7 @@ function printLogo($h2 = '') {
 
   <div class="row">
     <div class="col-lg-12 center">
-      <h2 class="col-lg-12"><img alt="EZ PayPal Logo" src="<?php echo $shopLogo; ?>" style="max-width:90%;"/>
+      <h2 class="col-lg-12"><img alt="EZ PayPal Logo" src="<?php echo $shopLogo; ?>" style="max-width:100%;"/>
         <?php
         if (!empty($h2)) {
           echo "<small><br />$h2<br /></small>";

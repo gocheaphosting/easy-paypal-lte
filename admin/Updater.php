@@ -20,7 +20,7 @@ else {
         if (EZ::$isInWP) {
           $pluginLink = "<a href='" . admin_url('plugins.php') . "' class='popup'>Plugins Page</a>";
           $uploadLink = "<a href='" . admin_url('plugin-install.php?tab=upload') . "' class='popup'>Upload Page</a>";
-          $workAround = "<ol><li>Deactivate and delete your on the $pluginLink. If you do not delete the plugin first, hte next step will fail because WordPress will refuse to overwrite the existing plugin folder.</li><li>Install the plugin by uploading the zip file on the $uploadLink.</li><li>Activate the plugin and you are all set.</li></ol>";
+          $workAround = "<ol><li>Deactivate and delete your on the $pluginLink. If you do not delete the plugin first, the next step will fail because WordPress will refuse to overwrite the existing plugin folder.</li><li>Install the plugin by uploading the zip file on the $uploadLink.</li><li>Activate the plugin and you are all set.</li></ol>";
         }
         else {
           $realPath = realpath('..');
