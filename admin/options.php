@@ -60,7 +60,7 @@ openBox("Other Options", "th-list", 11, "The table below is editable. You can cl
 closeBox();
 ?>
 <script>
-  var xeditHanlder = 'ajax/options.php';
+  var xeditHandler = 'ajax/options.php';
   $(".reveal").click(function () {
     bootbox.alert($(this).attr('data-value'));
   });

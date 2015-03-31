@@ -68,7 +68,7 @@ EOF;
 closeBox();
 ?>
 <script>
-  var xeditHanlder = 'ajax/products.php';
+  var xeditHandler = 'ajax/products.php';
 </script>
 <?php
 require 'footer.php';

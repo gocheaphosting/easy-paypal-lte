@@ -152,7 +152,7 @@ else {
 }
 ?>
 <script>
-  var xeditHanlder = 'ajax/options.php';
+  var xeditHandler = 'ajax/options.php';
   $(document).ready(function () {
     var file;
     function ajaxUpload(_file) {

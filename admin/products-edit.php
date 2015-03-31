@@ -87,9 +87,9 @@ $ajaxData = '["' . implode('", "', $ajaxData) . '"]';
 closeBox();
 ?>
 <script>
-  var xeditHanlder = '<?php echo $ajaxHandler; ?>';
+  var xeditHandler = '<?php echo $ajaxHandler; ?>';
   function showSubscriptionEdit() {
-    if (xeditHanlder === 'ajax/products.php') {
+    if (xeditHandler === 'ajax/products.php') {
       var id = $("#recurring");
       if (id.hasClass('btn-danger')) {
         $("#subscriptionEdit").hide();
@@ -133,8 +133,8 @@ closeBox();
             $("#pk").text(pk);
             $("#createProd").attr('disabled', 'disabled').
                     text('Already Saved').fadeOut(2000);
-            xeditHanlder = 'ajax/products.php';
-            $('.xedit, .xedit-checkbox').editable('option', 'url', xeditHanlder)
+            xeditHandler = 'ajax/products.php';
+            $('.xedit, .xedit-checkbox').editable('option', 'url', xeditHandler)
                     .editable('option', 'pk', pk)
                     .editable('option', 'params', function (params) {
                       params.action = 'update';
@@ -152,7 +152,7 @@ closeBox();
         });
       }
     });
-    if (xeditHanlder === 'ajax/products.php') {
+    if (xeditHandler === 'ajax/products.php') {
       setTimeout(function () {
         $("#recurring").editable('option', 'success', function (response, value) {
           window.location.reload(true);

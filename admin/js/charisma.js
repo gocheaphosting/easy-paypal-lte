@@ -156,10 +156,10 @@ function docReady() {
     });
   });
   // My x-edit interface, with checkbox defined.
-  // Assumes that the var xeditHanlder is set in the global scope.
-  if (typeof xeditHanlder !== 'undefined') {
+  // Assumes that the var xeditHandler is set in the global scope.
+  if (typeof xeditHandler !== 'undefined') {
     $('.xedit').editable({
-      url: xeditHanlder,
+      url: xeditHandler,
       mode: 'inline',
       validate: function (value) {
         var validator = $(this).attr('data-validator');
@@ -176,7 +176,7 @@ function docReady() {
     });
     var activeText = '<i class="glyphicon glyphicon-ok icon-white"></i> Active';
     $('.xedit-checkbox').editable({
-      url: xeditHanlder,
+      url: xeditHandler,
       type: 'checklist',
       source: {'1': 'Active'},
       emptytext: 'Disabled',

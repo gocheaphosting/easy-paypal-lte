@@ -158,7 +158,7 @@ if (!class_exists('Ftp')) {
           $table .= EZ::renderOption($pk, $option);
         }
         $table .= "</tbody></table></div>";
-        $table .= "<script>xeditHanlder = 'ajax/options.php'; $('#showFtp').click(function() { $(this).parent().hide();$('#ftp').fadeIn();});</script>";
+        $table .= "<script>xeditHandler = 'ajax/options.php'; $('#showFtp').click(function() { $(this).parent().hide();$('#ftp').fadeIn();});</script>";
       }
       return $table;
     }

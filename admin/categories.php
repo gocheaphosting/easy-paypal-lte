@@ -59,7 +59,7 @@ EOF;
 closeBox();
 ?>
 <script>
-  var xeditHanlder = 'ajax/categories.php';
+  var xeditHandler = 'ajax/categories.php';
 </script>
 <?php
 require('footer.php');
