@@ -617,6 +617,12 @@ if (!class_exists("EZ")) {
       if ($db->tableExists('options_meta')) {
         self::$options = $db->getMetaData('options_meta');
       }
+      require 'admin/options-default.php';
+      foreach ($paypal as $name => $o) {
+        if (empty(self::$options[$name])) {
+          self::$options[$name] = $o['value'];
+        }
+      }
       return self::$options;
     }
 

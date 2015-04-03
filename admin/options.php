@@ -13,7 +13,7 @@ require('header.php');
 </div>
 
 <?php
-require_once('options-default.php');
+require 'options-default.php';
 openBox("PayPal Options", "th-list", 11, "The table below is editable. You can click on the option values and enter new values.  Hover over the <i class='glyphicon glyphicon-question-sign blue'></i> <b>Help</b> button on the row for quick info on what that option does.");
 ?>
 <table class="table table-striped table-bordered responsive">

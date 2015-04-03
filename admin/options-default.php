@@ -43,12 +43,12 @@ $paypal['paypal_email'] = array('name' => __('PayPal email ID', 'easy-paypal'),
     'value' => '',
     'validator' => 'email');
 $paypal['sandbox_email'] = array('name' => 'PayPal SandBox email ID',
-            'value' => '',
-            'help' => 'PayPal SandBox email ID, which you can use for testing your setup. This entry is optional.');
+    'value' => '',
+    'help' => 'PayPal SandBox email ID, which you can use for testing your setup. This entry is optional.');
 $paypal['sandbox_mode'] = array('name' => 'Use SandBox [test] mode?',
-            'type' => 'checkbox',
-            'value' => false,
-            'help' => 'If checked, PayPal SandBox will be used.');
+    'type' => 'checkbox',
+    'value' => false,
+    'help' => 'If checked, PayPal SandBox will be used.');
 
 
 $options = array();
