@@ -45,8 +45,14 @@ openBox("Products", "th-list", 12, "<p>The table below listing your products is 
         $class = 'danger';
       }
       $catName = @$catNames[$category_id];
+      if (isset($_REQUEST['inframe'])) {
+        $inframe = '&inframe';
+      }
+      else {
+        $inframe = '';
+      }
       if (EZ::$isPro) {
-        $editMeta = "&nbsp;<a class='btn-sm btn-warning action' href='products-meta.php?pk=$id' title='Edit Product Meta Data' data-toggle='tooltip'><i class='glyphicon glyphicon-pencil icon-white action'></i> </a>";
+        $editMeta = "&nbsp;<a class='btn-sm btn-warning action' href='products-meta.php?pk=$id$inframe' title='Edit Product Meta Data' data-toggle='tooltip'><i class='glyphicon glyphicon-pencil icon-white action'></i> </a>";
       }
       else {
         $editMeta = '';
@@ -61,7 +67,7 @@ openBox("Products", "th-list", 12, "<p>The table below listing your products is 
       <td class="center-text"><a href='#' class='xedit' data-name='product_price' data-pk='$id' data-validator='number'>$product_price</a></td>
       <td class="center-text"><a class='xedit-checkbox btn-sm btn-$class' data-name='active' data-type='checklist' data-pk='$id' data-title='Status' data-value='$active'></a></td>
       <td class="center-text">
-        <a class="btn-sm btn-info action" href="products-edit.php?pk=$id" title="Edit Product Details" data-toggle="tooltip"><i class="glyphicon glyphicon-pencil icon-white action"></i> </a>$editMeta
+        <a class="btn-sm btn-info action" href="products-edit.php?pk=$id$inframe" title="Edit Product Details" data-toggle="tooltip"><i class="glyphicon glyphicon-pencil icon-white action"></i> </a>$editMeta
       </td>
     </tr>
 EOF;

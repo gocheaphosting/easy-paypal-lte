@@ -195,7 +195,7 @@ class EzShop {
     else {
 
     }
-    $button = "<a data-id='$id' class='btn-sm btn-success buyNow $popup' href='#'><i class='glyphicon glyphicon-shopping icon-white action'></i>&nbsp;Buy Now</a>";
+    $button = "<a data-id='$id' class='btn-sm btn-success right buyNow $popup' href='#' style='white-space:nowrap;'><i class='glyphicon glyphicon-shopping-cart icon-white action'></i> Buy Now</a>";
     return $button;
   }
 

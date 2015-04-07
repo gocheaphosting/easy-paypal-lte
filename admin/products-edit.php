@@ -143,7 +143,6 @@ closeBox();
             setTimeout(function () {
               showSubscriptionEdit();
             }, 25);
-            flashSuccess("Product details updated. Checking for file uploads...");
             ajaxUpload(pk, file);
           },
           error: function (a) {
@@ -167,6 +166,8 @@ closeBox();
       var data = new FormData();
       data.append('file', _file);
       data.append('pk', _pk);
+      var td = $("#fileinput").closest('td');
+      $(td).html('<span class="center red" style="font-size:1.1em;width:100%"><i class="fa fa-spinner fa-spin"></i> Working! Please wait...</span>');
       $.ajax({
         url: 'ajax/products-edit.php',
         type: 'POST',
@@ -174,7 +175,9 @@ closeBox();
         processData: false,
         contentType: false,
         success: function () {
-          flashSuccess("Uploaded <code>" + _file.name + "</code> and replaced the file of <b>" + $("#product_name").text() + "</b> with it.");
+          var msg = "Uploaded <code>" + _file.name + "</code> and replaced the file of <b>" + $("#product_name").text() + "</b> with it.";
+          flashSuccess(msg);
+          $(td).html(msg + ' <small>(<a href="#" onclick="location.reload();return false;">Upload another file</a>)</small>');
         },
         error: function (a) {
           showError(a.responseText);
@@ -191,7 +194,7 @@ closeBox();
         if (!pk) { // pk is not set by AJAX for new product. Set it from attribute
           pk = $(event.target).attr('data-pk');
         }
-        if (pk) {
+        if (pk && pk !== '0') {
           bootbox.confirm("Are you sure you want to upload <code>" + file.name + "</code> to <b>" + $("#product_name").text() + "</b>?", function (result) {
             if (result) {
               ajaxUpload(pk, file);
