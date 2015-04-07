@@ -144,6 +144,7 @@ else {
     <link href="admin/css/charisma-app.css" rel="stylesheet">
     <link href="admin/css/font-awesome.min.css" rel="stylesheet">
     <link href="admin/css/dataTables.bootstrap.css" rel="stylesheet">
+    <link href="admin/css/list-grid.css" rel="stylesheet">
     <style type="text/css">
       .popover{width:600px;}
       <?php

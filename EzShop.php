@@ -68,7 +68,8 @@ class EzShop {
         <?php
         foreach ($products as $p) {
           if ($p['active']) {
-            $this->renderProductRow($p);
+            $product = EZ::getProduct($p['id']);
+            $this->renderProductRow($product);
           }
         }
         ?>
@@ -96,9 +97,20 @@ class EzShop {
           return ezPopUp(href, title, w, h);
         }
         else {
-          top.location.href = 'buy.php?' + wp + 'id=' + id + '&qty=' + qty;
+          var url = 'buy.php?' + wp + 'id=' + id + '&qty=' + qty;
+          if ($(this).hasClass('blank_paypal')) {
+            var win = window.open(url, '_blank');
+            win.focus();
+          }
+          else {
+            window.location.href = url;
+          }
         }
         return false;
+      });
+      $('.productInfo').click(function () {
+        var info = $(this).attr('data-info');
+        bootbox.alert(info);
       });
       $('.shortCode').click(function () {
         var id = $(this).text();
@@ -131,7 +143,7 @@ class EzShop {
     <?php
   }
 
-  function renderProductRow($product, $showDetails = false) {
+  function renderProductRow($product) {
     extract($product);
     $renderedPrice = $this->renderPrice($product_price, $mc_currency);
     $category = EZ::getCatName($category_id);
@@ -150,13 +162,41 @@ class EzShop {
     else {
       $popup = '';
     }
+    $info = "<h4>$product_name</h4>";
+    if (!empty($image)) {
+      $info .= "<img class=\"center-block\" style=\"max-width:300px;max-height:200px;\" src=\"$image\" alt=\"$product_name\" />";
+    }
+    $info .= "<p>Category: $category</p>";
+    $info .= "<p>Price: $renderedPrice</p>";
+    if (!empty($desc)) {
+      $info .= "<p>$desc</p>";
+    }
+    $info = htmlspecialchars($info);
+    $buyButton = self::mkBuyButton($id);
     echo "<tr>"
     . $idColumn
-    . "<td>$product_name</td>"
+    . "<td><a href='#' class='productInfo' title='Click to view $product_name' data-toggle='tooltip' data-info='$info'>$product_name</a></td>"
     . "<td>$category</td>"
     . "<td class='center-text'>$renderedPrice</td>"
     . "<td class='center-text'><a id='qty_$id' href='#' class='xedit-new' data-validator='number'>1</a></td>"
-    . "<td class='center-text'><a data-id='$id' class='btn-sm btn-success buyNow $popup' href='#'><i class='glyphicon glyphicon-shopping icon-white action'></i>&nbsp;Buy Now</a></td></tr>\n";
+    . "<td class='center-text'>$buyButton</td></tr>\n";
+  }
+
+  static function mkBuyButton($id) {
+    $popup = "";
+    if (!empty(EZ::$options['popup_paypal'])) {
+      if (EZ::$options['popup_paypal'] == 'New Browser Window/Tab') {
+        $popup = "blank_paypal";
+      }
+      else if (EZ::$options['popup_paypal'] == 'Popup Window') {
+        $popup = "popup_paypal";
+      }
+    }
+    else {
+
+    }
+    $button = "<a data-id='$id' class='btn-sm btn-success buyNow $popup' href='#'><i class='glyphicon glyphicon-shopping icon-white action'></i>&nbsp;Buy Now</a>";
+    return $button;
   }
 
   function renderPrice($price, $currency) {
@@ -252,8 +292,19 @@ $shippingLine";
     $qty = $inputs['qty'];
     $product = $this->product;
     extract($product);
-    $html = "<h3 align='center'>$product_name, Quantity: $qty</h3>\n";
+    $html = "<div class='center-text'><h3>$product_name, Quantity: $qty</h3>\n";
     $html .= $this->mkPriceHeading();
+    if (!empty(EZ::$options['show_product_info'])) {
+      if (!empty($image)) {
+        $html .= "<img class='center-block' style='max-width:300px;max-height:250px;' src='$image' alt='$product_name' />";
+      }
+      $category = EZ::getCatName($category_id);
+      $html .= "<h5>$category</h5>";
+      if (!empty($desc)) {
+        $html .= "<p>$desc</p>";
+      }
+    }
+    $html .= '</div>';
     return $html;
   }
 

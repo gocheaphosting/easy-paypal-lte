@@ -73,6 +73,7 @@ if (empty($no_visible_elements)) {
     <li><em>Template Editor</em>: The email body, thank you page and download display are all editable in the <em>Pro</em> version.</li>
     <li><em>Logo and Branding</em>: The <em>Pro</em> version gives you options to set your own logo on your shop/return pages and even on PayPal checkout page.</li>
     <li><em>Skinnable Shop and Return Pages</em>: In the <em>Pro</em> version, you can select the color schemes of your shop, return and update pages (as well as admin pages) from nine different skins.</li>
+    <li><em>Flexible Shop Layout</em>: In the <em>Pro</em> version, you can select either the default table view or a lis/grid view for your e-shop display. The list/grid view is switchable on the frontend as well.</li>
     <li><em>Automatic handling of refunds and disputes</em>: When you issue a refund on the PayPal website, the corresponding sale in your database will be set to inactive. And if a buyer registers a dispute, he (and you) will get a friendly email message stating that the dispute is being reviewed and handled.</li>
     <li><em>E-Check handling</em>: The <em>Pro</em> version recognizes e-check payments and sends a mail to the buyer regarding the delay for the check clearance.</li>
     <li><em>Sales Editor</em>: You can load a single sale or a bunch of sales on to a friendly interface and change their data. For instance, it will let you change the download expiry date and resend a download notification message -- one of the frequent support requests from the buyers.</li>

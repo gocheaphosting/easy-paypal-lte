@@ -14,7 +14,7 @@
 $catSource = EZ::mkCatSource();
 $catNames = EZ::mkCatNames();
 
-$products = $db->getData('products');
+$products = $db->getData('products', '*', 1, 'id', 'asc');
 
 openBox("Products", "th-list", 12, "<p>The table below listing your products is editable. You can click on the product code, name etc. and enter new values.  You also can set the product inactive (which means it won't be displayed) by clicking on the green <b>Active</b> button. An inactive button will have a red <b>Disabled</b> button.</p>"
         . "<p>The table is also searchable and sortable.</p>"
@@ -30,7 +30,7 @@ openBox("Products", "th-list", 12, "<p>The table below listing your products is 
       <th style='width:15%'>File Name</th>
       <th class="right" style='width:8%'>Price</th>
       <th class="center-text" style='width:8%;min-width:90px;'>Active?</th>
-      <th class="center-text" style='width:4%;min-width:20px;'></th>
+      <th class="center-text" style='width:4%;min-width:60px;'>Edit</th>
     </tr>
   </thead>
   <tbody>
@@ -45,6 +45,12 @@ openBox("Products", "th-list", 12, "<p>The table below listing your products is 
         $class = 'danger';
       }
       $catName = @$catNames[$category_id];
+      if (EZ::$isPro) {
+        $editMeta = "&nbsp;<a class='btn-sm btn-warning action' href='products-meta.php?pk=$id' title='Edit Product Meta Data' data-toggle='tooltip'><i class='glyphicon glyphicon-pencil icon-white action'></i> </a>";
+      }
+      else {
+        $editMeta = '';
+      }
       echo <<<EOF
     <tr>
       <td class="center-text">$id</td>
@@ -55,7 +61,7 @@ openBox("Products", "th-list", 12, "<p>The table below listing your products is 
       <td class="center-text"><a href='#' class='xedit' data-name='product_price' data-pk='$id' data-validator='number'>$product_price</a></td>
       <td class="center-text"><a class='xedit-checkbox btn-sm btn-$class' data-name='active' data-type='checklist' data-pk='$id' data-title='Status' data-value='$active'></a></td>
       <td class="center-text">
-        <a class="btn-sm btn-info action" href="products-edit.php?pk=$id" title="Edit" data-toggle="tooltip"><i class="glyphicon glyphicon-pencil icon-white action"></i> </a>
+        <a class="btn-sm btn-info action" href="products-edit.php?pk=$id" title="Edit Product Details" data-toggle="tooltip"><i class="glyphicon glyphicon-pencil icon-white action"></i> </a>$editMeta
       </td>
     </tr>
 EOF;

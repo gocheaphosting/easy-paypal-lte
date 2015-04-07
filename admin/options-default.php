@@ -81,7 +81,7 @@ $options['random_file'] = array('name' => __('Use Random File Name?', 'easy-payp
     'help' => __('Randomize the file name of your digital goods on the server as you upload it so that potential hackers cannot easily guess it? Recommended.', 'easy-paypal'),
     'type' => 'checkbox',
     'value' => true);
-$options['lite_location'] = array('name' => __('Location for Lite Versions', 'easy-paypal'),
-    'help' => __('Optional. If you plan to provide <b>Lite</b> versions of your products, here is where they will reside. Give the full pathname on the server, or a relative pathname under the <strong>EZ PayPal</strong> folder.', 'easy-paypal'),
-    'value' => 'lite',
-    'type' => 'text');
+$options['show_product_info'] = array('name' => __('Show Product Info?', 'easy-paypal'),
+    'help' => __('If you would like to show product image and description on the page that comes up when your buyer clicks on the <strong>Buy Now</strong> buttons, check this option.', 'easy-paypal'),
+    'value' => 0,
+    'type' => 'checkbox');

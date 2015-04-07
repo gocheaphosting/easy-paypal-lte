@@ -1,16 +1,16 @@
 === EZ PayPal ===
 Contributors: manojtd
 Donate link: http://buy.thulasidas.com/ezpaypal
-Tags: paypal, paypal ipn, e-commerce, shopping cart, payment gateway, digital goods, ipn, paypal integration, wordpress paypal integration
+Tags: paypal, paypal ipn, e-commerce, shopping cart, payment gateway, digital goods, downloadable products, paypal integration, wordpress paypal integration, woocommerce
 Requires at least: 3.3
 Tested up to: 4.1
-Stable tag: 6.40
+Stable tag: 6.50
 
 EZ PayPal gets you started with your online business. Use PayPal IPN, sell digital goods with instant download, and no carts. Official PayPal Partner.
 
 == Description ==
 
-*EZ PayPal* is the simplest possible way to sell your digital goods online. It helps you quickly set up an online store to sell any downloadable item, where your buyers can pay for it and get an automatic, expiring download link. The whole flow is fully automated and designed to run unattended. Do you have an application, PHP package, photograph, PDF book (or any other downloadable item) to sell? Find the set up of a shopping cart system too overwhelming? *EZ PayPal* may be the right solution for you.
+*EZ PayPal* is the simplest possible way to sell your digital goods online. It helps you quickly set up an online store to sell any downloadable item, where your buyers can pay for it and get an automatic, expiring download link. The whole flow is fully automated and designed to run unattended. Do you have an application, PHP package, photograph, PDF book (or any other downloadable item) to sell? Find the set up of a shopping cart system (such as woocommerce) too overwhelming? *EZ PayPal* may be the right solution for you, especially if you want to sell downloadable, digital goods. *EZ PayPal* can, however, handle physical goods as well, if you want to sell one item at a time without an add to cart, check out workflow.
 
 This release (V6.00) is a complete rewrite of the previous version. It now features a thoroughly modern slick interface built on the twitter bootstrap framework, re-designed data model, and much more robust workflow. *Please note that V6+ database schema is not backward compatible with V5.xx. Consider backing up your database before updating.*
 
@@ -55,24 +55,25 @@ If the following features are important to you, consider buying the Pro version.
 3. *Address Handling*: The *Pro* version can optionally store the customer address details in a database table, if you need it.
 4. *IPN Relay*: If you have other IPN listeners, the *Pro* version of *EZ PayPal* can relay the IPN messages to them, so that they receive the same IPN messages, enabling integration with multiple systems.
 5. *Template Editor*: The email body, thank you page and download display are all editable in the *Pro* version.
-6. *Logo and Branding*: The *Pro* version gives you options to set your own logo on your shop/return pages and even on PayPal checkout page. You can also change the color scheme of these pages.
+6. *Logo and Branding*: EZ PayPal *Pro* gives you options to set your own logo on your shop/return pages and even on PayPal checkout page. You can also change the color scheme of these pages.
 7. *Automatic handling of refunds and disputes*: When you issue a refund on the PayPal website, the corresponding sale in your database will be set to inactive. And if a buyer registers a dispute, he (and you) will get a friendly email message stating that the dispute is being reviewed and handled.
 8. *E-Check handling*: The *Pro* version recognizes e-check payments and sends a mail to the buyer regarding the delay for the check clearance.
 9. *Sales Editor*: You can load a single sale or a bunch of sales on to a friendly interface and change their data. For instance, it will let you change the download expiry date and resend a download notification message -- one of the frequent support requests from the buyers.
 10. *Email Tools*: You can select a number of your buyers to notify, for example, of a critical update of your products, or of a free upgrade opportunity.
 11. *Product Version Support*: The *Pro* version supports versioning of your products. It will keep track of the version sold to your buyers and your current versions. So, if you want to send a product and version specific upgrade notice, you can do it with *Pro* version.
-12. *Batch Upload*: The *Pro* version gives an easy way (drag-and-drop) to upload your product files (when you release new versions, for instance), and keeps track of their versions.
+12. *Batch Upload*: EZ PayPal *Pro* gives an easy way (drag-and-drop) to upload your product files (when you release new versions, for instance), and keeps track of their versions.
 13. *Product Updates*: Your customers can initiate product update checks. If the version they purchased is older than the current version on your shop, they can download the latest version. By default, the first update is provided free of cost, and the subsequent ones are chargeable at $0.95. This update policy is configurable on a product-by-product basis.
 14. *Multi-Currency Support*: You can choose you currency on a per-product basis, and your auto-generated shop page will list the product with the right currency symbol.
 15. *Product Meta Data Support*: Meta data is extra, free-form data you can attach to a product description. You can retrieve it and display it on you product description and download pages. The *Pro* version gives you a convenient editor to generate and modify product meta data.
 16. *Upgradable Products*: You can define products that are upgradeable. For instance, you can sell a short eBook at an introductory price. If your buyer likes it, he has the option of buying the full book by paying the difference. (WIP)
-17. *Troubleshooting Tools*: The *Pro* version has the ability to email you detailed IPN log. It can also store the raw IPN data in the database for future investigation.
+17. *Troubleshooting Tools*: EZ PayPal *Pro* has the ability to email you detailed IPN log. It can also store the raw IPN data in the database for future investigation.
 18. *Sales Statistics and Charts*: Maximize your sales by analyzing your sales. This reporting package makes slicing and dicing your sales and affiliate data a snap, so that you can spot opportunities.
 19. *Subscription Module*: If you want to add subscription products (support contract, text links, newsletters etc), this module will make it a snap.
 20. *Server Side Sales Processing*: Your sales are rendered in a searchable, sortable table (using bootstrap Datatables). In the *Pro* version, the table processing is done at your database server rather than the web browser, tremendously improving the performance once you have thousands of sales.
 21. *Images Upload*: In the *Pro* version, you can upload your image assets to your server using a simple drag and drop interface and use them in your email and download templates, or as logos.
-22: *Popup PayPal Window*: In the *Pro* version, you have an option to open the PayPal transaction page in a nice, compact window so that your buyers do not leave your shop to complete a purchase.
-
+22. *Popup PayPal Window*: In the *Pro* version, you have an option to open the PayPal transaction page in a nice, compact window so that your buyers do not leave your shop to complete a purchase.
+23. *Skinnable Shop and Return Pages*: In the *Pro* version, you can select the color schemes of your shop, return and update pages (as well as admin pages) from nine different skins.
+24. *Flexible Shop Layout*: In EZ PayPal *Pro*, you can select either the default table view or a lis/grid view for your e-shop display. The list/grid view is switchable on the frontend as well.
 If you buy the *Pro* version, you will get an upgrade notice (using the last item listed above) when the features that are Work-in-Progress are completed. You will be able to update free of charge.
 
 = Optional Packages =
@@ -92,7 +93,7 @@ The reporting module and the subscription module that were sold separately have 
 
 == Upgrade Notice ==
 
-Fixing a style that may have caused the admin page not to appear on some blogs.
+Implementing list/grid view for the e-shop (Pro feature). Displaying product description/image as a modal dialog on the e-shop. Option to display product description/image upon Buy Now button click. Numerous enhancements in metadata editor, sales table display etc.
 
 == Screenshots ==
 
@@ -164,12 +165,31 @@ To edit your products, use the menu item Products. It will list your products in
 
 In order to add a new product, click on the green "Add New Product" button and type in your values in the product creation screen.
 
+= Why do I get error message saying something about direct access to plugin files? =
+
+This plugin admin interface is designed with a loosely coupled architecture, which means it interacts with the WordPress core only for certain essential services (login check, plugin activation status, database access etc). Loosely coupled systems tend to be more robust and flexible than tightly integrated ones because they make fewer assumptions about each other. My plugin admin pages are fairly independent, and do not pollute the global scope or leak the style directives or JavaScript functions. In order to achieve this, they are loaded in iFrames within the WordPress admin interface.
+
+Your web server needs direct access to the plugin files to load anything in an iFrame. Some aggressive security settings block this kind of access, usually through an `.htaccess` file in your `wp-content` or `plugins` folders, which is why this plugin gives a corresponding error message if it detects inability to access the files (checked through a `file_get_contents` call on a plugin file URL). But some systems implement further blocks specifically on `file_get_contents` or on iFrames with specific styles (using `mod_securty` rules, for instance), which is why the plugin provides a means to override this auto-detection and force the admin page.
+
+= Is the direct access to plugin files a security hole? =
+
+Note that it is only your own webserver that needs direct access to the PHP files. The reason for preventing such access is that a hacker might be able to upload a malicious PHP (or other executable script) to your web host, which your webserver will run if asked to. Such a concern is valid only on systems where you explicitly permit unchecked file uploads. For instance, if anyone can upload any file to your media folder, and your media folder is not protected against direct access and script execution, you have given the potential hacker an attack vector.
+
+In this plugin, its media/banner upload folder has a multiple layers protection:
+1. Only users logged in as admin can ever see the upload interface.
+2. The upload script accepts only media file types.
+3. The backend AJAX handler also checks for safe file types.
+4. The media storage locations are protected against script execution.
+
+So allowing your webserver to serve the plugin admin files in an iFrame is completely safe, in my judgement. 
+
 == Change Log ==
 
 = Future Plans =
 
 = History =
 
+* V6.50: Implementing list/grid view for the e-shop (Pro feature). Displaying product description/image as a modal dialog on the e-shop. Option to display product description/image upon Buy Now button click. Numerous enhancements in metadata editor, sales table display etc. [April 6, 2014]
 * V6.40: Fixing a style that may have caused the admin page not to appear on some blogs. [April 4, 2015]
 * V6.39: More compatibility checks. [April 2, 2015]
 * V6.38: Fixing a charting module for more accurate display, and other minor changes. [Mar 28, 2015]
