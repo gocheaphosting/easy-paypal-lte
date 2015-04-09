@@ -29,35 +29,26 @@ if (!class_exists("EZ")) {
     static $isPro = false;
     static $isUpdating = false;
 
-    static function getCatId($name) { // Frontend version of getId with caching
-      $key = "active-categories";
-      $activeCategories = self::getTransient($key);
-      if (!$activeCategories) {
-        global $db;
-        $rows = $db->getData('categories', array('id', 'name'), array('active' => 1));
-        foreach ($rows as $r) {
-          $activeCategories[$r['id']] = $r['name'];
-        }
-        self::setTransient($key, $activeCategories, self::$cacheTimeout);
+    static function getCategories() {
+      global $db;
+      $rows = $db->getData('categories', array('id', 'name'), array('active' => 1));
+      foreach ($rows as $r) {
+        $categories[$r['id']] = $r['name'];
       }
-      $id = array_keys($activeCategories, $name);
+      return $categories;
+    }
+
+    static function getCatId($name) { // Frontend version of getId with caching
+      $categories = self::getCategories();
+      $id = array_keys($categories, $name);
       return $id[0];
     }
 
     static function getCatName($id) { // Frontend version of getId with caching
-      $key = "active-categories";
-      $activeCategories = self::getTransient($key);
-      if (!$activeCategories) {
-        global $db;
-        $rows = $db->getData('categories', array('id', 'name'), array('active' => 1));
-        foreach ($rows as $r) {
-          $activeCategories[$r['id']] = $r['name'];
-        }
-        self::setTransient($key, $activeCategories, self::$cacheTimeout);
-      }
+      $categories = self::getCategories();
       $name = '';
-      if (!empty($activeCategories[$id])) {
-        $name = $activeCategories[$id];
+      if (!empty($categories[$id])) {
+        $name = $categories[$id];
       }
       return $name;
     }
