@@ -125,7 +125,7 @@ if (!class_exists("EZ")) {
         include_once ABSPATH . 'wp-admin/includes/plugin.php';
       }
       $plgSlug = basename(dirname(__FILE__)) . "/easy-paypal.php";
-      return is_plugin_active($plgSlug);
+      return is_plugin_active($plgSlug) || strpos(__FILE__, 'mu-plugins');;
     }
 
     static function isInWP() {
@@ -167,7 +167,7 @@ if (!class_exists("EZ")) {
       }
       if (function_exists('current_user_can')) {
         self::$isInWP = true;
-        if (current_user_can('manage_options')) {
+        if (current_user_can('activate_plugins')) {
           $isLoggedIn = true;
         }
       }

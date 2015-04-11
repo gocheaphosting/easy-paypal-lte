@@ -4,7 +4,7 @@ Donate link: http://buy.thulasidas.com/ezpaypal
 Tags: paypal, paypal ipn, e-commerce, shopping cart, payment gateway, digital goods, downloadable products, paypal integration, wordpress paypal integration, woocommerce
 Requires at least: 3.3
 Tested up to: 4.1
-Stable tag: 6.52
+Stable tag: 6.53
 
 EZ PayPal gets you started with your online business. Use PayPal IPN, sell digital goods with instant download, and no carts. Official PayPal Partner.
 
@@ -13,6 +13,10 @@ EZ PayPal gets you started with your online business. Use PayPal IPN, sell digit
 *EZ PayPal* is the simplest possible way to sell your digital goods online. It helps you quickly set up an online store to sell any downloadable item, where your buyers can pay for it and get an automatic, expiring download link. The whole flow is fully automated and designed to run unattended. Do you have an application, PHP package, photograph, PDF book (or any other downloadable item) to sell? Find the set up of a shopping cart system (such as woocommerce) too overwhelming? *EZ PayPal* may be the right solution for you, especially if you want to sell downloadable, digital goods. *EZ PayPal* can, however, handle physical goods as well, if you want to sell one item at a time without an add to cart, check out workflow.
 
 This release (V6.00) is a complete rewrite of the previous version. It now features a thoroughly modern slick interface built on the twitter bootstrap framework, re-designed data model, and much more robust workflow. *Please note that V6+ database schema is not backward compatible with V5.xx. Consider backing up your database before updating.*
+
+= Live Demo =
+
+**EZ PayPal admin interface is feature-rich, user-friendly and functional. Please visit this fully functional [live demo site](http://demo.thulasidas.com/ezpaypal "Play with EZ PayPal Admin Interface") to see what it can do for you.**
 
 Take a look at the features listed below to appreciate the vast array of tools this little PayPal/IPN implementation offers.
 
@@ -93,7 +97,7 @@ The reporting module and the subscription module that were sold separately have 
 
 == Upgrade Notice ==
 
-Turning off caching of category list to avoid stale category names.
+Launching a demo site.
 
 == Screenshots ==
 
@@ -181,7 +185,7 @@ In this plugin, its media/banner upload folder has a multiple layers protection:
 3. The backend AJAX handler also checks for safe file types.
 4. The media storage locations are protected against script execution.
 
-So allowing your webserver to serve the plugin admin files in an iFrame is completely safe, in my judgement. 
+So allowing your webserver to serve the plugin admin files in an iFrame is completely safe, in my judgement.
 
 == Change Log ==
 
@@ -189,6 +193,7 @@ So allowing your webserver to serve the plugin admin files in an iFrame is compl
 
 = History =
 
+* V6.53: Launching a demo site. [April 11, 2015]
 * V6.52: Turning off caching of category list to avoid stale category names. [April 8, 2015]
 * V6.51: Some more usability improvements. [April 6, 2015]
 * V6.50: Implementing list/grid view for the e-shop (Pro feature). Displaying product description/image as a modal dialog on the e-shop. Option to display product description/image upon Buy Now button click. Numerous enhancements in metadata editor, sales table display etc. [April 6, 2014]
