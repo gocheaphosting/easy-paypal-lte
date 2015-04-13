@@ -160,7 +160,7 @@ function calcHeight() {
         </script>
         <?php
       }
-      $src = plugins_url("admin/index.php", __FILE__);
+      $src = plugins_url("admin/index.php?inframe", __FILE__);
       ?>
       <script>
         function calcHeight() {

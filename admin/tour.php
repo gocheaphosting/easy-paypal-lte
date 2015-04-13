@@ -1,53 +1,81 @@
 <?php
-require('header.php');
-$cfgDir = dirname(dirname(__FILE__));
-?>
-<div>
-  <ul class="breadcrumb">
-    <li>
-      <a href="#">Home</a>
-    </li>
-    <li>
-      <a href="#">Tour</a>
-    </li>
-  </ul>
-</div>
-<h3>Take a Tour of EZ PayPal Features</h3>
-<?php
-openBox("Tour and Help", "globe", 12);
-  $shopPage = EZ::ezppURL() . "shop.php";
+$shopPage = EZ::ezppURL() . "shop.php";
 if (EZ::$isInWP) {
   $shopPage .= "?wp";
 }
 ?>
-<h4>Quick Start</h4>
-<ul>
-  <li>Create a <strong><a href='products-edit.php'>new product</a></strong>. You can <a href="products.php"><strong>edit</strong></a> your products and <a href="products-batch.php"><strong>upload</strong></a> new files for them whenever you like.</li>
-  <li>Visit your <strong><a href="<?php echo $shopPage; ?>">e-shop</a></strong> to see it. In the <a href="#" class="goPro">Pro Version</a>, you can <a href="advanced.php">customize</a> your shop and other public pages with your own logo, branding and color scheme in the <strong>Advanced Shop Options</strong> section.</li>
-  <li>Take this <strong><a class="restart" href="#">tour</a></strong> any time you would like to go through the application features again.</li>
-</ul>
-<h4>WordPress and Shortcodes</h4>
-<p>If you are using the EZ PayPal as a WordPress plugin, you can use <a href='http://codex.wordpress.org/Shortcode' target='_blank'>shortcodes</a> to place your product buy links on your posts and pages. Use the shortcode <code>[ezshop]</code>.</p>
-<p>The supported parameters are <code>buy</code> (which is a product id) and <code>qty</code> (quantity). For example, each product can be displayed as a <strong>Buy Now</strong> using the shortcode format <code>[ezshop buy=3 qty=2]Buy Now[/ezshop]</code>. This will insert a link, which when clicked, will take your reader to a PayPal page to buy two licences of the product with id 3.</p>
-<p>You can easily generate the appropriate short codes by visiting your <a href="../shop.php">E-Shop</a> and clicking on the Id column in any product row.</p>
+<div class="col-lg-8 col-sm-12">
+  <h4>Quick Start</h4>
+  <ul>
+    <li>Create a <strong><a href='products-edit.php'>new product</a></strong>. You can <a href="products.php"><strong>edit</strong></a> your products and <a href="products-batch.php"><strong>upload</strong></a> new files for them whenever you like.</li>
+    <li>Visit your <strong><a href="<?php echo $shopPage; ?>">e-shop</a></strong> to see it. In the <a href="#" class="goPro">Pro Version</a>, you can <a href="advanced.php">customize</a> your shop and other public pages with your own logo, branding and color scheme in the <strong>Advanced Shop Options</strong> section.</li>
+    <li>Take this <strong><a class="restart" href="#">tour</a></strong> any time you would like to go through the application features again.</li>
+  </ul>
+  <h4>WordPress and Shortcodes</h4>
+  <p>If you are using the EZ PayPal as a WordPress plugin, you can use <a href='http://codex.wordpress.org/Shortcode' target='_blank'>shortcodes</a> to place your product buy links on your posts and pages. Use the shortcode <code>[ezshop]</code>.</p>
+  <p>The supported parameters are <code>buy</code> (which is a product id) and <code>qty</code> (quantity). For example, each product can be displayed as a <strong>Buy Now</strong> using the shortcode format <code>[ezshop buy=3 qty=2]Buy Now[/ezshop]</code>. This will insert a link, which when clicked, will take your reader to a PayPal page to buy two licences of the product with id 3.</p>
+  <p>You can easily generate the appropriate short codes by visiting your <a href="../shop.php">E-Shop</a> and clicking on the Id column in any product row.</p>
 
-<h4>Context-Aware Help</h4>
-<p>Most of the admin pages of this application have a blue help button near the right hand side top corner. Clicking on it will give instructions and help specific to the task you are working on.</p>
+  <h4>Context-Aware Help</h4>
+  <p>Most of the admin pages of this application have a blue help button near the right hand side top corner. Clicking on it will give instructions and help specific to the task you are working on. All configuration options have a help button associated with it, which give you popover help bubble when you hover over them. Finally, almost every button in the admin interface has popover help associated with it. If you need further assistance, please see the support channels available.</p>
+</div>
+<div class="col-lg-4 col-sm-12">
+  <h4>Play with a Demo</h4>
+  <ul>
+    <li>If you would like to play with the admin interface without messing up your installation, <a href="http://demo.thulasidas.com/ezpaypal" title='Visit the demo site to play with the admin interface' data-toggle='tooltip' target="_blank">please visit EZ PayPal demo site</a>.</li>
+  </ul>
+  <h4>Need Support?</h4>
+  <ul>
+    <li>Please check the carefully prepared <a href="http://www.thulasidas.com/plugins/ezpaypal#faq" class="popup-long" title='Your question or issue may be already answered or resolved in the FAQ' data-toggle='tooltip'> Plugin FAQ</a> for answers.</li>
+    <li>For the lite version, you may be able to get support from the <a href='https://wordpress.org/support/plugin/easy-paypal-lte/' class='popup-long' title='WordPress forums have community support for this plugin' data-toggle='tooltip'>WordPress support forum</a>.</li>
+    <li>For preferential support and free updates, you can purchase a <a href='http://buy.thulasidas.com/support' class='popup btn-xs btn-info' title='Support contract costs only $4.95 a month, and you can cancel anytime. Free updates upon request, and support for all the products from the author.' data-toggle='tooltip'>Support Contract</a>.</li>
+    <li>For one-off support issues, you can raise a one-time paid <a href='http://buy.thulasidas.com/ezsupport' class='popup btn-xs btn-primary' title='Support ticket costs $0.95 and lasts for 72 hours' data-toggle='tooltip'>Support Ticket</a> for prompt support.</li>
+    <li>Please include a link to your blog URL when you contact the plugin author.</li>
+  </ul>
+  <h4>Happy with this plugin?</h4>
+  <ul>
+    <li>Please leave a short review and rate it at <a href=https://wordpress.org/plugins/easy-paypal-lte/" class="popup-long" title='Please help the author and other users by leaving a short review for this plugin and by rating it' data-toggle='tooltip'>WordPress</a>. Thanks!</li>
+  </ul>
+</div>
+<div class="clearfix"></div>
 <hr />
-<p class="center-text"> <a class="btn btn-success center-text restart" href="#" data-toggle='tooltip' title='Start or restart the tour any time' id='restart'><i class="glyphicon glyphicon-refresh icon-white"></i>&nbsp; Start the Tour</a></p>
+<p class="center-text">
+  <a class="btn btn-primary center-text restart" href="#" data-toggle='tooltip' title='Start or restart the tour any time' id='restart'><i class="glyphicon glyphicon-globe icon-white"></i>&nbsp; Start Tour</a>
+  <a class="btn btn-primary center-text showFeatures" href="#" data-toggle='tooltip' title='Show the features of this plugin and its Pro version'><i class="glyphicon glyphicon-thumbs-up icon-white"></i>&nbsp; Show Features</a>
+</p>
 <?php
-closeBox();
+if (isset($_REQUEST['inframe'])) {
+  ?>
+  <style type="text/css">
+    .tour-step-background {
+      background: transparent;
+      border: 2px solid blue;
+    }
+    .tour-backdrop {
+      opacity:0.2;
+    }
+  </style>
+  <?php
+}
 ?>
 <script>
   $(document).ready(function () {
     if (!$('.tour').length && typeof (tour) === 'undefined') {
-      var tour = new Tour({backdrop: true, backdropPadding: 20,
+      var tour = new Tour({backdrop: true, //backdropPadding: 20,
         onShow: function (t) {
           var current = t._current;
           var toShow = t._steps[current].element;
-          $(toShow).parent('ul').slideDown();
-          $(toShow).parent('ul').parent().siblings('.accordion').find('ul').slideUp();
-        }});
+          var dad = $(toShow).parent('ul');
+          var gdad = dad.parent();
+          dad.slideDown();
+          if (dad.hasClass('accordion')) {
+            gdad.siblings('.accordion').find('ul').slideUp();
+          }
+          else if (dad.hasClass('dropdown-menu')) {
+            gdad.siblings('.dropdown').find('ul').hide();
+          }
+        }
+      });
       tour.addStep({
         element: "#dashboard",
         placement: "right",
@@ -282,10 +310,19 @@ closeBox();
         content: "<p>You now know everything about the EZ PayPal interface. Congratulations!</p>"
       });
     }
-    $(".restart").click(function () {
+    $(".restart").click(function (e) {
+      e.preventDefault();
       tour.restart();
+    });
+    $(".showFeatures").click(function (e) {
+      e.preventDefault();
+      $("#features").toggle();
+      if ($("#features").is(":visible")) {
+        $(this).html('<i class="glyphicon glyphicon-thumbs-up icon-white"></i>&nbsp; Hide Features</a>');
+      }
+      else {
+        $(this).html('<i class="glyphicon glyphicon-thumbs-up icon-white"></i>&nbsp; Show Features</a>');
+      }
     });
   });
 </script>
-<?php
-require('footer.php');

@@ -226,7 +226,6 @@ function getHeader() {
                   <ul class="nav nav-pills nav-stacked main-menu">
                     <li id="dashboard"><a href="index.php"><i class="glyphicon glyphicon-home"></i><span> Dashboard</span></a>
                     </li>
-                    <li id='tour'><a href="tour.php"><i class="glyphicon glyphicon-globe"></i><span> Tour and Help</span></a></li>
                     <?php
                     if (!$isPro) {
                       ?>

@@ -4,7 +4,7 @@ Donate link: http://buy.thulasidas.com/ezpaypal
 Tags: paypal, paypal ipn, e-commerce, shopping cart, payment gateway, digital goods, downloadable products, paypal integration, wordpress paypal integration, woocommerce
 Requires at least: 3.3
 Tested up to: 4.1
-Stable tag: 6.53
+Stable tag: 6.54
 
 EZ PayPal gets you started with your online business. Use PayPal IPN, sell digital goods with instant download, and no carts. Official PayPal Partner.
 
@@ -16,7 +16,7 @@ This release (V6.00) is a complete rewrite of the previous version. It now featu
 
 = Live Demo =
 
-**EZ PayPal admin interface is feature-rich, user-friendly and functional. Please visit this fully functional [live demo site](http://demo.thulasidas.com/ezpaypal "Play with EZ PayPal Admin Interface") to see what it can do for you.**
+**EZ PayPal admin interface is feature-rich, user-friendly and functional. Please visit this fully operational [live demo site](http://demo.thulasidas.com/ezpaypal "Play with EZ PayPal Admin Interface") to see what it can do for you.**
 
 Take a look at the features listed below to appreciate the vast array of tools this little PayPal/IPN implementation offers.
 
@@ -97,7 +97,7 @@ The reporting module and the subscription module that were sold separately have 
 
 == Upgrade Notice ==
 
-Launching a demo site.
+Improvements in the admin dashboard.
 
 == Screenshots ==
 
@@ -111,8 +111,8 @@ Launching a demo site.
 8. The screen resulting from a "Buy Now" button click.
 9. The return screen after a successful purchase. This is the download page where your buyer is automatically forwarded to.
 10. The return screen if the IPN message hasn't been posted. If the PayPal information is not yet received by your server, your buyer sees this screen where he can retrieve his purchase link. (This feature reduced my support load by 90%).
-11. Initial setup screen in the standalone mode.
-12. The login screen in the standalone mode.
+11. Advanced shop configuration.
+12. Your e-shop, using a dark theme and grid view.
 13. Sales charts in the Pro version.
 14. Sales summary and details.
 15. Subscription summary and details in the Pro version.
@@ -193,6 +193,7 @@ So allowing your webserver to serve the plugin admin files in an iFrame is compl
 
 = History =
 
+* V6.54: Improvements in the admin dashboard. [April 14, 2015]
 * V6.53: Launching a demo site. [April 11, 2015]
 * V6.52: Turning off caching of category list to avoid stale category names. [April 8, 2015]
 * V6.51: Some more usability improvements. [April 6, 2015]

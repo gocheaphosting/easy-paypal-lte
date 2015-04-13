@@ -21,9 +21,9 @@ $features2 = "<p>Since the Pro version has more features than could be listed on
 
 </ol>";
 ?>
-<h1>EZ PayPal<br>
+<h2>EZ PayPal<br>
   <small>Your Own E-Shop</small>
-</h1>
+</h2>
 <?php
 if (empty($no_visible_elements)) {
   EZ::showService();
@@ -82,11 +82,3 @@ if (empty($no_visible_elements)) {
     </ol> <a href='#' class='btn-help pull-right' data-content='<?php echo $features2; ?>'>Pro Features (Page 2 of 2)</a>"><i class='glyphicon glyphicon-plane'></i> Pro Features (Page 1 of 2)</h2>
 
 <h2 class="btn btn-primary btn-help" data-content="<?php echo $features2; ?>"><i class='glyphicon glyphicon-plane'></i> Pro Features (Page 2 of 2)</h2>
-
-<h3>Credits</h3>
-<ul>
-  <li>EZ PayPal admin interface is based on <a href="http://usman.it/free-responsive-admin-template/">Charisma</a>, a free, responsive admin template built on the twitter bootstrap framework.
-  </li>
-  <li>EZ PayPal Pro includes GeoLite data created by MaxMind, available from <a href="http://www.maxmind.com">http://www.maxmind.com</a>.
-  </li>
-</ul>
