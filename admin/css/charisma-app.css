@@ -193,6 +193,10 @@ select {
     padding: 10px;
 }
 
+.btn, .btn-sm {
+  white-space: nowrap;
+}
+
 .btn-round {
     border-radius: 40px;
     -webkit-border-radius: 40px;

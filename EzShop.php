@@ -69,7 +69,9 @@ class EzShop {
         foreach ($products as $p) {
           if ($p['active']) {
             $product = EZ::getProduct($p['id']);
-            $this->renderProductRow($product);
+            if (empty($product['hidden'])) {
+              $this->renderProductRow($product);
+            }
           }
         }
         ?>
@@ -143,6 +145,23 @@ class EzShop {
     <?php
   }
 
+  function mkProductInfo($product) {
+    extract($product);
+    $renderedPrice = $this->renderPrice($product_price, $mc_currency);
+    $category = EZ::getCatName($category_id);
+    $info = "<h4>$product_name</h4>";
+    if (!empty($image)) {
+      $info .= "<img class=\"center-block\" style=\"max-width:300px;max-height:200px;\" src=\"$image\" alt=\"$product_name\" />";
+    }
+    $info .= "<p>Category: $category</p>";
+    $info .= "<p>Price: $renderedPrice</p>";
+    if (!empty($desc)) {
+      $info .= "<p>$desc</p>";
+    }
+    $info = htmlspecialchars($info);
+    return $info;
+  }
+
   function renderProductRow($product) {
     extract($product);
     $renderedPrice = $this->renderPrice($product_price, $mc_currency);
@@ -162,16 +181,7 @@ class EzShop {
     else {
       $popup = '';
     }
-    $info = "<h4>$product_name</h4>";
-    if (!empty($image)) {
-      $info .= "<img class=\"center-block\" style=\"max-width:300px;max-height:200px;\" src=\"$image\" alt=\"$product_name\" />";
-    }
-    $info .= "<p>Category: $category</p>";
-    $info .= "<p>Price: $renderedPrice</p>";
-    if (!empty($desc)) {
-      $info .= "<p>$desc</p>";
-    }
-    $info = htmlspecialchars($info);
+    $info = $this->mkProductInfo($product);
     $buyButton = self::mkBuyButton($id);
     echo "<tr>"
     . $idColumn
@@ -234,12 +244,33 @@ class EzShop {
     return $logoLine;
   }
 
+  function mkProductImage($product) {
+    extract($product);
+    $category = EZ::getCatName($category_id);
+    $info = "<div class='center-text'>";
+    if (!empty($image)) {
+      $info .= "<img class=\"center-block\" style=\"max-width:300px;max-height:200px;\" src=\"$image\" alt=\"$product_name\" />";
+    }
+    $info .= "<p>Category: $category</p>";
+    if (!empty($desc)) {
+      $info .= "<p>$desc</p>";
+    }
+    $info .= "</div>";
+    return $info;
+  }
+
   function renderForm() {
     $inputs = $this->getInputs();
     $header = $this->makeHeader($inputs);
     $form = $this->makeForm($inputs);
+    if (!empty(EZ::$options['show_image'])) {
+      $info = $this->mkProductImage($this->product);
+    }
+    else {
+      $info = '';
+    }
     $footer = $this->makeFooter($inputs, $form);
-    $html = $header . $form . $footer;
+    $html = $header . $form . $info . $footer;
     echo $html;
   }
 
@@ -390,7 +421,7 @@ EOF;
     $this->product = EZ::getProduct($request['id'], true);
     if (empty($this->product)) {
       $error = urlencode("The product you are looking for is not ready for sale yet. Please select another product from the table below. You can search and sort the table to find the right product.");
-      header("location: shop.php?error=$error$wpQs");
+      header("location: shop.php?error=$error");
       exit();
     }
     $inputs['id'] = $this->product['id'];
