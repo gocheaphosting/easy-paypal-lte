@@ -125,7 +125,8 @@ if (!class_exists("EZ")) {
         include_once ABSPATH . 'wp-admin/includes/plugin.php';
       }
       $plgSlug = basename(dirname(__FILE__)) . "/easy-paypal.php";
-      return is_plugin_active($plgSlug) || strpos(__FILE__, 'mu-plugins');;
+      return is_plugin_active($plgSlug) || strpos(__FILE__, 'mu-plugins');
+      ;
     }
 
     static function isInWP() {
@@ -952,9 +953,7 @@ if (!class_exists("EZ")) {
       if (empty($product)) { // no product found
         return false;
       }
-      if (empty($prodMeta)) {
-        $prodMeta = $db->getMetaData("product_meta", array('product_id' => $product['id']));
-      }
+      $prodMeta = $db->getMetaData("product_meta", array('product_id' => $product['id']));
       $product = array_merge($prodMeta, $product);
       return $product;
     }
