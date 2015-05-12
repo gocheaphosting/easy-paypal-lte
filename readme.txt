@@ -4,7 +4,7 @@ Donate link: http://buy.thulasidas.com/ezpaypal
 Tags: paypal, paypal ipn, e-commerce, shopping cart, payment gateway, digital goods, downloadable products, paypal integration, wordpress paypal integration, woocommerce
 Requires at least: 3.3
 Tested up to: 4.2
-Stable tag: 6.60
+Stable tag: 6.61
 
 EZ PayPal gets you started with your online business. Use PayPal IPN, sell digital goods with instant download, and no carts. Official PayPal Partner.
 
@@ -12,7 +12,7 @@ EZ PayPal gets you started with your online business. Use PayPal IPN, sell digit
 
 *EZ PayPal* is the simplest possible way to sell your digital goods online. It helps you quickly set up an online store to sell any downloadable item, where your buyers can pay for it and get an automatic, expiring download link. The whole flow is fully automated and designed to run unattended. Do you have an application, PHP package, photograph, PDF book (or any other downloadable item) to sell? Find the set up of a shopping cart system (such as woocommerce) too overwhelming? *EZ PayPal* may be the right solution for you, especially if you want to sell downloadable, digital goods. *EZ PayPal* can, however, handle physical goods as well, if you want to sell one item at a time without an add to cart, check out workflow.
 
-This release (V6.00) is a complete rewrite of the previous version. It now features a thoroughly modern slick interface built on the twitter bootstrap framework, re-designed data model, and much more robust workflow. *Please note that V6+ database schema is not backward compatible with V5.xx. Consider backing up your database before updating.*
+*EZ PayPal* now features a thoroughly modern slick interface built on the twitter bootstrap framework, re-designed data model, and much more robust workflow. *Please note that V6+ database schema is not backward compatible with V5.xx. Consider backing up your database before updating.*
 
 = Live Demo =
 
@@ -97,7 +97,7 @@ The reporting module and the subscription module that were sold separately have 
 
 == Upgrade Notice ==
 
-Compatibility with WordPress 4.2.
+Admin page compatibility checks and improvements.
 
 == Screenshots ==
 
@@ -193,6 +193,7 @@ So allowing your webserver to serve the plugin admin files in an iFrame is compl
 
 = History =
 
+* V6.61: Admin page compatibility checks and improvements. [May 13, 2015]
 * V6.60: Compatibility with WordPress 4.2. [April 25, 2015]
 * V6.56: New option to display product image on the checkout page. [April 24, 2015]
 * V6.55: Improvements in the admin dashboard. [April 15, 2015]

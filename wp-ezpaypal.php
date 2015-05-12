@@ -130,6 +130,10 @@ function calcHeight() {
         update_option('ezpaypal_force_admin', true);
       }
       $forceAdmin = get_option('ezpaypal_force_admin');
+      if (!empty($_POST['ezpaypal_force_admin_again'])) {
+        update_option('ezpaypal_force_admin_again', true);
+      }
+      $forceAdminAgain = get_option('ezpaypal_force_admin_again');
       $testFile = plugins_url("admin/promo.php", __FILE__);
       if (!$forceAdmin && !@file_get_contents($testFile)) { // index cannot be used for testing
         ?>
@@ -151,11 +155,11 @@ function calcHeight() {
         <?php
         return;
       }
-      if ($forceAdmin) {
+      if ($forceAdmin && !$forceAdminAgain) {
         ?>
         <script>
           var errorTimeout = setTimeout(function () {
-            jQuery('#the_iframe').replaceWith("<div class='error' style='padding:10px;margin:10px;font-size:1.3em;color:red;font-weight:500'><p>This plugin needs direct access to its files so that they can be loaded in an iFrame. Looks like you have some security setting denying the required access. If you have an <code>.htaccess</code> file in your <code>wp-content</code> or <code>wp-content/plugins</code>folder, please remove it or modify it to allow access to the php files in <code><?php echo $this->plgDir; ?>/</code>.</p><p><strong>If EZ PayPal still cannot load the admin page after forcing it, please deactivate and delete the plugin. It is not compatible with your blog setup.</strong></p></div>");
+            jQuery('#the_iframe').replaceWith("<div class='error' style='padding:10px;margin:10px;font-size:1.3em;color:red;font-weight:500'><p>This plugin needs direct access to its files so that they can be loaded in an iFrame. Looks like you have some security setting denying the required access. If you have an <code>.htaccess</code> file in your <code>wp-content</code> or <code>wp-content/plugins</code>folder, please remove it or modify it to allow access to the php files in <code><?php echo $this->plgDir; ?>/</code>.</p><p><strong>If EZ PayPal still cannot load the admin page after forcing it, please deactivate and delete the plugin. It is not compatible with your blog setup.</strong></p><p><b>You can try forcing the admin page again, which will kill this message and try to load the admin page. <form method='post'><input type='submit' value='Force Admin Page Again' name='ezpaypal_force_admin_again'></form><br><br>If you still have errors on the admin page or if you get a blank admin page, this plugin really is not compatible with your blog setup.</b></p></div>");
           }, 1000);
         </script>
         <?php
