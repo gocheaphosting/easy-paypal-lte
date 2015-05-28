@@ -85,3 +85,10 @@ $options['show_product_info'] = array('name' => __('Show Product Info?', 'easy-p
     'help' => __('If you would like to show product image and description on the page that comes up when your buyer clicks on the <strong>Buy Now</strong> buttons, check this option.', 'easy-paypal'),
     'value' => 0,
     'type' => 'checkbox');
+
+// I18n of frontend
+$i18n = array();
+$strings = array("Buy Now", "Download it", "Contact us", "Sorry, no sales found.", "Sorry, your purchase has expired.");
+foreach ($strings as $s) {
+$i18n[$s] = array('name' => $s, 'help' => "Enter your translation or customization for the string <strong>$s</strong>", 'value' => $s);
+}

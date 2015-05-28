@@ -207,6 +207,15 @@ if (!class_exists("EZ")) {
       return $isLoggedin;
     }
 
+    static function __($s) {
+      if (!empty(self::$options[$s])) {
+        return self::$options[$s];
+      }
+      else {
+        return $s;
+      }
+    }
+
     static function mkDateString($intOrStr) {
       if (is_int($intOrStr)) {
         $dateStr = date('Y-m-d H:i:s', $intOrStr);

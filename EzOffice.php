@@ -368,7 +368,7 @@ class EzOffice {
     }
     $txn_id = $saleInfo['txn_id'];
     if (EZ::mkDateInt($saleInfo['expire_date']) < time()) {
-      $downloadUrl = "<span style='color:red'>" . __("Sorry, your purchase has expired.", 'easy-paypal') . "</span>";
+      $downloadUrl = "<span style='color:red'>" . EZ::__("Sorry, your purchase has expired.", 'easy-paypal') . "</span>";
     }
     else {
       $product = $this->getProduct();
@@ -392,17 +392,17 @@ class EzOffice {
   function mkDownloadButton() {
     $saleInfo = $this->getSaleInfo();
     if (empty($saleInfo)) {
-      return "<span style='color:red'>" . __("Sorry, no sales found.", 'easy-paypal') . "</span>";
+      return "<span style='color:red'>" . EZ::__("Sorry, no sales found.", 'easy-paypal') . "</span>";
     }
     $product = $this->getProduct();
     if (empty($product['filename'])) { // no file to be downloaded
-      $buttonText = "Contact us";
+      $buttonText = EZ::__("Contact us");
     }
     else {
-      $buttonText = "Download it";
+      $buttonText = EZ::__("Download it");
     }
     if (EZ::mkDateInt($saleInfo['expire_date']) < time()) {
-      $downloadButton = "<span style='color:red'>" . __("Sorry, your purchase has expired.", 'easy-paypal') . "</span>";
+      $downloadButton = "<span style='color:red'>" . EZ::__("Sorry, your purchase has expired.", 'easy-paypal') . "</span>";
     }
     else {
       $downloadButton = sprintf("<a href='%s'><button class='btn btn-success'>%s</button></a>", $this->mkDownloadUrl(), $buttonText);
