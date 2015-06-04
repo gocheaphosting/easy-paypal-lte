@@ -29,6 +29,12 @@ if (!class_exists("EZ")) {
     static $isPro = false;
     static $isUpdating = false;
 
+    static function isInstalled() {
+      global $db;
+      $table = 'administrator';
+      return $db->tableExists($table);
+    }
+
     static function getCategories() {
       global $db;
       $rows = $db->getData('categories', array('id', 'name'), array('active' => 1));

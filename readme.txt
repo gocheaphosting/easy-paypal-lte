@@ -4,7 +4,7 @@ Donate link: http://buy.thulasidas.com/ezpaypal
 Tags: paypal, paypal ipn, e-commerce, shopping cart, payment gateway, digital goods, downloadable products, paypal integration, wordpress paypal integration, woocommerce, digital store, download manager, download monitor, ecommerce, eshop
 Requires at least: 3.3
 Tested up to: 4.2
-Stable tag: 6.70
+Stable tag: 6.71
 
 EZ PayPal gets you started with your online business. Use PayPal IPN, sell digital goods with instant download, and no carts. Official PayPal Partner.
 
@@ -97,7 +97,7 @@ The reporting module and the subscription module that were sold separately have 
 
 == Upgrade Notice ==
 
-Enabling translations or modifications of strings in customer-facing pages.
+Minor changes in the admin page.
 
 == Screenshots ==
 
@@ -193,6 +193,7 @@ So allowing your webserver to serve the plugin admin files in an iFrame is compl
 
 = History =
 
+* V6.71: Minor changes in the admin page. [Jun 4, 2015]
 * V6.70: Enabling translations or modifications of strings in customer-facing pages. [May 27, 2015]
 * V6.61: Admin page compatibility checks and improvements. [May 13, 2015]
 * V6.60: Compatibility with WordPress 4.2. [April 25, 2015]
