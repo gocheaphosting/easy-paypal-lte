@@ -42,8 +42,8 @@ if (!empty($no_visible_elements)) {
 <h4>Upgrading to Pro</h4>
 <p>If you would like to have the Pro features, purchase the <a class="goPro" href='http://buy.thulasidas.com/ezpaypal'>Pro version</a> for $19.95. You will get an instant download link, and painless upgrade path with all your products, categories and sale data saved, including your admin credentials.</p>
 
-<p class="red">Remember to take a quick <b><a href="tour.php">tour</a></b> to know what this application can do for you.</p>
-
+<h4>Setting up PayPal IPN</h4>
+<p>This application uses the Instant Payment Notification by PayPal to process and verify your sales and send the appropriate download links to your buyers. This process is fully automatic and will happen without your intervention. However, in </p>
 
 <?php
 closeBox();

@@ -14,13 +14,13 @@ class EzOffice {
     if (!empty($this->options['sandbox_mode'])) {
       $this->paypalURL = "https://www.sandbox.paypal.com/cgi-bin/webscr";
       $this->paypalHost = "www.sandbox.paypal.com";
-      $this->business = $this->options['sandbox_email'];
+      $this->business = trim(strtolower($this->options['sandbox_email']));
     }
     else {
       $this->paypalURL = "https://www.paypal.com/cgi-bin/webscr";
       $this->paypalHost = "www.paypal.com";
       if (!empty($this->options['paypal_email'])) {
-        $this->business = $this->options['paypal_email'];
+        $this->business = trim(strtolower($this->options['paypal_email']));
       }
     }
     $this->_debug = $debug;
@@ -151,17 +151,19 @@ class EzOffice {
     $saleDetails = $this->getSaleDetails();
     $product = $this->getProduct();
     $check = true;
-    if ($saleDetails['receiver_email'] != $this->business &&
-            $saleDetails['business'] != $this->business &&
-            $saleDetails['business'] != $this->options['second_paypal_email']) {
-      $log->error("Receiver email ({$saleDetails['receiver_email']}) and Business ({$saleDetails['business']}) not equal to one of your emails ($this->business or {$this->options['second_paypal_email']})");
+    $receiver_email = trim(strtolower($saleDetails['receiver_email']));
+    $business = trim(strtolower($saleDetails['business']));
+    if ($receiver_email != $this->business &&
+            $business != $this->business &&
+            $business != trim(strtolower($this->options['second_paypal_email']))) {
+      $log->error("Receiver email ({$receiver_email}) and Business ({$business}) not equal to one of your emails ($this->business or {$this->options['second_paypal_email']})");
       $check = false;
     }
-    if ($saleDetails['item_name'] != $product['product_name']) {
+    if (trim($saleDetails['item_name']) != trim($product['product_name'])) {
       $log->error("Product paid for ({$saleDetails['item_name']}) not the same as sold ({$product['product_name']})");
       $check = false;
     }
-    if ($saleDetails['item_number'] != $product['product_code']) {
+    if (trim($saleDetails['item_number']) != trim($product['product_code'])) {
       $log->error("Product paid for ({$saleDetails['item_number']}) not the same as sold ({$product['product_code']})");
       $check = false;
     }
