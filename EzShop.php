@@ -205,7 +205,7 @@ class EzShop {
     else {
 
     }
-    $buyNow  = EZ::__("Buy Now");
+    $buyNow = EZ::__("Buy Now");
     $button = "<a data-id='$id' class='btn-sm btn-success right buyNow $popup' href='#' style='white-space:nowrap;'><i class='glyphicon glyphicon-shopping-cart icon-white action'></i> $buyNow</a>";
     return $button;
   }
@@ -317,7 +317,7 @@ $shippingLine";
 
   function mkPriceHeading() {
     $price = $this->mkPrice();
-    return "<h4 align='center'> \$$price each</h4>\n";
+    return "<h4 style='text-align:center'> \$$price each</h4>\n";
   }
 
   function makeHeader($inputs) {
@@ -345,20 +345,22 @@ $shippingLine";
     if ($autoSubmit) {
       $html = <<<EOF
       <hr />
-      <h4 align="center">Please wait while we transfer you to PayPal.</h4>
+      <h4 style='text-align:center'>Please wait while we transfer you to PayPal.</h4>
       <div style='width:16px;margin:0 auto;'>
         <img src='admin/img/loading.gif' alt='[Please wait]' />
       </div>
       <script>
         $(document).ready(function () {
-          $("#ezppBuyForm").submit();
+          setTimeout(function () {
+            $("#ezppBuyForm").submit();
+          }, 2500);
         });
       </script>
 EOF;
     }
     else {
       $html = <<<EOF
-      <h4 align="center">Please go to Paypal to complete your purchase.</h4>
+      <h4 style='text-align:center'>Please go to Paypal to complete your purchase.</h4>
       <hr />
       <div id='formRendered' style="display:none;text-align:left">
         <pre><?php echo htmlspecialchars($form); ?></pre>
