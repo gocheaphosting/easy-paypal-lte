@@ -350,10 +350,8 @@ $shippingLine";
         <img src='admin/img/loading.gif' alt='[Please wait]' />
       </div>
       <script>
-        $(document).ready(function () {
-          setTimeout(function () {
-            $("#ezppBuyForm").submit();
-          }, 2500);
+        $(window).load(function () {
+          $("#ezppBuyForm").submit();
         });
       </script>
 EOF;

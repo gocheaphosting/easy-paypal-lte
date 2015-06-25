@@ -246,6 +246,13 @@ function getHeader() {
                       <a href="#"><i class="glyphicon glyphicon-plus"></i><span> Sales</span></a>
                       <ul class="nav nav-pills nav-stacked">
                         <li id="sales"><a href="sales.php"><i class="glyphicon glyphicon-usd"></i><span> All Sales</span></a></li>
+                        <?php
+                        if (class_exists('EZ') && !empty(EZ::$options['sales_ipn'])) {
+                          ?>
+                          <li id="sales-ipn"><a href="sales-ipn.php"><i class="glyphicon glyphicon-stats red"></i><span> Post IPN</span></a></li>
+                          <?php
+                        }
+                        ?>
                         <li id="stats"><a href="stats.php"><i class="glyphicon glyphicon-stats red"></i><span> Statistics</span></a></li>
                       </ul>
                     </li>

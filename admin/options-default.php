@@ -85,6 +85,15 @@ $options['show_product_info'] = array('name' => __('Show Product Info?', 'easy-p
     'help' => __('If you would like to show product image and description on the page that comes up when your buyer clicks on the <strong>Buy Now</strong> buttons, check this option.', 'easy-paypal'),
     'value' => 0,
     'type' => 'checkbox');
+$options['sales_ipn'] = array('name' => __('Enable Manual Posting of IPN Messages', 'easy-paypal'),
+    'help' => __('If some of your IPN messages are not processed properly, you can try recovering from it using this tool. This tool will repost IPN messages as though they are coming from PayPal. Although accessible only when logged, it may still be a security hole. Leave it disabled if you are concerned about it.', 'easy-paypal'),
+    'type' => 'checkbox',
+    'value' => false);
+
+$options['enable_server'] = array('name' => __('Enable Server Component', 'easy-paypal'),
+    'help' => __('EZ PayPal comes with a server component that can facilitate interaction between other web applictaions. For instance, if you have sold a text link on your site as a subscription (using Easy Text Links), it can verify whether the subscription is still active by querying the server component. Leave it disabled if you do not need it.', 'easy-paypal'),
+    'type' => 'checkbox',
+    'value' => false);
 
 // I18n of frontend
 $i18n = array();
