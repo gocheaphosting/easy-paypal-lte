@@ -284,7 +284,7 @@ function getHeader() {
                       <a href="#"><i class="glyphicon glyphicon-plus red"></i><span> Optional Modules</span></a>
                       <ul class="nav nav-pills nav-stacked">
                         <li id="ezSupport"><a href="ezSupport.php"><i class="glyphicon glyphicon-plus-sign red"></i><span> Paid Support</span></a></li>
-                        <li id="easy-text-links"><a href="easy-text-links.php"><i class="glyphicon glyphicon-plus-sign red"></i><span> Text Link Ads</span></a></li>
+                        <li id="ezTextLinks"><a href="ezTextLinks.php"><i class="glyphicon glyphicon-plus-sign red"></i><span> Text Link Ads</span></a></li>
                         <li id="express-checkout"><a href="express-checkout.php"><i class="glyphicon glyphicon-plus-sign red"></i><span> Express Checkout</span></a></li>
                         <li id="ezAffiliates"><a href="ezAffiliates.php"><i class="glyphicon glyphicon-plus-sign red"></i><span> Affiliates Program</span></a></li>
                       </ul>

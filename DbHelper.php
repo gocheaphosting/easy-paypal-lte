@@ -619,6 +619,39 @@ if (!class_exists("DbHelper")) {
       return count($rows);
     }
 
+    // Prepared statement version of getData. For login forms, mainly.
+    function getDataEx($table, $what = "*", $when = array()) {
+      $table = $this->prefix($table);
+      $temp = array(str_repeat('s', count($when)));
+      if (is_array($when)) {
+        $where = " WHERE 1 ";
+        foreach ($when as $k => $v) {
+          $where .= " AND $k  = ?";
+          $temp[$k] = &$when[$k];
+        }
+      }
+      else {
+        $err = "Unable to parse the WHERE predicate in preparing SQL statement.";
+        self::sdie($err);
+      }
+      if (is_array($what)) {
+        $what = implode(", ", $what);
+      }
+      $sql = "SELECT DISTINCT $what FROM $table $where";
+      $stmt = $this->ms->prepare($sql);
+      if ($stmt) {
+        call_user_func_array(array($stmt, 'bind_param'), $temp);
+      }
+      $stmt->execute();
+      $result = $stmt->get_result();
+      $rows = array();
+      while ($r = $result->fetch_assoc()) {
+        $rows[] = $r;
+      }
+      $stmt->close();
+      return $rows;
+    }
+
     function getData($table, $what = "*", $when = 1, $order = 'created', $asc = 'desc') {
       $table = $this->prefix($table);
       if (is_array($when)) {
