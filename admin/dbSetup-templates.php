@@ -16,8 +16,7 @@ if (!function_exists('insertTemplate')) {
     else {
       $onDuplicate = "UPDATE name='$name', value='$value', active=true";
     }
-    $sql = "INSERT INTO $table SET name='$name', value='$value', active=true
-  ON DUPLICATE KEY $onDuplicate";
+    $sql = "INSERT INTO $table SET name='$name', value='$value', active=true, category_id='0', product_grouping='' ON DUPLICATE KEY $onDuplicate";
     $db->query($sql);
   }
 
