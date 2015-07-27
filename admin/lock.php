@@ -33,6 +33,6 @@ if (empty($row)) {
 
 // Logged in?
 if (!EZ::isLoggedIn()) {
-  header("Location: login.php?error=3");
+  header("Location: login.php?error=3&back={$_SERVER['REQUEST_URI']}");
   exit;
 }

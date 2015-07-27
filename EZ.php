@@ -106,7 +106,13 @@ if (!class_exists("EZ")) {
         $_SESSION['ezpaypal-admin'] = self::md5($row['username']);
         $_SESSION['ezpaypal-password'] = self::md5($row['password']);
         session_write_close();
-        header("location: index.php");
+        if (!empty($_REQUEST['back'])) {
+          $goBack = $_REQUEST['back'];
+          header("location: $goBack");
+        }
+        else {
+          header("location: index.php");
+        }
       }
       else {
         $error = $row;
@@ -1137,8 +1143,8 @@ if (!function_exists('http_response_code')) {
   function http_response_code($newcode = NULL) {
     static $code = 200;
     if ($newcode !== NULL) {
-      header('X-PHP-Response-Code: ' . $newcode, true, $newcode);
       if (!headers_sent()) {
+        header('X-PHP-Response-Code: ' . $newcode, true, $newcode);
         $code = $newcode;
       }
     }

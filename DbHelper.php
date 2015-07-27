@@ -31,7 +31,14 @@ if (!class_exists("DbHelper")) {
         if (!session_id()) {
           session_start();
         }
-        $_SESSION['posted'] = $_POST;
+        $posted = array();
+        $dbKeys = array('dbHost', 'dbName', 'dbUsr', 'dbPwd', 'dbPrefix', 'dbEmail');
+        foreach ($dbKeys as $key) {
+          if (isset($_POST[$key])) {
+            $posted[$key] = $_POST[$key];
+          }
+        }
+        $_SESSION['posted'] = $posted;
         self::mkCfg();
       }
       $updating = EZ::$isUpdating;

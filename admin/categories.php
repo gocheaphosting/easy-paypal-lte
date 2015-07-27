@@ -38,14 +38,14 @@ openBox("Categories", "folder-open", 12, "<p>The table below listing your produc
       else {
         $class = 'danger';
       }
-      $bannerCount = $db->getCount('products', array('category_id' => $id));
-      $htmlCount = $db->getCount('products', array('category_id' => $id, 'recurring' => 1));
+      $prodCount = $db->getCount('products', array('category_id' => $id));
+      $subCount = $db->getCount('products', array('category_id' => $id, 'recurring' => 1));
       echo <<<EOF
     <tr>
       <td><a class='xedit' data-name='name' data-pk='$id' data-tpl='<input type="text" style="width:100px">' >$name</a></td>
       <td><a class='xedit' data-name='comment' data-pk='$id' data-tpl='<input type="text" style="width:550px">' >$comment</a></td>
-      <td class="center-text">$bannerCount</td>
-      <td class="center-text">$htmlCount</td>
+      <td class="center-text">$prodCount</td>
+      <td class="center-text">$subCount</td>
       <td class="center-text"><a class='xedit-checkbox btn-sm btn-$class' data-name='active' data-type='checklist' data-pk='$id' data-title='Status' data-value='$active'></a></td>
     </tr>
 EOF;
