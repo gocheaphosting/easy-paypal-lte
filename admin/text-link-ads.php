@@ -1,4 +1,4 @@
-<?php require('header.php'); ?>
+<?php require 'header.php'; ?>
 <div>
   <ul class="breadcrumb">
     <li>
@@ -17,5 +17,5 @@ openBox("New HTML Ad", "plus", 12);
 <p>In this lite version, you have only banner ads.</p>
 <?php
 closeBox();
-include('promo.php');
-require('footer.php');
+require 'promo.php';
+require 'footer.php';

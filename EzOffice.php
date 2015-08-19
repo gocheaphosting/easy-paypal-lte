@@ -557,7 +557,7 @@ class EzOffice {
       $file = $product['file'];
     }
     else {
-      $file = dirname(__FILE__) . '/' . $product['file'];
+      $file = __DIR__ . '/' . $product['file'];
     }
     if (file_exists($file)) {
       header('Content-Description: File Transfer');

@@ -1,5 +1,5 @@
 <?php
-require('header.php');
+require 'header.php';
 insertAlerts(11);
 if (empty(EZ::$options['sales_ipn'])) {
   EZ::showError("This feature is currently not active.", true);
@@ -125,4 +125,4 @@ else {
   <?php
   closeBox();
 }
-require('footer.php');
+require 'footer.php';

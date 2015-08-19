@@ -1,4 +1,4 @@
-<?php require('header.php'); ?>
+<?php require 'header.php'; ?>
 <div>
   <ul class="breadcrumb">
     <li>
@@ -34,5 +34,5 @@ openBox("Advanced Tools", "cog", 12);
 </ul>
 <?php
 closeBox();
-include('promo.php');
-require('footer.php');
+require 'promo.php';
+require 'footer.php';

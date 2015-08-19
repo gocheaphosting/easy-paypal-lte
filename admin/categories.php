@@ -1,4 +1,4 @@
-<?php require('header.php'); ?>
+<?php require 'header.php'; ?>
 <div>
   <ul class="breadcrumb">
     <li>
@@ -62,4 +62,4 @@ closeBox();
   var xeditHandler = 'ajax/categories.php';
 </script>
 <?php
-require('footer.php');
+require 'footer.php';

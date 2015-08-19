@@ -1,5 +1,12 @@
 <?php
-if (empty($no_visible_elements)) {
+if (version_compare(PHP_VERSION, '5.4') < 0) {
+  echo 'EZ PayPal requires PHP version 5.4 or greater. You are using: ' . PHP_VERSION .
+          "<br>Please ask your hosting provider to update your PHP.";
+  exit();
+}
+error_reporting(E_ALL);
+
+if (empty($no_visible_elements) && empty($GLOBALS['no_visible_elements'])) {
   require_once 'lock.php';
 }
 

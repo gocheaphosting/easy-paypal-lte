@@ -1,4 +1,4 @@
-<?php require('header.php'); ?>
+<?php require 'header.php'; ?>
 <div>
   <ul class="breadcrumb">
     <li>
@@ -18,5 +18,5 @@ openBox("EZ Affiliates", "plus-sign", 12);
 <p><a href='http://www.thulasidas.com/packages/ezaffiliates/' target='_blank'>Learn more about it</a>.</p>
 <?php
 closeBox();
-include('promo.php');
-require('footer.php');
+require 'promo.php';
+require 'footer.php';

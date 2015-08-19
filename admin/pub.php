@@ -47,5 +47,5 @@ if (!empty($no_visible_elements)) {
 
 <?php
 closeBox();
-include('promo.php');
-require('footer.php');
+require 'promo.php';
+require 'footer.php';

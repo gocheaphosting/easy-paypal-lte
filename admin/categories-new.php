@@ -1,4 +1,4 @@
-<?php require('header.php'); ?>
+<?php require 'header.php'; ?>
 <div>
   <ul class="breadcrumb">
     <li>
@@ -17,5 +17,5 @@ openBox("New Category", "plus", 12);
 <p>In this lite version, you have three categories already defined for you. You can <a href="categories.php">view and edit</a> them according to your preference. If you need to define more than three categories, you will have to do direct database manipulation to add or delete categories. See the <code><?php echo $db->prefix('categories'); ?></code> table in your database using a DB tool such as <b>phpMyAdmin</b>.</p>
 <?php
 closeBox();
-include('promo.php');
-require('footer.php');
+require 'promo.php';
+require 'footer.php';

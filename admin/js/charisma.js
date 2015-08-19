@@ -73,6 +73,113 @@ function ezPopUp(url, title, w, h) {
   return true;
 }
 
+function initXedit() {
+  // My x-edit interface, with checkbox defined.
+  // Assumes that the vars xeditHandler and xparams are defined in the global scope.
+  if (xeditInline) {
+    var xeditMode = 'inline';
+  }
+  else {
+    var xeditMode = 'popup';
+  }
+  if (typeof xeditHandler !== 'undefined') {
+    $('.xedit').editable({
+      url: xeditHandler,
+      mode: xeditMode,
+      validate: function (value) {
+        var validator = $(this).attr('data-validator');
+        if (validator) {
+          return validate[validator](value);
+        }
+      },
+      params: function (params) {
+        var validator = $(this).attr('data-validator');
+        if (validator) {
+          params.validator = validator;
+        }
+        var action = $(this).attr('data-action');
+        if (action) {
+          params.action = action;
+        }
+        $.each(xparams, function (key, value) {
+          params[key] = value;
+        });
+        return params;
+      }
+    });
+    var activeText, emptytext, cbWidth, cbSource;
+    if (wideCB) {
+      activeText = '<i class="glyphicon glyphicon-ok icon-white"></i> Active';
+      emptytext = 'Disabled';
+      cbWidth = 150;
+      cbSource = {'1': 'Active'};
+    }
+    else {
+      activeText = '<i class="glyphicon glyphicon-ok icon-white"></i> Yes';
+      emptytext = ' <i class="glyphicon glyphicon-remove icon-white"></i>&nbsp; No ';
+      cbWidth = 150;
+      cbSource = {'1': 'Yes'};
+    }
+    $('.xedit-checkbox').width(cbWidth).editable({
+      url: xeditHandler,
+      type: 'checklist',
+      source: cbSource,
+      emptytext: emptytext,
+      emptyclass: 'btn-danger',
+      success: function (response, newValue) {
+        if (typeof checkBoxChanged === 'function') {
+          checkBoxChanged(newValue);
+        }
+        if (newValue === "0" || newValue[0] === "0") {
+          $(this).removeClass('btn-success').addClass('btn-danger');
+        }
+        if (newValue === "1" || newValue[0] === "1") {
+          $(this).removeClass('btn-danger').addClass('btn-success');
+        }
+      },
+      display: function (value, sourceData) {
+        $(this).width(cbWidth);
+        if (value == 1) { // Needs to be autocasting ==, not ===
+          $(this).html(activeText);
+        }
+        else {
+          $(this).html(''); // Don't know why this works!
+        }
+      },
+      params: function (params) {
+        var action = $(this).attr('data-action');
+        if (action) {
+          params.action = action;
+        }
+        $.each(xparams, function (key, value) {
+          params[key] = value;
+        });
+        return params;
+      },
+      error: function (a) {
+        $("#alertErrorText").html(a.responseText);
+        $(".alert").show();
+      }
+    });
+  }
+  $('.xedit-new').editable({
+    url: 'ajax/success.php',
+    validate: function (value) {
+      var validator = $(this).attr('data-validator');
+      if (validator) {
+        return validate[validator](value);
+      }
+    },
+    params: function (params) {
+      var validator = $(this).attr('data-validator');
+      if (validator)
+        params.validator = validator;
+      return params;
+    }
+  });
+  $('.xedit-checkbox-new').editable('option', 'url', 'ajax/success.php');
+}
+
 function docReady() {
   //prevent # links from moving to top
   $('a[href="#"][data-top!=true]').click(function (e) {
@@ -126,12 +233,7 @@ function docReady() {
     $target.slideToggle();
   });
 
-  $('.btn-setting').click(function (e) {
-    e.preventDefault();
-    $('#myModal').modal('show');
-  });
-
-  // Help button to use modal to show message
+  // Help button to use bootbox to show text
   $('body').on('click', ".btn-help", function (e) {
     e.preventDefault();
     var helpText = $(this).attr('data-help');
@@ -156,77 +258,21 @@ function docReady() {
     });
   });
 
-  // My x-edit interface, with checkbox defined.
-  // Assumes that the var xeditHandler is set in the global scope.
-  if (typeof xeditHandler !== 'undefined') {
-    $('.xedit').editable({
-      url: xeditHandler,
-      mode: 'inline',
-      validate: function (value) {
-        var validator = $(this).attr('data-validator');
-        if (validator) {
-          return validate[validator](value);
-        }
-      },
-      params: function (params) {
-        var validator = $(this).attr('data-validator');
-        if (validator)
-          params.validator = validator;
-        return params;
-      }
-    });
-    var activeText = '<i class="glyphicon glyphicon-ok icon-white"></i> Active';
-    $('.xedit-checkbox').editable({
-      url: xeditHandler,
-      type: 'checklist',
-      source: {'1': 'Active'},
-      emptytext: 'Disabled',
-      emptyclass: 'btn-danger',
-      success: function (response, newValue) {
-        if (typeof checkBoxChanged === 'function') {
-          checkBoxChanged(newValue);
-        }
-        if (newValue === "0" || newValue[0] === "0") {
-          $(this).removeClass('btn-success').addClass('btn-danger');
-        }
-        if (newValue === "1" || newValue[0] === "1") {
-          $(this).removeClass('btn-danger').addClass('btn-success');
-        }
-      },
-      display: function (value, sourceData) {
-        if (value == 1) { // Needs to be autocasting ==, not ===
-          $(this).html(activeText);
-        }
-        else {
-          $(this).html(''); // Don't know why this works!
-        }
-      },
-      error: function (a) {
-        $("#alertErrorText").html(a.responseText);
-        $(".alert").show();
-      }
+  initXedit();
+
+  if (typeof $().colorpicker === 'function') {
+    $('.colorpicker').colorpicker();
+  }
+
+  if (typeof $().dataTable === 'function') {
+    $('.data-table').dataTable({"aaSorting": []});
+    $('.data-table-longer').dataTable({
+      pageLength: 20,
+      aaSorting: []
     });
   }
-  $('.xedit-new').editable({
-    url: 'ajax/success.php',
-    validate: function (value) {
-      var validator = $(this).attr('data-validator');
-      if (validator) {
-        return validate[validator](value);
-      }
-    },
-    params: function (params) {
-      var validator = $(this).attr('data-validator');
-      if (validator)
-        params.validator = validator;
-      return params;
-    }
-  });
-  $('.xedit-checkbox-new').editable('option', 'url', 'ajax/success.php');
 
-  $('.data-table').dataTable({"aaSorting": []});
-
-//Add Hover effect to menus
+  //Add Hover effect to menus
   $('ul.nav li.dropdown').hover(function () {
     $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn();
   }, function () {
@@ -237,7 +283,9 @@ function docReady() {
     e.preventDefault();
     var product = $(this).attr('data-product');
     if (!product) {
-      product = 'ezpaypal';
+      if (typeof getProduct === 'function') {
+        product = getProduct();
+      }
     }
     var url = 'http://buy.thulasidas.com/' + product;
     var title = "Get the Pro version";
@@ -268,7 +316,7 @@ function docReady() {
     $("#standAloneMode").show();
     $('body').find('a').not("#standAloneMode, .popup").each(function () {
       var href = $(this).attr('href');
-      if (href && !href.match(/inframe/)) {
+      if (href) {
         href += (href.match(/\?/) ? '&' : '?') + 'inframe';
         $(this).attr('href', href);
       }
@@ -280,24 +328,26 @@ function docReady() {
 
 }
 
-$('.xedit, .xedit-checkbox').on('hidden', function (e, reason) {
-  if (reason === 'save' || reason === 'nochange') {
-    var $next = $(this).closest('td').next().find('.xedit, .xedit-checkbox');
-    if (!$next.length) {
-      $next = $(this).closest('tr').next().find('td:first').find('.xedit, .xedit-checkbox');
+if (xeditOpenNext) {
+  $('.xedit, .xedit-checkbox').on('hidden', function (e, reason) {
+    if (reason === 'save' || reason === 'nochange') {
+      var $next = $(this).closest('td').next().find('.xedit, .xedit-checkbox');
+      if (!$next.length) {
+        $next = $(this).closest('tr').next().find('td:first').find('.xedit, .xedit-checkbox');
+      }
+      if (!$next.length) {
+        $next = $(this).closest('tr').next().find('.xedit, .xedit-checkbox');
+      }
+      if (true) {
+        setTimeout(function () {
+          $next.editable('show');
+        }, 300);
+      } else {
+        $next.focus();
+      }
     }
-    if (!$next.length) {
-      $next = $(this).closest('tr').next().find('.xedit, .xedit-checkbox');
-    }
-    if (true) {
-      setTimeout(function () {
-        $next.editable('show');
-      }, 300);
-    } else {
-      $next.focus();
-    }
-  }
-});
+  });
+}
 
 function isInWP() {
   var hash, inWP = false;
@@ -334,12 +384,23 @@ function flashMsg(msg, kind, noflash) {
   return $(id);
 }
 
+function hideMsg(kind) {
+  var id = "#alert" + kind + "Text";
+  $(id).html('');
+  $(id).parent().slideUp();
+  return $(id);
+}
+
 function flashError(error) {
   return flashMsg(error, 'Error');
 }
 
 function showError(error) {
   return flashMsg(error, 'Error', true);
+}
+
+function hideError() {
+  return hideMsg('Error');
 }
 
 function flashWarning(warning) {
@@ -350,6 +411,10 @@ function showWarning(warning) {
   return flashMsg(warning, 'Warning', true);
 }
 
+function hideWarning() {
+  return hideMsg('Warning');
+}
+
 function flashSuccess(message) {
   return flashMsg(message, 'Success');
 }
@@ -358,12 +423,20 @@ function showSuccess(message) {
   return flashMsg(message, 'Success', true);
 }
 
+function hideSuccess() {
+  return hideMsg('Success');
+}
+
 function flashInfo(message) {
   return flashMsg(message, 'Info');
 }
 
 function showInfo(message) {
   return flashMsg(message, 'Info', true);
+}
+
+function hideInfo() {
+  return hideMsg('Info');
 }
 
 $(".close").click(function () {

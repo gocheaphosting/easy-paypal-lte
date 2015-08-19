@@ -16,5 +16,5 @@ openBox("All Your Customers", "user", 12);
 <p>On this page, in the <a href="#" class="goPro">Pro version</a>, you will have see your buyer information such as purchase history, total amount paid, affiliate status etc.</p>
 <?php
 closeBox();
-include('promo.php');
-require('footer.php');
+require 'promo.php';
+require 'footer.php';

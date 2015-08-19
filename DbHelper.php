@@ -14,7 +14,7 @@ if (!class_exists("DbHelper")) {
     var $ms;
 
     function __construct() {
-      $pwd = dirname(__FILE__);
+      $pwd = __DIR__;
       $this->valid = false;
       $dbHost = $dbName = $dbUsr = $dbPwd = $dbPrefix = $dbEmail = "";
       // Check if the config file exists. If not, set up the parent app first

@@ -199,7 +199,7 @@ allow from 127.0.0.1";
         self::$path = $tmp_dir;
       }
       else {
-        self::$path = dirname(__FILE__);
+        self::$path = __DIR__;
       }
     }
 

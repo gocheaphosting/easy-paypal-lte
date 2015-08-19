@@ -59,11 +59,7 @@ closeBox();
         table: table
       },
       success: function (sale) {
-        $("#myModalText").html(sale);
-        $('#myModalTitle').text(title);
-        $('#myModalClose').hide();
-        $('#myModalSave').text('Done');
-        $('#myModal').modal('show');
+        bootbox.alert({title: title, message: sale});
       },
       error: function (a) {
         flashError(a.responseText);
