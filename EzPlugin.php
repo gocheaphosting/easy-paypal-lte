@@ -86,7 +86,7 @@ if (!class_exists("EzPlugin")) {
         </script>
         <?php
       }
-      $src = plugins_url("admin/index.php?inframe", __FILE__);
+      $src = "{$this->plgURL}/admin/index.php?inframe";
       ?>
       <script>
         function calcHeight() {
@@ -104,9 +104,7 @@ if (!class_exists("EzPlugin")) {
           window.attachEvent('onresize', calcHeight);
         }
         jQuery(document).ready(function () {
-          if (typeof (window.google_render_ad) === 'undefined') {
-            jQuery("#adBlocked").show();
-          }
+          setTimeout(function () {jQuery("#adBlocked").show();}, 2000);
         });
       </script>
       <?php
