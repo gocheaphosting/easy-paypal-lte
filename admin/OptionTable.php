@@ -25,6 +25,7 @@ class OptionTable extends DbTable {
     $col->minWidth = "50px";
     $col->noEdit = true;
     $col->heading = "Help";
+    $col->tdClass = "center-text";
     $this->columns[$col->dbCol] = $col;
 
     $this->table = 'options_meta';
@@ -44,21 +45,19 @@ class OptionTable extends DbTable {
     $this->showActions = false;
   }
 
-  function __destruct() {
-
-  }
-
-  function OptionTable($options) {
-    if (version_compare(PHP_VERSION, "5.0.0", "<")) {
-      $this->__construct($options);
-      register_shutdown_function(array($this, "__destruct"));
-    }
-  }
-
   // It cannot be private because when DbTable::rennder() calls it, the scope
   // would be DbTable, not OptionTable
   function _printRow($row, $create = false) {
     echo EZ::renderRow($row['pk'], $row);
+  }
+
+  function getHelp() {
+    $help = "<ul>\n";
+    foreach ($this->rows as $row) {
+      $help .= "<li><b>{$row['name']}</b>: {$row['help']}</li>\n";
+    }
+    $help .= "</ul>\n";
+    return $help;
   }
 
   function _printJS() {

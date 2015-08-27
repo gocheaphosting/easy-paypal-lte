@@ -1,11 +1,11 @@
-<?php if (empty($no_visible_elements)) { ?>
+<?php if (menuHidden()) { ?>
   <!-- content ends -->
   </div><!--/#content.col-md-0-->
 <?php } ?>
 </div><!--/fluid-row-->
 <hr>
 
-<?php if (empty($no_visible_elements)) { ?>
+<?php if (menuHidden()) { ?>
   <footer class="row">
     <p class="col-md-4 col-sm-4 col-xs-12 copyright">&copy; <a href="http://www.thulasidas.com" target="_blank">Manoj Thulasidas</a> 2013 - <?php echo date('Y') ?></p>
     <p class="col-md-4 col-sm-4 col-xs-12"><img class="col-md-4 col-sm-4 center" src="img/paypal-partner.png" alt="Official PayPal Partner" title="EZ PayPal developer is an official PayPal partner" data-toggle="tooltip"/></p>

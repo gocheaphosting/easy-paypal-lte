@@ -41,17 +41,6 @@ else {
       }
     }
 
-    function __destruct() {
-
-    }
-
-    function AbstractInstaller() {
-      if (version_compare(PHP_VERSION, "5.0.0", "<")) {
-        $this->__construct();
-        register_shutdown_function(array($this, "__destruct"));
-      }
-    }
-
     function backupTables() {
       $db = $this->db;
       if (EZ::$isUpdating) {

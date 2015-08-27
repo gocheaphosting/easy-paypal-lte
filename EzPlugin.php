@@ -16,17 +16,6 @@ if (!class_exists("EzPlugin")) {
       }
     }
 
-    function __destruct() {
-
-    }
-
-    function EzPlugin() {
-      if (version_compare(PHP_VERSION, "5.0.0", "<")) {
-        $this->__construct();
-        register_shutdown_function(array($this, "__destruct"));
-      }
-    }
-
     static function install($dir, $mOptions) {
       $ezOptions = get_option($mOptions);
       if (empty($ezOptions)) {
@@ -104,13 +93,15 @@ if (!class_exists("EzPlugin")) {
           window.attachEvent('onresize', calcHeight);
         }
         jQuery(document).ready(function () {
-          setTimeout(function () {jQuery("#adBlocked").show();}, 2000);
+          setTimeout(function () {
+            jQuery("#adBlocked").show();
+          }, 2000);
         });
       </script>
       <?php
       echo "<iframe src='$src' frameborder='0' style='width:100%;position:absolute;top:5px;left:-10px;right:0px;bottom:0px' width='100%' height='900px' id='the_iframe' onLoad='calcHeight();'></iframe>";
     }
 
-  }
+  } //End Class EzPlugin
 
-} //End Class EzPlugin
+}

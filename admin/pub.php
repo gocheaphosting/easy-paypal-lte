@@ -14,7 +14,7 @@ openBox("Welcome to EZ PayPal", "glass", 12);
 include('intro.php');
 closeBox();
 openBox("<a href='http://buy.thulasidas.com/ezpaypal' class='goPro'>Start Your Own E-Shop Now!</a>", "shopping-cart", 12);
-if (!empty($no_visible_elements)) {
+if (!menuHidden()) {
   ?>
   <a href="index.php" class="btn btn-success launch" style="float:right" data-toggle="tooltip" title="Launch the installer now"> <i class="glyphicon glyphicon-cog"></i> Admin / Setup</a>
   <?php

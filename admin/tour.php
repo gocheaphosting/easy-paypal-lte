@@ -1,4 +1,17 @@
 <?php
+if (isset($_REQUEST['inframe'])) {
+  ?>
+  <style scoped>
+    .tour-step-background {
+      background: transparent;
+      border: 2px solid blue;
+    }
+    .tour-backdrop {
+      opacity:0.2;
+    }
+  </style>
+  <?php
+}
 $shopPage = EZ::ezppURL() . "shop.php";
 if (EZ::$isInWP) {
   $shopPage .= "?wp";
@@ -19,47 +32,14 @@ if (EZ::$isInWP) {
   <h4>Context-Aware Help</h4>
   <p>Most of the admin pages of this application have a blue help button near the right hand side top corner. Clicking on it will give instructions and help specific to the task you are working on. All configuration options have a help button associated with it, which gives you a popover help bubble when you hover over it. Finally, almost every button in the admin interface has popover help associated with it. If you need further assistance, please see the <a href='#' id='showSupportChannels'>support channels</a> available.</p>
 </div>
-<div class="col-lg-4 col-sm-12">
-  <h4>Play with a Demo</h4>
-  <ul>
-    <li>If you would like to play with the admin interface without messing up your installation, <a href="http://demo.thulasidas.com/ezpaypal" title='Visit the demo site to play with the admin interface' data-toggle='tooltip' target="_blank">please visit EZ PayPal demo site</a>.</li>
-  </ul>
-  <div id='supportChannels'>
-    <h4>Need Support?</h4>
-    <ul>
-      <li>Please check the carefully prepared <a href="http://www.thulasidas.com/plugins/ezpaypal#faq" class="popup-long" title='Your question or issue may be already answered or resolved in the FAQ' data-toggle='tooltip'> Plugin FAQ</a> for answers.</li>
-      <li>For the lite version, you may be able to get support from the <a href='https://wordpress.org/support/plugin/easy-paypal-lte/' class='popup-long' title='WordPress forums have community support for this plugin' data-toggle='tooltip'>WordPress support forum</a>.</li>
-      <li>For preferential support and free updates, you can purchase a <a href='http://buy.thulasidas.com/support' class='popup btn-xs btn-info' title='Support contract costs only $4.95 a month, and you can cancel anytime. Free updates upon request, and support for all the products from the author.' data-toggle='tooltip'>Support Contract</a>.</li>
-      <li>For one-off support issues, you can raise a one-time paid <a href='http://buy.thulasidas.com/ezsupport' class='popup btn-xs btn-primary' title='Support ticket costs $0.95 and lasts for 72 hours' data-toggle='tooltip'>Support Ticket</a> for prompt support.</li>
-      <li>Please include a link to your blog when you contact the plugin author for support.</li>
-    </ul>
-  </div>
-  <h4>Happy with this plugin?</h4>
-  <ul>
-    <li>Please leave a short review and rate it at <a href="https://wordpress.org/plugins/easy-paypal-lte/" class="popup-long" title='Please help the author and other users by leaving a short review for this plugin and by rating it' data-toggle='tooltip'>WordPress</a>. Thanks!</li>
-  </ul>
-</div>
-<div class="clearfix"></div>
+
+<?php require 'support.php'; ?>
+
 <hr />
 <p class="center-text">
   <a class="btn btn-primary center-text restart" href="#" data-toggle='tooltip' title='Start or restart the tour any time' id='restart'><i class="glyphicon glyphicon-globe icon-white"></i>&nbsp; Start Tour</a>
   <a class="btn btn-primary center-text showFeatures" href="#" data-toggle='tooltip' title='Show the features of this plugin and its Pro version'><i class="glyphicon glyphicon-thumbs-up icon-white"></i>&nbsp; Show Features</a>
 </p>
-<?php
-if (isset($_REQUEST['inframe'])) {
-  ?>
-  <style type="text/css">
-    .tour-step-background {
-      background: transparent;
-      border: 2px solid blue;
-    }
-    .tour-backdrop {
-      opacity:0.2;
-    }
-  </style>
-  <?php
-}
-?>
 <script>
   $(document).ready(function () {
     if (!$('.tour').length && typeof (tour) === 'undefined') {
@@ -312,15 +292,6 @@ if (isset($_REQUEST['inframe'])) {
         content: "<p>You now know everything about the EZ PayPal interface. Congratulations!</p>"
       });
     }
-    $("#showSupportChannels").click(function (e) {
-      e.preventDefault();
-      var bg = $("#supportChannels").css("backgroundColor");
-      var fg = $("#supportChannels").css("color");
-      $("#supportChannels").css({backgroundColor: "yellow", color: "black"});
-      setTimeout(function () {
-        $("#supportChannels").css({backgroundColor: bg, color: fg});
-      }, 500);
-    });
     $(".restart").click(function (e) {
       e.preventDefault();
       tour.restart();

@@ -1,4 +1,7 @@
 <?php require 'header.php'; ?>
+<style scoped>
+  label{width:100px;}
+</style>
 <div>
   <ul class="breadcrumb">
     <li>
@@ -9,9 +12,6 @@
     </li>
   </ul>
 </div>
-<style type="text/css">
-  label{width:100px;}
-</style>
 
 <?php
 $catSource = EZ::mkCatSource();

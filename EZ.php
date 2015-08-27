@@ -345,7 +345,9 @@ if (!class_exists("EZ")) {
 }
 
 EZ::$slug = 'easy-paypal';
+EZ::$wpslug = 'easy-paypal-lte';
 EZ::$class = "EzPayPal6";
+EZ::$name = "EZ PayPala";
 EZ::$isInWP = isset($_REQUEST['wp']);
 EZ::$isUpdating = isset($_REQUEST['update']);
 EZ::$isPro = file_exists('options-advanced.php');

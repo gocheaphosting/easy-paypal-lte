@@ -18,18 +18,7 @@ class DbTable {
     $this->columns = $columns;
   }
 
-  function __destruct() {
-
-  }
-
-  function DbTable($table, $columns) {
-    if (version_compare(PHP_VERSION, "5.0.0", "<")) {
-      $this->__construct($table, $columns);
-      register_shutdown_function(array($this, "__destruct"));
-    }
-  }
-
-  function render() {
+  function render($tableWidth = 12) {
     if ($this->useDataTable) {
       $dataTable = 'data-table';
     }
@@ -37,26 +26,33 @@ class DbTable {
       $dataTable = '';
     }
     ?>
-    <table class="table table-striped table-bordered responsive <?php echo $dataTable; ?>">
-      <thead>
-        <tr>
+    <div class="col-md-<?php echo $tableWidth; ?>">
+      <table class="table table-striped table-bordered responsive <?php echo $dataTable; ?>">
+        <thead>
+          <tr>
+            <?php
+            static::_printHeader();
+            ?>
+          </tr>
+        </thead>
+        <tbody>
           <?php
-          static::_printHeader();
+          foreach ($this->rows as $row) {
+            static::_printRow($row);
+          }
+          if ($this->needCreate) {
+            static::_printCreate();
+          }
           ?>
-        </tr>
-      </thead>
-      <tbody>
-        <?php
-        foreach ($this->rows as $row) {
-          static::_printRow($row);
-        }
-        if ($this->needCreate) {
-          static::_printCreate();
-        }
-        ?>
-      </tbody>
-    </table>
+        </tbody>
+      </table>
+    </div>
     <?php
+    if ($tableWidth == 12) {
+      ?>
+      <div class="clearfix"></div>
+      <?php
+    }
     static::_printJS();
   }
 
@@ -573,17 +569,6 @@ class DbColumn {
     $this->dbCol = $dbCol;
     $this->heading = ucwords(str_replace("_", " ", $this->dbCol));
     $this->type = "text";
-  }
-
-  function __destruct() {
-
-  }
-
-  function DbColumn($dbCol) {
-    if (version_compare(PHP_VERSION, "5.0.0", "<")) {
-      $this->__construct($dbCol);
-      register_shutdown_function(array($this, "__destruct"));
-    }
   }
 
   function printHeader() {

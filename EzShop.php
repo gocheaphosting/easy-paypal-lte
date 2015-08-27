@@ -31,17 +31,6 @@ class EzShop {
     }
   }
 
-  function __destruct() {
-
-  }
-
-  function EzShop() {
-    if (version_compare(PHP_VERSION, "5.0.0", "<")) {
-      $this->__construct();
-      register_shutdown_function(array($this, "__destruct"));
-    }
-  }
-
   function renderProductTable() {
     global $db;
     $products = $db->getData("products");

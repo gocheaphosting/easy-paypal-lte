@@ -32,17 +32,6 @@ class EzOffice {
     }
   }
 
-  function __destruct() {
-
-  }
-
-  function EzOffice($debug = false) {
-    if (version_compare(PHP_VERSION, "5.0.0", "<")) {
-      $this->__construct($debug);
-      register_shutdown_function(array($this, "__destruct"));
-    }
-  }
-
   function setDebug($debug) {
     $this->_debug = $debug;
   }

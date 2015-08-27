@@ -1,5 +1,5 @@
 <?php
-if (!empty($no_visible_elements)) {
+if (!menuHidden()) {
   ?>
   <a href="#" class="btn btn-warning goPro" style="float:right" data-toggle="tooltip" title="Get the Pro Version Now for $19.95!"> <i class="glyphicon glyphicon-shopping-cart"></i> Buy EZ PayPal Now!</a>
   <?php
@@ -25,7 +25,7 @@ $features2 = "<p>Since the Pro version has more features than could be listed on
   <small>Your Own E-Shop</small>
 </h2>
 <?php
-if (empty($no_visible_elements)) {
+if (menuHidden()) {
   EZ::showService();
 }
 ?>

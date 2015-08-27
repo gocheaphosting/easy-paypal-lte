@@ -34,17 +34,6 @@ else {
       }
     }
 
-    function __destruct() {
-
-    }
-
-    function Updater($slug) {
-      if (version_compare(PHP_VERSION, "5.0.0", "<")) {
-        $this->__construct($slug);
-        register_shutdown_function(array($this, "__destruct"));
-      }
-    }
-
     function getLocalVersion() {
       if ($this->localVersion < 0) {
         $readme_file = "../readme.txt";
@@ -151,6 +140,9 @@ else {
       require_once 'Ftp.php';
       $ftp = new Ftp();
       ?>
+      <style scoped>
+        label{width:100px;}
+      </style>
       <div>
         <ul class="breadcrumb">
           <li>
@@ -161,9 +153,6 @@ else {
           </li>
         </ul>
       </div>
-      <style type="text/css">
-        label{width:100px;}
-      </style>
       <?php
       insertAlerts(11);
       openBox("Update or Upgrade Your Product", "plus", 11, "<p>It is easy to update your application. Once you have downloaded an update package, please use the Browse button in the <b>Upload Your Zip File</b> section. When you have selected the zip file to upload, the updater will take care of the rest.</p>"
